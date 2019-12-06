@@ -1,7 +1,47 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
 
+struct ParsedShader {
+	std::string VertexSource;
+	std::string FragmentSource;
+};
+static ParsedShader ParseShader(const std::string & filePath) {
+	std::ifstream stream(filePath);
+
+	enum class ShaderType {
+		NONE = -1, VERTEX = 0, FRAGMENT = 1
+	};
+
+	std::string line;
+	std::stringstream ss[2];
+	ShaderType currentShaderType = ShaderType::NONE;
+
+
+	while (getline(stream, line)) {
+		
+		if (line.find("#shader") != std::string::npos) {
+			if (line.find("vertex") != std::string::npos) {
+				// found vertex shader
+				currentShaderType = ShaderType::VERTEX;
+			}
+			else if (line.find("fragment") != std::string::npos) {
+				// found fragment shader
+				currentShaderType = ShaderType::FRAGMENT;
+			}
+		}
+		else {
+
+			ss[(int)currentShaderType] << line << '\n';
+		}
+	}
+
+	return { ss[0].str(), ss[1].str() };
+
+}
 
 static unsigned int CompileShader(unsigned int type, const std::string& source) {
 	unsigned int id  = glCreateShader(type);
@@ -17,8 +57,8 @@ static unsigned int CompileShader(unsigned int type, const std::string& source) 
 		char* message = (char*) alloca(length * sizeof(char));
 		glGetShaderInfoLog(id, length, &length, message);
 
-		std::cout << "Failed to compile " <<
-			(type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader!" << std::endl;
+		std::cout <<  "Failed to compile"   <<
+			(type == GL_VERTEX_SHADER ?  "vertex " :  "fragment ") <<   "shader!"  << std::endl;
 		std::cout << message << std::endl;
 
 		glDeleteShader(id);
@@ -57,7 +97,7 @@ int main(void)
 
 
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+	window = glfwCreateWindow(640, 480,  "GLFW: Window created" , NULL, NULL);
 	if (!window)
 	{
 		glfwTerminate();
@@ -68,7 +108,7 @@ int main(void)
 	glfwMakeContextCurrent(window);
 
 	if (glewInit() != GLEW_OK)
-		std::cout << "GLEW has not been initialized correctly" << std::endl;
+		std::cout <<  "GLEW has not been initialized correctly " << std::endl;
 
 	std::cout << glGetString(GL_VERSION) << std::endl;
 
@@ -89,26 +129,11 @@ int main(void)
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
 
-	std::string vertexShader =
-		"#version 330 core\n"
-		"\n"
-		" layout(location = 0) in vec4 position;\n"
-		"void main()\n"
-		"{\n"
-		" gl_Position = position;\n"
-		"}\n";
+
+	ParsedShader vfs = ParseShader("res/shaders/basic.shader");
 
 
-	std::string fragmentShader =
-		"#version 330 core\n"
-		"\n"
-		" layout(location = 0) out vec4 color;\n"
-		"void main()\n"
-		"{\n"
-		" color = vec4(1.,0.,0.,1.);\n"
-		"}\n";
-
-	unsigned int shader = CreateShader(vertexShader, fragmentShader);
+	unsigned int shader = CreateShader(vfs.VertexSource, vfs.FragmentSource);
 	glUseProgram(shader);
 	// --------------------------------------------------
 	
@@ -126,7 +151,7 @@ int main(void)
 		/* Poll for and process events */
 		glfwPollEvents();
 	}
-
+	glDeleteProgram(shader);
 	glfwTerminate();
 	return 0;
 }
