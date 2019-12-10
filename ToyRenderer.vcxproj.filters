@@ -22,4 +22,9 @@
   <ItemGroup>
     <None Include="res\shaders\basic.shader" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Settings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

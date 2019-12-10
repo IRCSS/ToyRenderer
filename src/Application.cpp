@@ -5,6 +5,7 @@
 #include <string>
 #include <sstream>
 #include <ctime>
+#include "Settings.h"
 
 #define Assert(x) if(!(x)) __debugbreak();
 #define GlCall(x) GLClearError();        \
@@ -121,7 +122,7 @@ int main(void)
 
 
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(640, 480,  "GLFW: Window created" , NULL, NULL);
+	window = glfwCreateWindow(Settings::WindowWidth, Settings::WindowHeigth,  "GLFW: Window created" , NULL, NULL);
 	if (!window)
 	{
 		glfwTerminate();
@@ -130,6 +131,8 @@ int main(void)
 
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);
+
+	glfwSwapInterval(Settings::VSync ? 1: 0);
 
 	if (glewInit() != GLEW_OK)
 		std::cout <<  "GLEW has not been initialized correctly " << std::endl;
@@ -140,10 +143,10 @@ int main(void)
 	// --------------------------------------------------
 
 	float positions[8] = {
-		-0.5f, -0.5f, // 0
-		 0.5f, -0.5f, // 1
-		 0.5f,  0.5f, // 2
-		-0.5f,  0.5f, // 3
+		-1.0f, -1.0f, // 0
+		 1.0f, -1.0f, // 1
+		 1.0f,  1.0f, // 2
+		-1.0f,  1.0f, // 3
 	};
 
 	unsigned int traingleIndcies[] =
