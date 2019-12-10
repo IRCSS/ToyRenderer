@@ -4,7 +4,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-
+#include <ctime>
 
 #define Assert(x) if(!(x)) __debugbreak();
 #define GlCall(x) GLClearError();        \
@@ -174,9 +174,19 @@ int main(void)
 	GlCall(glUseProgram(shader));
 	// --------------------------------------------------
 	
+
+	int location = glGetUniformLocation(shader, "u_iTime");
+	Assert(location != -1);
+	
+
+	clock_t currentTick;
+
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
 	{	
+
+		currentTick =  clock();
+		GlCall(glUniform1f(location, currentTick/1000.0f));
 		/* Render here */
 		GlCall(glClear(GL_COLOR_BUFFER_BIT));
 
