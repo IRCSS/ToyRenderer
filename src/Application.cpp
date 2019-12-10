@@ -115,16 +115,29 @@ int main(void)
 	
 	// --------------------------------------------------
 
-	float positions[6] = {
-		-0.5f, -0.5f,
-		 0.0f,  0.5f,
-		 0.5f, -0.5f,
+	float positions[8] = {
+		-0.5f, -0.5f, // 0
+		 0.5f, -0.5f, // 1
+		 0.5f,  0.5f, // 2
+		-0.5f,  0.5f, // 3
 	};
+
+	unsigned int traingleIndcies[] =
+	{
+		0, 1 ,2, // first Triagnle 
+		2, 3, 0, // second Triangle
+	};
+
 
 	unsigned int tBufferID; 
 	glGenBuffers(1, &tBufferID);
 	glBindBuffer(GL_ARRAY_BUFFER, tBufferID);
-	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), positions, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 4* 2 * sizeof(float), positions, GL_STATIC_DRAW);
+
+	unsigned int indexBufferID;
+	glGenBuffers(1, &indexBufferID);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferID);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 2* 3 * sizeof(unsigned int), traingleIndcies, GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
@@ -143,8 +156,9 @@ int main(void)
 		/* Render here */
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawElements(GL_TRIANGLES, 3 * 2, GL_UNSIGNED_INT, nullptr);
 
+	
 		/* Swap front and back buffers */
 		glfwSwapBuffers(window);
 
