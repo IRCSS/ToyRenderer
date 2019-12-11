@@ -119,7 +119,9 @@ int main(void)
 		return -1;
 
 
-
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	/* Create a windowed mode window and its OpenGL context */
 	window = glfwCreateWindow(Settings::WindowWidth, Settings::WindowHeigth,  "GLFW: Window created" , NULL, NULL);
@@ -156,6 +158,10 @@ int main(void)
 	};
 
 
+	unsigned int vao; 
+	GlCall(glGenVertexArrays(1, &vao));
+	GlCall(glBindVertexArray(vao));
+
 	unsigned int tBufferID; 
 	GlCall(glGenBuffers(1, &tBufferID));
 	GlCall(glBindBuffer(GL_ARRAY_BUFFER, tBufferID));
@@ -169,12 +175,16 @@ int main(void)
 	GlCall(glEnableVertexAttribArray(0));
 	GlCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0));
 
+	GlCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
+	GlCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
+	GlCall(glUseProgram(0));
+	GlCall(glBindVertexArray(0));
 
 	ParsedShader vfs = ParseShader("res/shaders/basic.shader");
 
 
 	unsigned int shader = CreateShader(vfs.VertexSource, vfs.FragmentSource);
-	GlCall(glUseProgram(shader));
+
 	// --------------------------------------------------
 	
 
@@ -189,10 +199,16 @@ int main(void)
 	{	
 
 		currentTick =  clock();
-		GlCall(glUniform1f(location, currentTick/1000.0f));
+
 		/* Render here */
 		GlCall(glClear(GL_COLOR_BUFFER_BIT));
+		
+		GlCall(glUseProgram(shader));
+		GlCall(glUniform1f(location, currentTick / 1000.0f));
 
+		GlCall(glBindVertexArray(vao));
+
+		GlCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferID));
 
 		GlCall(glDrawElements(GL_TRIANGLES, 3 * 2, GL_UNSIGNED_INT, nullptr));
 
