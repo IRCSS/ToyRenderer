@@ -6,29 +6,9 @@
 #include <sstream>
 #include <ctime>
 #include "Settings.h"
-
-#define Assert(x) if(!(x)) __debugbreak();
-#define GlCall(x) GLClearError();        \
-                  x;                   \
-                  Assert(GLCheckError(#x, __FILE__, __LINE__)) \
-
-static void GLClearError(){
-
-	while (glGetError() != GL_NO_ERROR);
-}
-static bool GLCheckError(const char* functionName, const char* fileName, const int line) {
-	
-	bool foundError = false;
-	while (GLenum error = glGetError()) {
-		std::cout << "[OpenGl Error]: " << error << " In Function, " << functionName
-			<< " in file, " << fileName << ": Line " << line << std::endl;
-		foundError = true;
-			
-	}
-
-	if (foundError) return false;
-	return true;
-}
+#include "Renderer.h"
+#include "VertexBuffer.h"
+#include "IndexBuffer.h"
 
 struct ParsedShader {
 	std::string VertexSource;
@@ -143,7 +123,7 @@ int main(void)
 
 	
 	// --------------------------------------------------
-
+	{
 	float positions[8] = {
 		-1.0f, -1.0f, // 0
 		 1.0f, -1.0f, // 1
@@ -162,16 +142,11 @@ int main(void)
 	GlCall(glGenVertexArrays(1, &vao));
 	GlCall(glBindVertexArray(vao));
 
-	unsigned int tBufferID; 
-	GlCall(glGenBuffers(1, &tBufferID));
-	GlCall(glBindBuffer(GL_ARRAY_BUFFER, tBufferID));
-	GlCall(glBufferData(GL_ARRAY_BUFFER, 4* 2 * sizeof(float), positions, GL_STATIC_DRAW));
+	VertexBuffer vb(positions, 4*2*sizeof(float));
 
-	unsigned int indexBufferID;
-	GlCall(glGenBuffers(1, &indexBufferID));
-	GlCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferID));
-	GlCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, 2* 3 * sizeof(unsigned int), traingleIndcies, GL_STATIC_DRAW));
+	IndexBuffer ib(traingleIndcies, 6);
 
+	
 	GlCall(glEnableVertexAttribArray(0));
 	GlCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0));
 
@@ -208,7 +183,7 @@ int main(void)
 
 		GlCall(glBindVertexArray(vao));
 
-		GlCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferID));
+		ib.Bind();
 
 		GlCall(glDrawElements(GL_TRIANGLES, 3 * 2, GL_UNSIGNED_INT, nullptr));
 
@@ -220,6 +195,9 @@ int main(void)
 		glfwPollEvents();
 	}
 	GlCall(glDeleteProgram(shader));
+
+	}
+
 	glfwTerminate();
 	return 0;
 }
