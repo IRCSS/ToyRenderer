@@ -6,7 +6,7 @@ class VertexArray
 {
 
 private: 
-	unsigned int m_RendererID;
+	unsigned int m_RendererID;    // holds the actual ID int of the vertex array. This is not a pointer to the int. 
 
 public: 
 	VertexArray();

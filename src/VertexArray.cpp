@@ -3,9 +3,7 @@
 
 VertexArray::VertexArray()
 {
-
-	GlCall(glGenVertexArrays(1, &m_RendererID));
-
+	GlCall(glGenVertexArrays(1, &m_RendererID)); // m_RendererID needs to be an array if genVertex is ever generating more than one vertex array object
 }
 
 VertexArray::~VertexArray()
@@ -21,9 +19,9 @@ void VertexArray::AddBuffer(const VertexBuffer & vb, const VertexBufferLayout la
 	unsigned int offset = 0;
 	for (unsigned int i = 0; i < elements.size(); i++) {
 		const auto& element = elements[i];
-		GlCall(glEnableVertexAttribArray(i));
+		GlCall(glEnableVertexAttribArray(i)); // to do: can use the glEnableVertexArrayAttrib to enable on a differetn VAO than the binded one 
 		GlCall(glVertexAttribPointer(i, element.count, element.type, element.normalized, layout.GetStride(), (const void*) offset));
-		offset += element.count * VertexBufferElements::GetSizeOfType(element.type);
+		offset += element.count * VertexBufferElement::GetSizeOfType(element.type);   // dynamicly caluclating the beging position of the attribute in the vertex buffer. 
 	}
 
 

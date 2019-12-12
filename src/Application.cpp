@@ -139,10 +139,10 @@ int main(void)
 	};
 
 
-	VertexArray va;
+	VertexArray  va;
 	VertexBuffer vb(positions, 4*2*sizeof(float));
 
-	IndexBuffer ib(traingleIndcies, 6);
+	IndexBuffer  ib(traingleIndcies, 6);
 
 	
 	VertexBufferLayout layout;
