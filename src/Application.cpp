@@ -109,7 +109,7 @@ int main(void)
 		ib.Bind();
 
 		shader.Bind();
-		shader.SetUniform4f("u_iTime", currentTick, 0, 0, 0);
+		shader.SetUniformf("u_iTime", currentTick / 1000.0f);
 
 		GlCall(glDrawElements(GL_TRIANGLES, 3 * 2, GL_UNSIGNED_INT, nullptr));
 
