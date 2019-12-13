@@ -17,3 +17,20 @@ bool GLCheckError(const char* functionName, const char* fileName, const int line
 	if (foundError) return false; // this is returned for the assert macro
 	return true;
 }
+
+#include "VertexArray.h"
+#include "IndexBuffer.h"
+#include "Shader.h"
+
+void Renderer::Clear() const
+{
+	GlCall(glClear(GL_COLOR_BUFFER_BIT));
+}
+
+void Renderer::Draw(const VertexArray & va, const IndexBuffer & ib, const Shader & shader)
+{
+	shader.Bind();
+	va.Bind();
+	ib.Bind();
+	GlCall(glDrawElements(GL_TRIANGLES, ib.GetCount(), GL_UNSIGNED_INT, nullptr));
+}

@@ -61,6 +61,9 @@ int main(void)
 		2, 3, 0, // second Triangle
 	};
 
+	Renderer g_renderer;
+
+
 
 	VertexArray  va;
 	VertexBuffer vb(positions, 4*2*sizeof(float));
@@ -101,17 +104,13 @@ int main(void)
 		currentTick =  clock();
 
 		/* Render here */
-		GlCall(glClear(GL_COLOR_BUFFER_BIT));
+		g_renderer.Clear();
 		
-
-		va.Bind();
-
-		ib.Bind();
 
 		shader.Bind();
 		shader.SetUniformf("u_iTime", currentTick / 1000.0f);
 
-		GlCall(glDrawElements(GL_TRIANGLES, 3 * 2, GL_UNSIGNED_INT, nullptr));
+		g_renderer.Draw(va, ib, shader);
 
 	
 		/* Swap front and back buffers */
