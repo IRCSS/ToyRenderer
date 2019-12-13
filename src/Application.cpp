@@ -11,7 +11,7 @@
 #include "IndexBuffer.h"
 #include "VertexArray.h"
 #include "Shader.h"
-
+#include "Texture.h"
 
 
 int main(void)
@@ -48,11 +48,11 @@ int main(void)
 	
 	// --------------------------------------------------
 	{
-	float positions[8] = {
-		-1.0f, -1.0f, // 0
-		 1.0f, -1.0f, // 1
-		 1.0f,  1.0f, // 2
-		-1.0f,  1.0f, // 3
+	float positions[] = {
+		-1.0f, -1.0f, 0.0f, 0.0f, // 0
+		 1.0f, -1.0f, 1.0f, 0.0f, // 1
+		 1.0f,  1.0f, 1.0f, 1.0f, // 2
+		-1.0f,  1.0f, 0.0f, 1.0f // 3
 	};
 
 	unsigned int traingleIndcies[] =
@@ -61,22 +61,30 @@ int main(void)
 		2, 3, 0, // second Triangle
 	};
 
+	GlCall(glEnable(GL_BLEND));
+	GlCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+
 	Renderer g_renderer;
 
 
 
 	VertexArray  va;
-	VertexBuffer vb(positions, 4*2*sizeof(float));
+	VertexBuffer vb(positions, 4*4*sizeof(float));
 
 	IndexBuffer  ib(traingleIndcies, 6);
 
 	
 	VertexBufferLayout layout;
 	layout.Push<float>(2);
+	layout.Push<float>(2);
 	va.AddBuffer(vb, layout);
 
 	Shader shader("res/shaders/basic.shader");
 	shader.Bind();
+	shader.SetUniform1i("u_Texture", 0);
+
+	Texture texture("res/textures/checkerFormat.png");
+	texture.Bind();
 
 	va.UnBind();
 	vb.UnBind();
