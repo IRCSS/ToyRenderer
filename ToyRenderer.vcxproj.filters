@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\vendor">
+      <UniqueIdentifier>{46395e89-d0e6-4a24-9d32-bd1b8f0c8ec4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\vendor\stb">
+      <UniqueIdentifier>{b52c9d6f-eb97-4f87-9ece-ff7b19b80cda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\vendor">
+      <UniqueIdentifier>{744e6b17-1442-48bd-9c27-5187200aafdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\vendor\stb">
+      <UniqueIdentifier>{44764b87-d067-4275-84ba-8bc5499466e3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp">
@@ -36,9 +48,9 @@
     <ClCompile Include="src\Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="res\shaders\basic.shader" />
+    <ClCompile Include="src\vendor\stb_image\stb_image.cpp">
+      <Filter>Source Files\vendor\stb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Settings.h">
@@ -65,5 +77,13 @@
     <ClInclude Include="src\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\vendor\stb_image\stb_image.h">
+      <Filter>Header Files\vendor\stb</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shaders\basic.shader">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
