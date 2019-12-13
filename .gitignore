@@ -21,14 +21,14 @@ mono_crash.*
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
+./[Rr]elease/
+./[Rr]eleases/
+./x64/
+./x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
-[Bb]in/
+./[Bb]in/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
@@ -359,7 +359,7 @@ MigrationBackup/
 # Compiled Object files
 *.slo
 *.lo
-*.o
+*.os
 *.obj
 
 # Precompiled Headers
@@ -367,28 +367,22 @@ MigrationBackup/
 *.pch
 
 # Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# *.so
+# *.dylib
+# *.dll
 
 # Fortran module files
 *.mod
 *.smod
 
 # Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+#*.lai
+#*.la
+#*.a
+#*.lib
 
 # Executables
 *.exe
 *.out
 *.app
 
-
-
-# ====================================================================================================
-# this is added to make sure the ignore pattern for Release, lib, x32 or x64 dont ignore dependencies
-!/dependencies/
-!/dependencies/*
