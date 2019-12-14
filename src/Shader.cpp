@@ -48,6 +48,12 @@ void Shader::SetUniform1i(const std::string& name, const int i0)
 	GlCall(glUniform1i(GetUniformLocation(name), i0));
 }
 
+void Shader::SetUniformMat4(const std::string & name, const glm::mat4 & Matrix)
+{
+	GlCall(glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, &Matrix[0][0]));
+
+}
+
 
 
 int Shader::GetUniformLocation(const std::string& name)

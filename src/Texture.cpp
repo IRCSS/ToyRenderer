@@ -1,5 +1,5 @@
 #include "Texture.h"
-#include "vendor/stb_image/stb_image.h"
+#include "stb_image/stb_image.h"
 
 Texture::Texture(const std::string& path):
 	m_RendererID(0), m_FilePath(path), m_LocalBuffer(nullptr),
@@ -11,7 +11,9 @@ Texture::Texture(const std::string& path):
 
 	GlCall(glGenTextures(1, &m_RendererID));
 	GlCall(glBindTexture(GL_TEXTURE_2D, m_RendererID));
-
+	// to DO: abstractise this in a setting struct. This should have a default constructer
+	// later add settings for creating mipmaps, different wrap mode, and trilinear filtering
+	// as well as anisotropic filtering. 
 	GlCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR));
 	GlCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR));
 	GlCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE));

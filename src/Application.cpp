@@ -48,6 +48,9 @@ int main(void)
 	
 	// --------------------------------------------------
 	{
+
+		// Vertex layout, vec2 positions (2 floats), vec2 uv (2 floats), maybe move this to a struct of a sort later
+
 	float positions[] = {
 		-1.0f, -1.0f, 0.0f, 0.0f, // 0
 		 1.0f, -1.0f, 1.0f, 0.0f, // 1
@@ -66,22 +69,24 @@ int main(void)
 
 	Renderer g_renderer;
 
-
+	// Need to abstract this later to an obejct of a sort. The shader stuff and uniforms need 
+	// to go to a matrial and the vertex array and vertexbuffer need to be constructed from a 
+	// mesh and a meshRenderer class of a sort
 
 	VertexArray  va;
 	VertexBuffer vb(positions, 4*4*sizeof(float));
 
 	IndexBuffer  ib(traingleIndcies, 6);
 
-	
+	// to do: add semantics to layout for ease of API use later
 	VertexBufferLayout layout;
-	layout.Push<float>(2);
-	layout.Push<float>(2);
+	layout.Push<float>(2); // position
+	layout.Push<float>(2); // uv
 	va.AddBuffer(vb, layout);
 
 	Shader shader("res/shaders/basic.shader");
 	shader.Bind();
-	shader.SetUniform1i("u_Texture", 0);
+	shader.SetUniform1i("u_Texture", 0); // binding the texture to the 0 slot of the sampler2D
 
 	Texture texture("res/textures/checkerFormat.png");
 	texture.Bind();
@@ -116,7 +121,7 @@ int main(void)
 		
 
 		shader.Bind();
-		shader.SetUniformf("u_iTime", currentTick / 1000.0f);
+		shader.SetUniformf("u_iTime", currentTick / 1000.0f); // need to abstract his in material class
 
 		g_renderer.Draw(va, ib, shader);
 
