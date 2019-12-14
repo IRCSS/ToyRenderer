@@ -12,7 +12,7 @@
 #include "VertexArray.h"
 #include "Shader.h"
 #include "Texture.h"
-
+#include "maths/Vector3.h"
 
 int main(void)
 {
@@ -104,8 +104,10 @@ int main(void)
 
 	// --------------------------------------------------
 	
-
-
+	Vector3 v(2.0f,1000.0f,0.0f);
+	
+	std::cout << v.x << " was x, " << v.y << " was y, " << v.z << std::endl;
+	
 	
 
 	clock_t currentTick;
