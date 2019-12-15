@@ -48,7 +48,85 @@ float Vector3::Dot(const Vector3 & lhs, const Vector3 & rhs)
 	return lhs.x*rhs.x + lhs.y*rhs.y + lhs.z*rhs.z;
 }
 
+float Vector3::Distance(const Vector3 & v0, const Vector3 v1)
+{
+	return (v0 - v1).magnitude;
+}
 
+Vector3 Vector3::operator=(const Vector3 & toSet)
+{
+	_x = toSet.x;
+	_y = toSet.y;
+	_z = toSet.z;
+
+	v = glm::vec3(_x, _y, _z);
+	_magnitude = CalculateMag();
+
+	return Vector3(toSet.x, toSet.y, toSet.z);
+}
+
+Vector3 Vector3::operator+(const Vector3 & vec) const
+{
+	float x = _x + vec.x;
+	float y = _y + vec.y;
+	float z = _z + vec.z;
+
+	return Vector3(x, y, z);
+}
+
+
+void Vector3::operator+=(const Vector3 & vec)
+{
+	 _x = _x + vec.x;
+	 _y = _y + vec.y;
+	 _z = _z + vec.z;
+
+	 v = glm::vec3(_x, _y, _z);
+	 _magnitude = CalculateMag();
+}
+
+void  Vector3::operator-=(const Vector3 & vec)
+{
+	_x  = _x - vec.x;
+	_y  = _y - vec.y;
+	_z  = _z - vec.z;
+
+	v = glm::vec3(_x, _y, _z);
+	_magnitude = CalculateMag();
+	
+}
+
+void Vector3::operator*=(float rhs)
+{
+	_x = _x * rhs;
+	_y = _y * rhs;
+	_z = _z * rhs;
+
+	v = glm::vec3(_x, _y, _z);
+	_magnitude = CalculateMag();
+}
+
+
+
+
+Vector3 operator-(const Vector3 & lhs, const Vector3 & rhs)
+{
+	float x = lhs.x - rhs.x;
+	float y = lhs.y - rhs.y;
+	float z = lhs.z - rhs.z;
+
+	return Vector3(x,y,z);
+}
+
+Vector3 operator*(const Vector3 & lhs, float rhs)
+{
+	return Vector3(lhs.x*rhs, lhs.y*rhs, lhs.z*rhs);
+}
+
+Vector3 operator*(float lhs, const Vector3 & rhs)
+{
+     return Vector3(rhs.x*lhs, rhs.y*lhs, rhs.z*lhs);;
+}
 
 std::ostream & operator<<(std::ostream& os, Vector3 rhs)
 {
