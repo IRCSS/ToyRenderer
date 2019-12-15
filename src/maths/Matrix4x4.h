@@ -1,5 +1,6 @@
 #pragma once
 #include "Vector4.h"
+#include <iostream>
 class Matrix4x4 {
 
 private: 
@@ -10,6 +11,7 @@ public:
 		      const float i1j0, const float i1j1, const float i1j2, const float i1j3, 
 		      const float i2j0, const float i2j1, const float i2j2, const float i2j3, 
 		      const float i3j0, const float i3j1, const float i3j2, const float i3j3);
+
 	~Matrix4x4();
 
 
@@ -20,8 +22,10 @@ public:
 	const Matrix4x4 Transpose()              const;
 
                 void operator=(const Matrix4x4 rhs);
-	friend Matrix4x4 operator*(const Matrix4x4& rhs, const Matrix4x4& lhs);
+	friend Matrix4x4 operator*(const Matrix4x4& lhs, const Matrix4x4& rhs);
+	friend Vector4   operator*(const Matrix4x4& lhs, const Vector4& rhs);
 	
+	std::ostream&    operator<<(std::ostream& os) const;
 
 
 };

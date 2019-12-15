@@ -55,3 +55,48 @@ const Matrix4x4 Matrix4x4::Inverse(bool & hasInverse) const
 		             m_inverse[2][0], m_inverse[2][1], m_inverse[2][2], m_inverse[2][3],
 		             m_inverse[3][0], m_inverse[3][1], m_inverse[3][2], m_inverse[3][3]);
 }
+
+const Matrix4x4 Matrix4x4::Transpose() const
+{
+	glm::mat4x4 m_transposed =  glm::transpose(m);
+
+	return Matrix4x4(m_transposed[0][0], m_transposed[0][1], m_transposed[0][2], m_transposed[0][3],
+					 m_transposed[1][0], m_transposed[1][1], m_transposed[1][2], m_transposed[1][3],
+					 m_transposed[2][0], m_transposed[2][1], m_transposed[2][2], m_transposed[2][3],
+					 m_transposed[3][0], m_transposed[3][1], m_transposed[3][2], m_transposed[3][3]);
+}
+
+void Matrix4x4::operator=(const Matrix4x4 rhs)
+{
+	Vector4 c1 = rhs.GetColumn(0);
+	Vector4 c2 = rhs.GetColumn(1);
+	Vector4 c3 = rhs.GetColumn(2);
+	Vector4 c4 = rhs.GetColumn(3);
+
+	m = glm::mat4x4(c1.x, c1.y, c1.z, c1.w,
+		            c2.x, c2.y, c2.z, c2.w,
+		            c3.x, c3.y, c3.z, c3.w,
+		            c4.x, c4.y, c4.z, c4.w);
+}
+
+std::ostream & Matrix4x4::operator<<(std::ostream & os) const
+{
+	os << "{ " << GetColumn(0) << ", " << GetColumn(1) << ", " << GetColumn(2) << "," << GetColumn(3) << "}";
+	return os;
+}
+
+Matrix4x4 operator*(const Matrix4x4 & lhs, const Matrix4x4 & rhs)
+{
+	glm::mat4x4 m_result = lhs.m * rhs.m;
+	return Matrix4x4(m_result[0][0], m_result[0][1], m_result[0][2], m_result[0][3],
+					 m_result[1][0], m_result[1][1], m_result[1][2], m_result[1][3],
+					 m_result[2][0], m_result[2][1], m_result[2][2], m_result[2][3],
+					 m_result[3][0], m_result[3][1], m_result[3][2], m_result[3][3]);
+}
+
+Vector4 operator*(const Matrix4x4 & lhs, const Vector4 & rhs)
+{
+	glm::vec4 v(rhs.x, rhs.y, rhs.z, rhs.w);
+	v = lhs.m * v;
+	return Vector4(v.x, v.y, v.z, v.w);
+}
