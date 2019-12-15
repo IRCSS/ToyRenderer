@@ -86,6 +86,7 @@
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\maths\Vector3.cpp" />
+    <ClCompile Include="src\maths\Vector4.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\Texture.cpp" />
@@ -234,6 +235,7 @@
   <ItemGroup>
     <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\maths\Vector3.h" />
+    <ClInclude Include="src\maths\Vector4.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Settings.h" />
     <ClInclude Include="src\Shader.h" />
