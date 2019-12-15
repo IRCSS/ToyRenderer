@@ -79,9 +79,9 @@ void Matrix4x4::operator=(const Matrix4x4 rhs)
 		            c4.x, c4.y, c4.z, c4.w);
 }
 
-std::ostream & Matrix4x4::operator<<(std::ostream & os) const
+std::ostream & operator<<(std::ostream & os, const Matrix4x4 rhs) 
 {
-	os << "{ " << GetColumn(0) << ", " << GetColumn(1) << ", " << GetColumn(2) << "," << GetColumn(3) << "}";
+	os << "{ " << rhs.GetColumn(0) << ", " << rhs.GetColumn(1) << ", " << rhs.GetColumn(2) << "," << rhs.GetColumn(3) << "}";
 	return os;
 }
 

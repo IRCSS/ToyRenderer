@@ -13,6 +13,8 @@
 #include "Shader.h"
 #include "Texture.h"
 #include "maths/Vector3.h"
+#include "maths/Matrix4x4.h"
+#include "maths/Vector4.h"
 
 int main(void)
 {
@@ -45,7 +47,8 @@ int main(void)
 
 	std::cout << glGetString(GL_VERSION) << std::endl;
 
-	
+
+
 	// --------------------------------------------------
 	{
 

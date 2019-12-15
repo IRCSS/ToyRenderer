@@ -25,7 +25,7 @@ public:
 	friend Matrix4x4 operator*(const Matrix4x4& lhs, const Matrix4x4& rhs);
 	friend Vector4   operator*(const Matrix4x4& lhs, const Vector4& rhs);
 	
-	std::ostream&    operator<<(std::ostream& os) const;
+	friend std::ostream&    operator<<(std::ostream& os, const Matrix4x4 rhs);
 
 
 };
