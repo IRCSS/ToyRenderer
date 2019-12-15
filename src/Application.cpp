@@ -104,11 +104,12 @@ int main(void)
 
 	// --------------------------------------------------
 	
-	Vector3 v(2.0f,1000.0f,0.0f);
+	Vector3 v(2.0f,2.0f,0.0f);
 	
-	std::cout << v.x << " was x, " << v.y << " was y, " << v.z << std::endl;
-	
-	
+	//std::cout << v.x << " was x, " << v.y << " was y, " << v.z << std::endl;
+	std::cout << v<<std::endl;
+	std::cout << v.magnitude << " was magnitude" << std::endl;
+	std::cout << v.normalized() << " normalize" << std::endl;
 
 	clock_t currentTick;
 
