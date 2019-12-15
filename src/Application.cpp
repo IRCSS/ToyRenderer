@@ -105,11 +105,14 @@ int main(void)
 	// --------------------------------------------------
 	
 	Vector3 v(2.0f,2.0f,0.0f);
-	
+	Vector3 v2(0.0f, -1.0f, 1.0f);
 	//std::cout << v.x << " was x, " << v.y << " was y, " << v.z << std::endl;
 	std::cout << v<<std::endl;
 	std::cout << v.magnitude << " was magnitude" << std::endl;
 	std::cout << v.normalized() << " normalize" << std::endl;
+	std::cout << Vector3::Normalize(v)<< " Normalize" << std::endl;
+	std::cout << Vector3::Cross(v, v2) << " crossed" << std::endl;
+	std::cout << Vector3::Dot(v, v2) << " dot" << std::endl;
 
 	clock_t currentTick;
 

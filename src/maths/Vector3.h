@@ -19,7 +19,7 @@ private:
 	float   _y;
 	float   _z;
 	float   _magnitude;
-	glm::vec3 v;
+	glm::vec3 v; // I dont actually want to have glm in the header file. Search for a better solution later
 
 public: 
 
@@ -34,11 +34,11 @@ public:
 	// STATIC
 
 	static Vector3 Normalize(const Vector3& toNormalize)            ;
-	static Vector3 Cross(const Vector3& lfs, const Vector3& rhs)    ;
+	static Vector3 Cross(const Vector3& lhs, const Vector3& rhs)    ;
 	static Vector3 Lerp(const Vector3& a, const Vector3& b, float t);
     /// Projects c1 on to c0, returns the e vector of projection c1-x normalized
 	static Vector3 OrthoNomalize(const Vector3& c0, const Vector3& c1);
-	static float   Dot(const Vector3& lfs, const Vector3& rhs)        ;
+	static float   Dot(const Vector3& lhs, const Vector3& rhs)        ;
 	static float   Distance(const Vector3& v0, const Vector3 v1)      ;
 	
 	// OPERATOR
@@ -55,6 +55,7 @@ public:
 private:
 	
 	float CalculateMag() const;
+	static float lerpf(float a, float b, float t);
 
 };
 
