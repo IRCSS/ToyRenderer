@@ -80,6 +80,7 @@ int main(void)
 	VertexBuffer vb(positions, 4*4*sizeof(float));
 
 	IndexBuffer  ib(traingleIndcies, 6);
+	
 
 	// to do: add semantics to layout for ease of API use later
 	VertexBufferLayout layout;
