@@ -15,11 +15,11 @@ public:
 	~Matrix4x4();
 
 
-	const Vector4   GetColumn(const int i)   const;
-	const Vector4   GetRow   (const int i)   const;
-	const float     GetDeterminant()         const;
-	const Matrix4x4 Inverse(bool& hasInverse)const;
-	const Matrix4x4 Transpose()              const;
+	const Vector4    GetColumn(const int i)   const;
+	const Vector4    GetRow   (const int i)   const;
+	const float      GetDeterminant()         const;
+	const Matrix4x4  Inverse(bool& hasInverse)const;
+	const Matrix4x4  Transpose()              const;
 
                 void operator=(const Matrix4x4 rhs);
 	friend Matrix4x4 operator*(const Matrix4x4& lhs, const Matrix4x4& rhs);

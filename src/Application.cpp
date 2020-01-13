@@ -15,7 +15,7 @@
 #include "maths/Vector3.h"
 #include "maths/Matrix4x4.h"
 #include "maths/Vector4.h"
-
+#include "glm/gtc/matrix_transform.hpp"
 int main(void)
 {
 	GLFWwindow* window;
@@ -58,7 +58,7 @@ int main(void)
 		-1.0f, -1.0f, 0.0f, 0.0f, // 0
 		 1.0f, -1.0f, 1.0f, 0.0f, // 1
 		 1.0f,  1.0f, 1.0f, 1.0f, // 2
-		-1.0f,  1.0f, 0.0f, 1.0f // 3
+		-1.0f,  1.0f, 0.0f, 1.0f  // 3
 	};
 
 	unsigned int traingleIndcies[] =
@@ -88,9 +88,13 @@ int main(void)
 	layout.Push<float>(2); // uv
 	va.AddBuffer(vb, layout);
 
+	glm::mat4 proj = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f);
+	
+
 	Shader shader("res/shaders/basic.shader");
 	shader.Bind();
 	shader.SetUniform1i("u_Texture", 0); // binding the texture to the 0 slot of the sampler2D
+	shader.SetUniformMat4("u_MVP", proj);
 
 	Texture texture("res/textures/checkerFormat.png");
 	texture.Bind();
