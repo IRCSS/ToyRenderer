@@ -3,10 +3,9 @@
 
 
 
-Vector3::Vector3( float x_,  float y_,  float z_) : x(_x), y(_y), z(_z), _x(x_), _y(y_), _z(z_),magnitude(_magnitude)
+Vector3::Vector3( float x_,  float y_,  float z_) : x(x_), y(y_), z(z_)
 {
-	v = glm::vec3(_x, _y, _z);
-	_magnitude = CalculateMag();
+	v = glm::vec3(x, y, z);
 }
 
 Vector3::~Vector3()
@@ -50,60 +49,62 @@ float Vector3::Dot(const Vector3 & lhs, const Vector3 & rhs)
 
 float Vector3::Distance(const Vector3 & v0, const Vector3 v1)
 {
-	return (v0 - v1).magnitude;
+	return (v0 - v1).magnitude();
+}
+
+float Vector3::magnitude() const
+{
+	 return CalculateMag();
+
 }
 
 Vector3 Vector3::operator=(const Vector3 & toSet)
 {
-	_x = toSet.x;
-	_y = toSet.y;
-	_z = toSet.z;
+	x = toSet.x;
+	y = toSet.y;
+	z = toSet.z;
 
-	v = glm::vec3(_x, _y, _z);
-	_magnitude = CalculateMag();
+	v = glm::vec3(x, y, z);
 
 	return Vector3(toSet.x, toSet.y, toSet.z);
 }
 
 Vector3 Vector3::operator+(const Vector3 & vec) const
 {
-	float x = _x + vec.x;
-	float y = _y + vec.y;
-	float z = _z + vec.z;
+	float _x = x + vec.x;
+	float _y = y + vec.y;
+	float _z = z + vec.z;
 
-	return Vector3(x, y, z);
+	return Vector3(_x, _y, _z);
 }
 
 
 void Vector3::operator+=(const Vector3 & vec)
 {
-	 _x = _x + vec.x;
-	 _y = _y + vec.y;
-	 _z = _z + vec.z;
+	 x = x + vec.x;
+	 y = y + vec.y;
+	 z = z + vec.z;
 
-	 v = glm::vec3(_x, _y, _z);
-	 _magnitude = CalculateMag();
+	 v = glm::vec3(x, y, z);
 }
 
 void  Vector3::operator-=(const Vector3 & vec)
 {
-	_x  = _x - vec.x;
-	_y  = _y - vec.y;
-	_z  = _z - vec.z;
+	x  = x - vec.x;
+	y  = y - vec.y;
+	z  = z - vec.z;
 
-	v = glm::vec3(_x, _y, _z);
-	_magnitude = CalculateMag();
+	v = glm::vec3(x, y, z);
 	
 }
 
 void Vector3::operator*=(float rhs)
 {
-	_x = _x * rhs;
-	_y = _y * rhs;
-	_z = _z * rhs;
+	x = x * rhs;
+	y = y * rhs;
+	z = z * rhs;
 
-	v = glm::vec3(_x, _y, _z);
-	_magnitude = CalculateMag();
+	v = glm::vec3(x, y, z);
 }
 
 
