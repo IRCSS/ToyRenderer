@@ -3,10 +3,9 @@
 
 
 
-Vector4::Vector4( float x_,  float y_,  float z_, float w_) : x(_x), y(_y), z(_z), w(_w), _x(x_), _y(y_), _z(z_), _w(w_),magnitude(_magnitude)
+Vector4::Vector4( float x_,  float y_,  float z_, float w_) : x(x_), y(y_), z(z_), w(w_)
 {
-	v = glm::vec4(_x, _y, _z, _w);
-	_magnitude = CalculateMag();
+	v = glm::vec4(x, y, z, w);
 }
 
 Vector4::~Vector4()
@@ -16,6 +15,12 @@ Vector4::~Vector4()
 Vector4 Vector4::normalized() const
 {
 	return Vector4::Normalize(*this);
+}
+
+float Vector4::magnitude() const
+{
+
+	return CalculateMag();
 }
 
 Vector4 Vector4::Normalize(const Vector4 & toNormalize)
@@ -44,65 +49,63 @@ float Vector4::Dot(const Vector4 & lhs, const Vector4 & rhs)
 
 float Vector4::Distance(const Vector4 & v0, const Vector4 v1)
 {
-	return (v0 - v1).magnitude;
+	return (v0 - v1).magnitude();
 }
 
 Vector4 Vector4::operator=(const Vector4 & toSet)
 {
-	_x = toSet.x;
-	_y = toSet.y;
-	_z = toSet.z;
-	_w = toSet.w;
+	x = toSet.x;
+	y = toSet.y;
+	z = toSet.z;
+	w = toSet.w;
 
-	v = glm::vec4(_x, _y, _z, _w);
-	_magnitude = CalculateMag();
+	v = glm::vec4(x, y, z, w);
 
 	return Vector4(toSet.x, toSet.y, toSet.z, toSet.w);
 }
 
 Vector4 Vector4::operator+(const Vector4 & vec) const
 {
-	float x = _x + vec.x;
-	float y = _y + vec.y;
-	float z = _z + vec.z;
-	float w = _w + vec.w;
+	float _x = x + vec.x;
+	float _y = y + vec.y;
+	float _z = z + vec.z;
+	float _w = w + vec.w;
 
-	return Vector4(x, y, z, w);
+	return Vector4(_x, _y, _z, _w);
 }
 
 
 void Vector4::operator+=(const Vector4 & vec)
 {
-	 _x = _x + vec.x;
-	 _y = _y + vec.y;
-	 _z = _z + vec.z;
-	 _w = _w + vec.w;
+	 x = x + vec.x;
+	 y = y + vec.y;
+	 z = z + vec.z;
+	 w = w + vec.w;
 
-	 v = glm::vec4(_x, _y, _z, _w);
-	 _magnitude = CalculateMag();
+	 v = glm::vec4(x, y, z, w);
+
 }
 
 void  Vector4::operator-=(const Vector4 & vec)
 {
-	_x  = _x - vec.x;
-	_y  = _y - vec.y;
-	_z  = _z - vec.z;
-	_w  = _w - vec.w;
+	x  = x - vec.x;
+	y  = y - vec.y;
+	z  = z - vec.z;
+	w  = w - vec.w;
 
-	v = glm::vec4(_x, _y, _z, _w);
-	_magnitude = CalculateMag();
+	v = glm::vec4(x, y, z, w);
+	
 	
 }
 
 void Vector4::operator*=(float rhs)
 {
-	_x = _x * rhs;
-	_y = _y * rhs;
-	_z = _z * rhs;
-	_w = _w * rhs;
+	x = x * rhs;
+	y = y * rhs;
+	z = z * rhs;
+	w = w * rhs;
 
-	v = glm::vec4(_x, _y, _z, _w);
-	_magnitude = CalculateMag();
+	v = glm::vec4(x, y, z, w);
 }
 
 

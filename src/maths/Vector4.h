@@ -8,19 +8,14 @@ class Vector4 {
 
 public:
 	// READ ONLY 
-	const float&    x;
-	const float&    y;
-	const float&    z;
-	const float&    w;
-	const float&    magnitude;
+    float    x;
+    float    y;
+    float    z;
+    float    w;
 
 	
 private:
-	float   _x;
-	float   _y;
-	float   _z;
-	float   _w;
-	float   _magnitude;
+
 	glm::vec4 v; // I dont actually want to have glm in the header file. Search for a better solution later
 
 public: 
@@ -30,7 +25,7 @@ public:
 
 	
 	Vector4 normalized() const;
-
+	float   magnitude()  const;
 
 
 	// STATIC
