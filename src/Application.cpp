@@ -100,13 +100,15 @@ int main(void)
 	glm::mat4 proj = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f);
 
 	glm::mat4 view  = glm::translate(glm::mat4(1.0f), glm::vec3(-1.0f, 0.0f, 0.0f));
-	glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
+	glm::vec3 translation(0.0f, 1.0f, 0.0f);
+	glm::mat4 model = glm::translate(glm::mat4(1.0f), translation);
 	glm::mat4 mvp = proj * view * model;
 
 	Shader shader("res/shaders/basic.shader");
 	shader.Bind();
 	shader.SetUniform1i("u_Texture", 0); // binding the texture to the 0 slot of the sampler2D
-	shader.SetUniformMat4("u_MVP", mvp);
+
 
 	Texture texture("res/textures/checkerFormat.png");
 	texture.Bind();
@@ -121,9 +123,7 @@ int main(void)
 	GlCall(glUseProgram(0));
 	GlCall(glBindVertexArray(0));
 
-	bool show_demo_window = true;
-	bool show_another_window = false;
-	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+
 
 	// --------------------------------------------------
 
@@ -141,28 +141,21 @@ int main(void)
 		
 		ImGui_ImplGlfwGL3_NewFrame();
 
+		
+
 		shader.Bind();
 		shader.SetUniformf("u_iTime", currentTick / 1000.0f); // need to abstract his in material class
+		model = glm::translate(glm::mat4(1.0f), translation);
+		mvp = proj * view * model;
+		shader.SetUniformMat4("u_MVP", mvp);
 
 		g_renderer.Draw(va, ib, shader);
+
 
 	
 
 		{
-			static float f = 0.0f;
-			static int counter = 0;
-			ImGui::Text("Hello, world!");                           // Display some text (you can use a format string too)
-			ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f    
-			ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
-
-			ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our windows open/close state
-			ImGui::Checkbox("Another Window", &show_another_window);
-
-			if (ImGui::Button("Button"))                            // Buttons return true when clicked (NB: most widgets return true when edited/activated)
-				counter++;
-			ImGui::SameLine();
-			ImGui::Text("counter = %d", counter);
-
+			ImGui::SliderFloat3("float", &translation.x, -2.0f, 2.0f);            // Edit 1 float using a slider from 0.0f to 1.0f    
 			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 		}
 
