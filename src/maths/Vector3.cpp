@@ -129,7 +129,7 @@ Vector3 operator*(float lhs, const Vector3 & rhs)
      return Vector3(rhs.x*lhs, rhs.y*lhs, rhs.z*lhs);;
 }
 
-std::ostream & operator<<(std::ostream& os, Vector3 rhs)
+std::ostream & operator<<(std::ostream& os, const Vector3& rhs)
 {
 	os << " (" << rhs.x << ", " << rhs.y << ", " << rhs.z << ")";
 	return os;

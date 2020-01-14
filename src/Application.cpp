@@ -113,7 +113,6 @@ int main(void)
 	// --------------------------------------------------
 
 
-
 	clock_t currentTick;
 
 	/* Loop until the user closes the window */

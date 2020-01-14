@@ -131,7 +131,7 @@ Vector4 operator*(float lhs, const Vector4 & rhs)
      return Vector4(rhs.x*lhs, rhs.y*lhs, rhs.z*lhs, rhs.w * lhs);;
 }
 
-std::ostream & operator<<(std::ostream& os, Vector4 rhs)
+std::ostream & operator<<(std::ostream& os, const Vector4& rhs)
 {
 	os << " (" << rhs.x << ", " << rhs.y << ", " << rhs.z << ", "<< rhs.w<< ")";
 	return os;

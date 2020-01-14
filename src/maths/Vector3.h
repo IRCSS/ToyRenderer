@@ -46,9 +46,9 @@ public:
 	friend Vector3 operator*(const Vector3& lhs, float rhs);
 	friend Vector3 operator*(float lhs, const Vector3& rhs);
 
-    friend std::ostream& operator<<(std::ostream& os, Vector3 rhs); // if I pass on a Vector3& the complier gets confused in cases 
-	                                                                // where the vector3 is passed to the << stream by a function return
-																	// find a better solution later
+    friend std::ostream& operator<<(std::ostream& os, const Vector3& rhs); 
+	                                                                       
+																	       
 
 	
 private:
