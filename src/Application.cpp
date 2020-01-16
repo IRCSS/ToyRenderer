@@ -21,6 +21,7 @@
 
 #include "Tests/TestClearColor.h"
 
+
 int main(void)
 {
 	GLFWwindow* window;
@@ -80,23 +81,39 @@ int main(void)
 
 	// --------------------------------------------------
 
+	test::Test* currenTest = nullptr;
+	test::TestMenu* menu  = new test::TestMenu(currenTest);
+	currenTest = menu;
 
 	clock_t currentTick;
 
+	menu->RegisterTest<test::TestClearColor>("Clear Color");
 
-	test::TestClearColor test;
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
 	{	
 		currentTick =  clock();
-
-		test.OnUpdate(currentTick);
-		test.OnRender();
+		g_renderer.Clear();
 		
 		ImGui_ImplGlfwGL3_NewFrame();
-		test.OnImGuiRender();
-		
+		if (currenTest) {
+			currenTest->OnUpdate(currentTick);
+			currenTest->OnRender();
+
+			ImGui::Begin("Test");
+			if (currenTest != menu && ImGui::Button("<-")) {
+
+				delete currenTest;
+				currenTest = menu;
+
+
+
+			}
+			currenTest->OnImGuiRender();
+
+			ImGui::End();
+		}
 
 		
 
@@ -108,6 +125,10 @@ int main(void)
 		/* Poll for and process events */
 		glfwPollEvents();
 	}
+
+	if (currenTest != menu) delete menu;
+	delete currenTest;
+
 	}
 
 	ImGui_ImplGlfwGL3_Shutdown();
