@@ -3,6 +3,11 @@
 
 
 
+Vector4::Vector4() : x(0), y(0), z(0), w(0)
+{
+	v = glm::vec4(x, y, z, w);
+}
+
 Vector4::Vector4( float x_,  float y_,  float z_, float w_) : x(x_), y(y_), z(z_), w(w_)
 {
 	v = glm::vec4(x, y, z, w);

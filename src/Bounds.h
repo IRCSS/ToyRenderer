@@ -9,6 +9,7 @@ namespace ToyRenderer {
 
 	public:
 
+		Bounds();
 		Bounds(const Vector3& center, const Vector3& extend);
 
 
