@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Mesh.h"
+#include "RawMesh.h"
 
 
 namespace ToyRenderer {
@@ -8,7 +8,7 @@ namespace ToyRenderer {
 	class MeshLoader {
 		
 	public:
-		static Mesh* LoadTinyObj(const char* filename, const char* basepath = NULL, bool triangulate = true);
+		static RawMesh* LoadTinyObj(const char* filename, const char* basepath = NULL, bool triangulate = true);
 
 
 	};

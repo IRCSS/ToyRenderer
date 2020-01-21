@@ -95,6 +95,7 @@
     <ClCompile Include="src\MeshLoader.cpp" />
     <ClCompile Include="src\RawMesh.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
+    <ClCompile Include="src\ResourceManager.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\Tests\Test.cpp" />
     <ClCompile Include="src\Tests\TestClearColor.cpp" />
@@ -259,6 +260,7 @@
     <ClInclude Include="src\MeshLoader.h" />
     <ClInclude Include="src\RawMesh.h" />
     <ClInclude Include="src\Renderer.h" />
+    <ClInclude Include="src\ResourceManager.h" />
     <ClInclude Include="src\Settings.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\Tests\Test.h" />
