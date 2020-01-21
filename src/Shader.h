@@ -8,7 +8,7 @@ struct ParsedShader {
 };
 
 
-;class Shader{
+class Shader{
 
 private: 
 	unsigned int m_RendererID;

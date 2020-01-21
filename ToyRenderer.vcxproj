@@ -86,11 +86,13 @@
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Bounds.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
+    <ClCompile Include="src\Material.cpp" />
     <ClCompile Include="src\maths\Matrix4x4.cpp" />
     <ClCompile Include="src\maths\Vector2.cpp" />
     <ClCompile Include="src\maths\Vector3.cpp" />
     <ClCompile Include="src\maths\Vector4.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
+    <ClCompile Include="src\RawMesh.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\Tests\Test.cpp" />
@@ -245,13 +247,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Bounds.h" />
+    <ClInclude Include="src\Color.h" />
     <ClInclude Include="src\IndexBuffer.h" />
+    <ClInclude Include="src\Material.h" />
     <ClInclude Include="src\maths\Matrix4x4.h" />
     <ClInclude Include="src\maths\Vector2.h" />
     <ClInclude Include="src\maths\Vector3.h" />
     <ClInclude Include="src\maths\Vector4.h" />
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\MeshLoader.h" />
+    <ClInclude Include="src\RawMesh.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Settings.h" />
     <ClInclude Include="src\Shader.h" />

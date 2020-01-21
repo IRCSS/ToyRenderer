@@ -11,13 +11,13 @@ namespace ToyRenderer {
 
 	public:
 
-		Bounds  AAB;
+		Bounds   AAB;
 		Vector4* VertexColors;
 		Vector3* VertexNormals;
 		Vector3* VertexTangents;
 		int*     triangles;   // AKA index buffer
 	    Vector4* VertexPositions;
-		int     VertexCount;
+		int      VertexCount;
 		Vector2* uv;
 		Vector2* uv2;
 
