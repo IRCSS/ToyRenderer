@@ -3,6 +3,11 @@
 
 
 
+Vector2::Vector2() : x(0), y(0)
+{
+	v = glm::vec2(x, y);
+}
+
 Vector2::Vector2( float x_,  float y_) : x(x_), y(y_)
 {
 	v = glm::vec2(x, y);

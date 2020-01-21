@@ -14,6 +14,7 @@ public:
 
 public: 
 
+	 Vector2();
    	 Vector2(float x, float y);
 	~Vector2();
 

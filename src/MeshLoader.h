@@ -8,7 +8,7 @@ namespace ToyRenderer {
 	class MeshLoader {
 		
 	public:
-		static Mesh LoadTinyObj(const std::string& filePath);
+		static Mesh* LoadTinyObj(const char* filename, const char* basepath = NULL, bool triangulate = true);
 
 
 	};
