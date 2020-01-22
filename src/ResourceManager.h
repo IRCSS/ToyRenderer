@@ -17,6 +17,8 @@ namespace ToyRenderer {
 		std::vector<Mesh*>     r_mesh;
 		std::vector<Texture*>  r_texture;
 
+		int m_lastGivenAssetID;
+
 	public:
 		 ResourceManager();
 		~ResourceManager(); //Delete all the resources in the destructor. 
@@ -25,6 +27,9 @@ namespace ToyRenderer {
 		void RegisterTexture (Texture*  texture);
 
 	private:
+
+		int GenerateAssetID();
+
 
 	};
 

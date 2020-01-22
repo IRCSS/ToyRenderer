@@ -3,6 +3,9 @@
 #include <string>
 class Texture {
 
+public:
+	int AssetID;
+
 private: 
 	unsigned int   m_RendererID;
 	std::string    m_FilePath;

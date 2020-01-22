@@ -18,6 +18,20 @@ namespace ToyRenderer {
 		return !ifile.fail();
 	}
 
+
+	bool TryAddTexture(Material* m, const char* basepath, const std::string& textureName, const std::string& targetMaterialAttName) {
+		if(textureName.empty()) return false;
+		if (!texture_exists(basepath + textureName)) return false;
+
+		Texture* bumpMap = new Texture(basepath + textureName);
+		ResourceManager::resourceManagerSingelton->RegisterTexture(bumpMap);
+
+		m->SetTexture(targetMaterialAttName, bumpMap);
+
+		return true;
+
+	}
+
 	Material* ParseTinyObjMaterial(const tinyobj::material_t& m, const char* basepath) {
 
 		Material* toReturn = new Material();
@@ -31,16 +45,17 @@ namespace ToyRenderer {
 		toReturn->SetFloat("roughnessValue", m.roughness);
 		toReturn->SetFloat("metalicValue",   m.metallic);
 
-		bool textureExists = !m.bump_texname.empty();
-		if (textureExists) textureExists = texture_exists(basepath + m.bump_texname);
-		if (textureExists) {
-			Texture* bumpMap = new Texture(basepath + m.bump_texname);
-			ResourceManager::resourceManagerSingelton->RegisterTexture(bumpMap);
 
-			toReturn->SetTexture("bumpTexture", bumpMap);
-		}
-
-		// Repeat same procedurae for all textures.
+		TryAddTexture(toReturn, basepath, m.diffuse_texname,      "diffuseMap");
+		TryAddTexture(toReturn, basepath, m.ambient_texname,      "ambientMap");
+		TryAddTexture(toReturn, basepath, m.bump_texname,         "bumpMap");
+		TryAddTexture(toReturn, basepath, m.normal_texname,       "normalMap");
+		TryAddTexture(toReturn, basepath, m.displacement_texname, "displacmentMap");
+		TryAddTexture(toReturn, basepath, m.emissive_texname,     "emmisveMap");
+		TryAddTexture(toReturn, basepath, m.metallic_texname,     "metalicMap");
+		TryAddTexture(toReturn, basepath, m.roughness_texname,    "roughnessMap");
+		TryAddTexture(toReturn, basepath, m.specular_texname,     "specularMap");
+		return toReturn;
 	}
 
 	RawMesh* MeshLoader::LoadTinyObj(const char* filename, const char* basepath, bool triangulate)
@@ -75,9 +90,19 @@ namespace ToyRenderer {
 		}
 
 		// ------------------------------------------------------------------------------------------------------
+		// load materials in rawMesh as Material
+		RawMesh* m = new RawMesh();
+		for (int i = 0; i < materials.size(); i++) {
+			m->m_materials.push_back(ParseTinyObjMaterial(materials[i], basepath));
+		}
+	
 
 
+		m->m_subShapesCount = shapes.size();
 		for (size_t s = 0; s < shapes.size(); s++) {
+			
+			m->m_subShapes.push_back(t_RawMeshSubShape(shapes[s].mesh.num_face_vertices.size()));
+			
 			// Loop over faces(polygon)
 			size_t index_offset = 0;
 			for (size_t f = 0; f < shapes[s].mesh.num_face_vertices.size(); f++) {
@@ -85,16 +110,22 @@ namespace ToyRenderer {
 
 				// Loop over vertices in the face.
 				for (size_t v = 0; v < fv; v++) {
+
+					
+
 					// access to vertex
-					tinyobj::index_t idx = shapes[s].mesh.indices[index_offset + v];
-					tinyobj::real_t vx   = attrib.vertices[3 * idx.vertex_index + 0];
-					tinyobj::real_t vy   = attrib.vertices[3 * idx.vertex_index + 1];
-					tinyobj::real_t vz   = attrib.vertices[3 * idx.vertex_index + 2];
-					tinyobj::real_t nx   = attrib.normals[3 * idx.normal_index + 0];
-					tinyobj::real_t ny   = attrib.normals[3 * idx.normal_index + 1];
-					tinyobj::real_t nz   = attrib.normals[3 * idx.normal_index + 2];
-					tinyobj::real_t tx   = attrib.texcoords[2 * idx.texcoord_index + 0];
-					tinyobj::real_t ty   = attrib.texcoords[2 * idx.texcoord_index + 1];
+					tinyobj::index_t idx  = shapes[s].mesh.indices[index_offset + v];
+					m->m_subShapes[s].m_facesIndices.push_back(t_RawMeshIndices(idx.vertex_index, idx.normal_index, idx.texcoord_index));
+
+
+					tinyobj::real_t  vx   = attrib.vertices[3 * idx.vertex_index + 0];
+					tinyobj::real_t  vy   = attrib.vertices[3 * idx.vertex_index + 1];
+					tinyobj::real_t  vz   = attrib.vertices[3 * idx.vertex_index + 2];
+					tinyobj::real_t  nx   = attrib.normals[3 * idx.normal_index + 0];
+					tinyobj::real_t  ny   = attrib.normals[3 * idx.normal_index + 1];
+					tinyobj::real_t  nz   = attrib.normals[3 * idx.normal_index + 2];
+					tinyobj::real_t  tx   = attrib.texcoords[2 * idx.texcoord_index + 0];
+					tinyobj::real_t  ty   = attrib.texcoords[2 * idx.texcoord_index + 1];
 					// Optional: vertex colors
 					// tinyobj::real_t red = attrib.colors[3*idx.vertex_index+0];
 					// tinyobj::real_t green = attrib.colors[3*idx.vertex_index+1];
@@ -112,7 +143,7 @@ namespace ToyRenderer {
 
 
 
-		RawMesh* m = new RawMesh();
+
 		return m;
 	}
 
