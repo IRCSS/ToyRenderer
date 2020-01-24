@@ -10,17 +10,23 @@
 namespace ToyRenderer {
 
 	struct t_RawMeshIndices {
+		
+	public:
 		int position_index;
 		int normal_index;
 		int texcoord_index;
 
 		t_RawMeshIndices(int vp_index, int n_index, int texc_index);
+		t_RawMeshIndices();
 	};
 
 	struct t_RawMeshSubShape {
+	public:
 		std::vector<t_RawMeshIndices>   m_facesIndices;
+		std::vector<int>                m_FaceMaterialIndex;
 		int faceCount;
 		t_RawMeshSubShape(int faceCount);
+		t_RawMeshSubShape();
 	};
 
 	class RawMesh {

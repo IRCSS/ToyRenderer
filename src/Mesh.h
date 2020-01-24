@@ -20,12 +20,13 @@ namespace ToyRenderer {
 		int      VertexCount;
 		Vector2* uv;
 		Vector2* uv2;
+		int m_AssetID;
 
 	private:
 
 
 	public:
-
+		Mesh();
 		
 		
 

@@ -23,6 +23,14 @@ Matrix4x4::Matrix4x4(const float i0j0, const float i0j1, const float i0j2, const
 
 }
 
+Matrix4x4::Matrix4x4()
+{
+	m = glm::mat4x4(1, 0, 0,  0,
+		            0, 1, 0,  0,
+		            0, 0, 1,  0,
+		            0, 0, 0,  1);
+}
+
 Matrix4x4::~Matrix4x4()
 {
 }

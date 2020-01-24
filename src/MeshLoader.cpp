@@ -8,10 +8,11 @@
 #include <fstream>
 #include <string>
 
-class Color;
+
 class Texture;
 
 namespace ToyRenderer {
+	class Color;
 
 	bool texture_exists(std::string filename) {
 		std::ifstream ifile(filename);
@@ -24,7 +25,7 @@ namespace ToyRenderer {
 		if (!texture_exists(basepath + textureName)) return false;
 
 		Texture* bumpMap = new Texture(basepath + textureName);
-		ResourceManager::resourceManagerSingelton->RegisterTexture(bumpMap);
+		//ResourceManager::resourceManagerSingelton->RegisterTexture(bumpMap);
 
 		m->SetTexture(targetMaterialAttName, bumpMap);
 
@@ -35,7 +36,7 @@ namespace ToyRenderer {
 	Material* ParseTinyObjMaterial(const tinyobj::material_t& m, const char* basepath) {
 
 		Material* toReturn = new Material();
-		ResourceManager::resourceManagerSingelton->RegisterMaterial(toReturn);
+		//ResourceManager::resourceManagerSingelton->RegisterMaterial(toReturn);
 
 		toReturn->SetColor("ambientColor",  Color(m.ambient[0],  m.ambient[1],  m.ambient[2]));
 		toReturn->SetColor("diffuseColor",  Color(m.diffuse[0],  m.diffuse[1],  m.diffuse[2]));
@@ -58,8 +59,9 @@ namespace ToyRenderer {
 		return toReturn;
 	}
 
-	RawMesh* MeshLoader::LoadTinyObj(const char* filename, const char* basepath, bool triangulate)
+	RawMesh* MeshLoader::LoadTinyObj(const char* filename, const char* basepath)
 	{
+		bool triangulate = true; // For now to keep things simple I will only support triangulated meshes.
 
 		// ------------------------------------------------------------------------------------------------------
 		tinyobj::attrib_t                attrib;
@@ -96,7 +98,7 @@ namespace ToyRenderer {
 			m->m_materials.push_back(ParseTinyObjMaterial(materials[i], basepath));
 		}
 	
-
+		
 
 		m->m_subShapesCount = shapes.size();
 		for (size_t s = 0; s < shapes.size(); s++) {
@@ -108,6 +110,8 @@ namespace ToyRenderer {
 			for (size_t f = 0; f < shapes[s].mesh.num_face_vertices.size(); f++) {
 				int fv = shapes[s].mesh.num_face_vertices[f];
 
+				m->m_subShapes[s].m_FaceMaterialIndex.push_back(f);
+
 				// Loop over vertices in the face.
 				for (size_t v = 0; v < fv; v++) {
 
@@ -117,19 +121,41 @@ namespace ToyRenderer {
 					tinyobj::index_t idx  = shapes[s].mesh.indices[index_offset + v];
 					m->m_subShapes[s].m_facesIndices.push_back(t_RawMeshIndices(idx.vertex_index, idx.normal_index, idx.texcoord_index));
 
+					if (3 * idx.vertex_index  < attrib.vertices.size()) {
+						tinyobj::real_t  vx = attrib.vertices[3 * idx.vertex_index + 0];
+						tinyobj::real_t  vy = attrib.vertices[3 * idx.vertex_index + 1];
+						tinyobj::real_t  vz = attrib.vertices[3 * idx.vertex_index + 2];
+						Vector3 vertexPosition(vx, vy, vz);
+						m->m_VertexPositions.push_back(vertexPosition);
+					}
 
-					tinyobj::real_t  vx   = attrib.vertices[3 * idx.vertex_index + 0];
-					tinyobj::real_t  vy   = attrib.vertices[3 * idx.vertex_index + 1];
-					tinyobj::real_t  vz   = attrib.vertices[3 * idx.vertex_index + 2];
+
+					if (3 * idx.normal_index  < attrib.normals.size() ) {
 					tinyobj::real_t  nx   = attrib.normals[3 * idx.normal_index + 0];
 					tinyobj::real_t  ny   = attrib.normals[3 * idx.normal_index + 1];
 					tinyobj::real_t  nz   = attrib.normals[3 * idx.normal_index + 2];
-					tinyobj::real_t  tx   = attrib.texcoords[2 * idx.texcoord_index + 0];
-					tinyobj::real_t  ty   = attrib.texcoords[2 * idx.texcoord_index + 1];
-					// Optional: vertex colors
-					// tinyobj::real_t red = attrib.colors[3*idx.vertex_index+0];
-					// tinyobj::real_t green = attrib.colors[3*idx.vertex_index+1];
-					// tinyobj::real_t blue = attrib.colors[3*idx.vertex_index+2];
+					Vector3 vertexNormal(nx, ny, nz);
+					m->m_VertexNormals.push_back(vertexNormal);
+
+					}
+
+
+					if (2 * idx.texcoord_index < attrib.texcoords.size()) {
+						tinyobj::real_t  tx = attrib.texcoords[2 * idx.texcoord_index + 0];
+						tinyobj::real_t  ty = attrib.texcoords[2 * idx.texcoord_index + 1];
+						Vector2 vertexTexcoord1(tx, ty);
+						m->m_uv.push_back(vertexTexcoord1);
+					}
+
+					if (3 * idx.vertex_index < attrib.colors.size()) {
+						tinyobj::real_t red = attrib.colors[3 * idx.vertex_index + 0];
+						tinyobj::real_t green = attrib.colors[3 * idx.vertex_index + 1];
+						tinyobj::real_t blue = attrib.colors[3 * idx.vertex_index + 2];
+
+						Color vertexColor(red, green, blue);
+
+						m->m_VertexColors.push_back(vertexColor);
+					}
 				}
 				index_offset += fv;
 

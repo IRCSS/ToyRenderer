@@ -11,6 +11,7 @@ public:
 		      const float i1j0, const float i1j1, const float i1j2, const float i1j3, 
 		      const float i2j0, const float i2j1, const float i2j2, const float i2j3, 
 		      const float i3j0, const float i3j1, const float i3j2, const float i3j3);
+	Matrix4x4();
 
 	~Matrix4x4();
 
