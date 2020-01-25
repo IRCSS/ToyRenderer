@@ -31,6 +31,8 @@ namespace ToyRenderer {
 
 
 		static ResourceManager& Instance();
+		// Destroy the resource manager, next time you call instance you will create anew instance
+		static void ClearResourceManager();
 
 	private:
 

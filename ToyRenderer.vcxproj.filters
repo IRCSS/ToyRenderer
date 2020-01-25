@@ -108,6 +108,9 @@
     <ClCompile Include="src\Color.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Tests\TestObjLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Settings.h">
@@ -932,6 +935,9 @@
     <ClInclude Include="src\ResourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Tests\TestObjLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\basic.shader">
@@ -1339,5 +1345,14 @@
     <None Include="src\vendor\glm\gtx\wrap.inl">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="res\meshes\WanderingMan_Model_CutOutMaster.mtl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\meshes\WanderingMan_Model_CutOutMaster_u1_v1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\checkerFormat.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

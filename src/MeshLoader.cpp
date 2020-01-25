@@ -161,7 +161,6 @@ namespace ToyRenderer {
 
 				// per-face material
 				shapes[s].mesh.material_ids[f];
-
 			}
 
 
