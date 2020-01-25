@@ -10,21 +10,21 @@ namespace ToyRenderer {
 	}
 	void ResourceManager::RegisterMaterial(Material * mat)
 	{
-		//r_materials.push_back(mat);
-		//mat->m_AssetID = resourceManagerSingelton->m_lastGivenAssetID;
-		//resourceManagerSingelton->m_lastGivenAssetID++;
+		r_materials.push_back(mat);
+		mat->m_AssetID = m_lastGivenAssetID;
+		m_lastGivenAssetID++;
 	}
 	void ResourceManager::RegisterMesh(Mesh * mesh)
 	{
-		//r_mesh.push_back(mesh);
-		//mesh->m_AssetID = resourceManagerSingelton->m_lastGivenAssetID;
-		//resourceManagerSingelton->m_lastGivenAssetID++;
+		r_mesh.push_back(mesh);
+		mesh->m_AssetID = m_lastGivenAssetID;
+		m_lastGivenAssetID++;
 	}
 	void ResourceManager::RegisterTexture(Texture * texture)
 	{
-		//r_texture.push_back(texture);
-		//texture->AssetID = resourceManagerSingelton->m_lastGivenAssetID;
-		//resourceManagerSingelton->m_lastGivenAssetID++;
+		r_texture.push_back(texture);
+		texture->AssetID = m_lastGivenAssetID;
+		m_lastGivenAssetID++;
 	}
 	ResourceManager & ResourceManager::Instance()
 	{

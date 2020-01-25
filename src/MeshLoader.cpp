@@ -24,10 +24,10 @@ namespace ToyRenderer {
 		if(textureName.empty()) return false;
 		if (!texture_exists(basepath + textureName)) return false;
 
-		Texture* bumpMap = new Texture(basepath + textureName);
-		//ResourceManager::resourceManagerSingelton->RegisterTexture(bumpMap);
+		Texture* t = new Texture(basepath + textureName);
+		ResourceManager::Instance().RegisterTexture(t);
 
-		m->SetTexture(targetMaterialAttName, bumpMap);
+		m->SetTexture(targetMaterialAttName, t);
 
 		return true;
 
@@ -36,7 +36,7 @@ namespace ToyRenderer {
 	Material* ParseTinyObjMaterial(const tinyobj::material_t& m, const char* basepath) {
 
 		Material* toReturn = new Material();
-		//ResourceManager::resourceManagerSingelton->RegisterMaterial(toReturn);
+		ResourceManager::Instance().RegisterMaterial(toReturn);
 
 		toReturn->SetColor("ambientColor",  Color(m.ambient[0],  m.ambient[1],  m.ambient[2]));
 		toReturn->SetColor("diffuseColor",  Color(m.diffuse[0],  m.diffuse[1],  m.diffuse[2]));
