@@ -17,6 +17,22 @@ namespace ToyRenderer {
 	RawMesh::RawMesh() : m_subShapes(0)
 	{
 	}
+
+
+
+	const std::vector<Mesh>& RawMesh::GenerateMeshes() const
+	{
+		if (m_subShapesCount == 0) return std::vector<Mesh>();
+		
+		for (int i = 0; i < m_subShapes.size(); i++) {
+
+
+
+
+		}
+
+		return std::vector<Mesh>();
+	}
 }
 
 

@@ -48,7 +48,7 @@ namespace ToyRenderer {
 		RawMesh();
 
 
-		std::vector<Mesh> GenerateMeshes() const;
+		const std::vector<Mesh>& GenerateMeshes() const;
     
 
 	private:

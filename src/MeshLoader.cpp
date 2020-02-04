@@ -59,6 +59,10 @@ namespace ToyRenderer {
 		return toReturn;
 	}
 
+
+	/// Load Raw Mesh using Tiny OBJ.
+	/// \pram filename is the compelete path to the file, for example D:/.../file.obj
+	/// \pram basepath is like above but without the file.obj
 	RawMesh* MeshLoader::LoadTinyObj(const char* filename, const char* basepath)
 	{
 		bool triangulate = true; // For now to keep things simple I will only support triangulated meshes.
@@ -159,8 +163,6 @@ namespace ToyRenderer {
 				}
 				index_offset += fv;
 
-				// per-face material
-				shapes[s].mesh.material_ids[f];
 			}
 
 
