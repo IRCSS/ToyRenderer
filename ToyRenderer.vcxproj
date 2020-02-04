@@ -113,7 +113,6 @@
     <ClCompile Include="src\VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\meshes\WanderingMan_Model_CutOutMaster.mtl" />
     <None Include="res\shaders\basic.shader" />
     <None Include="src\vendor\glm\detail\func_common.inl" />
     <None Include="src\vendor\glm\detail\func_common_simd.inl" />
@@ -528,7 +527,6 @@
     <ClInclude Include="src\VertexBufferLayout.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\meshes\WanderingMan_Model_CutOutMaster_u1_v1.png" />
     <Image Include="res\textures\checkerFormat.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

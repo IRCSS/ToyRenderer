@@ -71,7 +71,7 @@ namespace ToyRenderer {
 		std::string warn;
 		std::string err;
 
-		bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, basepath, filename, triangulate);
+		bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, filename, basepath,  triangulate);
 		// ------------------------------------------------------------------------------------------------------
 
 		if (!warn.empty()) {

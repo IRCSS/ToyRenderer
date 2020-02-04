@@ -7,7 +7,7 @@ namespace test {
 		ToyRenderer::ResourceManager::Instance();
 
 
-		ToyRenderer::RawMesh*  loadedMesh = ToyRenderer::MeshLoader::LoadTinyObj("res/meshes", "WanderingMan_Model_CutOutMaster.obj");
+		ToyRenderer::RawMesh*  loadedMesh = ToyRenderer::MeshLoader::LoadTinyObj( "D:/ShaPlayGround/ToyRenderer/Meshes/WanderingMan_Model_CutOutMaster.obj", "D:/ShaPlayGround/ToyRenderer/Meshes/");
 
 		if(loadedMesh)
 		std::cout << loadedMesh->m_subShapesCount << std::endl;

@@ -1345,12 +1345,8 @@
     <None Include="src\vendor\glm\gtx\wrap.inl">
       <Filter>Header Files</Filter>
     </None>
-    <None Include="res\meshes\WanderingMan_Model_CutOutMaster.mtl" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\meshes\WanderingMan_Model_CutOutMaster_u1_v1.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="res\textures\checkerFormat.png">
       <Filter>Resource Files</Filter>
     </Image>
