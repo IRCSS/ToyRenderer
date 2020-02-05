@@ -11,6 +11,9 @@ namespace ToyRenderer{
 	public:
 		Color(float red, float green, float blue);
 		Color();
+
+
+
 	private:
 
 	};

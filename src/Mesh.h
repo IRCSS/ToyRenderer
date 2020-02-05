@@ -12,14 +12,14 @@ namespace ToyRenderer {
 	public:
 
 		Bounds   AAB;
-		Vector4* VertexColors;
-		Vector3* VertexNormals;
-		Vector3* VertexTangents;
-		int*     triangles;   // AKA index buffer
-	    Vector4* VertexPositions;
+		std::vector<Color>   VertexColors;
+		std::vector<Vector3> VertexNormals;
+		//std::vector<Vector3> VertexTangents;
+		std::vector<int>     triangles;   // AKA index buffer
+		std::vector<Vector3> VertexPositions;
 		int      VertexCount;
-		Vector2* uv;
-		Vector2* uv2;
+		std::vector<Vector2> uv;
+		
 		int m_AssetID;
 
 	private:

@@ -15,8 +15,9 @@ namespace ToyRenderer {
 		int position_index;
 		int normal_index;
 		int texcoord_index;
+		int color_index;
 
-		t_RawMeshIndices(int vp_index, int n_index, int texc_index);
+		t_RawMeshIndices(int vp_index, int vn_index, int texc_index, int color_index);
 		t_RawMeshIndices();
 	};
 
@@ -48,7 +49,7 @@ namespace ToyRenderer {
 		RawMesh();
 
 
-		const std::vector<Mesh>& GenerateMeshes() const;
+		const std::vector<Mesh*>& GenerateMeshes() const;
     
 
 	private:

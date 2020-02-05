@@ -114,7 +114,7 @@ namespace ToyRenderer {
 			for (size_t f = 0; f < shapes[s].mesh.num_face_vertices.size(); f++) {
 				int fv = shapes[s].mesh.num_face_vertices[f];
 
-				m->m_subShapes[s].m_FaceMaterialIndex.push_back(f);
+				m->m_subShapes[s].m_FaceMaterialIndex.push_back(shapes[s].mesh.material_ids[f]);
 
 				// Loop over vertices in the face.
 				for (size_t v = 0; v < fv; v++) {
@@ -123,7 +123,7 @@ namespace ToyRenderer {
 
 					// access to vertex
 					tinyobj::index_t idx  = shapes[s].mesh.indices[index_offset + v];
-					m->m_subShapes[s].m_facesIndices.push_back(t_RawMeshIndices(idx.vertex_index, idx.normal_index, idx.texcoord_index));
+					m->m_subShapes[s].m_facesIndices.push_back(t_RawMeshIndices(idx.vertex_index, idx.normal_index, idx.texcoord_index, idx.vertex_index));
 
 					if (3 * idx.vertex_index  < attrib.vertices.size()) {
 						tinyobj::real_t  vx = attrib.vertices[3 * idx.vertex_index + 0];
