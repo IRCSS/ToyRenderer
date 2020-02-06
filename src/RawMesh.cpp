@@ -8,7 +8,7 @@ namespace ToyRenderer {
 	t_RawMeshSubShape::t_RawMeshSubShape() : faceCount(0)
 	{
 	}
-	t_RawMeshIndices::t_RawMeshIndices(int vp_index, int vn_index, int texc_index, int vc_index) : position_index(vp_index), normal_index(n_index), texcoord_index(texc_index), color_index(vc_index)
+	t_RawMeshIndices::t_RawMeshIndices(int vp_index, int vn_index, int texc_index, int vc_index) : position_index(vp_index), normal_index(vn_index), texcoord_index(texc_index), color_index(vc_index)
 	{
 	}
 	t_RawMeshIndices::t_RawMeshIndices() : position_index(0), normal_index(0), texcoord_index(0)
@@ -20,10 +20,10 @@ namespace ToyRenderer {
 
 
 
-	const std::vector<Mesh*>& RawMesh::GenerateMeshes() const
+	const std::vector<Mesh*>& RawMesh::GenerateMeshes() 
 	{
-		std::vector<Mesh*> toReturn;
-		if (m_subShapesCount == 0) return toReturn;
+		m_meshes.clear();
+		if (m_subShapesCount == 0) return m_meshes;
 		
 
 
@@ -31,8 +31,12 @@ namespace ToyRenderer {
 
 			std::unordered_map<int, Mesh*> parts;
 
+
 			for (int j = 0; j < m_subShapes[i].faceCount; j++) {
 				
+
+				
+
 				// -------------------------------------------------------------------------
 				// Finding which mesh to write to, each mesh will be a drawcall. at the moment it is a mesh per subgroup per material.
 
@@ -47,16 +51,26 @@ namespace ToyRenderer {
 				// -------------------------------------------------------------------------
 				for (int k = 0; k < 3; k++) {   // At the moment only triangulated faces are suported, so each has only 3 
 					int index = m_subShapes[i].m_facesIndices[j * 3 + k].position_index;
+					if(index< m_VertexPositions.size())
 					meshToBuild->VertexPositions.push_back(m_VertexPositions[index]);
 
+
+
+
 					    index = m_subShapes[i].m_facesIndices[j * 3 + k].normal_index;
+					if (index < m_VertexNormals.size())
 					meshToBuild->VertexNormals.push_back(m_VertexNormals[index]);
 
 					    index = m_subShapes[i].m_facesIndices[j * 3 + k].texcoord_index;
+					if (index < m_uv.size())
 					meshToBuild->uv.push_back(m_uv[index]);
 
 					    index = m_subShapes[i].m_facesIndices[j * 3 + k].position_index;
+					if (index < m_VertexColors.size())
 					meshToBuild->VertexColors.push_back(m_VertexColors[index]);
+
+					meshToBuild->triangles.push_back(j * 3 + k); // This is super pointless atm. Since vertex buffer has duplicated vertices and is in the same order as the index buffer, so index buffer is simply 1,2,3,4..n
+					                                             // Rework later so that the vertices are not doubled. 
 
 				}
 
@@ -67,15 +81,18 @@ namespace ToyRenderer {
 			// Iterate over the map using iterator
 			while (it != parts.end())
 			{
-				toReturn.push_back(it->second);
+				m_meshes.push_back(it->second);
 				it++;
 			}
 			
 
 		}
 
-		return std::vector<Mesh*>();
+		return m_meshes;
 	}
+
+
+
 }
 
 

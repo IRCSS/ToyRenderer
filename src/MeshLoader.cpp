@@ -133,7 +133,6 @@ namespace ToyRenderer {
 						m->m_VertexPositions.push_back(vertexPosition);
 					}
 
-
 					if (3 * idx.normal_index  < attrib.normals.size() ) {
 					tinyobj::real_t  nx   = attrib.normals[3 * idx.normal_index + 0];
 					tinyobj::real_t  ny   = attrib.normals[3 * idx.normal_index + 1];

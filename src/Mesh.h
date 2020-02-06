@@ -3,8 +3,8 @@
 #include "maths/Vector3.h"
 #include "maths/Vector2.h"
 #include "Bounds.h"
-
-
+#include <vector>
+#include "Color.h"
 namespace ToyRenderer {
 
 	class Mesh {
