@@ -5,6 +5,10 @@ namespace ToyRenderer {
 	{
 
 	}
+	Material::Material(Shader * shader) : m_Shader(shader)
+	{
+
+	}
 	void Material::SetInt(const std::string & name, int i)
 	{
 		m_pIntegers[name] = i;

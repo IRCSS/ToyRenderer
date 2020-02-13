@@ -1,7 +1,12 @@
 #pragma once
 #include "Test.h"
 #include "Shader.h"
+#include "Renderer.h"
+#include "Texture.h"
+#include "VertexBufferLayout.h"
+#include "VertexArray.h"
 namespace test {
+
 	class TesstObjLoader : public Test {
 	public:
 		 TesstObjLoader();
@@ -15,8 +20,8 @@ namespace test {
 
 
 		glm::vec3  translation;
-		Renderer  *m_render;
-		Shader    *m_shader;
+		Renderer*  m_render;
+		Shader*    m_shader;
 
 		VertexArray *m_va;
 		IndexBuffer *m_ib;

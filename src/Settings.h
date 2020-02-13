@@ -2,9 +2,9 @@
 
 namespace Settings {
 
-	int  WindowWidth  = 680
-		,WindowHeigth = 480;
+	static int  WindowWidth  = 680
+		       ,WindowHeigth = 480;
 
-	bool VSync        = true;
+	static bool VSync        = true;
 
 }

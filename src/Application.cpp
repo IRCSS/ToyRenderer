@@ -91,6 +91,7 @@ int main(void)
 	menu->RegisterTest<test::TestClearColor>("Clear Color");
 	menu->RegisterTest<test::TestTexture2D>("Texture 2D");
 	menu->RegisterTest<test::TesstObjLoader>("obj load");
+	
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
 	{	

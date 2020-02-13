@@ -20,19 +20,15 @@ namespace ToyRenderer {
 			                               0.0f, 1.0f, 0.0f, 0.0f,
 			                               0.0f, 0.0f, 1.0f, 0.0f,
 			                               0.0f, 0.0f, 0.0f, 1.0f);
-		// first translate 
-		toReturn =  glm::mat4x4(1.0f,             0.0f,       0.0f, 0.0f,
-			                    0.0f,             1.0f,       0.0f, 0.0f,
-			                    0.0f,             0.0f,       1.0f, 0.0f,
-			                    position.x, position.y, position.z, 1.0f) * toReturn;
-
-
+	
+		// TRS Matrix creation
 		// scale
-		toReturn = glm::mat4x4(scale.x,      0.0f,       0.0f, 0.0f,
+	    toReturn = glm::mat4x4(scale.x,      0.0f,       0.0f, 0.0f,
 			                      0.0f,   scale.y,       0.0f, 0.0f,
 			                      0.0f,      0.0f,    scale.z, 0.0f,
 			                      0.0f,      0.0f,       0.0f, 1.0f) * toReturn;
-
+		
+		
 		// euler to Matrix Rotation
 		float cos_x = cos(eulerRotaiton.x);
 		float sin_x = sin(eulerRotaiton.x);
@@ -59,6 +55,18 @@ namespace ToyRenderer {
 			                     sin_z,   cos_z,   0.0f, 0.0f,
 			                      0.0f,    0.0f,   1.0f, 0.0f,
 			                      0.0f,    0.0f,   0.0f, 1.0f) * toReturn;
+		
+		
+		// last translate 
+		toReturn =  glm::mat4x4(1.0f,             0.0f,       0.0f, 0.0f,
+			                    0.0f,             1.0f,       0.0f, 0.0f,
+			                    0.0f,             0.0f,       1.0f, 0.0f,
+			                    position.x, position.y, position.z, 1.0f) * toReturn;
+
+
+
+
+		
 
 		
 		return Matrix4x4(toReturn);
@@ -66,8 +74,8 @@ namespace ToyRenderer {
 
 	Matrix4x4 Transform::worldToLocal() const
 	{
-
-		return localToWorld().Inverse;
+		bool hasInverse;
+		return localToWorld().Inverse(hasInverse);
 	}
 
 }
