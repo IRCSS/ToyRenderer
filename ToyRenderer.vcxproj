@@ -56,12 +56,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src;$(SolutionDir)src\vendor;$(SolutionDir)dependencies\GLFW\include; $(SolutionDir)dependencies\GLEW\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\vendor;$(SolutionDir)dependencies\GLFW\include; $(SolutionDir)dependencies\GLEW\include; $(SolutionDir)dependencies\GainInput\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\GLFW\lib-vc2017; $(SolutionDir)dependencies\GLEW\lib\Release\Win32</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;glew32s.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\GLFW\lib-vc2017; $(SolutionDir)dependencies\GLEW\lib\Release\Win32;$(SolutionDir)dependencies\GainInput\Release</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gainputstatic.lib;glfw3.lib;opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;glew32s.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -72,20 +72,21 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src;$(SolutionDir)src\vendor;$(SolutionDir)dependencies\GLFW\include; $(SolutionDir)dependencies\GLEW\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\vendor;$(SolutionDir)dependencies\GLFW\include; $(SolutionDir)dependencies\GLEW\include; $(SolutionDir)dependencies\GainInput\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\GLFW\lib-vc2017; $(SolutionDir)dependencies\GLEW\lib\Release\Win32</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;glew32s.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\GLFW\lib-vc2017; $(SolutionDir)dependencies\GLEW\lib\Release\Win32;$(SolutionDir)dependencies\GainInput\Release</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gainputstatic.lib;glfw3.lib;opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;glew32s.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Bounds.cpp" />
     <ClCompile Include="src\Color.cpp" />
+    <ClCompile Include="src\Components\Component.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\Material.cpp" />
     <ClCompile Include="src\maths\Matrix4x4.cpp" />
@@ -253,6 +254,7 @@
   <ItemGroup>
     <ClInclude Include="src\Bounds.h" />
     <ClInclude Include="src\Color.h" />
+    <ClInclude Include="src\Components\Component.h" />
     <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\Material.h" />
     <ClInclude Include="src\maths\Matrix4x4.h" />

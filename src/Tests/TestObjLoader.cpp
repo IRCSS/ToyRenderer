@@ -35,8 +35,8 @@ namespace test {
 		// Setting up the ground 
 
 		float positions[] = {
-			-1.0f, -1.0f, 0.5f, 0.0f, 0.0f, // 0
-			 1.0f, -1.0f, 0.5f, 1.0f, 0.0f, // 1
+			-1.0f, -1.0f, 3.5f, 0.0f, 0.0f, // 0
+			 1.0f, -1.0f, 3.5f, 1.0f, 0.0f, // 1
 			 1.0f,  1.0f, 0.5f, 1.0f, 1.0f, // 2
 			-1.0f,  1.0f, 0.5f, 0.0f, 1.0f  // 3
 		};
@@ -64,7 +64,7 @@ namespace test {
 
 		m_proj = glm::perspective(glm::radians(60.0f), (float)Settings::WindowWidth / (float)Settings::WindowHeigth, 0.1f, 100.0f);
 
-		m_view = glm::translate(glm::mat4(1.0f), glm::vec3(-1.0f, 0.0f, 0.0f));
+		m_view = glm::translate(glm::mat4(1.0f), glm::vec3(-1.0f, 0.0f, -5.0f));
 
 		glm::vec3 translation(0.0f, 1.0f, 0.0f);
 		m_model = glm::translate(glm::mat4(1.0f), translation);
