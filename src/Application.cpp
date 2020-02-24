@@ -23,6 +23,9 @@
 #include "Tests/TestTexture2D.h"
 #include "Tests/TestObjLoader.h"
 
+#include "InputMaster.h"
+
+
 int main(void)
 {
 	GLFWwindow* window;
@@ -92,10 +95,29 @@ int main(void)
 	menu->RegisterTest<test::TestTexture2D>("Texture 2D");
 	menu->RegisterTest<test::TesstObjLoader>("obj load");
 	
+
+	// INPUT MASTER 
+	ToyRenderer::InputMaster inputMaster;
+
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
 	{	
 		currentTick =  clock();
+		
+		// INPUT 
+		inputMaster.OnUpdate(currentTick);
+		
+		bool clicked = inputMaster.GetKeyDown(ToyRenderer::Key::LeftMouseButton);
+
+		if (clicked) std::cout << "clicked Left Button" << std::endl;
+
+		clicked = inputMaster.GetKeyDown(ToyRenderer::Key::A);
+
+		if (clicked) std::cout << "pressed A" << std::endl;
+
+
+
+		// Rendering
 		g_renderer.Clear();
 		
 		ImGui_ImplGlfwGL3_NewFrame();

@@ -77,7 +77,7 @@ namespace test {
 		m_shader.Bind();
 		m_shader.SetUniformf("u_iTime", 0.0f); // need to abstract his in material class
 		m_model = glm::translate(glm::mat4(1.0f), translation);
-		m_mvp = m_proj * m_view * m_model;
+		m_mvp   = m_proj * m_view * m_model;
 		m_shader.SetUniformMat4("u_MVP", m_mvp);
 
 		m_render.Draw(m_va, *m_ib, m_shader);
