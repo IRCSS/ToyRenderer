@@ -11,6 +11,8 @@ namespace ToyRenderer {
 
 		map->MapBool(Key::LeftMouseButton, MouseId, gainput::MouseButtonLeft);
 		map->MapBool(Key::A, KeyboardId, gainput::KeyA);
+
+
 	}
 	InputMaster::~InputMaster()
 	{
