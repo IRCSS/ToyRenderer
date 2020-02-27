@@ -97,7 +97,7 @@ int main(void)
 	
 
 	// INPUT MASTER 
-	ToyRenderer::InputMaster inputMaster;
+	ToyRenderer::InputMaster inputMaster(window);
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
@@ -107,11 +107,11 @@ int main(void)
 		// INPUT 
 		inputMaster.OnUpdate(currentTick);
 		
-		bool clicked = inputMaster.GetKeyDown(ToyRenderer::Key::LeftMouseButton);
+		bool clicked = inputMaster.GetKeyDown(ToyRenderer::KeyName::LeftMouseButton);
 
 		if (clicked) std::cout << "clicked Left Button" << std::endl;
 
-		clicked = inputMaster.GetKeyDown(ToyRenderer::Key::A);
+		clicked = inputMaster.GetKeyDown(ToyRenderer::KeyName::A);
 
 		if (clicked) std::cout << "pressed A" << std::endl;
 

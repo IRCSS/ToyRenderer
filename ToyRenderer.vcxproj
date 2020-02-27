@@ -324,6 +324,7 @@
     <ClInclude Include="src\Color.h" />
     <ClInclude Include="src\Components\Component.h" />
     <ClInclude Include="src\IndexBuffer.h" />
+    <ClInclude Include="src\InputMapping.h" />
     <ClInclude Include="src\InputMaster.h" />
     <ClInclude Include="src\Material.h" />
     <ClInclude Include="src\maths\Matrix4x4.h" />

@@ -1,34 +1,39 @@
 #include "InputMaster.h"
 #include "Settings.h"
+#include "InputMapping.h"
+
+
+
 namespace ToyRenderer {
-	InputMaster::InputMaster()
+
+	TOYRENDERER_GLFWMAPPING
+
+	InputMaster::InputMaster(GLFWwindow* window) : p_window(window)
 	{
-		MouseId    = manager.CreateDevice<gainput::InputDeviceMouse>();
-		KeyboardId = manager.CreateDevice<gainput::InputDeviceKeyboard>();
-		manager.SetDisplaySize(Settings::WindowWidth, Settings::WindowHeigth);
-		map = new gainput::InputMap(manager);
-
-
-		map->MapBool(Key::LeftMouseButton, MouseId, gainput::MouseButtonLeft);
-		map->MapBool(Key::A, KeyboardId, gainput::KeyA);
-
-
+		MapKeys(keyMaping);
 	}
 	InputMaster::~InputMaster()
 	{
-		delete map;
 	}
 	void InputMaster::OnUpdate(float deltaTime)
 	{
 
-		manager.Update();
 	}
 
-	bool InputMaster::GetKeyDown(Key keycode)
+	bool InputMaster::GetKeyDown(KeyName keycode)
 	{
+		
+		if (keyMaping.find(keycode) == keyMaping.end()) return false;
+			
 
-		return map->GetBoolWasDown(keycode);
+		int state = glfwGetKey(p_window, keyMaping[keycode]);
+		if (state == GLFW_PRESS) return true;
+
+		return false;
 	}
+
+
+
 
 
 
