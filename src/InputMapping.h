@@ -4,4 +4,4 @@
 	keymapping[KeyName::S] = GLFW_KEY_S; \
 	keymapping[KeyName::W] = GLFW_KEY_W; \
 	keymapping[KeyName::Z] = GLFW_KEY_Z; \
-} \
+}; \
