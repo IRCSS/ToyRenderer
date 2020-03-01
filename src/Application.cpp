@@ -107,13 +107,15 @@ int main(void)
 		// INPUT 
 		inputMaster.OnUpdate(currentTick);
 		
-		bool clicked = inputMaster.GetKeyDown(ToyRenderer::KeyName::LeftMouseButton);
+		
+
+		bool clicked = inputMaster.GetKeyDown(ToyRenderer::KeyName::A);
+		
+		if (clicked) std::cout << "pressed Shift" << std::endl;
+
+		 clicked = inputMaster.GetKeyDown(ToyRenderer::KeyName::S);
 
 		if (clicked) std::cout << "clicked Left Button" << std::endl;
-
-		clicked = inputMaster.GetKeyDown(ToyRenderer::KeyName::A);
-
-		if (clicked) std::cout << "pressed A" << std::endl;
 
 
 

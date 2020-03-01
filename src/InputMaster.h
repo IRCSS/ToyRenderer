@@ -24,7 +24,7 @@ namespace ToyRenderer {
 		PressedKey(const PressedKey& copyFrom);
 		PressedKey(GLFWwindow* pWindow, int keyCode);
 
-		bool IsPressed();
+		void IsPressed();
 		void SetUpForRelease();
 		bool IsReleased();
 

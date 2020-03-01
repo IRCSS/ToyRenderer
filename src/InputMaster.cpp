@@ -1,24 +1,78 @@
 #include "InputMaster.h"
 #include "Settings.h"
 #include "InputMapping.h"
-
-
+#include <string>
+#include <iostream>
 
 namespace ToyRenderer {
 
 	std::unordered_map<int, PressedKey> InputMaster::PressedKeys ;
 	std::unordered_map<int, PressedKey> InputMaster::ReleasedKeys;
 
-	static void OnKeyPressed(GLFWwindow* window, int key, int action, int mods)
+	static void OnKeyPressed(GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
-		if (InputMaster::PressedKeys.find(key)   != InputMaster::PressedKeys.end()) return;
-		if (InputMaster::ReleasedKeys.find(key)  != InputMaster::ReleasedKeys.end()) return;
+		// RELEASE
+		switch (action)
+		{
+		case GLFW_RELEASE:
+			if (InputMaster::PressedKeys.find(key) == InputMaster::PressedKeys.end()) return;
+
+			InputMaster::PressedKeys[key].SetUpForRelease();
+
+			InputMaster::ReleasedKeys[key] = InputMaster::PressedKeys[key];
+			InputMaster::PressedKeys.erase(key);
+
+			break;
+
+		case GLFW_PRESS:
+			// PRESSED
+			if (InputMaster::PressedKeys.find(key) != InputMaster::PressedKeys.end()) return;
+			if (InputMaster::ReleasedKeys.find(key) != InputMaster::ReleasedKeys.end()) return;
 
 
-		PressedKey registerKey(window, key);
-		InputMaster::PressedKeys[key] = registerKey;
+			PressedKey registerKey(window, key);
+			InputMaster::PressedKeys[key] = registerKey;
+			break;
+		}
+
+	
 
 	};
+
+	static void OnMouseButtonPressed(GLFWwindow* window, int key, int action, int mods)
+	{
+		// RELEASE
+		switch (action)
+		{
+		case GLFW_RELEASE:
+
+			if (InputMaster::PressedKeys.find(key) == InputMaster::PressedKeys.end()) return;
+
+			InputMaster::PressedKeys[key].SetUpForRelease();
+
+			InputMaster::ReleasedKeys[key] = InputMaster::PressedKeys[key];
+			InputMaster::PressedKeys.erase(key);
+
+			break;
+
+		case GLFW_PRESS:
+
+			
+			// PRESSED
+			if (InputMaster::PressedKeys.find(key) != InputMaster::PressedKeys.end()) return;
+			if (InputMaster::ReleasedKeys.find(key) != InputMaster::ReleasedKeys.end()) return;
+
+
+			PressedKey registerKey(window, key);
+			InputMaster::PressedKeys[key] = registerKey;
+			break;
+		}
+
+
+
+	};
+
+	
 
 	TOYRENDERER_GLFWMAPPING
 
@@ -26,6 +80,8 @@ namespace ToyRenderer {
 	InputMaster::InputMaster(GLFWwindow* window) : p_window(window)
 	{
 		MapKeys(keyMaping);
+
+		glfwSetMouseButtonCallback(p_window, (GLFWmousebuttonfun)OnMouseButtonPressed);
 		glfwSetKeyCallback(p_window, (GLFWkeyfun)OnKeyPressed);
 
 	}
@@ -36,18 +92,12 @@ namespace ToyRenderer {
 	}
 	void InputMaster::OnUpdate(float deltaTime)
 	{
+		
 		// Handeling PressedKeys
 		auto it_pressedKeys = PressedKeys.begin();
 		while (it_pressedKeys != PressedKeys.end()) {
-			if (it_pressedKeys->second.IsPressed()) {
-				it_pressedKeys++;
-				continue;
-			}
-
-			it_pressedKeys->second.SetUpForRelease();
-			ReleasedKeys[it_pressedKeys->first] = it_pressedKeys->second;
-
-			it_pressedKeys = PressedKeys.erase(it_pressedKeys);
+			it_pressedKeys->second.IsPressed();
+			it_pressedKeys++;
 		}
 
 		// Buffering the Released keys for a frame in case the application asks for it then releasing it
@@ -78,8 +128,12 @@ namespace ToyRenderer {
 
 	bool InputMaster::GetKeyUp(KeyName keycode) const
 	{
+		if (keyMaping.find(keycode) == keyMaping.end()) return false;
+		int keyBackEndCode = keyMaping.at(keycode);
 
-		return false;
+		if (ReleasedKeys.find(keyBackEndCode) == ReleasedKeys.end()) return false;
+
+		return true;
 	}
 
 	bool InputMaster::GetKey(KeyName keycode) const
@@ -88,18 +142,12 @@ namespace ToyRenderer {
 		if (keyMaping.find(keycode) == keyMaping.end()) return false;
 			
 
-		int state = glfwGetKey(p_window, keyMaping.at(keycode));
-		if (state == GLFW_PRESS ) return true;
+		int keyBackEndCode = keyMaping.at(keycode);
 
-		return false;
+		if (PressedKeys.find(keyBackEndCode) == PressedKeys.end()) return false;
+
+		return true;
 	}
-
-
-
-
-
-
-
 
 	PressedKey::PressedKey()
 	{
@@ -124,14 +172,11 @@ namespace ToyRenderer {
 	}
 
 	/// Update for a pressed key. It checks if the key is still pressed. Sets flag for first frame the key is pressed
-	bool PressedKey::IsPressed() 
+	void PressedKey::IsPressed() 
 	{
 		if (numberOfFramesActive > 0) actedOnThisFrame = false;
 		else numberOfFramesActive++;
 
-		int state = glfwGetKey(window, keyCode);
-		if (state == GLFW_PRESS) return true;
-		return false;
 	}
 
 	void PressedKey::SetUpForRelease()
@@ -144,7 +189,7 @@ namespace ToyRenderer {
 	bool PressedKey::IsReleased()
 	{
 		if (numberOfFramesActive > 0) return false;
-		else numberOfFramesActive++;
+	    numberOfFramesActive++;
 
 		return true;
 	}
