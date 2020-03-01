@@ -4,7 +4,7 @@
 #include "maths/Vector2.h"
 #include "Bounds.h"
 #include <vector>
-#include "Color.h"
+#include "maths/Color.h"
 namespace ToyRenderer {
 
 	class Mesh {

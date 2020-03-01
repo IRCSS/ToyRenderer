@@ -1,7 +1,7 @@
 #pragma once
 #include <unordered_map>
 #include "Texture.h"
-#include "Color.h"
+#include "maths/Color.h"
 #include "maths/Matrix4x4.h"
 class Shader;
 namespace ToyRenderer {

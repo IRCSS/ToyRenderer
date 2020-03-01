@@ -1,7 +1,7 @@
 #include "TestObjLoader.h"
 #include "ResourceManager.h"
 #include "MeshLoader.h"
-#include "Mesh.h"
+#include "rendering/Mesh/Mesh.h"
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
 #include "glm/gtc/matrix_transform.hpp"

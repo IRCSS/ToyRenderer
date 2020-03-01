@@ -2,7 +2,7 @@
 #include "Test.h"
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
-#include "Renderer.h"
+#include "rendering/Renderer.h"
 #include "Shader.h"
 #include "VertexArray.h"
 #include "IndexBuffer.h"

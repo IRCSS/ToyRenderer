@@ -6,7 +6,7 @@
 #include <sstream>
 #include <ctime>
 #include "Settings.h"
-#include "Renderer.h"
+#include "rendering/Renderer.h"
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
 #include "VertexArray.h"

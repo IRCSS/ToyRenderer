@@ -3,9 +3,10 @@
 #include "maths/Vector3.h"
 #include "maths/Vector4.h"
 #include <vector>
-#include "Mesh.h"
-#include "Color.h"
-#include "Material.h"
+#include "rendering/Mesh/Mesh.h"
+#include "maths/Color.h"
+#include "rendering/Material.h"
+
 
 namespace ToyRenderer {
 

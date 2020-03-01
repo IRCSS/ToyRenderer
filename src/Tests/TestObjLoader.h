@@ -1,7 +1,7 @@
 #pragma once
 #include "Test.h"
 #include "Shader.h"
-#include "Renderer.h"
+#include "rendering/Renderer.h"
 #include "Texture.h"
 #include "VertexBufferLayout.h"
 #include "VertexArray.h"

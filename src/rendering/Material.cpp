@@ -1,4 +1,4 @@
-#include "Material.h"
+#include "rendering/Material.h"
 
 namespace ToyRenderer {
     Material::Material()

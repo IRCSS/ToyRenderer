@@ -1,7 +1,7 @@
 #pragma once
 #include "GL/glew.h"
 #include <vector>
-#include "Renderer.h"
+#include "rendering/Renderer.h"
 struct VertexBufferElement {
 	unsigned int type;             // Vertex Buffer Element Type. Using OpenGl enums for now. Later will make them more generalized
 	unsigned int count;            // Number of entries for this element. For example layout can be 1 float, 2 int, 1 float. For the int entry you would have type GL_UNSIGNED_INT and count 2
