@@ -36,6 +36,7 @@ namespace ToyRenderer {
 	}
 	void InputMaster::OnUpdate(float deltaTime)
 	{
+		// Handeling PressedKeys
 		auto it_pressedKeys = PressedKeys.begin();
 		while (it_pressedKeys != PressedKeys.end()) {
 			if (it_pressedKeys->second.IsPressed()) {
@@ -46,8 +47,20 @@ namespace ToyRenderer {
 			it_pressedKeys->second.SetUpForRelease();
 			ReleasedKeys[it_pressedKeys->first] = it_pressedKeys->second;
 
-			PressedKeys.erase(it_pressedKeys->first);
-			it_pressedKeys++;
+			it_pressedKeys = PressedKeys.erase(it_pressedKeys);
+		}
+
+		// Buffering the Released keys for a frame in case the application asks for it then releasing it
+		auto it_releasedKeys = ReleasedKeys.begin();
+		while (it_releasedKeys != ReleasedKeys.end()) {
+
+			if (it_releasedKeys->second.IsReleased()) {
+				it_releasedKeys++;
+				continue;
+			}
+
+			it_releasedKeys = ReleasedKeys.erase(it_releasedKeys);
+
 		}
 	}
 
@@ -110,6 +123,7 @@ namespace ToyRenderer {
 		numberOfFramesActive = 0;
 	}
 
+	/// Update for a pressed key. It checks if the key is still pressed. Sets flag for first frame the key is pressed
 	bool PressedKey::IsPressed() 
 	{
 		if (numberOfFramesActive > 0) actedOnThisFrame = false;
@@ -126,6 +140,7 @@ namespace ToyRenderer {
 		numberOfFramesActive = 0;
 	}
 
+	///Update for a released key. A released keys life time is only a frame
 	bool PressedKey::IsReleased()
 	{
 		if (numberOfFramesActive > 0) return false;
