@@ -38,7 +38,7 @@ namespace ToyRenderer {
 	class InputMaster {
 
 	public: 
-		std::unordered_map<KeyName, int> keyMaping;
+		static std::unordered_map<KeyName, int> keyMaping;
 
 		static std::unordered_map<int, PressedKey> PressedKeys;
 		static std::unordered_map<int, PressedKey> ReleasedKeys;
@@ -51,9 +51,9 @@ namespace ToyRenderer {
 
 		void OnUpdate(float deltaTime);
 
-		bool GetKeyDown(KeyName keycode) const;
-		bool GetKeyUp  (KeyName keycode) const;
-		bool GetKey    (KeyName keycode) const;
+		static bool GetKeyDown(KeyName keycode);
+		static bool GetKeyUp  (KeyName keycode);
+		static bool GetKey    (KeyName keycode);
 
 		
 	private:

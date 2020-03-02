@@ -3,6 +3,7 @@
 	keymapping[KeyName::A]                = GLFW_KEY_A;               \
 	keymapping[KeyName::S]                = GLFW_KEY_S;               \
 	keymapping[KeyName::W]                = GLFW_KEY_W;               \
+    keymapping[KeyName::D]                = GLFW_KEY_D;               \
 	keymapping[KeyName::E]                = GLFW_KEY_E;               \
 	keymapping[KeyName::Z]                = GLFW_KEY_Z;               \
 	keymapping[KeyName::Q]                = GLFW_KEY_Q;               \

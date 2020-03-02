@@ -5,6 +5,9 @@
 #include "Texture.h"
 #include "VertexBufferLayout.h"
 #include "VertexArray.h"
+#include "Components/Transform.h"
+#include "Components/Scripts/MoveCamera.h"
+
 namespace test {
 
 	class TesstObjLoader : public Test {
@@ -26,6 +29,9 @@ namespace test {
 		VertexArray *m_va;
 		IndexBuffer *m_ib;
 		Texture     *m_Texture;
+
+		Behaviours::MoveCamera* CameraMovment;
+		ToyRenderer::Transform* CameraViewTrabsform;
 
 		glm::mat4 m_model;
 		glm::mat4 m_proj;

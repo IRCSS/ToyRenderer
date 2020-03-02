@@ -4,6 +4,8 @@ namespace ToyRenderer {
 	public:
 	              Component();
 	 virtual     ~Component();
-	 virtual void OnUpdate();
+	 virtual void OnUpdate(float deltaTime);
+		 virtual void OnRender();
+		 virtual void OnImGuiRender();
 	};
 }

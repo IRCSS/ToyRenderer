@@ -78,6 +78,27 @@ namespace ToyRenderer {
 		return localToWorld().Inverse(hasInverse);
 	}
 
+	Vector3 Transform::Foward() const
+	{
+		Vector4 toReturn = localToWorld().GetColumn(2);
+
+		return Vector3(toReturn.x, toReturn.y, toReturn.z).normalized();
+	}
+
+	Vector3 Transform::Right() const
+	{
+		Vector4 toReturn = localToWorld().GetColumn(0);
+
+		return Vector3(toReturn.x, toReturn.y, toReturn.z).normalized();
+	}
+
+	Vector3 Transform::Up() const
+	{
+		Vector4 toReturn = localToWorld().GetColumn(1);
+
+		return Vector3(toReturn.x, toReturn.y, toReturn.z).normalized();
+	}
+
 }
 
 

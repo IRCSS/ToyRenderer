@@ -8,9 +8,10 @@ namespace ToyRenderer {
 
 	std::unordered_map<int, PressedKey> InputMaster::PressedKeys ;
 	std::unordered_map<int, PressedKey> InputMaster::ReleasedKeys;
-
+	std::unordered_map<KeyName, int> InputMaster::keyMaping;
 	static void OnKeyPressed(GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
+		//std::cout << "key: " + std::to_string(key) << " ,scancode: " + std::to_string(scancode) << " ,action: " + std::to_string(action) << " ,mods: " + std::to_string(mods) << std::endl;
 		// RELEASE
 		switch (action)
 		{
@@ -41,6 +42,7 @@ namespace ToyRenderer {
 
 	static void OnMouseButtonPressed(GLFWwindow* window, int key, int action, int mods)
 	{
+		//std::cout << "key: " + std::to_string(key) << " ,action: " + std::to_string(action) << " ,mods: " +std::to_string(mods) << std::endl;
 		// RELEASE
 		switch (action)
 		{
@@ -114,7 +116,7 @@ namespace ToyRenderer {
 		}
 	}
 
-	bool InputMaster::GetKeyDown(KeyName keycode) const
+	bool InputMaster::GetKeyDown(KeyName keycode) 
 	{
 		
 		if (keyMaping.find(keycode) == keyMaping.end()) return false;
@@ -126,7 +128,7 @@ namespace ToyRenderer {
 		return false;
 	}
 
-	bool InputMaster::GetKeyUp(KeyName keycode) const
+	bool InputMaster::GetKeyUp(KeyName keycode) 
 	{
 		if (keyMaping.find(keycode) == keyMaping.end()) return false;
 		int keyBackEndCode = keyMaping.at(keycode);
@@ -136,7 +138,7 @@ namespace ToyRenderer {
 		return true;
 	}
 
-	bool InputMaster::GetKey(KeyName keycode) const
+	bool InputMaster::GetKey(KeyName keycode) 
 	{
 		
 		if (keyMaping.find(keycode) == keyMaping.end()) return false;

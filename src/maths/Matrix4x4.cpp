@@ -42,6 +42,11 @@ Matrix4x4::~Matrix4x4()
 {
 }
 
+glm::mat4x4 Matrix4x4::GetGLM() const
+{
+	return m;
+}
+
 const Vector4 Matrix4x4::GetColumn(const int i) const
 {
 	return Vector4(m[0][i], m[1][i], m[2][i], m[3][i]);

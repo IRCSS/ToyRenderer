@@ -16,6 +16,7 @@ public:
 
 	~Matrix4x4();
 
+	glm::mat4x4 GetGLM() const;
 
 	const Vector4    GetColumn(const int i)   const;
 	const Vector4    GetRow   (const int i)   const;

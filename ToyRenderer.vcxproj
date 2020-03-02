@@ -152,6 +152,8 @@
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Bounds.cpp" />
+    <ClCompile Include="src\Components\Scripts\MoveCamera.cpp" />
+    <ClCompile Include="src\Components\Transform.cpp" />
     <ClCompile Include="src\maths\Color.cpp" />
     <ClCompile Include="src\Components\Component.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
@@ -172,7 +174,6 @@
     <ClCompile Include="src\Tests\TestObjLoader.cpp" />
     <ClCompile Include="src\Tests\TestTexture2D.cpp" />
     <ClCompile Include="src\Texture.cpp" />
-    <ClCompile Include="src\Transform.cpp" />
     <ClCompile Include="src\vendor\glm\detail\glm.cpp" />
     <ClCompile Include="src\vendor\imgui\imgui.cpp" />
     <ClCompile Include="src\vendor\imgui\imgui_demo.cpp" />
@@ -321,6 +322,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Bounds.h" />
+    <ClInclude Include="src\Components\Scripts\MoveCamera.h" />
+    <ClInclude Include="src\Components\Scripts\Script.h" />
+    <ClInclude Include="src\Components\Transform.h" />
     <ClInclude Include="src\maths\Color.h" />
     <ClInclude Include="src\Components\Component.h" />
     <ClInclude Include="src\IndexBuffer.h" />
@@ -343,7 +347,6 @@
     <ClInclude Include="src\Tests\TestObjLoader.h" />
     <ClInclude Include="src\Tests\TestTexture2D.h" />
     <ClInclude Include="src\Texture.h" />
-    <ClInclude Include="src\Transform.h" />
     <ClInclude Include="src\vendor\glm\common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_vector_relational.hpp" />
