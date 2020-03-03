@@ -1,5 +1,6 @@
 #include "Transform.h"
 #include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/quaternion.hpp"
 namespace ToyRenderer {
 	Transform::Transform()
 	{
@@ -13,7 +14,7 @@ namespace ToyRenderer {
 	{
 	}
 
-	Matrix4x4 Transform::localToWorld() const
+	Matrix4x4 Transform::worldToLocal() const
 	{
 		// Start off with identity matrix
 		glm::mat4x4 toReturn = glm::mat4x4(1.0f, 0.0f, 0.0f, 0.0f,
@@ -64,18 +65,14 @@ namespace ToyRenderer {
 			                    position.x, position.y, position.z, 1.0f) * toReturn;
 
 
-
-
-		
-
 		
 		return Matrix4x4(toReturn);
 	}
 
-	Matrix4x4 Transform::worldToLocal() const
+	Matrix4x4 Transform::localToWorld() const
 	{
 		bool hasInverse;
-		return localToWorld().Inverse(hasInverse);
+		return worldToLocal().Inverse(hasInverse);
 	}
 
 	Vector3 Transform::Foward() const
@@ -97,6 +94,21 @@ namespace ToyRenderer {
 		Vector4 toReturn = localToWorld().GetColumn(1);
 
 		return Vector3(toReturn.x, toReturn.y, toReturn.z).normalized();
+	}
+
+	/// rotation in radiance
+	void Transform::RotateAroundOrigin(const Vector3 & axis, float theta)
+	{
+
+		glm::vec3   rPoint          = glm::vec3(position.x, position.y, position.z);
+		glm::mat4x4 newLocaltoWorld = glm::translate(localToWorld().GetGLM(), -rPoint);
+		            newLocaltoWorld = glm::rotate(newLocaltoWorld, theta, glm::vec3(axis.x, axis.y,axis.z));
+					newLocaltoWorld = glm::translate(newLocaltoWorld, +rPoint);
+		glm::vec3   euler           = glm::eulerAngles( glm::quat_cast(newLocaltoWorld));
+
+
+		eulerRotaiton = Vector3(euler.x, euler.y, euler.z);
+
 	}
 
 }

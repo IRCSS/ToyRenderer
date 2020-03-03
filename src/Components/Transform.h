@@ -21,10 +21,12 @@ namespace ToyRenderer {
 		Transform(const Vector3 position, const Vector3 scale, const Vector3 Rotation);
 		Matrix4x4 localToWorld() const;
 		Matrix4x4 worldToLocal() const;
+		
 		Vector3   Foward()       const;
 		Vector3   Right ()       const;
 		Vector3   Up    ()       const;
 
+		void RotateAroundOrigin(const Vector3& axis, float theta);
 
 	private:
 

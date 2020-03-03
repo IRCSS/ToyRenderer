@@ -69,7 +69,7 @@ namespace test {
 
 		std::cout << CameraViewTrabsform->localToWorld() << std::endl;
 		//m_view = glm::translate(glm::mat4(1.0f), glm::vec3(-1.0f, 0.0f, -5.0f));
-		m_view = CameraViewTrabsform->localToWorld().GetGLM();
+		m_view = CameraViewTrabsform->worldToLocal().GetGLM();
 
 		glm::vec3 translation(0.0f, 1.0f, 0.0f);
 		m_model = glm::translate(glm::mat4(1.0f), translation);
@@ -115,7 +115,7 @@ namespace test {
 		m_shader->Bind();
 		m_shader->SetUniformf("u_iTime", 0.0f); // need to abstract his in material class
 		m_model = glm::translate(glm::mat4(1.0f), translation);
-		m_view = CameraViewTrabsform->localToWorld().GetGLM();
+		m_view = CameraViewTrabsform->worldToLocal().GetGLM();
 
 		m_mvp = m_proj * m_view * m_model;
 		m_shader->SetUniformMat4("u_MVP", m_mvp);

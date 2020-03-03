@@ -37,6 +37,12 @@ namespace Behaviours {
 
 		m_cam->position = p;
 
+
+		float rotation = 0.01f;
+
+		m_cam->RotateAroundOrigin(Vector3(1., 0., 0.0f), rotation);
+
+
 	}
 }
 
