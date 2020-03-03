@@ -9,6 +9,8 @@ namespace ToyRenderer {
 	std::unordered_map<int, PressedKey> InputMaster::PressedKeys ;
 	std::unordered_map<int, PressedKey> InputMaster::ReleasedKeys;
 	std::unordered_map<KeyName, int> InputMaster::keyMaping;
+	 Mouse InputMaster::mouse;
+
 	static void OnKeyPressed(GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
 		//std::cout << "key: " + std::to_string(key) << " ,scancode: " + std::to_string(scancode) << " ,action: " + std::to_string(action) << " ,mods: " + std::to_string(mods) << std::endl;
@@ -85,6 +87,7 @@ namespace ToyRenderer {
 
 		glfwSetMouseButtonCallback(p_window, (GLFWmousebuttonfun)OnMouseButtonPressed);
 		glfwSetKeyCallback(p_window, (GLFWkeyfun)OnKeyPressed);
+		mouse = Mouse(p_window);
 
 	}
 
@@ -95,6 +98,8 @@ namespace ToyRenderer {
 	void InputMaster::OnUpdate(float deltaTime)
 	{
 		
+		mouse.Update();
+
 		// Handeling PressedKeys
 		auto it_pressedKeys = PressedKeys.begin();
 		while (it_pressedKeys != PressedKeys.end()) {
@@ -197,5 +202,44 @@ namespace ToyRenderer {
 	}
 
 
+
+	Mouse::Mouse()
+	{
+	}
+
+	Mouse::Mouse(GLFWwindow * window) :window(window)
+	{
+		double x, y;
+		glfwGetCursorPos(window, &x, &y);
+
+		mousePos = Vector2(x, y);
+		mouseDelta = Vector2(0.0f, 0.0f);
+
+	}
+
+	void Mouse::Update()
+	{
+
+		double x, y;
+		glfwGetCursorPos(window, &x, &y);
+		
+		Vector2 newMousePos((float)x, (float)y);
+
+		mouseDelta = newMousePos - mousePos;
+
+		mousePos   = newMousePos;
+
+	}
+
+	void Mouse::SetMouseVisible(bool b)
+	{
+		if(b) glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+		else  glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+	}
+
+	Vector2 Mouse::GetMouseDelta() const
+	{
+		return mouseDelta;
+	}
 
 }

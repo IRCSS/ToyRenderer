@@ -1,5 +1,6 @@
 #pragma once
 #include "GLFW/glfw3.h"
+#include "maths/Vector2.h"
 #include <unordered_map>
 namespace ToyRenderer {
 
@@ -33,7 +34,24 @@ namespace ToyRenderer {
 
 	};
 
+	class Mouse {
+	
+	public: 
+		/// Screen space, from top left corner
+		Vector2 mousePos;
 
+	private:
+		Vector2 mouseDelta;
+		GLFWwindow* window;
+
+	public: 
+
+		Mouse();
+		Mouse(GLFWwindow* window);
+		void    Update();
+		void    SetMouseVisible(bool b);
+		Vector2 GetMouseDelta() const;
+	};
 
 	class InputMaster {
 
@@ -42,6 +60,8 @@ namespace ToyRenderer {
 
 		static std::unordered_map<int, PressedKey> PressedKeys;
 		static std::unordered_map<int, PressedKey> ReleasedKeys;
+
+		static Mouse mouse;
 	private:
 		GLFWwindow* p_window;
 

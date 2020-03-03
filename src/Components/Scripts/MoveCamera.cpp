@@ -39,8 +39,10 @@ namespace Behaviours {
 
 		float rotation = 0.01f;
 
-		m_cam->RotateAroundOrigin(Vector3(0.0, 0.00, 0.01f), rotation);
+		m_cam->RotateAroundOrigin(Vector3(0.0, 0.00, 0.0f), rotation);
 
+
+		std::cout << ToyRenderer::InputMaster::mouse.GetMouseDelta()<< std::endl;
 
 	}
 }
