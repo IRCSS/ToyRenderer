@@ -23,47 +23,24 @@ namespace ToyRenderer {
 			                               0.0f, 0.0f, 0.0f, 1.0f);
 	
 		// TRS Matrix creation
-		// scale
-	    toReturn = glm::mat4x4(scale.x,      0.0f,       0.0f, 0.0f,
-			                      0.0f,   scale.y,       0.0f, 0.0f,
-			                      0.0f,      0.0f,    scale.z, 0.0f,
-			                      0.0f,      0.0f,       0.0f, 1.0f) * toReturn;
-		
-		
-		// euler to Matrix Rotation
-		float cos_x = cos(eulerRotaiton.x);
-		float sin_x = sin(eulerRotaiton.x);
 
-		float cos_y = cos(eulerRotaiton.y);
-		float sin_y = sin(eulerRotaiton.y);
-
-		float cos_z = cos(eulerRotaiton.z);
-		float sin_z = sin(eulerRotaiton.z);
-
-		// ---------- Rz*Ry*Rx
-		//Rx
-        toReturn = glm::mat4x4(   1.0f,    0.0f,   0.0f, 0.0f,
-			                      0.0f,   cos_x, -sin_x, 0.0f,
-			                      0.0f,   sin_x,  cos_x, 0.0f,
-			                      0.0f,    0.0f,   0.0f, 1.0f) * toReturn;
-        //Ry	
-		toReturn = glm::mat4x4(  cos_y,    0.0f,  sin_y, 0.0f,
-			                      0.0f,    1.0f,   0.0f, 0.0f,
-			                    -sin_y,    0.0f,  cos_y, 0.0f,
-			                      0.0f,    0.0f,   0.0f, 1.0f) * toReturn;
-		//Rz	
-		toReturn = glm::mat4x4(  cos_z,  -sin_z,   0.0f, 0.0f,
-			                     sin_z,   cos_z,   0.0f, 0.0f,
-			                      0.0f,    0.0f,   1.0f, 0.0f,
-			                      0.0f,    0.0f,   0.0f, 1.0f) * toReturn;
-		
-		
 		// last translate 
 		toReturn =  glm::mat4x4(1.0f,             0.0f,       0.0f, 0.0f,
 			                    0.0f,             1.0f,       0.0f, 0.0f,
 			                    0.0f,             0.0f,       1.0f, 0.0f,
 			                    position.x, position.y, position.z, 1.0f) * toReturn;
+		
+		
+		
+		toReturn = GetRotationMatFromEuler(eulerRotaiton.x, eulerRotaiton.y, eulerRotaiton.z).GetGLM() *toReturn;
+      
+		
 
+		// scale
+	    toReturn = glm::mat4x4(scale.x,      0.0f,       0.0f, 0.0f,
+			                      0.0f,   scale.y,       0.0f, 0.0f,
+			                      0.0f,      0.0f,    scale.z, 0.0f,
+			                      0.0f,      0.0f,       0.0f, 1.0f) * toReturn;
 
 		
 		return Matrix4x4(toReturn);
@@ -99,16 +76,50 @@ namespace ToyRenderer {
 	/// rotation in radiance
 	void Transform::RotateAroundOrigin(const Vector3 & axis, float theta)
 	{
-
-		glm::vec3   rPoint          = glm::vec3(position.x, position.y, position.z);
-		glm::mat4x4 newLocaltoWorld = glm::translate(localToWorld().GetGLM(), -rPoint);
+		
+		glm::mat4x4 newLocaltoWorld = localToWorld().GetGLM();
 		            newLocaltoWorld = glm::rotate(newLocaltoWorld, theta, glm::vec3(axis.x, axis.y,axis.z));
-					newLocaltoWorld = glm::translate(newLocaltoWorld, +rPoint);
+					
 		glm::vec3   euler           = glm::eulerAngles( glm::quat_cast(newLocaltoWorld));
 
 
 		eulerRotaiton = Vector3(euler.x, euler.y, euler.z);
 
+	}
+
+	Matrix4x4 Transform::GetRotationMatFromEuler(float x, float y, float z) const
+	{
+
+		// euler to Matrix Rotation
+		float cos_x = cos(eulerRotaiton.x);
+		float sin_x = sin(eulerRotaiton.x);
+
+		float cos_y = cos(eulerRotaiton.y);
+		float sin_y = sin(eulerRotaiton.y);
+
+		float cos_z = cos(eulerRotaiton.z);
+		float sin_z = sin(eulerRotaiton.z);
+
+		// ---------- Rz*Ry*Rx
+		//Rx
+		glm::mat4x4 toReturn = glm::mat4x4(   1.0f,    0.0f,   0.0f, 0.0f,
+			                                  0.0f,   cos_x, -sin_x, 0.0f,
+			                                  0.0f,   sin_x,  cos_x, 0.0f,
+			                                  0.0f,    0.0f,   0.0f, 1.0f);
+        //Ry	
+		toReturn = glm::mat4x4(  cos_y,    0.0f,  sin_y, 0.0f,
+			                      0.0f,    1.0f,   0.0f, 0.0f,
+			                    -sin_y,    0.0f,  cos_y, 0.0f,
+			                      0.0f,    0.0f,   0.0f, 1.0f) * toReturn;
+		//Rz	
+		toReturn = glm::mat4x4(  cos_z,  -sin_z,   0.0f, 0.0f,
+			                     sin_z,   cos_z,   0.0f, 0.0f,
+			                      0.0f,    0.0f,   1.0f, 0.0f,
+			                      0.0f,    0.0f,   0.0f, 1.0f) * toReturn;
+		
+		
+
+		return Matrix4x4(toReturn);
 	}
 
 }

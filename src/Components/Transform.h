@@ -27,8 +27,8 @@ namespace ToyRenderer {
 		Vector3   Up    ()       const;
 
 		void RotateAroundOrigin(const Vector3& axis, float theta);
-
 	private:
+		Matrix4x4 GetRotationMatFromEuler(float x, float y, float z) const;
 
 
 	};
