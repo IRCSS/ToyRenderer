@@ -10,7 +10,7 @@ namespace Behaviours {
 
 	private:
 		const float movementSpeed = 0.01f;
-		const float rotationSpeed = 0.01f;
+		const float rotationSpeed = 0.005f;
 
 	public:
 		MoveCamera();

@@ -41,14 +41,13 @@ namespace Behaviours {
 		Vector2 mouseInput = ToyRenderer::InputMaster::mouse.GetMouseDelta();
 
 
-		float rotationY = ( mouseInput.x)* rotationSpeed;
+		float rotationY = (-mouseInput.x)* rotationSpeed;
 		float rotationX = (-mouseInput.y)* rotationSpeed;
 
 		//std::cout << rotationX << " rotation x, " << rotationY <<" rotation y." << std::endl;
 
-		 m_cam->RotateAroundOrigin( vector3_forward,     0.01f);
-		 std::cout << m_cam->eulerRotaiton<<std::endl;
-		 //m_cam->RotateAroundOrigin( m_cam->Right(), rotationX);
+		   m_cam->RotateAroundOrigin(m_cam->Right(), rotationX);
+		   m_cam->RotateAroundOrigin( m_cam->Up(), rotationY);
 	}
 }
 
