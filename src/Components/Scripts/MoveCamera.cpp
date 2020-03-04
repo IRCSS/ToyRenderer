@@ -16,6 +16,13 @@ namespace Behaviours {
 
 	void MoveCamera::OnUpdate(float deltaTime)
 	{
+
+		if (!ToyRenderer::InputMaster::GetKey(ToyRenderer::KeyName::RightMouseButton)) {
+			ToyRenderer::InputMaster::mouse.SetMouseVisible(true);
+			return;
+		}
+		ToyRenderer::InputMaster::mouse.SetMouseVisible(false);
+
 		Vector3 p = m_cam->position;
 
 		float x = 0.0f;
@@ -47,7 +54,7 @@ namespace Behaviours {
 		//std::cout << rotationX << " rotation x, " << rotationY <<" rotation y." << std::endl;
 
 		   m_cam->RotateAroundOrigin(m_cam->Right(), rotationX);
-		   m_cam->RotateAroundOrigin( m_cam->Up(), rotationY);
+		   m_cam->RotateAroundOrigin(vector3_up, rotationY);
 	}
 }
 

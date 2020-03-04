@@ -1,7 +1,5 @@
 #include "Transform.h"
-#include "glm/gtc/matrix_transform.hpp"
-#include "glm/gtc/quaternion.hpp"
-#include "glm/gtx/euler_angles.hpp"
+
 namespace ToyRenderer {
 	Transform::Transform()
 	{
@@ -11,8 +9,17 @@ namespace ToyRenderer {
 	{
 	}
 
-	Transform::Transform(const Vector3 i_position, const Vector3 i_scale, const Vector3 i_EulerRotation) : position(i_position), scale(i_scale), eulerRotaiton(i_EulerRotation)
+	Transform::Transform(const Vector3 i_position, const Vector3 i_scale, const Vector3 i_EulerRotation) : position(i_position), scale(i_scale)
 	{
+		
+
+		glm::quat qPitch = glm::angleAxis(i_EulerRotation.x, glm::vec3(1, 0, 0));
+		glm::quat qYaw   = glm::angleAxis(i_EulerRotation.y, glm::vec3(0, 1, 0));
+		glm::quat qRoll  = glm::angleAxis(i_EulerRotation.z, glm::vec3(0, 0, 1));
+
+		
+		rotation = qPitch * qYaw * qRoll;
+		
 	}
 
 	Matrix4x4 Transform::localToWorld() const
@@ -32,8 +39,8 @@ namespace ToyRenderer {
 		 	                      0.0f,      0.0f,       0.0f, 1.0f) * toReturn;
 
 		// rotate
-		toReturn = GetRotationMatFromEuler(eulerRotaiton.x, eulerRotaiton.y, eulerRotaiton.z) *toReturn;
-
+		glm::mat4x4 r = glm::mat4_cast(rotation);
+		toReturn = Matrix4x4(r) * toReturn;
 		// last translate 
 		toReturn =    Matrix4x4(1.0f,             0.0f,       0.0f, position.x,
 			                    0.0f,             1.0f,       0.0f, position.y,
@@ -52,53 +59,35 @@ namespace ToyRenderer {
 
 	Vector3 Transform::Foward() const
 	{
-
-		Matrix4x4 m = worldToLocal();
-		Vector4 toReturn = m * Vector4(0.0, 0.0, 1.0, 0.0f);
-
-		return Vector3(toReturn.x, toReturn.y, toReturn.z).normalized();
+		Vector4 v = localToWorld().GetColumn(2);
+		return Vector3(v.x, v.y, v.z);
 	}
 
 	Vector3 Transform::Right() const
 	{
-		Matrix4x4 m = worldToLocal();
-		Vector4 toReturn = m * Vector4(1.0, 0.0, 0.0, 0.0f);
-
-		return Vector3(toReturn.x, toReturn.y, toReturn.z).normalized();
+		Vector4 v = localToWorld().GetColumn(0);
+		return Vector3(v.x, v.y, v.z);
 	}
 
 	Vector3 Transform::Up() const
 	{
-
-		
-		Matrix4x4 m = worldToLocal();
-		Vector4 toReturn = m *Vector4(0.0, 1.0, 0.0, 0.0f);
-		        
-
-		return Vector3(toReturn.x, toReturn.y, toReturn.z).normalized();
+		Vector4 v = localToWorld().GetColumn(1);
+		return Vector3(v.x,v.y,v.z);
 	}
 
 	/// rotation in radiance
 	void Transform::RotateAroundOrigin(const Vector3 & axis, float theta)
 	{
 
-		glm::quat rotator = glm::quat(glm::vec3(eulerRotaiton.x, eulerRotaiton.y, eulerRotaiton.z));
-		rotator = glm::rotate(rotator, theta, glm::vec3(axis.x, axis.y, axis.z));
-		glm::vec3   euler = glm::eulerAngles(rotator);
-
-		
-
-		eulerRotaiton = Vector3(euler.x, euler.y, euler.z);
-
-		
-
+		glm::fquat rotator = glm::fquat(1.0, 0.0,0.0,0.0);
+		          rotator = glm::rotate(rotator, theta, glm::vec3(axis.x, axis.y, axis.z));
+				  rotation = rotator* rotation ;
 	}
 
 	Matrix4x4 Transform::GetRotationMatFromEuler(float x, float y, float z) const
 	{
 
-		glm::mat4x4 toReturn = glm::yawPitchRoll(x, y, z);
-		toReturn = glm::eulerAngleXYZ(x, y, z);
+		glm::mat4x4 toReturn = glm::eulerAngleXYZ(x, y, z);
 		return Matrix4x4(toReturn);
 
 		//// euler to Matrix Rotation

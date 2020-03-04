@@ -225,6 +225,11 @@ namespace ToyRenderer {
 		
 		Vector2 newMousePos((float)x, (float)y);
 
+		if ((newMousePos - mousePos).magnitude() > std::fmin(Settings::WindowHeigth, Settings::WindowHeigth) / 2.0) {
+			mousePos = newMousePos;
+			mouseDelta;
+			return;
+		}
 		mouseDelta = newMousePos - mousePos;
 
 		mousePos   = newMousePos;
@@ -234,7 +239,10 @@ namespace ToyRenderer {
 	void Mouse::SetMouseVisible(bool b)
 	{
 		if(b) glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-		else  glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+		else { 
+			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+			glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
+		}
 	}
 
 	Vector2 Mouse::GetMouseDelta() const

@@ -3,6 +3,9 @@
 #include "maths/Vector3.h"
 #include "maths/Matrix4x4.h"
 #include "Components/Component.h"
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/quaternion.hpp"
+#include "glm/gtx/euler_angles.hpp"
 
 
 namespace ToyRenderer {
@@ -10,10 +13,11 @@ namespace ToyRenderer {
 	class Transform : Component {
 
 	public: 
-		Vector3 position, scale, eulerRotaiton;
+		Vector3 position, scale;
+		glm::fquat rotation;
 
 	private:
-
+		
 	public:
 		 Transform();
 		~Transform();

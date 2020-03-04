@@ -22,14 +22,17 @@ void main()
 
 
 layout(location = 0) out vec4 color;  
-uniform float u_iTime;
 uniform sampler2D u_Texture;
-
+uniform float u_iTime;
 in vec2 v_TexCoord;
 
 void main()  
 {  
 	vec4 texColor = texture(u_Texture, v_TexCoord);
 
- color = vec4(1., abs(sin(u_iTime)),0.,1.)*texColor;
+	vec2 xy = fract(v_TexCoord.xy*100.);
+	     xy = smoothstep(0.95, 0.97, xy);
+		 float f =  1.-max(xy.x, xy.y);
+		 texColor = mix(vec4(1., 1., 1., 1.0), vec4(0.,0.,0.,0.), f + u_iTime*0.0001);
+ color = texColor;
 };

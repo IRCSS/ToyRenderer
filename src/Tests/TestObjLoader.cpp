@@ -35,10 +35,10 @@ namespace test {
 		// Setting up the ground 
 
 		float positions[] = {
-			-1.0f, -1.0f, 3.5f, 0.0f, 0.0f, // 0
-			 1.0f, -1.0f, 3.5f, 1.0f, 0.0f, // 1
-			 1.0f,  1.0f, 0.5f, 1.0f, 1.0f, // 2
-			-1.0f,  1.0f, 0.5f, 0.0f, 1.0f  // 3
+			-100.0f,  -5.0f,  100.0f, 0.0f, 0.0f, // 0
+			 100.0f,  -5.0f,  100.0f, 1.0f, 0.0f, // 1
+			 100.0f,  -5.0f, -100.5f, 1.0f, 1.0f, // 2
+			-100.0f,  -5.0f, -100.5f, 0.0f, 1.0f  // 3
 		};
 
 		unsigned int traingleIndcies[] =
