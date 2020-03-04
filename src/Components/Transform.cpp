@@ -51,14 +51,17 @@ namespace ToyRenderer {
 
 	Vector3 Transform::Foward() const
 	{
-		Vector4 toReturn = worldToLocal().GetColumn(2);
+
+		Matrix4x4 m = worldToLocal();
+		Vector4 toReturn = m * Vector4(0.0, 0.0, 1.0, 0.0f);
 
 		return Vector3(toReturn.x, toReturn.y, toReturn.z).normalized();
 	}
 
 	Vector3 Transform::Right() const
 	{
-		Vector4 toReturn = worldToLocal().GetColumn(0);
+		Matrix4x4 m = worldToLocal();
+		Vector4 toReturn = m * Vector4(1.0, 0.0, 0.0, 0.0f);
 
 		return Vector3(toReturn.x, toReturn.y, toReturn.z).normalized();
 	}

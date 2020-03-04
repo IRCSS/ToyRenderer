@@ -30,15 +30,13 @@ namespace Behaviours {
 
 		float y = 0.0f;
 
-		if (ToyRenderer::InputMaster::GetKey(ToyRenderer::KeyName::E)) y -= movementSpeed;
-		if (ToyRenderer::InputMaster::GetKey(ToyRenderer::KeyName::Q)) y += movementSpeed;
+		if (ToyRenderer::InputMaster::GetKey(ToyRenderer::KeyName::E)) y += movementSpeed;
+		if (ToyRenderer::InputMaster::GetKey(ToyRenderer::KeyName::Q)) y -= movementSpeed;
 
 
-		p += x * m_cam->Right() + y * m_cam->Up() + z * m_cam->Foward();
+		p += -x * m_cam->Right() + y * m_cam->Up() + -z * m_cam->Foward();
 
-		Matrix4x4 m = m_cam->localToWorld();
-	    Vector4 origionPosition = m* Vector4(0.0, 0.0, 0.0, 1.0f);
-		//m_cam->position = p;
+		m_cam->position = p;
 
 		Vector2 mouseInput = ToyRenderer::InputMaster::mouse.GetMouseDelta();
 
