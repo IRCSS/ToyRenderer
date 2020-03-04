@@ -1,6 +1,7 @@
 #include "Transform.h"
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/quaternion.hpp"
+#include "glm/gtx/euler_angles.hpp"
 namespace ToyRenderer {
 	Transform::Transform()
 	{
@@ -80,49 +81,55 @@ namespace ToyRenderer {
 	/// rotation in radiance
 	void Transform::RotateAroundOrigin(const Vector3 & axis, float theta)
 	{
-		
-		glm::mat4x4 newLocaltoWorld = localToWorld().GetGLM();
-		            newLocaltoWorld = glm::rotate(newLocaltoWorld, theta, glm::vec3(axis.x, axis.y,axis.z));
-					
-		glm::vec3   euler           = glm::eulerAngles( glm::quat_cast(newLocaltoWorld));
 
+		glm::quat rotator = glm::quat(glm::vec3(eulerRotaiton.x, eulerRotaiton.y, eulerRotaiton.z));
+		rotator = glm::rotate(rotator, theta, glm::vec3(axis.x, axis.y, axis.z));
+		glm::vec3   euler = glm::eulerAngles(rotator);
+
+		
 
 		eulerRotaiton = Vector3(euler.x, euler.y, euler.z);
+
+		
 
 	}
 
 	Matrix4x4 Transform::GetRotationMatFromEuler(float x, float y, float z) const
 	{
 
-		// euler to Matrix Rotation
-		float cos_x = cos(eulerRotaiton.x);
-		float sin_x = sin(eulerRotaiton.x);
+		glm::mat4x4 toReturn = glm::yawPitchRoll(x, y, z);
+		toReturn = glm::eulerAngleXYZ(x, y, z);
+		return Matrix4x4(toReturn);
 
-		float cos_y = cos(eulerRotaiton.y);
-		float sin_y = sin(eulerRotaiton.y);
+		//// euler to Matrix Rotation
+		//float cos_x = cos(eulerRotaiton.x);
+		//float sin_x = sin(eulerRotaiton.x);
 
-		float cos_z = cos(eulerRotaiton.z);
-		float sin_z = sin(eulerRotaiton.z);
+		//float cos_y = cos(eulerRotaiton.y);
+		//float sin_y = sin(eulerRotaiton.y);
 
-		// ---------- Ry*Rx*Rz
-	    //Rz	
-		Matrix4x4   toReturn =   Matrix4x4(  cos_z,  -sin_z,   0.0f, 0.0f,
-			                                 sin_z,   cos_z,   0.0f, 0.0f,
-			                                  0.0f,    0.0f,   1.0f, 0.0f,
-			                                  0.0f,    0.0f,   0.0f, 1.0f);
+		//float cos_z = cos(eulerRotaiton.z);
+		//float sin_z = sin(eulerRotaiton.z);
 
-		//Rx
-		            toReturn =   Matrix4x4(   1.0f,    0.0f,   0.0f, 0.0f,
-			                                  0.0f,   cos_x, -sin_x, 0.0f,
-			                                  0.0f,   sin_x,  cos_x, 0.0f,
-			                                  0.0f,    0.0f,   0.0f, 1.0f) * toReturn;
-        //Ry	
-		            toReturn =   Matrix4x4(  cos_y,    0.0f,  sin_y, 0.0f,
-		            	                      0.0f,    1.0f,   0.0f, 0.0f,
-		            	                    -sin_y,    0.0f,  cos_y, 0.0f,
-		            	                      0.0f,    0.0f,   0.0f, 1.0f) * toReturn;
-		            
-		return toReturn;
+		//// ---------- Ry*Rx*Rz
+	 //   //Rz	
+		//Matrix4x4   toReturn =   Matrix4x4(  cos_z,  -sin_z,   0.0f, 0.0f,
+		//	                                 sin_z,   cos_z,   0.0f, 0.0f,
+		//	                                  0.0f,    0.0f,   1.0f, 0.0f,
+		//	                                  0.0f,    0.0f,   0.0f, 1.0f);
+
+		////Rx
+		//            toReturn =   Matrix4x4(   1.0f,    0.0f,   0.0f, 0.0f,
+		//	                                  0.0f,   cos_x, -sin_x, 0.0f,
+		//	                                  0.0f,   sin_x,  cos_x, 0.0f,
+		//	                                  0.0f,    0.0f,   0.0f, 1.0f) * toReturn;
+  //      //Ry	
+		//            toReturn =   Matrix4x4(  cos_y,    0.0f,  sin_y, 0.0f,
+		//            	                      0.0f,    1.0f,   0.0f, 0.0f,
+		//            	                    -sin_y,    0.0f,  cos_y, 0.0f,
+		//            	                      0.0f,    0.0f,   0.0f, 1.0f) * toReturn;
+		//            
+		//return toReturn;
 	}
 
 }

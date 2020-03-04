@@ -65,8 +65,6 @@ namespace test {
 		m_proj = glm::perspective(glm::radians(60.0f), (float)Settings::WindowWidth / (float)Settings::WindowHeigth, 0.1f, 100.0f);
 
 		CameraViewTrabsform = new ToyRenderer::Transform(Vector3(0.0f, -0.5f,  4.0f), vector3_one, Vector3(0., 0.0f, 0.0));
-		
-		std::cout << CameraViewTrabsform->localToWorld();
 		CameraMovment       = new Behaviours::MoveCamera(CameraViewTrabsform);
 
 		m_view = CameraViewTrabsform->worldToLocal().GetGLM();
