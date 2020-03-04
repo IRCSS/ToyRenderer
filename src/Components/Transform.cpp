@@ -14,61 +14,62 @@ namespace ToyRenderer {
 	{
 	}
 
-	Matrix4x4 Transform::worldToLocal() const
+	Matrix4x4 Transform::localToWorld() const
 	{
 		// Start off with identity matrix
-		glm::mat4x4 toReturn = glm::mat4x4(1.0f, 0.0f, 0.0f, 0.0f,
-			                               0.0f, 1.0f, 0.0f, 0.0f,
-			                               0.0f, 0.0f, 1.0f, 0.0f,
-			                               0.0f, 0.0f, 0.0f, 1.0f);
+		Matrix4x4  toReturn = Matrix4x4(1.0f, 0.0f, 0.0f, 0.0f,
+			                            0.0f, 1.0f, 0.0f, 0.0f,
+			                            0.0f, 0.0f, 1.0f, 0.0f,
+			                            0.0f, 0.0f, 0.0f, 1.0f);
 	
 		// TRS Matrix creation
 
-		// last translate 
-		toReturn =  glm::mat4x4(1.0f,             0.0f,       0.0f, 0.0f,
-			                    0.0f,             1.0f,       0.0f, 0.0f,
-			                    0.0f,             0.0f,       1.0f, 0.0f,
-			                    position.x, position.y, position.z, 1.0f) * toReturn;
-		
-		
-		
-		toReturn = GetRotationMatFromEuler(eulerRotaiton.x, eulerRotaiton.y, eulerRotaiton.z).GetGLM() *toReturn;
-      
-		
-
 		// scale
-	    toReturn = glm::mat4x4(scale.x,      0.0f,       0.0f, 0.0f,
-			                      0.0f,   scale.y,       0.0f, 0.0f,
-			                      0.0f,      0.0f,    scale.z, 0.0f,
-			                      0.0f,      0.0f,       0.0f, 1.0f) * toReturn;
+	    toReturn =   Matrix4x4(scale.x,      0.0f,       0.0f, 0.0f,
+		 	                      0.0f,   scale.y,       0.0f, 0.0f,
+		 	                      0.0f,      0.0f,    scale.z, 0.0f,
+		 	                      0.0f,      0.0f,       0.0f, 1.0f) * toReturn;
+
+		// rotate
+		toReturn = GetRotationMatFromEuler(eulerRotaiton.x, eulerRotaiton.y, eulerRotaiton.z) *toReturn;
+
+		// last translate 
+		toReturn =    Matrix4x4(1.0f,             0.0f,       0.0f, position.x,
+			                    0.0f,             1.0f,       0.0f, position.y,
+			                    0.0f,             0.0f,       1.0f, position.z,
+			                    0.0f,             0.0f,       0.0f,       1.0f) * toReturn;
 
 		
-		return Matrix4x4(toReturn);
+		return toReturn;
 	}
 
-	Matrix4x4 Transform::localToWorld() const
+	Matrix4x4 Transform::worldToLocal() const
 	{
 		bool hasInverse;
-		return worldToLocal().Inverse(hasInverse);
+		return localToWorld().Inverse(hasInverse);
 	}
 
 	Vector3 Transform::Foward() const
 	{
-		Vector4 toReturn = localToWorld().GetColumn(2);
+		Vector4 toReturn = worldToLocal().GetColumn(2);
 
 		return Vector3(toReturn.x, toReturn.y, toReturn.z).normalized();
 	}
 
 	Vector3 Transform::Right() const
 	{
-		Vector4 toReturn = localToWorld().GetColumn(0);
+		Vector4 toReturn = worldToLocal().GetColumn(0);
 
 		return Vector3(toReturn.x, toReturn.y, toReturn.z).normalized();
 	}
 
 	Vector3 Transform::Up() const
 	{
-		Vector4 toReturn = localToWorld().GetColumn(1);
+
+		
+		Matrix4x4 m = worldToLocal();
+		Vector4 toReturn = m *Vector4(0.0, 1.0, 0.0, 0.0f);
+		        
 
 		return Vector3(toReturn.x, toReturn.y, toReturn.z).normalized();
 	}
@@ -100,26 +101,25 @@ namespace ToyRenderer {
 		float cos_z = cos(eulerRotaiton.z);
 		float sin_z = sin(eulerRotaiton.z);
 
-		// ---------- Rz*Ry*Rx
+		// ---------- Ry*Rx*Rz
+	    //Rz	
+		Matrix4x4   toReturn =   Matrix4x4(  cos_z,  -sin_z,   0.0f, 0.0f,
+			                                 sin_z,   cos_z,   0.0f, 0.0f,
+			                                  0.0f,    0.0f,   1.0f, 0.0f,
+			                                  0.0f,    0.0f,   0.0f, 1.0f);
+
 		//Rx
-		glm::mat4x4 toReturn = glm::mat4x4(   1.0f,    0.0f,   0.0f, 0.0f,
+		            toReturn =   Matrix4x4(   1.0f,    0.0f,   0.0f, 0.0f,
 			                                  0.0f,   cos_x, -sin_x, 0.0f,
 			                                  0.0f,   sin_x,  cos_x, 0.0f,
-			                                  0.0f,    0.0f,   0.0f, 1.0f);
+			                                  0.0f,    0.0f,   0.0f, 1.0f) * toReturn;
         //Ry	
-		toReturn = glm::mat4x4(  cos_y,    0.0f,  sin_y, 0.0f,
-			                      0.0f,    1.0f,   0.0f, 0.0f,
-			                    -sin_y,    0.0f,  cos_y, 0.0f,
-			                      0.0f,    0.0f,   0.0f, 1.0f) * toReturn;
-		//Rz	
-		toReturn = glm::mat4x4(  cos_z,  -sin_z,   0.0f, 0.0f,
-			                     sin_z,   cos_z,   0.0f, 0.0f,
-			                      0.0f,    0.0f,   1.0f, 0.0f,
-			                      0.0f,    0.0f,   0.0f, 1.0f) * toReturn;
-		
-		
-
-		return Matrix4x4(toReturn);
+		            toReturn =   Matrix4x4(  cos_y,    0.0f,  sin_y, 0.0f,
+		            	                      0.0f,    1.0f,   0.0f, 0.0f,
+		            	                    -sin_y,    0.0f,  cos_y, 0.0f,
+		            	                      0.0f,    0.0f,   0.0f, 1.0f) * toReturn;
+		            
+		return toReturn;
 	}
 
 }

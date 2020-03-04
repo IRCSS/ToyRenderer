@@ -64,10 +64,9 @@ namespace test {
 
 		m_proj = glm::perspective(glm::radians(60.0f), (float)Settings::WindowWidth / (float)Settings::WindowHeigth, 0.1f, 100.0f);
 
-		CameraViewTrabsform = new ToyRenderer::Transform(Vector3(-1.0f, 0.0f, -5.0f), vector3_one, vector3_zero);
+		CameraViewTrabsform = new ToyRenderer::Transform(Vector3(0.0f, 0.0f,  5.0f), vector3_one, Vector3(0., 0.0f, 0.0));
 		CameraMovment       = new Behaviours::MoveCamera(CameraViewTrabsform);
 
-		std::cout << CameraViewTrabsform->localToWorld() << std::endl;
 		//m_view = glm::translate(glm::mat4(1.0f), glm::vec3(-1.0f, 0.0f, -5.0f));
 		m_view = CameraViewTrabsform->worldToLocal().GetGLM();
 
@@ -117,7 +116,11 @@ namespace test {
 		m_model = glm::translate(glm::mat4(1.0f), translation);
 		m_view = CameraViewTrabsform->worldToLocal().GetGLM();
 
+		Vector4 result = CameraViewTrabsform->worldToLocal() * Vector4(0.0f, 0.0f, 0.0f, 1.0f);
+		std::cout << result << std::endl;
+
 		m_mvp = m_proj * m_view * m_model;
+
 		m_shader->SetUniformMat4("u_MVP", m_mvp);
 
 		m_render->Draw(*m_va, *m_ib, *m_shader);

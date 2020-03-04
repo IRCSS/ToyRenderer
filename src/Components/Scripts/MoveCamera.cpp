@@ -1,6 +1,6 @@
 #include "MoveCamera.h"
 #include "InputMaster.h"
-
+#include "maths/Vector2.h"
 namespace Behaviours {
 	MoveCamera::MoveCamera()
 	{
@@ -33,16 +33,24 @@ namespace Behaviours {
 		if (ToyRenderer::InputMaster::GetKey(ToyRenderer::KeyName::E)) y -= movementSpeed;
 		if (ToyRenderer::InputMaster::GetKey(ToyRenderer::KeyName::Q)) y += movementSpeed;
 
+
 		p += x * m_cam->Right() + y * m_cam->Up() + z * m_cam->Foward();
 
-		m_cam->position = p;
+		Matrix4x4 m = m_cam->localToWorld();
+	    Vector4 origionPosition = m* Vector4(0.0, 0.0, 0.0, 1.0f);
+		//m_cam->position = p;
 
-		float rotation = 0.01f;
-
-		m_cam->RotateAroundOrigin(Vector3(0.0, 0.00, 0.0f), rotation);
+		Vector2 mouseInput = ToyRenderer::InputMaster::mouse.GetMouseDelta();
 
 
-		std::cout << ToyRenderer::InputMaster::mouse.GetMouseDelta()<< std::endl;
+		float rotationY = ( mouseInput.x)* rotationSpeed;
+		float rotationX = (-mouseInput.y)* rotationSpeed;
+
+		//std::cout << rotationX << " rotation x, " << rotationY <<" rotation y." << std::endl;
+
+		 //m_cam->RotateAroundOrigin( vector3_up,     0.1f);
+		 //m_cam->RotateAroundOrigin( m_cam->Right(), rotationX);
+
 
 	}
 }
