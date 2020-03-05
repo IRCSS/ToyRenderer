@@ -24,6 +24,8 @@ namespace ToyRenderer {
 			0, 1 ,2, // first Triagnle 
 			2, 3, 0, // second Triangle
 		};
+
+		toReturn->VertexCount = 4;
 		return toReturn;
 	}
 }

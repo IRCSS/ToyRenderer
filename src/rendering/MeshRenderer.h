@@ -5,6 +5,7 @@
 #include "VertexBufferLayout.h"
 #include "Renderer.h"
 #include "rendering/Mesh/Mesh.h"
+#include "VertexArray.h"
 namespace ToyRenderer {
 
 	class MeshRenderer {
@@ -16,6 +17,7 @@ namespace ToyRenderer {
 
 		VertexBuffer*         vertexBuffer;
 		IndexBuffer *         indexBuffer;
+		VertexArray *         vertexArray;
 
 		VertexBufferLayout*   vertexBufferLayout;
 
@@ -27,6 +29,11 @@ namespace ToyRenderer {
 	   ~MeshRenderer();
 
 	   MeshRenderer(Mesh* m);
+	   MeshRenderer(Mesh* m, Shader* s);
+
+   private:
+	   void ExtractRenderProxyFromMesh();
+
 
 	};
 

@@ -15,7 +15,7 @@ namespace ToyRenderer {
 		std::vector<Color>   VertexColors;
 		std::vector<Vector3> VertexNormals;
 		//std::vector<Vector3> VertexTangents;
-		std::vector<int>     triangles;   // AKA index buffer
+		std::vector<unsigned int>     triangles;   // AKA index buffer
 		std::vector<Vector3> VertexPositions;
 		int      VertexCount;
 		std::vector<Vector2> uv;
