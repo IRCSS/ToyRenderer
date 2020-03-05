@@ -22,7 +22,7 @@ Matrix4x4::Matrix4x4(const float i0j0, const float i0j1, const float i0j2, const
 		            i0j2, i1j2,	i2j2, i3j2,   // Column 3
 	                i0j3, i1j3, i2j3, i3j3);  // Column 4
 
-	// GLM uses directX memory layout  c1.x, c1.y, c.z, c2.x, c2.y, c.2z ...
+	// GLM uses directX/OpenGL memory layout  c1.x, c1.y, c.z, c2.x, c2.y, c.2z ...
 
 }
 
