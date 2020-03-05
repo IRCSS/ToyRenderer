@@ -9,8 +9,9 @@ namespace Behaviours {
 		ToyRenderer::Transform* m_cam;
 
 	private:
-		const float movementSpeed = 0.01f;
-		const float rotationSpeed = 0.005f;
+		const float movementSpeed   = 0.01f;
+		const float rotationSpeed   = 0.005f;
+		const float speedMultiplyer = 3.0f;
 
 	public:
 		MoveCamera();

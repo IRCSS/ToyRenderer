@@ -22,6 +22,9 @@ namespace Behaviours {
 			return;
 		}
 		ToyRenderer::InputMaster::mouse.SetMouseVisible(false);
+		float speedBoast = 1.0f;
+
+		if (ToyRenderer::InputMaster::GetKey(ToyRenderer::KeyName::LeftShift)) speedBoast = speedMultiplyer;
 
 		Vector3 p = m_cam->position;
 
@@ -41,7 +44,7 @@ namespace Behaviours {
 		if (ToyRenderer::InputMaster::GetKey(ToyRenderer::KeyName::Q)) y -= movementSpeed;
 
 
-		p += -x * m_cam->Right() + y * m_cam->Up() + -z * m_cam->Foward();
+		p += (-x * m_cam->Right() + y * m_cam->Up() + -z * m_cam->Foward())*speedBoast;
 
 		m_cam->position = p;
 
