@@ -163,9 +163,11 @@
     <ClCompile Include="src\maths\Vector2.cpp" />
     <ClCompile Include="src\maths\Vector3.cpp" />
     <ClCompile Include="src\maths\Vector4.cpp" />
+    <ClCompile Include="src\rendering\MeshRenderer.cpp" />
     <ClCompile Include="src\rendering\Mesh\Mesh.cpp" />
     <ClCompile Include="src\MeshLoader.cpp" />
     <ClCompile Include="src\RawMesh.cpp" />
+    <ClCompile Include="src\rendering\Mesh\PrimitiveFactory.cpp" />
     <ClCompile Include="src\rendering\Renderer.cpp" />
     <ClCompile Include="src\ResourceManager.cpp" />
     <ClCompile Include="src\Shader.cpp" />
@@ -335,9 +337,11 @@
     <ClInclude Include="src\maths\Vector2.h" />
     <ClInclude Include="src\maths\Vector3.h" />
     <ClInclude Include="src\maths\Vector4.h" />
+    <ClInclude Include="src\rendering\MeshRenderer.h" />
     <ClInclude Include="src\rendering\Mesh\Mesh.h" />
     <ClInclude Include="src\MeshLoader.h" />
     <ClInclude Include="src\RawMesh.h" />
+    <ClInclude Include="src\rendering\Mesh\PrimitiveFactory.h" />
     <ClInclude Include="src\rendering\Renderer.h" />
     <ClInclude Include="src\ResourceManager.h" />
     <ClInclude Include="src\Settings.h" />
