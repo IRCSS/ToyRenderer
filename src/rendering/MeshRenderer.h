@@ -6,9 +6,10 @@
 #include "Renderer.h"
 #include "rendering/Mesh/Mesh.h"
 #include "VertexArray.h"
+#include "Components/Component.h"
 namespace ToyRenderer {
 
-	class MeshRenderer {
+	class MeshRenderer : Component{
 
 	public:
     //  -------------------   ------------------

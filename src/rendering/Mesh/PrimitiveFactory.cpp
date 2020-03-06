@@ -20,7 +20,7 @@ namespace ToyRenderer {
 											 Vector2(1.0f, 1.0f),
 											 Vector2(0.0f, 1.0f) };
 
-		toReturn->triangles = std::vector<int>{
+		toReturn->triangles = std::vector<unsigned int>{
 			0, 1 ,2, // first Triagnle 
 			2, 3, 0, // second Triangle
 		};

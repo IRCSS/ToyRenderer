@@ -7,6 +7,7 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "imgui/imgui.h"
 #include "Settings.h"
+#include "world/GameObject.h"
 namespace test {
 	TesstObjLoader::TesstObjLoader()
 	{
@@ -86,6 +87,12 @@ namespace test {
 		vb.UnBind();
 		m_ib->UnBind();
 		m_shader->UnBind();
+
+		ToyRenderer::GameObject gb =  ToyRenderer::GameObject();
+		gb.AddComponent<Behaviours::MoveCamera>(CameraMovment);
+		Behaviours::MoveCamera* mc = gb.GetComponent<Behaviours::MoveCamera>();
+		
+
 	}
 	TesstObjLoader::~TesstObjLoader()
 	{

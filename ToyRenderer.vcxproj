@@ -184,6 +184,8 @@
     <ClCompile Include="src\vendor\stb_image\stb_image.cpp" />
     <ClCompile Include="src\VertexArray.cpp" />
     <ClCompile Include="src\VertexBuffer.cpp" />
+    <ClCompile Include="src\world\GameObject.cpp" />
+    <ClCompile Include="src\world\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\basic.shader" />
@@ -606,6 +608,8 @@
     <ClInclude Include="src\VertexArray.h" />
     <ClInclude Include="src\VertexBuffer.h" />
     <ClInclude Include="src\VertexBufferLayout.h" />
+    <ClInclude Include="src\world\GameObject.h" />
+    <ClInclude Include="src\world\Scene.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\checkerFormat.png" />

@@ -129,6 +129,12 @@
     <ClCompile Include="src\rendering\MeshRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\world\Scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\world\GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Settings.h">
@@ -978,6 +984,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\rendering\MeshRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\world\Scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\world\GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
