@@ -19,8 +19,9 @@ namespace ToyRenderer {
 
 		template<typename T>
 		T* GetComponent() const {
-			for (std::vector<Component*>::iterator it = components.begin(); it != components.end(); ++it) {
-				T* isT = dynamic_cast<T*> (*it);
+			
+			for (std::vector<int>::size_type i = 0; i != components.size(); i++) {
+				T* isT = dynamic_cast<T*> (components[i]);
 				if (!isT) continue;
 				return isT;
 			}
@@ -30,6 +31,7 @@ namespace ToyRenderer {
 		template<typename T>
 		void AddComponent(T* toAdd) {
 			components.push_back((Component*) toAdd);
+			std::cout << components.size() << std::endl;
 		}
 		
 

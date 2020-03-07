@@ -2,7 +2,7 @@
 #include "Components/Component.h"
 namespace Behaviours {
 
-	class Script : ToyRenderer::Component {
+	class Script : public ToyRenderer::Component {
 		
 	public:
 		Script() {};

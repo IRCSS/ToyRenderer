@@ -88,9 +88,7 @@ namespace test {
 		m_ib->UnBind();
 		m_shader->UnBind();
 
-		ToyRenderer::GameObject gb =  ToyRenderer::GameObject();
-		gb.AddComponent<Behaviours::MoveCamera>(CameraMovment);
-		Behaviours::MoveCamera* mc = gb.GetComponent<Behaviours::MoveCamera>();
+		
 		
 
 	}

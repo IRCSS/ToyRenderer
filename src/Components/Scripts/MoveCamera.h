@@ -3,7 +3,7 @@
 #include "Components/Transform.h"
 namespace Behaviours {
 
-	class MoveCamera : Script {
+	class MoveCamera :public Script {
 
 	public: 
 		ToyRenderer::Transform* m_cam;

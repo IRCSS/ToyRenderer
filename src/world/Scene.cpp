@@ -5,4 +5,14 @@ namespace ToyRenderer {
 	{
 		
 	}
+	void Scene::OnUpdate(float deltaTime) const
+	{
+
+	}
+	void Scene::OnRender() const
+	{
+	}
+	void Scene::OnGUI() const
+	{
+	}
 }
