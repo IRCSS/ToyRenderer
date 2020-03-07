@@ -1,10 +1,11 @@
 #pragma once
 #include "world/GameObject.h" 
+
 namespace ToyRenderer {
 	class Scene {
 	
 	public:
-		std::vector<GameObject> GameObject;
+		std::vector<GameObject*> sceneObjects;
 		
 	
 	public:

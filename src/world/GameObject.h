@@ -16,11 +16,14 @@ namespace ToyRenderer {
 
 	public: 
 		GameObject();
+		void OnUpdate(float deltaTime);
+		void OnRender();
+		void OnGUI();
 
 		template<typename T>
 		T* GetComponent() const {
 			
-			for (std::vector<int>::size_type i = 0; i != components.size(); i++) {
+			for (std::vector<Component*>::size_type i = 0; i != components.size(); i++) {
 				T* isT = dynamic_cast<T*> (components[i]);
 				if (!isT) continue;
 				return isT;
