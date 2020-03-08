@@ -1,12 +1,13 @@
 #pragma once
-#include "world/GameObject.h" 
+#include "world/GameObject.h"
+#include "rendering/Renderer.h"
 
 namespace ToyRenderer {
 	class Scene {
 	
 	public:
 		std::vector<GameObject*> sceneObjects;
-		
+		Renderer* renderer;
 	
 	public:
 		Scene();

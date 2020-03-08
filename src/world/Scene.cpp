@@ -3,7 +3,7 @@
 namespace ToyRenderer {
     Scene::Scene()
 	{
-		
+		renderer = new Renderer();
 	}
 	void Scene::OnUpdate(float deltaTime) const
 	{

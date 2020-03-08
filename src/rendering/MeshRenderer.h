@@ -9,9 +9,11 @@
 #include "Components/Component.h"
 
 class Matrix4x4;
+class Renderer;
 
 namespace ToyRenderer {
 
+	class Transform;
 	class MeshRenderer : public Component{
 
 	public:
@@ -26,7 +28,8 @@ namespace ToyRenderer {
 		VertexBufferLayout*   vertexBufferLayout;
 
 	private:
-		Mesh* mesh;
+		Mesh*      mesh;
+		Transform* transform;
 
 	public: 
 		MeshRenderer();
@@ -35,7 +38,7 @@ namespace ToyRenderer {
 	   MeshRenderer(Mesh* m);
 	   MeshRenderer(Mesh* m, Shader* s);
 
-	   void Render(const Matrix4x4& vp);
+	   void Render( Renderer& renderer, const Matrix4x4& vp);
 
    private:
 	   void ExtractRenderProxyFromMesh();

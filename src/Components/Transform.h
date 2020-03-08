@@ -10,7 +10,7 @@
 
 namespace ToyRenderer {
 
-	class Transform : Component {
+	class Transform : public Component {
 
 	public: 
 		Vector3 position, scale;
