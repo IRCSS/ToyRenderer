@@ -1,6 +1,7 @@
 #pragma once
-#include "world/GameObject.h"
+
 namespace ToyRenderer {
+	class GameObject;
 	class Component {
 
 	public:
@@ -12,5 +13,9 @@ namespace ToyRenderer {
 	  virtual void OnUpdate(float deltaTime);
 	  virtual void OnRender();
 	  virtual void OnImGuiRender();
+
+	  
+	
+
 	};
 }

@@ -8,6 +8,8 @@
 #include "imgui/imgui.h"
 #include "Settings.h"
 #include "world/GameObject.h"
+#include "rendering/Mesh/PrimitiveFactory.h"
+#include "rendering/MeshRenderer.h"
 namespace test {
 	TesstObjLoader::TesstObjLoader()
 	{
@@ -28,37 +30,18 @@ namespace test {
 		// Setting up shader for Rendering 
 		m_render = new Renderer();
 
-		m_shader = new Shader("res/shaders/basic.shader");
+	
 		
 
 
 
-		// Setting up the ground 
+		ToyRenderer::Mesh*        groundGridMesh = ToyRenderer::PrimitivFactory::CreatePlane();
+		ToyRenderer::Transform*   groundGridTran = new ToyRenderer::Transform(Vector3(0.0f, -4.5f, 4.0f), vector3_one*100.0f, vector3_zero);
+		                                m_shader = new Shader("res/shaders/basic.shader");
+       ToyRenderer::MeshRenderer* groundGridRend = new ToyRenderer::MeshRenderer(groundGridMesh, m_shader);
 
-		float positions[] = {
-			-100.0f,  -5.0f,  100.0f, 0.0f, 0.0f, // 0
-			 100.0f,  -5.0f,  100.0f, 1.0f, 0.0f, // 1
-			 100.0f,  -5.0f, -100.5f, 1.0f, 1.0f, // 2
-			-100.0f,  -5.0f, -100.5f, 0.0f, 1.0f  // 3
-		};
+		
 
-		unsigned int traingleIndcies[] =
-		{
-			0, 1 ,2, // first Triagnle 
-			2, 3, 0, // second Triangle
-		};
-
-
-		VertexBuffer vb(positions, 5 * 4 * sizeof(float));
-
-		m_ib = new IndexBuffer(traingleIndcies, 6);
-
-		VertexBufferLayout layout;
-		layout.Push<float>(3); // position
-		layout.Push<float>(2); // uv
-
-		m_va = new VertexArray();
-		m_va->AddBuffer(vb, layout);
 
 
 		//m_proj = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f);
@@ -83,13 +66,6 @@ namespace test {
 		m_Texture->Bind();
 
 
-		m_va->UnBind();
-		vb.UnBind();
-		m_ib->UnBind();
-		m_shader->UnBind();
-
-		
-		
 
 	}
 	TesstObjLoader::~TesstObjLoader()

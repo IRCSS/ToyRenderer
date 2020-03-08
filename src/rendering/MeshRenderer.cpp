@@ -21,6 +21,10 @@ namespace ToyRenderer {
 		ExtractRenderProxyFromMesh();
 
 	}
+	void MeshRenderer::Render(const Matrix4x4 & vp)
+	{
+
+	}
 	void MeshRenderer::ExtractRenderProxyFromMesh()
 	{
 		if (mesh) return;

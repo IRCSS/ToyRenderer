@@ -7,9 +7,12 @@
 #include "rendering/Mesh/Mesh.h"
 #include "VertexArray.h"
 #include "Components/Component.h"
+
+class Matrix4x4;
+
 namespace ToyRenderer {
 
-	class MeshRenderer : Component{
+	class MeshRenderer : public Component{
 
 	public:
     //  -------------------   ------------------
@@ -31,6 +34,8 @@ namespace ToyRenderer {
 
 	   MeshRenderer(Mesh* m);
 	   MeshRenderer(Mesh* m, Shader* s);
+
+	   void Render(const Matrix4x4& vp);
 
    private:
 	   void ExtractRenderProxyFromMesh();

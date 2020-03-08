@@ -20,6 +20,9 @@ namespace ToyRenderer {
 		void OnRender();
 		void OnGUI();
 
+		// Replace this later with a unordered map iwth typid as string key and vector of components pointer as value.
+		// it will reduce the access time for GetComponent.
+
 		template<typename T>
 		T* GetComponent() const {
 			
@@ -33,8 +36,10 @@ namespace ToyRenderer {
 
 		template<typename T>
 		void AddComponent(T* toAdd) {
-			components.push_back((Component*) toAdd);
-			std::cout << components.size() << std::endl;
+			Component* cp = (Component*)toAdd;
+			cp->gameObject = this;
+			components.push_back(cp);
+
 		}
 		
 
