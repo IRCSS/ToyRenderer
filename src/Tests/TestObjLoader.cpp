@@ -15,6 +15,37 @@ namespace test {
 	{
 		ToyRenderer::ResourceManager::Instance();
 
+		// Construct scene 
+		pScene = new ToyRenderer::Scene();
+
+		// Construct Camera
+
+
+		ToyRenderer::GameObject* cameraGB = new ToyRenderer::GameObject();
+		CameraViewTrabsform = new ToyRenderer::Transform(Vector3(0.0f, -0.5f, 4.0f), vector3_one, Vector3(0., 0.0f, 0.0));
+		cameraGB->AddComponent(CameraViewTrabsform);
+
+		CameraMovment       = new Behaviours::MoveCamera(CameraViewTrabsform);
+		cameraGB->AddComponent(CameraMovment);
+		cameraGB->name = "mainCamera";
+		pScene->sceneObjects.push_back(cameraGB);
+
+
+		// Setup GroundPlance
+		ToyRenderer::GameObject*   groundGameObject = new ToyRenderer::GameObject();
+
+		ToyRenderer::Transform*    groundGridTran = new ToyRenderer::Transform(Vector3(0.0f, -4.5f, 4.0f), vector3_one*100.0f, vector3_zero);
+		groundGameObject->AddComponent(groundGridTran);
+
+	    ToyRenderer::Mesh*         groundGridMesh = ToyRenderer::PrimitivFactory::CreatePlane();
+		                                 m_shader = new Shader("res/shaders/basic.shader");
+        ToyRenderer::MeshRenderer* groundGridRend = new ToyRenderer::MeshRenderer(groundGridMesh, m_shader);
+
+	
+
+		groundGameObject->AddComponent(groundGridRend);
+
+		pScene->sceneObjects.push_back(groundGameObject);
 
 		//ToyRenderer::RawMesh*  loadedMesh = ToyRenderer::MeshLoader::LoadTinyObj( "D:/ShaPlayGround/ToyRenderer/Meshes/WanderingMan_Model_CutOutMaster.obj", "D:/ShaPlayGround/ToyRenderer/Meshes/");
 		//
@@ -26,46 +57,6 @@ namespace test {
 		//	if (ms.size()>0) std::cout << ms.size() << std::endl;
 
 		//}
-
-		// Setting up shader for Rendering 
-		m_render = new Renderer();
-
-	
-		
-
-
-
-		ToyRenderer::Mesh*        groundGridMesh = ToyRenderer::PrimitivFactory::CreatePlane();
-		ToyRenderer::Transform*   groundGridTran = new ToyRenderer::Transform(Vector3(0.0f, -4.5f, 4.0f), vector3_one*100.0f, vector3_zero);
-		                                m_shader = new Shader("res/shaders/basic.shader");
-       ToyRenderer::MeshRenderer* groundGridRend = new ToyRenderer::MeshRenderer(groundGridMesh, m_shader);
-
-		
-
-
-
-		//m_proj = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f);
-
-		m_proj = glm::perspective(glm::radians(60.0f), (float)Settings::WindowWidth / (float)Settings::WindowHeigth, 0.1f, 100.0f);
-
-		CameraViewTrabsform = new ToyRenderer::Transform(Vector3(0.0f, -0.5f,  4.0f), vector3_one, Vector3(0., 0.0f, 0.0));
-		CameraMovment       = new Behaviours::MoveCamera(CameraViewTrabsform);
-
-		m_view = CameraViewTrabsform->worldToLocal().GetGLM();
-
-		glm::vec3 translation(0.0f, 1.0f, 0.0f);
-		m_model = glm::translate(glm::mat4(1.0f), translation);
-		m_mvp = m_proj * m_view * m_model;
-
-
-		m_shader->Bind();
-		m_shader->SetUniform1i("u_Texture", 0); // binding the texture to the 0 slot of the sampler2D
-
-
-		m_Texture = new Texture("res/textures/checkerFormat.png");
-		m_Texture->Bind();
-
-
 
 	}
 	TesstObjLoader::~TesstObjLoader()
@@ -86,28 +77,14 @@ namespace test {
 
 	void TesstObjLoader::OnUpdate(float deltaTime)
 	{
-		CameraMovment->OnUpdate(deltaTime);
+		pScene->OnUpdate(deltaTime);
 
 	}
 	void TesstObjLoader::OnRender()
 	{
-		m_shader->Bind();
-		m_shader->SetUniformf("u_iTime", 0.0f); // need to abstract his in material class
-		m_model = glm::translate(glm::mat4(1.0f), translation);
-		m_view = CameraViewTrabsform->worldToLocal().GetGLM();
-
-
-
-		m_mvp = m_proj * m_view * m_model;
-
-		m_shader->SetUniformMat4("u_MVP", m_mvp);
-
-		m_render->Draw(*m_va, *m_ib, *m_shader);
-
+		pScene->OnRender();
 	}
 	void TesstObjLoader::OnImGuiRender()
 	{
-		ImGui::SliderFloat3("float", &translation.x, -2.0f, 2.0f);            // Edit 1 float using a slider from 0.0f to 1.0f    
-		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 	}
 }

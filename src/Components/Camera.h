@@ -2,10 +2,14 @@
 #include <vector>
 #include "Components/Component.h"
 
+class Matrix4x4;
+
 namespace ToyRenderer {
 	class Scene;
 	class MeshRenderer;
 	class Transform;
+
+
 	class Camera : public Component {
 	
 	public: 
@@ -22,5 +26,7 @@ namespace ToyRenderer {
 		 Camera(Scene* scene);
 		 void OnRender() override;
 		 void UpdateRenderLists();
+		 Matrix4x4 ProjectionMatrix() const;
+		 Matrix4x4 VPMatrix() const;
 	};
 }

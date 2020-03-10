@@ -7,6 +7,7 @@
 #include "VertexArray.h"
 #include "Components/Transform.h"
 #include "Components/Scripts/MoveCamera.h"
+#include "world/Scene.h"
 
 namespace test {
 
@@ -32,6 +33,8 @@ namespace test {
 
 		Behaviours::MoveCamera* CameraMovment;
 		ToyRenderer::Transform* CameraViewTrabsform;
+		ToyRenderer::Scene*     pScene;
+
 
 		glm::mat4 m_model;
 		glm::mat4 m_proj;

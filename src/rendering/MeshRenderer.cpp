@@ -17,12 +17,11 @@ namespace ToyRenderer {
 	}
 	MeshRenderer::MeshRenderer(Mesh * m) : mesh(m)
 	{
-		transform = gameObject->GetComponent<Transform>();
+		
 		ExtractRenderProxyFromMesh();
 	}
 	MeshRenderer::MeshRenderer(Mesh * m, Shader * s) : mesh(m), shader(s)
 	{
-		transform = gameObject->GetComponent<Transform>();
 		ExtractRenderProxyFromMesh();
 
 	}
