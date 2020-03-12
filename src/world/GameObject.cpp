@@ -13,6 +13,7 @@ namespace ToyRenderer {
 	}
 	void GameObject::OnRender()
 	{
+
 		for (std::vector<Component*>::size_type i = 0; i != components.size(); i++) {
 
 			components[i]->OnRender();

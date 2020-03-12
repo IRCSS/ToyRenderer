@@ -10,6 +10,7 @@
 #include "world/GameObject.h"
 #include "rendering/Mesh/PrimitiveFactory.h"
 #include "rendering/MeshRenderer.h"
+#include "Components/Camera.h"
 namespace test {
 	TesstObjLoader::TesstObjLoader()
 	{
@@ -23,10 +24,13 @@ namespace test {
 
 		ToyRenderer::GameObject* cameraGB = new ToyRenderer::GameObject();
 		CameraViewTrabsform = new ToyRenderer::Transform(Vector3(0.0f, -0.5f, 4.0f), vector3_one, Vector3(0., 0.0f, 0.0));
-		cameraGB->AddComponent(CameraViewTrabsform);
+		cameraGB->AddComponent<ToyRenderer::Transform>(CameraViewTrabsform);
+
+		ToyRenderer::Camera*  pCameraComp = new ToyRenderer::Camera(pScene);
+		cameraGB->AddComponent<ToyRenderer::Camera>(pCameraComp);
 
 		CameraMovment       = new Behaviours::MoveCamera(CameraViewTrabsform);
-		cameraGB->AddComponent(CameraMovment);
+		cameraGB->AddComponent < Behaviours::MoveCamera> (CameraMovment);
 		cameraGB->name = "mainCamera";
 		pScene->sceneObjects.push_back(cameraGB);
 
@@ -35,17 +39,21 @@ namespace test {
 		ToyRenderer::GameObject*   groundGameObject = new ToyRenderer::GameObject();
 
 		ToyRenderer::Transform*    groundGridTran = new ToyRenderer::Transform(Vector3(0.0f, -4.5f, 4.0f), vector3_one*100.0f, vector3_zero);
-		groundGameObject->AddComponent(groundGridTran);
+		groundGameObject->AddComponent<ToyRenderer::Transform>(groundGridTran);
 
 	    ToyRenderer::Mesh*         groundGridMesh = ToyRenderer::PrimitivFactory::CreatePlane();
 		                                 m_shader = new Shader("res/shaders/basic.shader");
         ToyRenderer::MeshRenderer* groundGridRend = new ToyRenderer::MeshRenderer(groundGridMesh, m_shader);
 
-	
+		groundGameObject->name = "groundPlane";
 
-		groundGameObject->AddComponent(groundGridRend);
+		groundGameObject->AddComponent<ToyRenderer::MeshRenderer>(groundGridRend);
 
 		pScene->sceneObjects.push_back(groundGameObject);
+
+
+		// Update Camera Scene Content : Need a better solution later, maybe marking scene dirty or something
+		pCameraComp->UpdateRenderLists();
 
 		//ToyRenderer::RawMesh*  loadedMesh = ToyRenderer::MeshLoader::LoadTinyObj( "D:/ShaPlayGround/ToyRenderer/Meshes/WanderingMan_Model_CutOutMaster.obj", "D:/ShaPlayGround/ToyRenderer/Meshes/");
 		//

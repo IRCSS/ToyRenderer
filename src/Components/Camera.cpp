@@ -13,7 +13,7 @@ namespace ToyRenderer {
 	}
 	Camera::Camera(Scene * in_Scene) : scene(in_Scene)
 	{
-		if (!transform) transform = gameObject->GetComponent<Transform>();
+		
 		UpdateRenderLists();
 		fov      = 60.0f;
 		nearClip = 0.01f;
@@ -22,7 +22,8 @@ namespace ToyRenderer {
 	}
 	void Camera::OnRender()
 	{
-		if (!transform) transform = gameObject->GetComponent<Transform>();
+
+		if (!transform && gameObject) transform = gameObject->GetComponent<Transform>();
 
 		Matrix4x4 vp = VPMatrix();
 

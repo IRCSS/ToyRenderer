@@ -17,5 +17,4 @@ public:
    void AddBuffer(const VertexBuffer& vb, const VertexBufferLayout layout);
    void Bind() const;
    void UnBind() const;
-
 };

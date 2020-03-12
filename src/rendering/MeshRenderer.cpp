@@ -23,7 +23,6 @@ namespace ToyRenderer {
 	MeshRenderer::MeshRenderer(Mesh * m, Shader * s) : mesh(m), shader(s)
 	{
 		ExtractRenderProxyFromMesh();
-
 	}
 	void MeshRenderer::Render( Renderer& renderer, const Matrix4x4 & vp)
 	{
@@ -32,13 +31,13 @@ namespace ToyRenderer {
 		Matrix4x4 mvp = vp* transform->localToWorld();
 		shader->Bind();
 		shader->SetUniformMat4("u_MVP", mvp.GetGLM());
-
+		
 		renderer.Draw(*vertexArray, *indexBuffer, *shader);
 		
 	}
 	void MeshRenderer::ExtractRenderProxyFromMesh()
 	{
-		if (mesh) return;
+		if (!mesh) return;
 
 		int vertexSize = 0;
 		if (mesh->VertexPositions.size() != 0)  vertexSize += 3;
@@ -48,7 +47,7 @@ namespace ToyRenderer {
 
 
 		std::vector<float> vertices;
-		vertices.resize(vertexSize *  mesh->VertexCount);
+		vertices.reserve(vertexSize *  mesh->VertexCount);
 
 		for (int i = 0; i < mesh->VertexCount; i++) {
 			
@@ -76,20 +75,21 @@ namespace ToyRenderer {
 				vertices.push_back(mesh->VertexColors[i].m_blue);
 			}
 
-			vertexBuffer = new VertexBuffer(&vertices[0], vertices.size() * sizeof(float));
-			indexBuffer  = new IndexBuffer (&mesh->triangles[0], mesh->triangles.size());
 			
-			vertexBufferLayout = new VertexBufferLayout();
-
-			if (mesh->VertexPositions.size() != 0) vertexBufferLayout->Push<float>(3);
-			if (mesh->uv.size() != 0) vertexBufferLayout->Push<float>(2);
-			if (mesh->VertexNormals.size() != 0) vertexBufferLayout->Push<float>(3);
-			if (mesh->VertexColors.size() != 0) vertexBufferLayout->Push<float>(3);
-
-
-			vertexArray = new VertexArray();
-			vertexArray->AddBuffer(*vertexBuffer, *vertexBufferLayout);
 		}
+		vertexBuffer = new VertexBuffer(&vertices[0], vertices.size() * sizeof(float));
+		indexBuffer = new IndexBuffer(&mesh->triangles[0], mesh->triangles.size());
+
+		vertexBufferLayout = new VertexBufferLayout();
+
+		if (mesh->VertexPositions.size() != 0) vertexBufferLayout->Push<float>(3);
+		if (mesh->uv.size() != 0) vertexBufferLayout->Push<float>(2);
+		if (mesh->VertexNormals.size() != 0) vertexBufferLayout->Push<float>(3);
+		if (mesh->VertexColors.size() != 0) vertexBufferLayout->Push<float>(3);
+
+
+		vertexArray = new VertexArray();
+		vertexArray->AddBuffer(*vertexBuffer, *vertexBufferLayout);
 
 	}
 }
