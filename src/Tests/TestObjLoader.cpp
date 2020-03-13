@@ -11,6 +11,7 @@
 #include "rendering/Mesh/PrimitiveFactory.h"
 #include "rendering/MeshRenderer.h"
 #include "Components/Camera.h"
+#include "rendering/Material.h"
 namespace test {
 	TesstObjLoader::TesstObjLoader()
 	{
@@ -43,13 +44,21 @@ namespace test {
 
 	    ToyRenderer::Mesh*         groundGridMesh = ToyRenderer::PrimitivFactory::CreatePlane();
 		                                 m_shader = new Shader("res/shaders/basic.shader");
-        ToyRenderer::MeshRenderer* groundGridRend = new ToyRenderer::MeshRenderer(groundGridMesh, m_shader);
+
+        ToyRenderer::Material*     groundMaterial = new ToyRenderer::Material(m_shader);
+		ToyRenderer::ResourceManager::Instance().RegisterMaterial(groundMaterial);
+        
+        ToyRenderer::MeshRenderer* groundGridRend = new ToyRenderer::MeshRenderer(groundGridMesh, groundMaterial);
 
 		groundGameObject->name = "groundPlane";
 
 		groundGameObject->AddComponent<ToyRenderer::MeshRenderer>(groundGridRend);
 
 		pScene->sceneObjects.push_back(groundGameObject);
+
+
+		
+
 
 
 		// Update Camera Scene Content : Need a better solution later, maybe marking scene dirty or something
@@ -85,6 +94,7 @@ namespace test {
 
 	void TesstObjLoader::OnUpdate(float deltaTime)
 	{
+		pScene->sceneObjects[1]->GetComponent<ToyRenderer::MeshRenderer>()->material->SetFloat("u_iTime", deltaTime);
 		pScene->OnUpdate(deltaTime);
 
 	}

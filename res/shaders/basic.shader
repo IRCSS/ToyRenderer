@@ -31,6 +31,6 @@ void main()
 	vec4 texColor = texture(u_Texture, v_TexCoord);
 	vec2 xy = abs(fract((v_TexCoord.xy-0.5)*100.)) ;
 		 float f = smoothstep( 0.05- length(fwidth(xy)),0.06, min(xy.x, xy.y));
-		 texColor = mix(vec4(1., 1., 1., 1.0), vec4(0.,0.,0.,0.), f + u_iTime*0.0001);
+		 texColor = mix(vec4(sin(u_iTime*0.002), 1., 1., 1.0), vec4(0.,0.,0.,0.), f );
  color = texColor;
 };

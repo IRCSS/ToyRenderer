@@ -13,13 +13,13 @@ class Renderer;
 
 namespace ToyRenderer {
 
+	class Material;
 	class Transform;
 	class MeshRenderer : public Component{
 
 	public:
     //  -------------------   ------------------
 		Material*             material;
-		Shader*               shader;
 
 		VertexBuffer*         vertexBuffer;
 		IndexBuffer *         indexBuffer;
@@ -36,7 +36,7 @@ namespace ToyRenderer {
 	   ~MeshRenderer();
 
 	   MeshRenderer(Mesh* m);
-	   MeshRenderer(Mesh* m, Shader* s);
+	   MeshRenderer(Mesh* mesh, Material* material);
 
 	   void Render( Renderer& renderer, const Matrix4x4& vp);
 

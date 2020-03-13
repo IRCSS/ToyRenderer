@@ -8,7 +8,8 @@ namespace ToyRenderer {
 	class Material {
 
 	public:
-		int m_AssetID;
+		int     m_AssetID;
+		Shader* m_Shader;
 
 	private:
 		std::unordered_map<std::string,       int>         m_pIntegers;
@@ -16,8 +17,8 @@ namespace ToyRenderer {
 		std::unordered_map<std::string, const Texture*>    m_pTextures;
 		std::unordered_map<std::string,       Color>       m_pColors;
 		std::unordered_map<std::string,       Matrix4x4>   m_pMatrices;
+
 		
-		Shader* m_Shader;
 
 
 	public:
@@ -33,6 +34,7 @@ namespace ToyRenderer {
 		void SetColor   (const std::string& name,       Color     c);
 		void SetMatrix  (const std::string& name,       Matrix4x4 m);
 
+		void BindMaterialParameters();
 
 	private:
 

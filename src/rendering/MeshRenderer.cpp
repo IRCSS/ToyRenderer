@@ -3,6 +3,7 @@
 #include "rendering/Renderer.h"
 #include "world/GameObject.h"
 #include "Components/Transform.h"
+#include "Material.h"
 namespace ToyRenderer {
 
 	MeshRenderer::MeshRenderer()
@@ -17,22 +18,25 @@ namespace ToyRenderer {
 	}
 	MeshRenderer::MeshRenderer(Mesh * m) : mesh(m)
 	{
-		
 		ExtractRenderProxyFromMesh();
 	}
-	MeshRenderer::MeshRenderer(Mesh * m, Shader * s) : mesh(m), shader(s)
+	
+
+	MeshRenderer::MeshRenderer(Mesh * m, Material* mat) : mesh(m), material(mat)
 	{
 		ExtractRenderProxyFromMesh();
 	}
 	void MeshRenderer::Render( Renderer& renderer, const Matrix4x4 & vp)
 	{
+		if (!material) return;
 		if(!transform) transform = gameObject->GetComponent<Transform>();
 
 		Matrix4x4 mvp = vp* transform->localToWorld();
-		shader->Bind();
-		shader->SetUniformMat4("u_MVP", mvp.GetGLM());
-		
-		renderer.Draw(*vertexArray, *indexBuffer, *shader);
+		material->m_Shader->Bind();
+		material->m_Shader->SetUniformMat4("u_MVP", mvp.GetGLM());
+		material->BindMaterialParameters();
+
+		renderer.Draw(*vertexArray, *indexBuffer, *material->m_Shader);
 		
 	}
 	void MeshRenderer::ExtractRenderProxyFromMesh()
