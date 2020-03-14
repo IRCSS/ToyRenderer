@@ -30,7 +30,7 @@ namespace ToyRenderer {
 
 		if (!transform && gameObject) transform = gameObject->GetComponent<Transform>();
 
-		Matrix4x4 vp = VP_NoTranslation_Matrix();
+		Matrix4x4 vp = VP_NoTranslation_Matrix();  // IMPORTANT: RENDER SKYBOX LATER ONCE YOU HAVE A TRANSPARENT LAYER
 		skybox->Render(*scene->renderer, vp);
 
 		  vp = VPMatrix();
