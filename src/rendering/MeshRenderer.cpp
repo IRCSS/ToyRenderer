@@ -29,9 +29,13 @@ namespace ToyRenderer {
 	void MeshRenderer::Render( Renderer& renderer, const Matrix4x4 & vp)
 	{
 		if (!material) return;
-		if(!transform) transform = gameObject->GetComponent<Transform>();
 
-		Matrix4x4 mvp = vp* transform->localToWorld();
+		Matrix4x4 mvp = vp;
+
+		if (gameObject) {
+			if (!transform) transform = gameObject->GetComponent<Transform>();
+			if (transform) mvp = mvp * transform->localToWorld();
+		}
 		material->m_Shader->Bind();
 		material->m_Shader->SetUniformMat4("u_MVP", mvp.GetGLM());
 		material->BindMaterialParameters();

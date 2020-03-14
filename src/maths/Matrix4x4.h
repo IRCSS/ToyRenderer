@@ -24,6 +24,9 @@ public:
 	const Matrix4x4  Inverse(bool& hasInverse)const;
 	const Matrix4x4  Transpose()              const;
 
+	void SetRow   (int rowId,    Vector4 row);
+	void SetColumn(int columnid, Vector4 column);
+
                 void operator=(const Matrix4x4 rhs);
 	friend Matrix4x4 operator*(const Matrix4x4& lhs, const Matrix4x4& rhs);
 	friend Vector4   operator*(const Matrix4x4& lhs, const Vector4& rhs);

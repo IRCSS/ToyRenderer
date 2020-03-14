@@ -153,6 +153,7 @@
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Bounds.cpp" />
     <ClCompile Include="src\Components\Camera.cpp" />
+    <ClCompile Include="src\Components\ProceduralSkyBox.cpp" />
     <ClCompile Include="src\Components\Scripts\MoveCamera.cpp" />
     <ClCompile Include="src\Components\Transform.cpp" />
     <ClCompile Include="src\maths\Color.cpp" />
@@ -190,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\basic.shader" />
+    <None Include="res\shaders\procceduralSkybox.shader" />
     <None Include="src\vendor\glm\detail\func_common.inl" />
     <None Include="src\vendor\glm\detail\func_common_simd.inl" />
     <None Include="src\vendor\glm\detail\func_exponential.inl" />
@@ -328,6 +330,7 @@
   <ItemGroup>
     <ClInclude Include="src\Bounds.h" />
     <ClInclude Include="src\Components\Camera.h" />
+    <ClInclude Include="src\Components\ProceduralSkyBox.h" />
     <ClInclude Include="src\Components\Scripts\MoveCamera.h" />
     <ClInclude Include="src\Components\Scripts\Script.h" />
     <ClInclude Include="src\Components\Transform.h" />

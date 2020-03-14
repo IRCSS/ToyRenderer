@@ -138,6 +138,9 @@
     <ClCompile Include="src\Components\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Components\ProceduralSkyBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Settings.h">
@@ -998,6 +1001,9 @@
     <ClInclude Include="src\Components\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Components\ProceduralSkyBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\basic.shader">
@@ -1405,6 +1411,7 @@
     <None Include="src\vendor\glm\gtx\wrap.inl">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="res\shaders\procceduralSkybox.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\checkerFormat.png">

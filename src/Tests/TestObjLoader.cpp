@@ -47,7 +47,12 @@ namespace test {
 
         ToyRenderer::Material*     groundMaterial = new ToyRenderer::Material(m_shader);
 		ToyRenderer::ResourceManager::Instance().RegisterMaterial(groundMaterial);
-        
+
+	    m_Texture = new Texture("res/textures/checkerFormat.png");
+		groundMaterial->SetTexture("u_Texture", m_Texture);
+		groundMaterial->EnableBlend(true);
+		groundMaterial->EnableZWrite(false);
+
         ToyRenderer::MeshRenderer* groundGridRend = new ToyRenderer::MeshRenderer(groundGridMesh, groundMaterial);
 
 		groundGameObject->name = "groundPlane";
@@ -94,7 +99,7 @@ namespace test {
 
 	void TesstObjLoader::OnUpdate(float deltaTime)
 	{
-		pScene->sceneObjects[1]->GetComponent<ToyRenderer::MeshRenderer>()->material->SetFloat("u_iTime", deltaTime);
+		
 		pScene->OnUpdate(deltaTime);
 
 	}

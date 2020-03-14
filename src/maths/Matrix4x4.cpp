@@ -83,6 +83,23 @@ const Matrix4x4 Matrix4x4::Transpose() const
 	return Matrix4x4(m_transposed);
 }
 
+void Matrix4x4::SetRow(int rowId, Vector4 row)
+{
+	m[0][rowId] = row.x;
+	m[1][rowId] = row.y;
+	m[2][rowId] = row.z;
+	m[3][rowId] = row.w;
+}
+
+
+void Matrix4x4::SetColumn(int columnid, Vector4 column)
+{
+	m[columnid][0] = column.x;
+	m[columnid][1] = column.y;
+	m[columnid][2] = column.z;
+	m[columnid][3] = column.w;
+}
+
 void Matrix4x4::operator=(const Matrix4x4 rhs)
 {
 	m = rhs.m;
