@@ -18,7 +18,7 @@ namespace ToyRenderer {
 
 		    TopColor = Color(0.368f, 0.776f, 0.929f);
 		HorizonColor = Color(0.352f, 0.298f, 0.247f);
-			SunDecay = Color(0.1,0.12,0.13);
+			SunDecay = Color(1.,0.95,0.9);
 		   SunVector = Vector4(1.0f,-1.0f, 0.0f,0.0f);
 		 
 		

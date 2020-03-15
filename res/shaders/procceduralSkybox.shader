@@ -35,9 +35,9 @@ void main()
 	vec3 dir = normalize(v_TexCoords.xyz);
 	float  f = clamp((exp(-dir.y *1.5)),0.,1.);
 
-	float sun = exp(-dot(dir, _SunVector.xyz)*10.-8.5);
-    vec4 HoriColor = _HorizonColor+clamp((exp(dot(dir.xz, -_SunVector.xz)) * 0.1), 0.0, 1.0);
-
-	color = ( _TopColor * (1.0 - f) + HoriColor * f+ sun * _SunDecay);
+	float sun = smoothstep(0.995,0.998,-dot(dir, _SunVector.xyz));
+    float MIE = clamp((exp(-dot(dir.xyz, _SunVector.xyz)*0.6+0.01)*0.24), 0.0, 1.0);
+	
+	color = ( _TopColor * (1.0 - f) + _HorizonColor * f+ sun * _SunDecay)+ MIE;
 	 
 };

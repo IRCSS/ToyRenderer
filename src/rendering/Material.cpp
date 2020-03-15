@@ -3,8 +3,6 @@
 namespace ToyRenderer {
 
 
-
-
     Material::Material()
 	{
 
