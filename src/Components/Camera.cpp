@@ -30,14 +30,38 @@ namespace ToyRenderer {
 
 		if (!transform && gameObject) transform = gameObject->GetComponent<Transform>();
 
-		Matrix4x4 vp = VP_NoTranslation_Matrix();  // IMPORTANT: RENDER SKYBOX LATER ONCE YOU HAVE A TRANSPARENT LAYER
-		skybox->Render(*scene->renderer, vp);
-
-		  vp = VPMatrix();
-
+		// Sort out passed
+		std::vector<MeshRenderer*> opaquePassRenderes      = std::vector<MeshRenderer*>();
+		std::vector<MeshRenderer*> transparentPassRenderers = std::vector<MeshRenderer*>();
+		
 		for (std::vector<MeshRenderer*>::size_type i = 0; i != activeMeshRenderers.size(); i++) {
+
+			int passID= activeMeshRenderers[i]->material->GetPass();
+			switch (passID)
+			{
+			case Material_PASS_OPAQUE:      opaquePassRenderes.push_back(activeMeshRenderers[i]);      break;
+			case Material_PASS_TRANSPARENT: transparentPassRenderers.push_back(activeMeshRenderers[i]); break;
+			}
+		}
+
+		// RENDER ORDER:
+		// OPAQUE
+		// SKYBOX
+		// TRANSPARENT
+
+		Matrix4x4 vp = VPMatrix();
+		Matrix4x4 vp_noTranslation = VP_NoTranslation_Matrix();
+		
+		for (std::vector<MeshRenderer*>::size_type i = 0; i != opaquePassRenderes.size(); i++) {
+
+			opaquePassRenderes[i]->Render(*scene->renderer, vp);
+		}
+
+		skybox->Render(*scene->renderer, vp_noTranslation);
+
+		for (std::vector<MeshRenderer*>::size_type i = 0; i != transparentPassRenderers.size(); i++) {
 			
-			activeMeshRenderers[i]->Render(*scene->renderer,vp);
+			transparentPassRenderers[i]->Render(*scene->renderer,vp);
 		}
 	
 

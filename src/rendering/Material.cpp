@@ -124,6 +124,14 @@ namespace ToyRenderer {
 	{
 		settings_depthFunction = mode;
 	}
+	void Material::SetRenderPass(const int passID)
+	{
+		settings_renderPass = passID;
+	}
+	int Material::GetPass()
+	{
+		return settings_renderPass;
+	}
 	void Material::InitializeSettingsValues()
 	{
 		settings_BackFaceCulling = true;
@@ -131,6 +139,7 @@ namespace ToyRenderer {
 	    settings_ZWrite          = true;
 	    settings_Blend           = false;
 		settings_depthFunction   = Material_DepthFunction_LESS;
+		settings_renderPass      = Material_PASS_OPAQUE;
 	}
 
 }

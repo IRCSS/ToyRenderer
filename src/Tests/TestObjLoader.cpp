@@ -47,11 +47,13 @@ namespace test {
 
         ToyRenderer::Material*     groundMaterial = new ToyRenderer::Material(m_shader);
 		ToyRenderer::ResourceManager::Instance().RegisterMaterial(groundMaterial);
+		
 
 	    m_Texture = new Texture("res/textures/checkerFormat.png");
 		groundMaterial->SetTexture("u_Texture", m_Texture);
 		groundMaterial->EnableBlend(true);
 		groundMaterial->EnableZWrite(false);
+		groundMaterial->SetRenderPass(Material_PASS_TRANSPARENT);
 
         ToyRenderer::MeshRenderer* groundGridRend = new ToyRenderer::MeshRenderer(groundGridMesh, groundMaterial);
 
@@ -66,10 +68,9 @@ namespace test {
 
 
 
-		// Update Camera Scene Content : Need a better solution later, maybe marking scene dirty or something
-		pCameraComp->UpdateRenderLists();
 
-		//ToyRenderer::RawMesh*  loadedMesh = ToyRenderer::MeshLoader::LoadTinyObj( "D:/ShaPlayGround/ToyRenderer/Meshes/WanderingMan_Model_CutOutMaster.obj", "D:/ShaPlayGround/ToyRenderer/Meshes/");
+
+		//ToyRenderer::RawMesh*  loadedMesh = ToyRenderer::MeshLoader::LoadTinyObj( "D:/Meshes/WanderingMan/Mesh/RC/CutoutMaster/WanderingMan_Model_CutOutMaster.obj", "D:/Meshes/WanderingMan/Mesh/RC/CutoutMaster/");
 		//
 		//if (loadedMesh)
 		//{
@@ -79,6 +80,10 @@ namespace test {
 		//	if (ms.size()>0) std::cout << ms.size() << std::endl;
 
 		//}
+
+
+		// Update Camera Scene Content : Need a better solution later, maybe marking scene dirty or something
+		pCameraComp->UpdateRenderLists();
 
 	}
 	TesstObjLoader::~TesstObjLoader()

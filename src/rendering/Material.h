@@ -14,7 +14,9 @@
 #define Material_DepthFunction_NOTEQUAL 6
 #define Material_DepthFunction_GEQUAL   7
 
-
+#define Material_PASS_OPAQUE      0
+#define Material_PASS_SKYBOX      1
+#define Material_PASS_TRANSPARENT 2
 
 class Shader;
 namespace ToyRenderer {
@@ -37,7 +39,7 @@ namespace ToyRenderer {
 		bool settings_ZWrite;
 		bool settings_Blend;
 		int  settings_depthFunction;
-
+		int  settings_renderPass;
 
 	public:
 
@@ -62,6 +64,10 @@ namespace ToyRenderer {
 
 		/// use Material_DepthFunction macro
 		void SetDepthFunction(const int  mode);
+
+		/// use Material_Pass macro
+		void SetRenderPass(const int passID);
+		int  GetPass();
 
 	private:
 

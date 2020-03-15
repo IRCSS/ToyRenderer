@@ -20,6 +20,8 @@ namespace ToyRenderer {
 		std::vector<MeshRenderer*> activeMeshRenderers;
 		Transform* transform;
 		ProceduralSkyBox* skybox;
+
+		
 	
 	public: 
 
