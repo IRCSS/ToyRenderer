@@ -12,7 +12,10 @@ namespace ToyRenderer {
 
 		PopulateVertexPosition();
 
-		Shader* s = new Shader("res/shaders/procceduralSkybox.shader");
+		Shader*     s = new Shader("res/shaders/procceduralSkybox.shader");
+
+		ResourceManager::Instance().RegisterShader(s);
+
 		Material* mat = new Material(s);
 		ResourceManager::Instance().RegisterMaterial(mat);
 
@@ -105,7 +108,6 @@ namespace ToyRenderer {
 			for (int i = 0; i < mesh->VertexPositions.size(); i++) {
 				mesh->triangles.push_back(i);
 			}
-			mesh->VertexCount = mesh->VertexPositions.size();
 
 	}
 }

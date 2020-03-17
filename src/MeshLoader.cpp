@@ -123,8 +123,11 @@ namespace ToyRenderer {
 
 					// access to vertex
 					tinyobj::index_t idx  = shapes[s].mesh.indices[index_offset + v];
-					m->m_subShapes[s].m_facesIndices.push_back(t_RawMeshIndices(idx.vertex_index, idx.normal_index, idx.texcoord_index, idx.vertex_index));
-
+					
+					
+					// To DO: once you start implementing a proper index buffer, you can use an architecture like below
+					//m->m_subShapes[s].m_facesIndices.push_back(t_RawMeshIndices(idx.vertex_index, idx.normal_index, idx.texcoord_index, idx.vertex_index));
+					m->m_subShapes[s].m_facesIndices.push_back(t_RawMeshIndices(m->m_VertexPositions.size(), m->m_VertexNormals.size(), m->m_uv.size(), m->m_VertexPositions.size()));
 					if (3 * idx.vertex_index  < attrib.vertices.size()) {
 						tinyobj::real_t  vx = attrib.vertices[3 * idx.vertex_index + 0];
 						tinyobj::real_t  vy = attrib.vertices[3 * idx.vertex_index + 1];

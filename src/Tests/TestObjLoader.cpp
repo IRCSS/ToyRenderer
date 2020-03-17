@@ -20,7 +20,7 @@ namespace test {
 		// Construct scene 
 		pScene = new ToyRenderer::Scene();
 
-		// Construct Camera
+		//// Construct Camera
 
 
 		ToyRenderer::GameObject* cameraGB = new ToyRenderer::GameObject();
@@ -43,16 +43,16 @@ namespace test {
 		groundGameObject->AddComponent<ToyRenderer::Transform>(groundGridTran);
 
 	    ToyRenderer::Mesh*         groundGridMesh = ToyRenderer::PrimitivFactory::CreatePlane();
-		                                 m_shader = new Shader("res/shaders/basic.shader");
+		                                 m_shader = new Shader("res/shaders/groundGrid.shader");
 
         ToyRenderer::Material*     groundMaterial = new ToyRenderer::Material(m_shader);
 		ToyRenderer::ResourceManager::Instance().RegisterMaterial(groundMaterial);
 		
 
 	    m_Texture = new Texture("res/textures/checkerFormat.png");
-		groundMaterial->SetTexture("u_Texture", m_Texture);
-		groundMaterial->EnableBlend(true);
-		groundMaterial->EnableZWrite(false);
+		groundMaterial->SetTexture   ("u_Texture", m_Texture);
+		groundMaterial->EnableBlend  (true);
+		groundMaterial->EnableZWrite (false);
 		groundMaterial->SetRenderPass(Material_PASS_TRANSPARENT);
 
         ToyRenderer::MeshRenderer* groundGridRend = new ToyRenderer::MeshRenderer(groundGridMesh, groundMaterial);
@@ -70,16 +70,34 @@ namespace test {
 
 
 
-		//ToyRenderer::RawMesh*  loadedMesh = ToyRenderer::MeshLoader::LoadTinyObj( "D:/Meshes/WanderingMan/Mesh/RC/CutoutMaster/WanderingMan_Model_CutOutMaster.obj", "D:/Meshes/WanderingMan/Mesh/RC/CutoutMaster/");
-		//
-		//if (loadedMesh)
-		//{
-		//	std::cout << loadedMesh->m_subShapesCount << std::endl;
+		ToyRenderer::RawMesh*  loadedMesh = ToyRenderer::MeshLoader::LoadTinyObj( "D:/Projects/c++/ToyRenderer/ToyRenderer/res/meshes/unwraped_cube.obj", "D:/Projects/c++/ToyRenderer/ToyRenderer/res/meshes");
+		
+		if (loadedMesh)
+		{
+			std::vector<ToyRenderer::Mesh *> ms = loadedMesh->GenerateMeshes();
+			Shader* unlit_texture_shader = new Shader("res/shaders/unlit_texture.shader");
+				
 
-		//	std::vector<ToyRenderer::Mesh *> ms = loadedMesh->GenerateMeshes();
-		//	if (ms.size()>0) std::cout << ms.size() << std::endl;
+			for (int i = 0; i < ms.size(); i++) {
 
-		//}
+				// Owner ship by the pScene, it kills the objects later
+				ToyRenderer::GameObject*   gb = new ToyRenderer::GameObject();
+				int materialID = loadedMesh->m_meshes_materials_ids[0];
+				ToyRenderer::Material* gbMat = loadedMesh->m_materials[materialID]; // already registered in resource manager on creation
+				gbMat->m_Shader = unlit_texture_shader;
+				gbMat->SetTwoSided(true);
+				ToyRenderer::MeshRenderer* gbMeshRender = new ToyRenderer::MeshRenderer(ms[i], gbMat);
+
+				ToyRenderer::Transform* gbTransform = new ToyRenderer::Transform(vector3_zero, vector3_one, vector3_zero);
+
+				gb->AddComponent<ToyRenderer::Transform>(gbTransform);
+				gb->AddComponent<ToyRenderer::MeshRenderer>(gbMeshRender);
+
+				pScene->sceneObjects.push_back(gb);
+
+			}
+
+		}
 
 
 		// Update Camera Scene Content : Need a better solution later, maybe marking scene dirty or something

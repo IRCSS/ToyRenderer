@@ -1,12 +1,14 @@
 #include "ResourceManager.h"
 #include "rendering/Material.h"
 #include "rendering/Mesh/Mesh.h"
+#include "Shader.h"
 namespace ToyRenderer {
 
 	ResourceManager* ResourceManager::m_pSingelton=nullptr;
 
 	ResourceManager::ResourceManager() 
 	{
+		m_pSingelton = nullptr;
 	}
 	ResourceManager::~ResourceManager()
 	{
@@ -21,6 +23,10 @@ namespace ToyRenderer {
 		for (std::vector<Material*>::iterator i = r_materials.begin(); i != r_materials.end(); ++i)
 			delete *i;
 		r_materials.clear();
+
+		for (std::vector<Shader*>::iterator i = r_shaders.begin(); i != r_shaders.end(); ++i)
+			delete *i;
+		r_shaders.clear();
 
 	}
 	void ResourceManager::RegisterMaterial(Material * mat)
@@ -38,9 +44,13 @@ namespace ToyRenderer {
 		r_texture.push_back(texture);
 		texture->AssetID = GenerateAssetID();
 	}
+	void ResourceManager::RegisterShader(Shader * shader)
+	{
+		r_shaders.push_back(shader);
+	}
 	ResourceManager & ResourceManager::Instance()
 	{
-		if (!m_pSingelton) m_pSingelton = new ResourceManager;
+		if (!m_pSingelton) m_pSingelton = new ResourceManager();
 
 		return *m_pSingelton;
 

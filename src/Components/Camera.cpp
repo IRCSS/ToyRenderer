@@ -20,6 +20,8 @@ namespace ToyRenderer {
 		farClip  = 100.0f;
 
 		skybox = new ProceduralSkyBox();
+		transform = nullptr;
+
 	}
 	Camera::~Camera()
 	{

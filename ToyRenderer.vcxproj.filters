@@ -1006,9 +1006,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\basic.shader">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="src\vendor\glm\detail\func_common.inl">
       <Filter>Header Files</Filter>
     </None>
@@ -1412,6 +1409,10 @@
       <Filter>Header Files</Filter>
     </None>
     <None Include="res\shaders\procceduralSkybox.shader" />
+    <None Include="res\shaders\groundGrid.shader">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\shaders\unlit_texture.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\checkerFormat.png">

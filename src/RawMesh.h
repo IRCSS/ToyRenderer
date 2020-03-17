@@ -42,7 +42,7 @@ namespace ToyRenderer {
 		std::vector<t_RawMeshSubShape>  m_subShapes; // an array of faces which is an array of indices. A face can be a series of different indices, each index hold index in vColors, vPosition and vNormals array. 
 		std::vector<Material*>          m_materials;
 		std::vector<Mesh*>              m_meshes;
-
+		std::vector<int>                m_meshes_materials_ids;
 		int                m_subShapesCount;
 
 	private:

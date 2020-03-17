@@ -55,9 +55,9 @@ namespace ToyRenderer {
 
 
 		std::vector<float> vertices;
-		vertices.reserve(vertexSize *  mesh->VertexCount);
+		vertices.reserve(vertexSize *  mesh->GetVertexCount());
 
-		for (int i = 0; i < mesh->VertexCount; i++) {
+		for (int i = 0; i < mesh->GetVertexCount(); i++) {
 			
 			if (mesh->VertexPositions.size() != 0) {
 				

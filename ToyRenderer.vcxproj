@@ -190,8 +190,9 @@
     <ClCompile Include="src\world\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\basic.shader" />
+    <None Include="res\shaders\groundGrid.shader" />
     <None Include="res\shaders\procceduralSkybox.shader" />
+    <None Include="res\shaders\unlit_texture.shader" />
     <None Include="src\vendor\glm\detail\func_common.inl" />
     <None Include="src\vendor\glm\detail\func_common_simd.inl" />
     <None Include="src\vendor\glm\detail\func_exponential.inl" />

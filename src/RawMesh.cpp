@@ -23,6 +23,7 @@ namespace ToyRenderer {
 	const std::vector<Mesh*>& RawMesh::GenerateMeshes() 
 	{
 		m_meshes.clear();
+		m_meshes_materials_ids.clear();
 		if (m_subShapesCount == 0) return m_meshes;
 		
 
@@ -69,7 +70,7 @@ namespace ToyRenderer {
 					if (index < m_VertexColors.size())
 					meshToBuild->VertexColors.push_back(m_VertexColors[index]);
 
-					meshToBuild->triangles.push_back(j * 3 + k); // This is super pointless atm. Since vertex buffer has duplicated vertices and is in the same order as the index buffer, so index buffer is simply 1,2,3,4..n
+					meshToBuild->triangles.push_back(meshToBuild->VertexPositions.size()-1); // This is super pointless atm. Since vertex buffer has duplicated vertices and is in the same order as the index buffer, so index buffer is simply 1,2,3,4..n
 					                                             // Rework later so that the vertices are not doubled. 
 
 				}
@@ -82,6 +83,7 @@ namespace ToyRenderer {
 			while (it != parts.end())
 			{
 				m_meshes.push_back(it->second);
+				m_meshes_materials_ids.push_back(it->first);
 				it++;
 			}
 			

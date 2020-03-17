@@ -17,7 +17,7 @@ namespace ToyRenderer {
 		//std::vector<Vector3> VertexTangents;
 		std::vector<unsigned int>     triangles;   // AKA index buffer
 		std::vector<Vector3> VertexPositions;
-		int      VertexCount;
+		
 		std::vector<Vector2> uv;
 		
 		int m_AssetID;
@@ -27,7 +27,7 @@ namespace ToyRenderer {
 
 	public:
 		Mesh();
-		
+		int GetVertexCount() const;
 		
 
 
