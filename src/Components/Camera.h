@@ -8,7 +8,7 @@ namespace ToyRenderer {
 	class Scene;
 	class MeshRenderer;
 	class Transform;
-
+	class Color;
 
 	class Camera : public Component {
 	

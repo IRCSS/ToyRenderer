@@ -110,7 +110,6 @@ int main(void)
 
 
 		// Rendering
-		g_renderer.Clear();
 		
 		ImGui_ImplGlfwGL3_NewFrame();
 		if (currenTest) {

@@ -33,7 +33,7 @@ namespace ToyRenderer {
 		if (!transform && gameObject) transform = gameObject->GetComponent<Transform>();
 
 		// Sort out passed
-		std::vector<MeshRenderer*> opaquePassRenderes      = std::vector<MeshRenderer*>();
+		std::vector<MeshRenderer*> opaquePassRenderes       = std::vector<MeshRenderer*>();
 		std::vector<MeshRenderer*> transparentPassRenderers = std::vector<MeshRenderer*>();
 		
 		for (std::vector<MeshRenderer*>::size_type i = 0; i != activeMeshRenderers.size(); i++) {
@@ -47,9 +47,13 @@ namespace ToyRenderer {
 		}
 
 		// RENDER ORDER:
+		// CLEAR
 		// OPAQUE
 		// SKYBOX
 		// TRANSPARENT
+
+		glDepthMask(GL_TRUE);
+		scene->renderer->Clear(Color(0.f, 1.f, 0.f, 1.f), 1.0f, true);
 
 		Matrix4x4 vp = VPMatrix();
 		Matrix4x4 vp_noTranslation = VP_NoTranslation_Matrix();

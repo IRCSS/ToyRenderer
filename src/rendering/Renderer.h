@@ -14,6 +14,9 @@ bool GLCheckError(const char* functionName, const char* fileName, const int line
 class VertexArray;
 class IndexBuffer;
 class Shader;
+namespace ToyRenderer {
+	class Color;
+}
 
 class Renderer {
 
@@ -21,7 +24,8 @@ private:
 
 public:
 
-	void Clear() const;
+	
+	void Clear(ToyRenderer::Color clearColor, float depthClearValue, bool clearDepth) const;
 	void Draw(const VertexArray& va, const IndexBuffer& ib, const Shader& shader);
 
 };

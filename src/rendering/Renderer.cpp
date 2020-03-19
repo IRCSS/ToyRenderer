@@ -21,10 +21,16 @@ bool GLCheckError(const char* functionName, const char* fileName, const int line
 #include "VertexArray.h"
 #include "IndexBuffer.h"
 #include "Shader.h"
+#include "maths/Color.h"
 
-void Renderer::Clear() const
+void Renderer::Clear(ToyRenderer::Color clearColor, float depthClearValue, bool clearDepth) const
 {
-	GlCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
+	GlCall(glClearColor(clearColor.m_red, clearColor.m_green, clearColor.m_blue, clearColor.m_alpha));
+	if (!clearDepth) { GlCall(glClear(GL_COLOR_BUFFER_BIT)); }
+	else { 
+		glClearDepth(depthClearValue);
+		GlCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)); 
+	}
 }
 
 void Renderer::Draw(const VertexArray & va, const IndexBuffer & ib, const Shader & shader)

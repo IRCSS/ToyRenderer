@@ -5,7 +5,7 @@ namespace ToyRenderer {
 
     Material::Material()
 	{
-
+		InitializeSettingsValues();
 	}
 	Material::Material(Shader * shader) : m_Shader(shader)
 	{

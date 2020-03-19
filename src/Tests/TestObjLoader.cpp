@@ -85,7 +85,7 @@ namespace test {
 				int materialID = loadedMesh->m_meshes_materials_ids[0];
 				ToyRenderer::Material* gbMat = loadedMesh->m_materials[materialID]; // already registered in resource manager on creation
 				gbMat->m_Shader = unlit_texture_shader;
-				gbMat->SetTwoSided(true);
+				//gbMat->SetTwoSided(true);
 				ToyRenderer::MeshRenderer* gbMeshRender = new ToyRenderer::MeshRenderer(ms[i], gbMat);
 
 				ToyRenderer::Transform* gbTransform = new ToyRenderer::Transform(vector3_zero, vector3_one, vector3_zero);
