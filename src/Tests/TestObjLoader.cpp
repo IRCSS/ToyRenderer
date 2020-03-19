@@ -70,7 +70,11 @@ namespace test {
 
 
 
-		ToyRenderer::RawMesh*  loadedMesh = ToyRenderer::MeshLoader::LoadTinyObj( "D:/Projects/c++/ToyRenderer/ToyRenderer/res/meshes/unwraped_cube.obj", "D:/Projects/c++/ToyRenderer/ToyRenderer/res/meshes");
+		ToyRenderer::RawMesh*  loadedMesh = ToyRenderer::MeshLoader::LoadTinyObj( "res/meshes/unwraped_cube.obj"
+			, "res/meshes");
+
+		//ToyRenderer::RawMesh*  loadedMesh = ToyRenderer::MeshLoader::LoadTinyObj("D:/Meshes/MiniModel/Tatev/Tatev_1e+02KTris__4k_1Chunks_1xLOD.obj"
+		//	, "D:/Meshes/MiniModel/Tatev");
 		
 		if (loadedMesh)
 		{
@@ -88,7 +92,7 @@ namespace test {
 				//gbMat->SetTwoSided(true);
 				ToyRenderer::MeshRenderer* gbMeshRender = new ToyRenderer::MeshRenderer(ms[i], gbMat);
 
-				ToyRenderer::Transform* gbTransform = new ToyRenderer::Transform(vector3_zero, vector3_one, vector3_zero);
+				ToyRenderer::Transform* gbTransform = new ToyRenderer::Transform(Vector3(0.0f, -10.5f, 0.0f), vector3_one, Vector3(-90.0f, 0.0f,0.0f));
 
 				gb->AddComponent<ToyRenderer::Transform>(gbTransform);
 				gb->AddComponent<ToyRenderer::MeshRenderer>(gbMeshRender);

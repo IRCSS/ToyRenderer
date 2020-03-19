@@ -12,10 +12,10 @@ namespace ToyRenderer {
 	Transform::Transform(const Vector3 i_position, const Vector3 i_scale, const Vector3 i_EulerRotation) : position(i_position), scale(i_scale)
 	{
 		
-
-		glm::quat qPitch = glm::angleAxis(i_EulerRotation.x, glm::vec3(1, 0, 0));
-		glm::quat qYaw   = glm::angleAxis(i_EulerRotation.y, glm::vec3(0, 1, 0));
-		glm::quat qRoll  = glm::angleAxis(i_EulerRotation.z, glm::vec3(0, 0, 1));
+		
+		glm::quat qPitch = glm::angleAxis(glm::radians(i_EulerRotation.x), glm::vec3(1, 0, 0));
+		glm::quat qYaw   = glm::angleAxis(glm::radians(i_EulerRotation.y), glm::vec3(0, 1, 0));
+		glm::quat qRoll  = glm::angleAxis(glm::radians(i_EulerRotation.z), glm::vec3(0, 0, 1));
 
 		
 		rotation = qPitch * qYaw * qRoll;
