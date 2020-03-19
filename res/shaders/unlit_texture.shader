@@ -28,6 +28,6 @@ in vec2 v_TexCoord;
 
 void main()  
 {  
-	color = vec4(1., 0., 0., 1.);
-  //color = texture(u_Texture, v_TexCoord);
+	
+    color = texture(u_Texture, v_TexCoord);
 };

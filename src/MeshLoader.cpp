@@ -14,17 +14,21 @@ class Texture;
 namespace ToyRenderer {
 	class Color;
 
-	bool texture_exists(std::string filename) {
-		std::ifstream ifile(filename);
+	bool texture_exists(const std::string& basePass, const std::string& filename) {
+
+		std::string fullPath = basePass + "/" + filename;
+		std::ifstream ifile(fullPath);
 		return !ifile.fail();
 	}
 
 
 	bool TryAddTexture(Material* m, const char* basepath, const std::string& textureName, const std::string& targetMaterialAttName) {
 		if(textureName.empty()) return false;
-		if (!texture_exists(basepath + textureName)) return false;
+		if (!texture_exists(basepath, textureName)) return false;
 
-		Texture* t = new Texture(basepath + textureName);
+
+		std::string fullPath = std::string(basepath) + "/" + textureName;
+		Texture* t = new Texture(fullPath);
 		ResourceManager::Instance().RegisterTexture(t);
 
 		m->SetTexture(targetMaterialAttName, t);
