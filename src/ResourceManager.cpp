@@ -58,6 +58,7 @@ namespace ToyRenderer {
 	void ResourceManager::ClearResourceManager()
 	{
 		delete m_pSingelton;
+		m_pSingelton = nullptr;
 
 	}
 	int ResourceManager::GenerateAssetID()

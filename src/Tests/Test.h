@@ -21,7 +21,7 @@ namespace test {
 		
 
 		 void OnImGuiRender() override;
-
+		 void OnRender() override;
 		 template<typename T>
 		 void RegisterTest(const std::string& name) {
 

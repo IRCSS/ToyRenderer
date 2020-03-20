@@ -42,15 +42,13 @@ namespace test {
 		ToyRenderer::Transform*    groundGridTran = new ToyRenderer::Transform(Vector3(0.0f, -4.5f, 4.0f), vector3_one*100.0f, vector3_zero);
 		groundGameObject->AddComponent<ToyRenderer::Transform>(groundGridTran);
 
-	    ToyRenderer::Mesh*         groundGridMesh = ToyRenderer::PrimitivFactory::CreatePlane();
-		                                 m_shader = new Shader("res/shaders/groundGrid.shader");
+	    ToyRenderer::Mesh*  groundGridMesh = ToyRenderer::PrimitivFactory::CreatePlane();
+		Shader              *gridShader      = new Shader("res/shaders/groundGrid.shader");
 
-        ToyRenderer::Material*     groundMaterial = new ToyRenderer::Material(m_shader);
+        ToyRenderer::Material*     groundMaterial = new ToyRenderer::Material(gridShader);
 		ToyRenderer::ResourceManager::Instance().RegisterMaterial(groundMaterial);
 		
 
-	    m_Texture = new Texture("res/textures/checkerFormat.png");
-		groundMaterial->SetTexture   ("u_Texture", m_Texture);
 		groundMaterial->EnableBlend  (true);
 		groundMaterial->EnableZWrite (false);
 		groundMaterial->SetRenderPass(Material_PASS_TRANSPARENT);
@@ -110,12 +108,6 @@ namespace test {
 	}
 	TesstObjLoader::~TesstObjLoader()
 	{
-
-		delete m_render;
-		delete m_shader;
-
-		delete m_va;
-		delete m_ib;
 
 		delete CameraMovment;
 		delete CameraViewTrabsform;

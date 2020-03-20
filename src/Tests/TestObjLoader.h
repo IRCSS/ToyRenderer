@@ -23,23 +23,13 @@ namespace test {
 	private:
 
 
-		glm::vec3  translation;
-		Renderer*  m_render;
-		Shader*    m_shader;
 
-		VertexArray *m_va;
-		IndexBuffer *m_ib;
-		Texture     *m_Texture;
 
 		Behaviours::MoveCamera* CameraMovment;
 		ToyRenderer::Transform* CameraViewTrabsform;
 		ToyRenderer::Scene*     pScene;
 
 
-		glm::mat4 m_model;
-		glm::mat4 m_proj;
-		glm::mat4 m_view;
-		glm::mat4 m_mvp;
 
 	
 	};

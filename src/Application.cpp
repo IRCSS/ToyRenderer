@@ -6,16 +6,6 @@
 #include <sstream>
 #include <ctime>
 #include "Settings.h"
-#include "rendering/Renderer.h"
-#include "VertexBuffer.h"
-#include "IndexBuffer.h"
-#include "VertexArray.h"
-#include "Shader.h"
-#include "Texture.h"
-#include "maths/Vector3.h"
-#include "maths/Matrix4x4.h"
-#include "maths/Vector4.h"
-#include "glm/gtc/matrix_transform.hpp"
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_glfw_gl3.h"
 
@@ -92,7 +82,6 @@ int main(void)
 	clock_t currentTick;
 
 	menu->RegisterTest<test::TestClearColor>("Clear Color");
-	menu->RegisterTest<test::TestTexture2D>("Texture 2D");
 	menu->RegisterTest<test::TesstObjLoader>("obj load");
 	
 
