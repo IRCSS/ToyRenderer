@@ -1,5 +1,5 @@
-#include "RawMesh.h"
-#include "ResourceManager.h"
+#include "rendering/RawMesh.h"
+#include "managers/ResourceManager.h"
 namespace ToyRenderer {
 	t_RawMeshSubShape::t_RawMeshSubShape(int fCount) : faceCount(fCount)
 	{

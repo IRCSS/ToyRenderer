@@ -1,4 +1,4 @@
-#include "Bounds.h"
+#include "rendering/Bounds.h"
 
 namespace ToyRenderer {
 	Bounds::Bounds()

@@ -2,7 +2,7 @@
 #include "maths/Vector4.h"
 #include "maths/Vector3.h"
 #include "maths/Vector2.h"
-#include "Bounds.h"
+#include "rendering/Bounds.h"
 #include <vector>
 #include "maths/Color.h"
 namespace ToyRenderer {

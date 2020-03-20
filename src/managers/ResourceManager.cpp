@@ -1,7 +1,7 @@
 #include "ResourceManager.h"
 #include "rendering/Material.h"
 #include "rendering/Mesh/Mesh.h"
-#include "Shader.h"
+#include "rendering/Shader.h"
 namespace ToyRenderer {
 
 	ResourceManager* ResourceManager::m_pSingelton=nullptr;

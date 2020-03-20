@@ -1,5 +1,5 @@
 #include "MoveCamera.h"
-#include "InputMaster.h"
+#include "managers/input/InputMaster.h"
 #include "maths/Vector2.h"
 namespace Behaviours {
 	MoveCamera::MoveCamera()

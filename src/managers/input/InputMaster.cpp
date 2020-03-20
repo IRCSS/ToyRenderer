@@ -1,5 +1,5 @@
 #include "InputMaster.h"
-#include "Settings.h"
+#include "managers/Settings.h"
 #include "InputMapping.h"
 #include <string>
 #include <iostream>

@@ -1,6 +1,6 @@
 #include "ProceduralSkyBox.h"
-#include "ResourceManager.h"
-#include "Shader.h"
+#include "managers/ResourceManager.h"
+#include "rendering/Shader.h"
 
 namespace ToyRenderer {
 	

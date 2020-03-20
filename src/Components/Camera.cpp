@@ -5,7 +5,7 @@
 #include "Components/Transform.h"
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
-#include "Settings.h"
+#include "managers/Settings.h"
 
 namespace ToyRenderer {
 	Camera::Camera()

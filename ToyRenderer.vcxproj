@@ -151,15 +151,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
-    <ClCompile Include="src\Bounds.cpp" />
+    <ClCompile Include="src\rendering\Bounds.cpp" />
     <ClCompile Include="src\Components\Camera.cpp" />
     <ClCompile Include="src\Components\ProceduralSkyBox.cpp" />
     <ClCompile Include="src\Components\Scripts\MoveCamera.cpp" />
     <ClCompile Include="src\Components\Transform.cpp" />
     <ClCompile Include="src\maths\Color.cpp" />
     <ClCompile Include="src\Components\Component.cpp" />
-    <ClCompile Include="src\IndexBuffer.cpp" />
-    <ClCompile Include="src\InputMaster.cpp" />
+    <ClCompile Include="src\rendering\IndexBuffer.cpp" />
+    <ClCompile Include="src\managers\input\InputMaster.cpp" />
     <ClCompile Include="src\rendering\Material.cpp" />
     <ClCompile Include="src\maths\Matrix4x4.cpp" />
     <ClCompile Include="src\maths\Vector2.cpp" />
@@ -167,25 +167,25 @@
     <ClCompile Include="src\maths\Vector4.cpp" />
     <ClCompile Include="src\rendering\MeshRenderer.cpp" />
     <ClCompile Include="src\rendering\Mesh\Mesh.cpp" />
-    <ClCompile Include="src\MeshLoader.cpp" />
-    <ClCompile Include="src\RawMesh.cpp" />
+    <ClCompile Include="src\importAPI\MeshLoader.cpp" />
+    <ClCompile Include="src\rendering\RawMesh.cpp" />
     <ClCompile Include="src\rendering\Mesh\PrimitiveFactory.cpp" />
     <ClCompile Include="src\rendering\Renderer.cpp" />
-    <ClCompile Include="src\ResourceManager.cpp" />
-    <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\managers\ResourceManager.cpp" />
+    <ClCompile Include="src\rendering\Shader.cpp" />
     <ClCompile Include="src\Tests\Test.cpp" />
     <ClCompile Include="src\Tests\TestClearColor.cpp" />
     <ClCompile Include="src\Tests\TestObjLoader.cpp" />
     <ClCompile Include="src\Tests\TestTexture2D.cpp" />
-    <ClCompile Include="src\Texture.cpp" />
+    <ClCompile Include="src\rendering\Texture.cpp" />
     <ClCompile Include="src\vendor\glm\detail\glm.cpp" />
     <ClCompile Include="src\vendor\imgui\imgui.cpp" />
     <ClCompile Include="src\vendor\imgui\imgui_demo.cpp" />
     <ClCompile Include="src\vendor\imgui\imgui_draw.cpp" />
     <ClCompile Include="src\vendor\imgui\imgui_impl_glfw_gl3.cpp" />
     <ClCompile Include="src\vendor\stb_image\stb_image.cpp" />
-    <ClCompile Include="src\VertexArray.cpp" />
-    <ClCompile Include="src\VertexBuffer.cpp" />
+    <ClCompile Include="src\rendering\VertexArray.cpp" />
+    <ClCompile Include="src\rendering\VertexBuffer.cpp" />
     <ClCompile Include="src\world\GameObject.cpp" />
     <ClCompile Include="src\world\Scene.cpp" />
   </ItemGroup>
@@ -329,7 +329,7 @@
     <None Include="src\vendor\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Bounds.h" />
+    <ClInclude Include="src\rendering\Bounds.h" />
     <ClInclude Include="src\Components\Camera.h" />
     <ClInclude Include="src\Components\ProceduralSkyBox.h" />
     <ClInclude Include="src\Components\Scripts\MoveCamera.h" />
@@ -337,9 +337,9 @@
     <ClInclude Include="src\Components\Transform.h" />
     <ClInclude Include="src\maths\Color.h" />
     <ClInclude Include="src\Components\Component.h" />
-    <ClInclude Include="src\IndexBuffer.h" />
-    <ClInclude Include="src\InputMapping.h" />
-    <ClInclude Include="src\InputMaster.h" />
+    <ClInclude Include="src\rendering\IndexBuffer.h" />
+    <ClInclude Include="src\managers\input\InputMapping.h" />
+    <ClInclude Include="src\managers\input\InputMaster.h" />
     <ClInclude Include="src\rendering\Material.h" />
     <ClInclude Include="src\maths\Matrix4x4.h" />
     <ClInclude Include="src\maths\Vector2.h" />
@@ -347,18 +347,18 @@
     <ClInclude Include="src\maths\Vector4.h" />
     <ClInclude Include="src\rendering\MeshRenderer.h" />
     <ClInclude Include="src\rendering\Mesh\Mesh.h" />
-    <ClInclude Include="src\MeshLoader.h" />
-    <ClInclude Include="src\RawMesh.h" />
+    <ClInclude Include="src\importAPI\MeshLoader.h" />
+    <ClInclude Include="src\rendering\RawMesh.h" />
     <ClInclude Include="src\rendering\Mesh\PrimitiveFactory.h" />
     <ClInclude Include="src\rendering\Renderer.h" />
-    <ClInclude Include="src\ResourceManager.h" />
-    <ClInclude Include="src\Settings.h" />
-    <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\managers\ResourceManager.h" />
+    <ClInclude Include="src\managers\Settings.h" />
+    <ClInclude Include="src\rendering\Shader.h" />
     <ClInclude Include="src\Tests\Test.h" />
     <ClInclude Include="src\Tests\TestClearColor.h" />
     <ClInclude Include="src\Tests\TestObjLoader.h" />
     <ClInclude Include="src\Tests\TestTexture2D.h" />
-    <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="src\rendering\Texture.h" />
     <ClInclude Include="src\vendor\glm\common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_vector_relational.hpp" />
@@ -611,9 +611,9 @@
     <ClInclude Include="src\vendor\imgui\stb_truetype.h" />
     <ClInclude Include="src\vendor\meshReader\tinyobjloader.h" />
     <ClInclude Include="src\vendor\stb_image\stb_image.h" />
-    <ClInclude Include="src\VertexArray.h" />
-    <ClInclude Include="src\VertexBuffer.h" />
-    <ClInclude Include="src\VertexBufferLayout.h" />
+    <ClInclude Include="src\rendering\VertexArray.h" />
+    <ClInclude Include="src\rendering\VertexBuffer.h" />
+    <ClInclude Include="src\rendering\VertexBufferLayout.h" />
     <ClInclude Include="src\world\GameObject.h" />
     <ClInclude Include="src\world\Scene.h" />
   </ItemGroup>

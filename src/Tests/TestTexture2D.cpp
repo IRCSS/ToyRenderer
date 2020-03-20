@@ -1,9 +1,9 @@
 #include "TestTexture2D.h"
 #include "rendering/Renderer.h"
 #include "imgui/imgui.h"
-#include "VertexBuffer.h"
+#include "rendering/VertexBuffer.h"
 
-#include "VertexBufferLayout.h"
+#include "rendering/VertexBufferLayout.h"
 
 namespace test {
 	TestTexture2D::TestTexture2D() : translation(0.0f, 1.0f, 0.0f), m_shader("res/shaders/basic.shader")

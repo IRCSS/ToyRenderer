@@ -5,7 +5,7 @@
 #include <string>
 #include <sstream>
 #include <ctime>
-#include "Settings.h"
+#include "managers/Settings.h"
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_glfw_gl3.h"
 
@@ -13,7 +13,7 @@
 #include "Tests/TestTexture2D.h"
 #include "Tests/TestObjLoader.h"
 
-#include "InputMaster.h"
+#include "managers/input/InputMaster.h"
 
 
 int main(void)

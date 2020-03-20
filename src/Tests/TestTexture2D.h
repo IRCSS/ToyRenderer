@@ -3,10 +3,10 @@
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "rendering/Renderer.h"
-#include "Shader.h"
-#include "VertexArray.h"
-#include "IndexBuffer.h"
-#include "Texture.h"
+#include "rendering/Shader.h"
+#include "rendering/VertexArray.h"
+#include "rendering/IndexBuffer.h" 
+#include "rendering/Texture.h"
 
 namespace test {
 	class TestTexture2D : public Test {

@@ -1,5 +1,5 @@
 #include "MeshLoader.h"
-#include "ResourceManager.h"
+#include "managers/ResourceManager.h"
 #ifndef TINYOBJLOADER_IMPLEMENTATION
 #define TINYOBJLOADER_IMPLEMENTATION
 #endif 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RawMesh.h"
+#include "rendering/RawMesh.h"
 
 
 namespace ToyRenderer {

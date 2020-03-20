@@ -1,5 +1,5 @@
 #include "PrimitiveFactory.h"
-#include "ResourceManager.h"
+#include "managers/ResourceManager.h"
 #include "maths/Vector3.h"
 #include "maths/Vector2.h"
 namespace ToyRenderer {
