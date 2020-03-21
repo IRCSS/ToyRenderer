@@ -74,7 +74,7 @@ namespace ToyRenderer {
 
 			if (numberOfTextures >= 31) break;
 			m_Shader->SetUniform1i(it_Textures->first, numberOfTextures);
-			it_Textures->second->Bind();
+			it_Textures->second->Bind(numberOfTextures);
 			numberOfTextures++;
 
 			it_Textures++;

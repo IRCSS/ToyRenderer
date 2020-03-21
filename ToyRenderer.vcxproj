@@ -337,6 +337,7 @@
     <ClInclude Include="src\Components\Transform.h" />
     <ClInclude Include="src\maths\Color.h" />
     <ClInclude Include="src\Components\Component.h" />
+    <ClInclude Include="src\rendering\FrameBuffer.h" />
     <ClInclude Include="src\rendering\IndexBuffer.h" />
     <ClInclude Include="src\managers\input\InputMapping.h" />
     <ClInclude Include="src\managers\input\InputMaster.h" />

@@ -1,21 +1,35 @@
 #pragma once
 #include "rendering/Renderer.h"
 #include <string>
+
+
 class Texture {
+
+public: 
+	enum Filtering {
+		Nearest, Linear, Nearest_MIP_Linear, Nearest_MIP_Nearest, Linear_MIP_Nearest, Linear_MIP_Linear
+	};
+	enum Wraping {
+		Repeat, MirroredRepeat, ClampToEdge, ClampToBorder
+	};
 
 public:
 	int AssetID;
+
 
 private: 
 	unsigned int   m_RendererID;
 	std::string    m_FilePath;
 	unsigned char* m_LocalBuffer;
+	Filtering      m_filteringMode;
+	Wraping        m_wrapingMode;
 	int            m_Width;
 	int            m_Height;
 	int            m_BPP;
 
 
 public:
+	 Texture();
 	 Texture(const std::string& path);
 	~Texture();
 
@@ -24,6 +38,9 @@ public:
 
 	inline int GetWidth()  const { return m_Width; };
 	inline int GetHeight() const { return m_Height; };
+
+private:
+	void SetTextureParameters();
 
 
 };
