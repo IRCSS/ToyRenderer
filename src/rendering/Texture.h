@@ -13,6 +13,10 @@ public:
 		Repeat, MirroredRepeat, ClampToEdge, ClampToBorder
 	};
 
+	enum Format {
+		RGBA8, 
+	};
+
 public:
 	int AssetID;
 
@@ -23,13 +27,14 @@ private:
 	unsigned char* m_LocalBuffer;
 	Filtering      m_filteringMode;
 	Wraping        m_wrapingMode;
+	Format         m_format;
 	int            m_Width;
 	int            m_Height;
 	int            m_BPP;
 
 
 public:
-	 Texture();
+	 Texture(const int width, const int heigth, const Filtering& filteringMode, const Wraping wrapingMode, Format bufferFormat);
 	 Texture(const std::string& path);
 	~Texture();
 
@@ -45,6 +50,8 @@ public:
 
 private:
 	void SetTextureParameters();
-
+	unsigned int GetInternalFormat();
+	/// relevant for pushing data in the GPU buffer
+	unsigned int GetDataFormat(); 
 
 };
