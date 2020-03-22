@@ -16,6 +16,7 @@ Texture::Texture(const int width, const int heigth, const Filtering& filteringMo
 	m_format = bufferFormat;
 
 	GlCall(glTexImage2D(GL_TEXTURE_2D, 0, GetInternalFormat(), m_Width, m_Height, 0, GetDataFormat(), GL_UNSIGNED_BYTE, 0));
+	UnBind();
 }
 
 Texture::Texture(const std::string& path):
@@ -59,6 +60,11 @@ void Texture::UnBind() const
 {
 	GlCall(glBindTexture(GL_TEXTURE_2D, 0));
 
+}
+
+unsigned int Texture::GetRenderID() const
+{
+	return m_RendererID;
 }
 
 void Texture::SetTextureParameters()

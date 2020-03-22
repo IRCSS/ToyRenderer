@@ -45,8 +45,11 @@ public:
 	void Bind(unsigned int slot = 0) const;
 	void UnBind() const;
 
+	unsigned int GetRenderID() const;
+
 	inline int GetWidth()  const { return m_Width; };
 	inline int GetHeight() const { return m_Height; };
+
 
 private:
 	void SetTextureParameters();

@@ -24,7 +24,7 @@ namespace ToyRenderer {
 
 			void Bind()   const;
 			void UnBind() const;
-			unsigned int ReturnRendererID() const;
+			unsigned int GetRendererID() const;
 
 		private:
 			unsigned int GetInternalFormat();

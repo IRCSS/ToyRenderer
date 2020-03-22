@@ -158,6 +158,7 @@
     <ClCompile Include="src\Components\Transform.cpp" />
     <ClCompile Include="src\maths\Color.cpp" />
     <ClCompile Include="src\Components\Component.cpp" />
+    <ClCompile Include="src\rendering\FrameBuffer.cpp" />
     <ClCompile Include="src\rendering\IndexBuffer.cpp" />
     <ClCompile Include="src\managers\input\InputMaster.cpp" />
     <ClCompile Include="src\rendering\Material.cpp" />
@@ -170,6 +171,7 @@
     <ClCompile Include="src\importAPI\MeshLoader.cpp" />
     <ClCompile Include="src\rendering\RawMesh.cpp" />
     <ClCompile Include="src\rendering\Mesh\PrimitiveFactory.cpp" />
+    <ClCompile Include="src\rendering\RenderBuffer.cpp" />
     <ClCompile Include="src\rendering\Renderer.cpp" />
     <ClCompile Include="src\managers\ResourceManager.cpp" />
     <ClCompile Include="src\rendering\Shader.cpp" />
@@ -351,6 +353,7 @@
     <ClInclude Include="src\importAPI\MeshLoader.h" />
     <ClInclude Include="src\rendering\RawMesh.h" />
     <ClInclude Include="src\rendering\Mesh\PrimitiveFactory.h" />
+    <ClInclude Include="src\rendering\RenderBuffer.h" />
     <ClInclude Include="src\rendering\Renderer.h" />
     <ClInclude Include="src\managers\ResourceManager.h" />
     <ClInclude Include="src\managers\Settings.h" />

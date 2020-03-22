@@ -14,6 +14,10 @@ namespace ToyRenderer {
 			Texture*      m_renderTexture;
 			RenderBuffer* m_renderBuffer;
 
+			unsigned int          m_width, m_heigth;
+			Texture::Format       m_colorBufferFormat;
+			RenderBuffer::Format  m_depthBufferFormat;
+
 		public:
 
 
@@ -21,9 +25,12 @@ namespace ToyRenderer {
 			FrameBuffer(const FrameBuffer &)            = delete;
 			FrameBuffer &operator=(const FrameBuffer &) = delete;
 
+			FrameBuffer(unsigned int width, unsigned int height, Texture::Format colorBufferFormat, RenderBuffer::Format depthBufferFormat);
+			~FrameBuffer();
 
-			void Bind()   const;
-			void UnBind() const;
+			bool IsValid() const;
+			void Bind()    const;
+			void UnBind()  const;
 
 		};
 

@@ -27,7 +27,7 @@ namespace ToyRenderer {
 		{
 			GlCall(glBindRenderbuffer(GL_RENDERBUFFER, 0));
 		}
-		unsigned int RenderBuffer::ReturnRendererID() const
+		unsigned int RenderBuffer::GetRendererID() const
 		{
 			return m_RendererID;
 		}
