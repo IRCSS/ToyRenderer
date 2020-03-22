@@ -1,7 +1,9 @@
 #include "Texture.h"
 #include "stb_image/stb_image.h"
 
-Texture::Texture(const int width, const int heigth, const Filtering& filteringMode, const Wraping wrapingMode, Format bufferFormat)
+Texture::Texture(const int width, const int heigth, const Filtering& filteringMode, const Wraping wrapingMode, Format bufferFormat):
+	m_RendererID(0), m_FilePath(""), m_LocalBuffer(nullptr),
+	m_Width(width), m_Height(heigth), m_BPP(0)
 {
 	GlCall(glGenTextures(1, &m_RendererID));
 
