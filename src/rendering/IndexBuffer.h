@@ -8,6 +8,10 @@ public:
 	IndexBuffer(const unsigned int* data, unsigned int count);
    ~IndexBuffer();
 
+   //Delete the copy constructor/assignment for All OpenGl Resources to avoid deleting reosurce on GPU on move/ coppy
+   IndexBuffer(const IndexBuffer &) = delete;
+   IndexBuffer &operator=(const IndexBuffer &) = delete;
+
    void Bind() const;
    void UnBind() const;
 

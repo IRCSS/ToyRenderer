@@ -21,6 +21,10 @@ public:
 	Shader(const std::string& fileName);
 	~Shader();
 
+	//Delete the copy constructor/assignment for All OpenGl Resources to avoid deleting reosurce on GPU on move/ coppy
+	Shader(const Shader &) = delete;
+	Shader &operator=(const Shader &) = delete;
+
 
 	void Bind()   const;
 	void UnBind() const;

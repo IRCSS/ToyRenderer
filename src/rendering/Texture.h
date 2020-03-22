@@ -33,6 +33,10 @@ public:
 	 Texture(const std::string& path);
 	~Texture();
 
+	//Delete the copy constructor/assignment for All OpenGl Resources to avoid deleting reosurce on GPU on move/ coppy
+	Texture(const Texture &) = delete;
+	Texture &operator=(const Texture &) = delete;
+
 	void Bind(unsigned int slot = 0) const;
 	void UnBind() const;
 
