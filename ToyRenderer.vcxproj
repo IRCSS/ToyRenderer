@@ -340,6 +340,7 @@
     <ClInclude Include="src\maths\Color.h" />
     <ClInclude Include="src\Components\Component.h" />
     <ClInclude Include="src\rendering\FrameBuffer.h" />
+    <ClInclude Include="src\rendering\Graphics.h" />
     <ClInclude Include="src\rendering\IndexBuffer.h" />
     <ClInclude Include="src\managers\input\InputMapping.h" />
     <ClInclude Include="src\managers\input\InputMaster.h" />
@@ -357,6 +358,7 @@
     <ClInclude Include="src\rendering\Renderer.h" />
     <ClInclude Include="src\managers\ResourceManager.h" />
     <ClInclude Include="src\managers\Settings.h" />
+    <ClInclude Include="src\rendering\RHI\RHI.h" />
     <ClInclude Include="src\rendering\Shader.h" />
     <ClInclude Include="src\Tests\Test.h" />
     <ClInclude Include="src\Tests\TestClearColor.h" />
