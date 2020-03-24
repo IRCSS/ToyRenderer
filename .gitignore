@@ -32,6 +32,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+intermediates/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -360,7 +361,7 @@ MigrationBackup/
 *.slo
 *.lo
 *.os
-*.obj
+#*.obj
 
 # Precompiled Headers
 *.gch
