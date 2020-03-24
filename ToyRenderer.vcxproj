@@ -159,6 +159,7 @@
     <ClCompile Include="src\maths\Color.cpp" />
     <ClCompile Include="src\Components\Component.cpp" />
     <ClCompile Include="src\rendering\FrameBuffer.cpp" />
+    <ClCompile Include="src\rendering\Graphics.cpp" />
     <ClCompile Include="src\rendering\IndexBuffer.cpp" />
     <ClCompile Include="src\managers\input\InputMaster.cpp" />
     <ClCompile Include="src\rendering\Material.cpp" />
