@@ -11,6 +11,7 @@
 #include "log/Log.h"
 #include "rendering/Graphics.h"
 #include "managers/Settings.h"
+#include "rendering/RHI/RHI.h"
 namespace ToyRenderer {
 	Camera::Camera()
 	{
@@ -70,15 +71,24 @@ namespace ToyRenderer {
 		// POST PROCESS
 		// Blit On Backbuffer
 
-		m_FrontBufferPing->Bind();
+
 
 		//---------------------------------------------------------------------
 		// Clear
+        Rendering::RHI::BeginMarkerGroup("Clear_Buffer");
+		Rendering::RHI::BindBackBuffer();
 		glDepthMask(GL_TRUE);
 		scene->renderer->Clear(Color(0.f, 1.f, 0.f, 1.f), 1.0f, true);
 
+		m_FrontBufferPing->Bind();
+
+		glDepthMask(GL_TRUE);
+		scene->renderer->Clear(Color(0.f, 1.f, 0.f, 1.f), 1.0f, true);
+
+		Rendering::RHI::EndMarkerGroup();
 		// --------------------------------------------------------------------
 		// Opaque
+		Rendering::RHI::BeginMarkerGroup("Opaque_Pass");
 		Matrix4x4 vp = VPMatrix();
 		Matrix4x4 vp_noTranslation = VP_NoTranslation_Matrix();
 		
@@ -86,15 +96,21 @@ namespace ToyRenderer {
 
 			opaquePassRenderes[i]->Render(*scene->renderer, vp);
 		}
+
+		Rendering::RHI::EndMarkerGroup();
 		//---------------------------------------------------------------------
 		// Skybox
+		Rendering::RHI::BeginMarkerGroup("Skybox_Pass");
 		skybox->Render(*scene->renderer, vp_noTranslation);
+		Rendering::RHI::EndMarkerGroup();
 		//---------------------------------------------------------------------
 		// Transparent
+		Rendering::RHI::BeginMarkerGroup("Transparent_Pass");
 		for (std::vector<MeshRenderer*>::size_type i = 0; i != transparentPassRenderers.size(); i++) {
 			
 			transparentPassRenderers[i]->Render(*scene->renderer,vp);
 		}
+		Rendering::RHI::EndMarkerGroup();
 		//---------------------------------------------------------------------
 		// Post Process
 		//Rendering::FrameBuffer* src = m_FrontBufferPing;
@@ -115,7 +131,10 @@ namespace ToyRenderer {
 		//	}
 		//}
 		// blit src to backbuffer. 
-		Rendering::Graphic::BlitToBackBuffer(*m_FrontBufferPing);
+		
+		Rendering::RHI::BeginMarkerGroup("Blit_BackBuffer");
+		Rendering::Graphic::BlitToBackBuffer(*m_FrontBufferPing, *scene->renderer);
+		Rendering::RHI::EndMarkerGroup();
 
 	}
 	void Camera::UpdateRenderLists()

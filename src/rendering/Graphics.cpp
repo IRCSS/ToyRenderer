@@ -14,9 +14,8 @@ namespace ToyRenderer {
 		Mesh*         Graphic::m_fullScreenQuadMesh;
 		Shader*       Graphic::m_defaultPassThroughShader;
 
-		Graphic::Graphic()
+		Graphic::Graphic( ) 
 		{
-			
 			m_fullScreenQuadMesh       = PrimitivFactory::CreateFullScreenQuad();
 			m_defaultPassThroughShader = new Shader("res/shaders/postProcess_PassThrough.shader");
 			m_defaultMaterial          = new Material(m_defaultPassThroughShader);
@@ -44,11 +43,12 @@ namespace ToyRenderer {
 			m_fullScreenQuadRenderer->material->SetTexture("fbo_texture", src.GetTexturePointer());
 			dst.UnBind();
 		}
-		void Graphic::BlitToBackBuffer(const FrameBuffer & src)
+		void Graphic::BlitToBackBuffer(const FrameBuffer & src,  Renderer& renderer)
 		{
 			RHI::BindBackBuffer();
 			m_fullScreenQuadRenderer->material = m_defaultMaterial;
 			m_defaultMaterial->SetTexture("fbo_texture", src.GetTexturePointer());
+			m_fullScreenQuadRenderer->Render(renderer);
 	
 
 		}

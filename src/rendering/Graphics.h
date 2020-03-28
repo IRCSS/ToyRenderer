@@ -1,11 +1,13 @@
 #pragma once
 
 class Shader;
+class Renderer;
 
 namespace ToyRenderer {
 	class MeshRenderer;
 	class Material;
 	class Mesh;
+
 
 	namespace Rendering {
 		class FrameBuffer;
@@ -17,7 +19,6 @@ namespace ToyRenderer {
 			static Material*     m_defaultMaterial;
 			static Mesh*         m_fullScreenQuadMesh;
 			static Shader*       m_defaultPassThroughShader;
-
 
 		public:
 
@@ -31,7 +32,7 @@ namespace ToyRenderer {
 			// Graphics
 			static void Blit(const FrameBuffer& src, const FrameBuffer& dst);
 			static void Blit(const FrameBuffer& src, const FrameBuffer& dst, Material& mat);
-			static void BlitToBackBuffer(const FrameBuffer& src);
+			static void BlitToBackBuffer(const FrameBuffer& src,  Renderer& );
 		};
 	}
 }

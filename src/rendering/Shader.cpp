@@ -66,8 +66,6 @@ int Shader::GetUniformLocation(const std::string& name)
 
 	if (m_UniformLocationCache.find(name) != m_UniformLocationCache.end()) return m_UniformLocationCache[name];
 
-
-
 	GlCall(int location = glGetUniformLocation(m_RendererID, name.c_str()));
 	m_UniformLocationCache[name] = location;
 	if(location == -1) ENGINE_LOG_WARN("RHI Warning: attempted to set Uniform {}. Uniform doesnt exist in shader {}", name, m_FilePath);
