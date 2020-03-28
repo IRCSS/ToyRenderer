@@ -32,6 +32,8 @@ namespace ToyRenderer {
 			void Bind()    const;
 			void UnBind()  const;
 
+			Texture* GetTexturePointer() const;
+
 		};
 
 	}

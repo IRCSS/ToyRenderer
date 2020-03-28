@@ -105,7 +105,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\vendor;$(SolutionDir)dependencies\GLFW\include; $(SolutionDir)dependencies\GLEW\include; </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\vendor;$(SolutionDir)dependencies\GLFW\include; $(SolutionDir)dependencies\GLEW\include;</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -139,7 +139,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\vendor;$(SolutionDir)dependencies\GLFW\include; $(SolutionDir)dependencies\GLEW\include; </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)src\vendor;$(SolutionDir)dependencies\GLFW\include; $(SolutionDir)dependencies\GLEW\include;</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -151,6 +151,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\log\Log.cpp" />
     <ClCompile Include="src\rendering\Bounds.cpp" />
     <ClCompile Include="src\Components\Camera.cpp" />
     <ClCompile Include="src\Components\ProceduralSkyBox.cpp" />
@@ -194,6 +195,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\groundGrid.shader" />
+    <None Include="res\shaders\postProcess_PassThrough.shader" />
     <None Include="res\shaders\procceduralSkybox.shader" />
     <None Include="res\shaders\unlit_texture.shader" />
     <None Include="src\vendor\glm\detail\func_common.inl" />
@@ -332,6 +334,7 @@
     <None Include="src\vendor\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\log\Log.h" />
     <ClInclude Include="src\rendering\Bounds.h" />
     <ClInclude Include="src\Components\Camera.h" />
     <ClInclude Include="src\Components\ProceduralSkyBox.h" />
@@ -353,6 +356,7 @@
     <ClInclude Include="src\rendering\MeshRenderer.h" />
     <ClInclude Include="src\rendering\Mesh\Mesh.h" />
     <ClInclude Include="src\importAPI\MeshLoader.h" />
+    <ClInclude Include="src\rendering\PostProcess.h" />
     <ClInclude Include="src\rendering\RawMesh.h" />
     <ClInclude Include="src\rendering\Mesh\PrimitiveFactory.h" />
     <ClInclude Include="src\rendering\RenderBuffer.h" />

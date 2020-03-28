@@ -43,6 +43,14 @@ namespace ToyRenderer {
 		renderer.Draw(*vertexArray, *indexBuffer, *material->m_Shader);
 		
 	}
+	void MeshRenderer::Render(Renderer & renderer)
+	{
+		if (!material) return;
+
+		material->m_Shader->Bind();
+		material->BindMaterialParameters();
+		renderer.Draw(*vertexArray, *indexBuffer, *material->m_Shader);
+	}
 	void MeshRenderer::ExtractRenderProxyFromMesh()
 	{
 		if (!mesh) return;
@@ -86,7 +94,7 @@ namespace ToyRenderer {
 			
 		}
 		vertexBuffer = new VertexBuffer(&vertices[0], vertices.size() * sizeof(float));
-		indexBuffer = new IndexBuffer(&mesh->triangles[0], mesh->triangles.size());
+		indexBuffer  = new IndexBuffer(&mesh->triangles[0], mesh->triangles.size());
 
 		vertexBufferLayout = new VertexBufferLayout();
 

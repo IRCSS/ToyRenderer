@@ -41,6 +41,7 @@ namespace test {
 		groundGameObject->AddComponent<ToyRenderer::Transform>(groundGridTran);
 
 	    ToyRenderer::Mesh*  groundGridMesh = ToyRenderer::PrimitivFactory::CreatePlane();
+		ToyRenderer::ResourceManager::Instance().RegisterMesh(groundGridMesh);
 		Shader              *gridShader      = new Shader("res/shaders/groundGrid.shader");
 
         ToyRenderer::Material*     groundMaterial = new ToyRenderer::Material(gridShader);

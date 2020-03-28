@@ -39,7 +39,8 @@ namespace ToyRenderer {
 	   MeshRenderer(Mesh* mesh, Material* material);
 
 	   void Render( Renderer& renderer, const Matrix4x4& vp);
-
+	   /// Renderwithout camera MVP matrix. 
+	   void Render( Renderer& renderer); 
    private:
 	   void ExtractRenderProxyFromMesh();
 

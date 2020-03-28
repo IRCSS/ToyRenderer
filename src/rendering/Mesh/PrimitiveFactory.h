@@ -6,7 +6,7 @@ namespace ToyRenderer {
 
 	public: 
 		static Mesh* CreatePlane();
-
+		static Mesh* CreateFullScreenQuad();
 	};
 
 }

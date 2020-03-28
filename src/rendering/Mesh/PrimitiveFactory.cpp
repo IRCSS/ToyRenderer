@@ -6,7 +6,7 @@ namespace ToyRenderer {
 	Mesh* PrimitivFactory::CreatePlane()
 	{
 		Mesh* toReturn = new Mesh();
-		ResourceManager::Instance().RegisterMesh(toReturn);
+	
 
 	 
 
@@ -23,6 +23,21 @@ namespace ToyRenderer {
 		toReturn->triangles = std::vector<unsigned int>{
 			0, 1 ,2, // first Triagnle 
 			2, 3, 0, // second Triangle
+		};
+
+		return toReturn;
+	}
+	Mesh * PrimitivFactory::CreateFullScreenQuad()
+	{
+		Mesh* toReturn = new Mesh();
+
+		toReturn->VertexPositions = std::vector<Vector3>{ Vector3(-1.0f, -1.0f,  0.0f),
+														  Vector3( 1.0f, -1.0f,  0.0f),
+														  Vector3(-1.0f,  1.0f,  0.0f),
+														  Vector3( 1.0f,  1.0f,  0.0f) };
+		toReturn->triangles = std::vector<unsigned int>{
+			0, 1 ,2, // first Triagnle 
+			2, 1, 3, // second Triangle
 		};
 
 		return toReturn;

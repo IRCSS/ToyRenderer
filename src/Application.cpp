@@ -14,10 +14,20 @@
 #include "Tests/TestObjLoader.h"
 
 #include "managers/input/InputMaster.h"
+#include "log/Log.h"
 
 
 int main(void)
 {
+
+
+	// Initalize Loging
+	//-------------------------------------------------------------------
+	ToyRenderer::Log::Initialize();
+
+
+
+	//-------------------------------------------------------------------
 	GLFWwindow* window;
 
 	/* Initialize the library */

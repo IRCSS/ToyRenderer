@@ -51,6 +51,10 @@ namespace ToyRenderer {
 		{
 			GlCall(glBindFramebuffer(GL_FRAMEBUFFER, 0));
 		}
+		Texture * FrameBuffer::GetTexturePointer() const
+		{
+			return m_renderTexture;
+		}
 	}
 }
 

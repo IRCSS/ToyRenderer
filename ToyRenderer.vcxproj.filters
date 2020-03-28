@@ -150,6 +150,9 @@
     <ClCompile Include="src\rendering\Graphics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\log\Log.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vendor\stb_image\stb_image.h">
@@ -1025,6 +1028,12 @@
     <ClInclude Include="src\rendering\Graphics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\rendering\PostProcess.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\log\Log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\vendor\glm\detail\func_common.inl">
@@ -1434,6 +1443,7 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="res\shaders\unlit_texture.shader" />
+    <None Include="res\shaders\postProcess_PassThrough.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\checkerFormat.png">

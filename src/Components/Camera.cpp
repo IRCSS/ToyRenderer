@@ -6,12 +6,14 @@
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "managers/Settings.h"
+#include "rendering/PostProcess.h"
+#include "rendering/FrameBuffer.h"
 
 namespace ToyRenderer {
 	Camera::Camera()
 	{
 	}
-	Camera::Camera(Scene * in_Scene) : scene(in_Scene)
+	Camera::Camera(Scene * in_Scene) : scene(in_Scene), m_FrontBufferPing(nullptr), m_FrontBufferPong(nullptr)
 	{
 		
 		UpdateRenderLists();
@@ -26,6 +28,14 @@ namespace ToyRenderer {
 	Camera::~Camera()
 	{
 		delete skybox;
+
+		for (std::vector<Rendering::PostProcess*>::iterator i = postProcessStack.begin(); i != postProcessStack.end(); ++i)
+			delete *i;
+		postProcessStack.clear();
+
+		delete m_FrontBufferPing;
+		delete m_FrontBufferPong;
+
 	}
 	void Camera::OnRender()
 	{
@@ -47,14 +57,23 @@ namespace ToyRenderer {
 		}
 
 		// RENDER ORDER:
+		// Set up Front Framebuffer
 		// CLEAR
 		// OPAQUE
 		// SKYBOX
 		// TRANSPARENT
+		// POST PROCESS
+		// Blit On Backbuffer
 
+		
+
+		//---------------------------------------------------------------------
+		// Clear
 		glDepthMask(GL_TRUE);
 		scene->renderer->Clear(Color(0.f, 1.f, 0.f, 1.f), 1.0f, true);
 
+		// --------------------------------------------------------------------
+		// Opaque
 		Matrix4x4 vp = VPMatrix();
 		Matrix4x4 vp_noTranslation = VP_NoTranslation_Matrix();
 		
@@ -62,20 +81,29 @@ namespace ToyRenderer {
 
 			opaquePassRenderes[i]->Render(*scene->renderer, vp);
 		}
-
+		//---------------------------------------------------------------------
+		// Skybox
 		skybox->Render(*scene->renderer, vp_noTranslation);
-
+		//---------------------------------------------------------------------
+		// Transparent
 		for (std::vector<MeshRenderer*>::size_type i = 0; i != transparentPassRenderers.size(); i++) {
 			
 			transparentPassRenderers[i]->Render(*scene->renderer,vp);
 		}
-	
+		//---------------------------------------------------------------------
+		// Post Process
+		for (std::vector<Rendering::PostProcess*>::size_type i = 0; i != postProcessStack.size(); i++) {
 
+		}
 
 	}
 	void Camera::UpdateRenderLists()
 	{
 		activeMeshRenderers = scene->GetAllGameObjectsWithComponent<MeshRenderer>();
+	}
+	void Camera::AddPostProcessToStack( Rendering::PostProcess* toAdd)
+	{
+		postProcessStack.push_back(toAdd);
 	}
 	Matrix4x4 Camera::ProjectionMatrix() const
 	{
@@ -95,6 +123,10 @@ namespace ToyRenderer {
 		Matrix4x4 viewNoTranslation = transform->worldToLocal();
 		viewNoTranslation.SetColumn(3, Vector4(0.0f, 0.0f, 0.0f, 1.0f));
 		return  ProjectionMatrix() * viewNoTranslation;
+	}
+
+	void Camera::InitateFrontBuffers(const int width, const int Height)
+	{
 	}
 
 
