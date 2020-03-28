@@ -8,7 +8,9 @@
 #include "managers/Settings.h"
 #include "rendering/PostProcess.h"
 #include "rendering/FrameBuffer.h"
-
+#include "log/Log.h"
+#include "rendering/Graphics.h"
+#include "managers/Settings.h"
 namespace ToyRenderer {
 	Camera::Camera()
 	{
@@ -23,6 +25,9 @@ namespace ToyRenderer {
 
 		skybox = new ProceduralSkyBox();
 		transform = nullptr;
+
+		InitiateFrontBuffers(Settings::WindowWidth, Settings::WindowHeigth);
+
 
 	}
 	Camera::~Camera()
@@ -51,7 +56,7 @@ namespace ToyRenderer {
 			int passID= activeMeshRenderers[i]->material->GetPass();
 			switch (passID)
 			{
-			case Material_PASS_OPAQUE:      opaquePassRenderes.push_back(activeMeshRenderers[i]);      break;
+			case Material_PASS_OPAQUE:      opaquePassRenderes.push_back(activeMeshRenderers[i]);       break;
 			case Material_PASS_TRANSPARENT: transparentPassRenderers.push_back(activeMeshRenderers[i]); break;
 			}
 		}
@@ -65,7 +70,7 @@ namespace ToyRenderer {
 		// POST PROCESS
 		// Blit On Backbuffer
 
-		
+		m_FrontBufferPing->Bind();
 
 		//---------------------------------------------------------------------
 		// Clear
@@ -92,9 +97,25 @@ namespace ToyRenderer {
 		}
 		//---------------------------------------------------------------------
 		// Post Process
-		for (std::vector<Rendering::PostProcess*>::size_type i = 0; i != postProcessStack.size(); i++) {
+		//Rendering::FrameBuffer* src = m_FrontBufferPing;
+		//Rendering::FrameBuffer* dst = m_FrontBufferPong;
 
-		}
+		//for (std::vector<Rendering::PostProcess*>::size_type i = 0; i != postProcessStack.size(); i++) {
+		//	postProcessStack[i]->OnPostRender(*src, *dst);
+
+		//	if (src == m_FrontBufferPing) 
+		//	{
+		//		src = m_FrontBufferPong;
+		//		dst = m_FrontBufferPing;
+		//	}
+		//	else 
+		//	{
+		//		src = m_FrontBufferPing;
+		//		dst = m_FrontBufferPong;
+		//	}
+		//}
+		// blit src to backbuffer. 
+		Rendering::Graphic::BlitToBackBuffer(*m_FrontBufferPing);
 
 	}
 	void Camera::UpdateRenderLists()
@@ -125,8 +146,16 @@ namespace ToyRenderer {
 		return  ProjectionMatrix() * viewNoTranslation;
 	}
 
-	void Camera::InitateFrontBuffers(const int width, const int Height)
+	void Camera::InitiateFrontBuffers(const int width, const int height)
 	{
+
+		if (m_FrontBufferPing != nullptr || m_FrontBufferPong != nullptr) ENGINE_LOG_WARN("Attempted to inialize alraedy existing Front Buffers");
+
+		m_FrontBufferPing = new Rendering::FrameBuffer(width, height, Texture::Format::RGBA8, Rendering::RenderBuffer::Format::Depth_16);
+		m_FrontBufferPong = new Rendering::FrameBuffer(width, height, Texture::Format::RGBA8, Rendering::RenderBuffer::Format::Depth_16);
+
+
+
 	}
 
 

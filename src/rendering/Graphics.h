@@ -25,9 +25,13 @@ namespace ToyRenderer {
 			 Graphic();
 			~Graphic();
 
+			//Delete the copy constructor/assignment 
+			Graphic(const Graphic &)            = delete;
+
 			// Graphics
 			static void Blit(const FrameBuffer& src, const FrameBuffer& dst);
 			static void Blit(const FrameBuffer& src, const FrameBuffer& dst, Material& mat);
+			static void BlitToBackBuffer(const FrameBuffer& src);
 		};
 	}
 }

@@ -46,6 +46,6 @@ namespace ToyRenderer {
 		 Matrix4x4 VP_NoTranslation_Matrix() const;
 
 	private:
-		void InitateFrontBuffers(const int width, const int Height);
+		void InitiateFrontBuffers(const int width, const int Height);
 	};
 }

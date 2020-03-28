@@ -1,5 +1,5 @@
 #include "FrameBuffer.h"
-
+#include "log/Log.h"
 namespace ToyRenderer {
 	namespace Rendering {
 		FrameBuffer::FrameBuffer(unsigned int width, unsigned int height, Texture::Format colorBufferFormat, RenderBuffer::Format depthBufferFormat) :
@@ -27,7 +27,7 @@ namespace ToyRenderer {
 
 			GlCall(glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, m_renderBuffer->GetRendererID()));
 
-
+			if (!IsValid()) ENGINE_LOG_WARN("Frame buffer {}, was not correctly initated.", m_RendererID);
 
 		}
 		FrameBuffer::~FrameBuffer()

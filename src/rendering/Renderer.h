@@ -10,20 +10,22 @@
 void GLClearError();
 bool GLCheckError(const char* functionName, const char* fileName, const int line);
 
+#include "rendering/Graphics.h"
 
 class VertexArray;
 class IndexBuffer;
 class Shader;
 namespace ToyRenderer {
 	class Color;
+
 }
 
 class Renderer {
 
 private: 
-
+	ToyRenderer::Rendering::Graphic m_graphicUtility;
 public:
-
+	Renderer();
 	
 	void Clear(ToyRenderer::Color clearColor, float depthClearValue, bool clearDepth) const;
 	void Draw(const VertexArray& va, const IndexBuffer& ib, const Shader& shader);

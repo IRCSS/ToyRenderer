@@ -5,6 +5,7 @@
 #include "rendering/Mesh/PrimitiveFactory.h"
 #include "rendering/Shader.h"
 #include "rendering/FrameBuffer.h"
+#include "rendering/RHI/RHI.h"
 namespace ToyRenderer {
 	namespace Rendering {
 
@@ -42,6 +43,14 @@ namespace ToyRenderer {
 			m_fullScreenQuadRenderer->material = &mat;
 			m_fullScreenQuadRenderer->material->SetTexture("fbo_texture", src.GetTexturePointer());
 			dst.UnBind();
+		}
+		void Graphic::BlitToBackBuffer(const FrameBuffer & src)
+		{
+			RHI::BindBackBuffer();
+			m_fullScreenQuadRenderer->material = m_defaultMaterial;
+			m_defaultMaterial->SetTexture("fbo_texture", src.GetTexturePointer());
+	
+
 		}
 	}
 }

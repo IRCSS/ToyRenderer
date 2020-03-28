@@ -176,6 +176,7 @@
     <ClCompile Include="src\rendering\RenderBuffer.cpp" />
     <ClCompile Include="src\rendering\Renderer.cpp" />
     <ClCompile Include="src\managers\ResourceManager.cpp" />
+    <ClCompile Include="src\rendering\RHI\RHI.cpp" />
     <ClCompile Include="src\rendering\Shader.cpp" />
     <ClCompile Include="src\Tests\Test.cpp" />
     <ClCompile Include="src\Tests\TestClearColor.cpp" />

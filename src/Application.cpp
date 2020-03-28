@@ -26,7 +26,6 @@ int main(void)
 	ToyRenderer::Log::Initialize();
 
 
-
 	//-------------------------------------------------------------------
 	GLFWwindow* window;
 

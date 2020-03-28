@@ -7,6 +7,8 @@ namespace ToyRenderer {
 		static class RHI {
 		public:
 
+			static void BindBackBuffer();
+
 		};
 
 	}

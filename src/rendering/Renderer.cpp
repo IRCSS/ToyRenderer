@@ -1,7 +1,7 @@
 #include "rendering/Renderer.h"
 #include <iostream>
 #include "log/Log.h"
-
+#include "Graphics.h"
 void GLClearError() {
 
 	while (glGetError() != GL_NO_ERROR);
@@ -23,6 +23,11 @@ bool GLCheckError(const char* functionName, const char* fileName, const int line
 #include "IndexBuffer.h"
 #include "Shader.h"
 #include "maths/Color.h"
+
+Renderer::Renderer()
+{
+	ToyRenderer::Rendering::Graphic m_graphicUtility();
+}
 
 void Renderer::Clear(ToyRenderer::Color clearColor, float depthClearValue, bool clearDepth) const
 {
