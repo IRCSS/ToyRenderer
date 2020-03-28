@@ -1,6 +1,7 @@
 #pragma once
 #include <functional>
 #include <vector>
+#include "log/Log.h"
 
 namespace test {
 	class Test
@@ -25,7 +26,7 @@ namespace test {
 		 template<typename T>
 		 void RegisterTest(const std::string& name) {
 
-			 std::cout << "Test Registered: " << name << std::endl;
+			ENGINE_LOG_TRACE("Test Registered: {}" ,name );
 			 m_Tests.push_back(std::make_pair(name, []() {return new T(); }));
 		 };
 

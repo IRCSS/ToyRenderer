@@ -53,9 +53,9 @@ int main(void)
 	glfwSwapInterval(Settings::VSync ? 1: 0);
 
 	if (glewInit() != GLEW_OK)
-		std::cout <<  "GLEW has not been initialized correctly " << std::endl;
+		ENGINE_LOG_FATAL( "GLEW has not been initialized correctly ");
 
-	std::cout << glGetString(GL_VERSION) << std::endl;
+	ENGINE_LOG_INFO("Initialized with GL Version       {}", glGetString(GL_VERSION));
 
 
 

@@ -1,5 +1,7 @@
 #include "rendering/Renderer.h"
 #include <iostream>
+#include "log/Log.h"
+
 void GLClearError() {
 
 	while (glGetError() != GL_NO_ERROR);
@@ -8,8 +10,7 @@ bool GLCheckError(const char* functionName, const char* fileName, const int line
 
 	bool foundError = false;
 	while (GLenum error = glGetError()) {
-		std::cout << "[OpenGl Error]: " << error << " In Function, " << functionName
-			<< " in file, " << fileName << ": Line " << line << std::endl;               // to do: convert the error from hexa decimal, to int and from glew get the actual error name 
+		ENGINE_LOG_ERROR("[OpenGl Error]: {}, In Function, {}, in file, {}: Line {}", error, functionName, fileName, line);  // to do: convert the error from hexa decimal, to int and from glew get the actual error name 
 		foundError = true;
 
 	}

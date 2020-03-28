@@ -7,7 +7,7 @@
 #include "vendor/meshReader/tinyobjloader.h"
 #include <fstream>
 #include <string>
-
+#include "log/log.h"
 
 class Texture;
 
@@ -82,20 +82,12 @@ namespace ToyRenderer {
 		bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, filename, basepath,  triangulate);
 		// ------------------------------------------------------------------------------------------------------
 
-		if (!warn.empty()) {
-			std::cout << "WARN: " << warn << std::endl;
-		}
+		if (!warn.empty()) ENGINE_LOG_WARN(" During loading of {}, WARN: {}" , filename, warn );
 
-
-
-		if (!err.empty()) {
-			std::cerr << "ERR: " << err << std::endl;
-		}
-
-
-
+		if (!err.empty())  ENGINE_LOG_ERROR(" During loading of {}, ERROR: {}", filename, err);
+		
 		if (!ret) {
-			std::cout << "Failed to load/parse .obj.\n" << std::endl;
+			ENGINE_LOG_ERROR(" Failed to load/parse.obj. {}: {}", filename);
 			return false;
 		}
 

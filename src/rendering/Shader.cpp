@@ -4,7 +4,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-
+#include "log/Log.h"
 
 Shader::Shader(const std::string & fileName) : m_FilePath(fileName), m_RendererID(0)
 {
@@ -31,26 +31,31 @@ void Shader::UnBind() const
 
 void Shader::SetUniform4f(const std::string & name, float v0, float v1, float v2, float v3)
 {
-
-	GlCall(glUniform4f(GetUniformLocation(name), v0, v1, v2, v3));
+	int location = GetUniformLocation(name);
+	if (location == -1) return;
+	GlCall(glUniform4f(location, v0, v1, v2, v3));
 
 }
 
 void Shader::SetUniformf(const std::string & name, float v0)
 {
-	GlCall(glUniform1f( GetUniformLocation(name), v0));
-
+	int location = GetUniformLocation(name);
+	if (location == -1) return;
+	GlCall(glUniform1f(location, v0));
 }
 
 void Shader::SetUniform1i(const std::string& name, const int i0)
 {
-
-	GlCall(glUniform1i(GetUniformLocation(name), i0));
+	int location = GetUniformLocation(name);
+	if (location == -1) return;
+	GlCall(glUniform1i(location, i0));
 }
 
 void Shader::SetUniformMat4(const std::string & name, const glm::mat4 & Matrix)
 {
-	GlCall(glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, &Matrix[0][0]));
+	int location = GetUniformLocation(name);
+	if (location == -1) return;
+	GlCall(glUniformMatrix4fv(location, 1, GL_FALSE, &Matrix[0][0]));
 
 }
 
@@ -64,10 +69,8 @@ int Shader::GetUniformLocation(const std::string& name)
 
 
 	GlCall(int location = glGetUniformLocation(m_RendererID, name.c_str()));
-	if(location == -1) {
-		std::cout << "Warning: uniform " << name << " doest't exist! " << std::endl;
-	}
-	else m_UniformLocationCache[name] = location;
+	m_UniformLocationCache[name] = location;
+	if(location == -1) ENGINE_LOG_WARN("RHI Warning: attempted to set Uniform {}. Uniform doesnt exist in shader {}", name, m_FilePath);
 
 	return location;
 }
@@ -148,9 +151,8 @@ unsigned int Shader::CompileShader(unsigned int type, const std::string& source)
 		char* message = (char*)alloca(length * sizeof(char));
 		glGetShaderInfoLog(id, length, &length, message);
 
-		std::cout << "Failed to compile" <<
-			(type == GL_VERTEX_SHADER ? "vertex " : "fragment ") << "shader!" << std::endl;
-		std::cout << message << std::endl;
+		ENGINE_LOG_ERROR("RHI ERROR: Failed to compile {} shader! message: {}", (type == GL_VERTEX_SHADER ? "vertex " : "fragment "), message);
+
 
 		glDeleteShader(id);
 		return 0;
