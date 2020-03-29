@@ -15,7 +15,7 @@
 
 #include "managers/input/InputMaster.h"
 #include "log/Log.h"
-
+#include "world/Time.h"
 
 int main(void)
 {
@@ -88,7 +88,7 @@ int main(void)
 	test::TestMenu* menu  = new test::TestMenu(currenTest);
 	currenTest = menu;
 
-	clock_t currentTick;
+	ToyRenderer::Time timeHandler = ToyRenderer::Time();
 
 	menu->RegisterTest<test::TestClearColor>("Clear Color");
 	menu->RegisterTest<test::TesstObjLoader>("obj load");
@@ -100,10 +100,10 @@ int main(void)
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
 	{	
-		currentTick =  clock();
 		
+		timeHandler.Update();
 		// INPUT 
-		inputMaster.OnUpdate(currentTick);
+		inputMaster.OnUpdate(ToyRenderer::Time::GetDeltaTime());
 
 
 
@@ -111,7 +111,7 @@ int main(void)
 		
 		ImGui_ImplGlfwGL3_NewFrame();
 		if (currenTest) {
-			currenTest->OnUpdate(currentTick);
+			currenTest->OnUpdate(ToyRenderer::Time::GetDeltaTime());
 			currenTest->OnRender();
 
 			ImGui::Begin("Test");
@@ -119,9 +119,6 @@ int main(void)
 
 				delete currenTest;
 				currenTest = menu;
-
-
-
 			}
 			currenTest->OnImGuiRender();
 

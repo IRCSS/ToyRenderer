@@ -194,6 +194,7 @@
     <ClCompile Include="src\rendering\VertexBuffer.cpp" />
     <ClCompile Include="src\world\GameObject.cpp" />
     <ClCompile Include="src\world\Scene.cpp" />
+    <ClCompile Include="src\world\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\groundGrid.shader" />
@@ -631,6 +632,7 @@
     <ClInclude Include="src\rendering\VertexBufferLayout.h" />
     <ClInclude Include="src\world\GameObject.h" />
     <ClInclude Include="src\world\Scene.h" />
+    <ClInclude Include="src\world\Time.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\checkerFormat.png" />
