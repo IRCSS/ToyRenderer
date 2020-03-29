@@ -10,6 +10,7 @@
 #include "rendering/MeshRenderer.h"
 #include "Components/Camera.h"
 #include "rendering/Material.h"
+#include "Components/Scripts/postProcesses/Vignetting.h"
 namespace test {
 	TesstObjLoader::TesstObjLoader()
 	{
@@ -26,6 +27,8 @@ namespace test {
 		cameraGB->AddComponent<ToyRenderer::Transform>(CameraViewTrabsform);
 
 		ToyRenderer::Camera*  pCameraComp = new ToyRenderer::Camera(pScene);
+		ToyRenderer::PostProcessing::Vignetting* vignettingPos = new ToyRenderer::PostProcessing::Vignetting();
+		pCameraComp->AddPostProcessToStack(vignettingPos);
 		cameraGB->AddComponent<ToyRenderer::Camera>(pCameraComp);
 
 		CameraMovment       = new Behaviours::MoveCamera(CameraViewTrabsform);
@@ -37,14 +40,14 @@ namespace test {
 		// Setup GroundPlance
 		ToyRenderer::GameObject*   groundGameObject = new ToyRenderer::GameObject();
 
-		ToyRenderer::Transform*    groundGridTran = new ToyRenderer::Transform(Vector3(0.0f, -4.5f, 4.0f), vector3_one*100.0f, vector3_zero);
+		ToyRenderer::Transform*    groundGridTran   = new ToyRenderer::Transform(Vector3(0.0f, -4.5f, 4.0f), vector3_one*100.0f, vector3_zero);
 		groundGameObject->AddComponent<ToyRenderer::Transform>(groundGridTran);
 
 	    ToyRenderer::Mesh*  groundGridMesh = ToyRenderer::PrimitivFactory::CreatePlane();
 		ToyRenderer::ResourceManager::Instance().RegisterMesh(groundGridMesh);
-		Shader              *gridShader      = new Shader("res/shaders/groundGrid.shader");
+		Shader              *gridShader    = new Shader("res/shaders/groundGrid.shader");
 
-        ToyRenderer::Material*     groundMaterial = new ToyRenderer::Material(gridShader);
+        ToyRenderer::Material* groundMaterial = new ToyRenderer::Material(gridShader);
 		ToyRenderer::ResourceManager::Instance().RegisterMaterial(groundMaterial);
 		
 

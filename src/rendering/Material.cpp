@@ -1,5 +1,6 @@
 #include "rendering/Material.h"
 #include "Shader.h"
+#include "rendering/RHI/RHI.h"
 namespace ToyRenderer {
 
 
@@ -80,29 +81,11 @@ namespace ToyRenderer {
 			it_Textures++;
 		}
 
-
-		if (settings_BackFaceCulling) glEnable(GL_CULL_FACE);
-		else glDisable(GL_CULL_FACE);
-
-		if (settings_ZTest) glEnable(GL_DEPTH_TEST);
-		else glDisable(GL_DEPTH_TEST);
-
-		if (settings_ZWrite) glDepthMask(GL_TRUE);
-		else glDepthMask(GL_FALSE);
-
-		if (settings_Blend) glEnable(GL_BLEND);
-		else glDisable(GL_BLEND);
-	
-		switch (settings_depthFunction) {
-		case Material_DepthFunction_ALWAYS:   glDepthFunc(GL_ALWAYS);   break;
-		case Material_DepthFunction_EQUAL:    glDepthFunc(GL_EQUAL);    break;
-		case Material_DepthFunction_GEQUAL:   glDepthFunc(GL_GEQUAL);   break;
-		case Material_DepthFunction_GREATER:  glDepthFunc(GL_GREATER);  break;
-		case Material_DepthFunction_LEQUAL:   glDepthFunc(GL_LEQUAL);   break;
-		case Material_DepthFunction_LESS:     glDepthFunc(GL_LESS);     break;
-		case Material_DepthFunction_NEVER:    glDepthFunc(GL_NEVER);    break;
-		case Material_DepthFunction_NOTEQUAL: glDepthFunc(GL_NOTEQUAL); break;
-		}
+		Rendering::RHI::EnableBackFaceCulling(settings_BackFaceCulling);
+		Rendering::RHI::EnableZTest(settings_ZTest);
+		Rendering::RHI::EnableDepthBufferWrite(settings_ZWrite);
+		Rendering::RHI::EnableBlend(settings_Blend);
+		Rendering::RHI::SetDepthFucntion((Rendering::RHI::Material_DepthFunction)settings_depthFunction);
 	}
 	void Material::SetTwoSided(const bool TwoSided)
 	{

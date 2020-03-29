@@ -77,12 +77,11 @@ namespace ToyRenderer {
 		// Clear
         Rendering::RHI::BeginMarkerGroup("Clear_Buffer");
 		Rendering::RHI::BindBackBuffer();
-		glDepthMask(GL_TRUE);
+		Rendering::RHI::EnableDepthBufferWrite(true);
 		scene->renderer->Clear(Color(0.f, 1.f, 0.f, 1.f), 1.0f, true);
 
 		m_FrontBufferPing->Bind();
 
-		glDepthMask(GL_TRUE);
 		scene->renderer->Clear(Color(0.f, 1.f, 0.f, 1.f), 1.0f, true);
 
 		Rendering::RHI::EndMarkerGroup();
@@ -113,27 +112,29 @@ namespace ToyRenderer {
 		Rendering::RHI::EndMarkerGroup();
 		//---------------------------------------------------------------------
 		// Post Process
-		//Rendering::FrameBuffer* src = m_FrontBufferPing;
-		//Rendering::FrameBuffer* dst = m_FrontBufferPong;
+		Rendering::RHI::BeginMarkerGroup("Post_Process");
+		Rendering::FrameBuffer* src = m_FrontBufferPing;
+		Rendering::FrameBuffer* dst = m_FrontBufferPong;
 
-		//for (std::vector<Rendering::PostProcess*>::size_type i = 0; i != postProcessStack.size(); i++) {
-		//	postProcessStack[i]->OnPostRender(*src, *dst);
+		for (std::vector<Rendering::PostProcess*>::size_type i = 0; i != postProcessStack.size(); i++) {
+			postProcessStack[i]->OnPostRender(*src, *dst, *scene->renderer);
 
-		//	if (src == m_FrontBufferPing) 
-		//	{
-		//		src = m_FrontBufferPong;
-		//		dst = m_FrontBufferPing;
-		//	}
-		//	else 
-		//	{
-		//		src = m_FrontBufferPing;
-		//		dst = m_FrontBufferPong;
-		//	}
-		//}
+			if (src == m_FrontBufferPing) 
+			{
+				src = m_FrontBufferPong;
+				dst = m_FrontBufferPing;
+			}
+			else 
+			{
+				src = m_FrontBufferPing;
+				dst = m_FrontBufferPong;
+			}
+		}
 		// blit src to backbuffer. 
-		
+
+		Rendering::RHI::EndMarkerGroup();
 		Rendering::RHI::BeginMarkerGroup("Blit_BackBuffer");
-		Rendering::Graphic::BlitToBackBuffer(*m_FrontBufferPing, *scene->renderer);
+		Rendering::Graphic::BlitToBackBuffer(*src, *scene->renderer);
 		Rendering::RHI::EndMarkerGroup();
 
 	}

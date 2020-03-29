@@ -19,6 +19,9 @@ namespace ToyRenderer {
 			m_fullScreenQuadMesh       = PrimitivFactory::CreateFullScreenQuad();
 			m_defaultPassThroughShader = new Shader("res/shaders/postProcess_PassThrough.shader");
 			m_defaultMaterial          = new Material(m_defaultPassThroughShader);
+			m_defaultMaterial->SetDepthFunction(Material_DepthFunction_ALWAYS);
+			m_defaultMaterial->EnableZTest(false);
+			m_defaultMaterial->EnableZWrite(false);
 			m_fullScreenQuadRenderer   = new MeshRenderer(m_fullScreenQuadMesh, m_defaultMaterial);
 
 		}
@@ -29,18 +32,20 @@ namespace ToyRenderer {
 			delete m_fullScreenQuadMesh;
 			delete m_defaultPassThroughShader;
 		}
-		void Graphic::Blit(const FrameBuffer & src, const FrameBuffer & dst)
+		void Graphic::Blit(const FrameBuffer & src, const FrameBuffer & dst, Renderer& renderer)
 		{
 			dst.Bind();
 			m_fullScreenQuadRenderer->material = m_defaultMaterial;
 			m_defaultMaterial->SetTexture("fbo_texture", src.GetTexturePointer());
+			m_fullScreenQuadRenderer->Render(renderer);
 			dst.UnBind();
 		}
-		void Graphic::Blit(const FrameBuffer & src, const FrameBuffer & dst, Material & mat) // The material is handeled outside of this class. 
+		void Graphic::Blit(const FrameBuffer & src, const FrameBuffer & dst, Material & mat, Renderer& renderer) // The material is handeled outside of this class. 
 		{
 			dst.Bind();
 			m_fullScreenQuadRenderer->material = &mat;
 			m_fullScreenQuadRenderer->material->SetTexture("fbo_texture", src.GetTexturePointer());
+			m_fullScreenQuadRenderer->Render(renderer);
 			dst.UnBind();
 		}
 		void Graphic::BlitToBackBuffer(const FrameBuffer & src,  Renderer& renderer)

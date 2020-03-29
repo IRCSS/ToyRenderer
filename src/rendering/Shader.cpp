@@ -79,6 +79,9 @@ int Shader::GetUniformLocation(const std::string& name)
 
 ParsedShader Shader::ParseShader(const std::string & filePath) {
 	std::ifstream stream(filePath);
+	
+	if (!stream.is_open()) ENGINE_LOG_ERROR("Assets Error: Attempted and failed to open, parse: {}", filePath);
+
 	enum class ShaderType {
 		NONE = -1, VERTEX = 0, FRAGMENT = 1
 	};

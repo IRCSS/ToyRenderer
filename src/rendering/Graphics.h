@@ -30,8 +30,8 @@ namespace ToyRenderer {
 			Graphic(const Graphic &)            = delete;
 
 			// Graphics
-			static void Blit(const FrameBuffer& src, const FrameBuffer& dst);
-			static void Blit(const FrameBuffer& src, const FrameBuffer& dst, Material& mat);
+			static void Blit(const FrameBuffer& src, const FrameBuffer& dst, Renderer& renderer);
+			static void Blit(const FrameBuffer& src, const FrameBuffer& dst, Material& mat, Renderer& renderer);
 			static void BlitToBackBuffer(const FrameBuffer& src,  Renderer& );
 		};
 	}

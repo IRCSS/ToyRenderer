@@ -1,4 +1,5 @@
 #pragma once
+class Renderer;
 namespace ToyRenderer {
 	namespace Rendering {
 
@@ -6,8 +7,8 @@ namespace ToyRenderer {
 		class PostProcess {
 		public:
 			PostProcess() {};
-			 virtual ~PostProcess() = 0;
-			 virtual void OnPostRender(FrameBuffer& src, FrameBuffer& dst) = 0;
+			virtual ~PostProcess() {};
+			 virtual void OnPostRender(FrameBuffer& src, FrameBuffer& dst, Renderer& renderer) = 0;
 			 
 		};
 
