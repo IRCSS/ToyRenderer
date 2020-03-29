@@ -23,5 +23,6 @@ namespace ToyRenderer {
 	{
 		float currentTime = (float)clock();
 		deltaTime = currentTime - lastFrameTime;
+		lastFrameTime = currentTime;
 	}
 }

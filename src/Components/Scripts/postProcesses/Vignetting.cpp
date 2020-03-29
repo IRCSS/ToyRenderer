@@ -2,6 +2,8 @@
 #include "rendering/Shader.h"
 #include "rendering/Material.h"
 #include "rendering/Graphics.h"
+#include "world/Time.h"
+#include "log/Log.h"
 namespace ToyRenderer {
 	namespace PostProcessing {
         Vignetting::Vignetting()
@@ -11,6 +13,7 @@ namespace ToyRenderer {
 			vignettingMaterial->SetDepthFunction(Material_DepthFunction_ALWAYS);
 			vignettingMaterial->EnableZTest(false);
 			vignettingMaterial->EnableZWrite(false);
+			vignettingMaterial->SetFloat("_Time", Time::GetTime());
         }
 		Vignetting::~Vignetting()
 		{
@@ -19,6 +22,8 @@ namespace ToyRenderer {
 		}
 		void Vignetting::OnPostRender(Rendering::FrameBuffer & src, Rendering::FrameBuffer & dst, Renderer & renderer)
 		{
+			vignettingMaterial->SetFloat("_Time", Time::GetTime());
+
 			Rendering::Graphic::Blit(src, dst, *vignettingMaterial, renderer);
 		}
     }
