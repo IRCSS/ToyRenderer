@@ -30,8 +30,8 @@ mono_crash.*
 bld/
 ./[Bb]in/
 [Oo]bj/
-[Ll]og/
-[Ll]ogs/
+#[Ll]og/
+#[Ll]ogs/
 intermediates/
 
 # Visual Studio 2015/2017 cache/options directory
