@@ -1,0 +1,12 @@
+[2020-04-22 22:04:54.783] [Engine_Log] [info] Inialized Engine Log
+[2020-04-22 22:04:55.235] [Engine_Log] [info] Initialized with GL Version       4.3.0 NVIDIA 436.02
+[2020-04-22 22:04:55.237] [Engine_Log] [trace] Test Registered: Clear Color
+[2020-04-22 22:04:55.237] [Engine_Log] [trace] Test Registered: obj load
+[2020-04-22 22:04:57.071] [Engine_Log] [warning] RHI Warning: attempted to set Uniform roughnessValue. Uniform doesnt exist in shader res/shaders/unlit_texture.shader
+[2020-04-22 22:04:57.071] [Engine_Log] [warning] RHI Warning: attempted to set Uniform metalicValue. Uniform doesnt exist in shader res/shaders/unlit_texture.shader
+[2020-04-22 22:04:57.071] [Engine_Log] [warning] RHI Warning: attempted to set Uniform ambientColor. Uniform doesnt exist in shader res/shaders/unlit_texture.shader
+[2020-04-22 22:04:57.072] [Engine_Log] [warning] RHI Warning: attempted to set Uniform diffuseColor. Uniform doesnt exist in shader res/shaders/unlit_texture.shader
+[2020-04-22 22:04:57.072] [Engine_Log] [warning] RHI Warning: attempted to set Uniform specularColor. Uniform doesnt exist in shader res/shaders/unlit_texture.shader
+[2020-04-22 22:04:57.072] [Engine_Log] [warning] RHI Warning: attempted to set Uniform emissionColor. Uniform doesnt exist in shader res/shaders/unlit_texture.shader
+[2020-04-22 22:04:57.072] [Engine_Log] [warning] RHI Warning: attempted to set Uniform diffuseMap. Uniform doesnt exist in shader res/shaders/unlit_texture.shader
+[2020-04-22 22:04:57.073] [Engine_Log] [warning] RHI Warning: attempted to set Uniform _Time. Uniform doesnt exist in shader res/shaders/postProcess_Vignetting.shader
