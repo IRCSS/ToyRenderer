@@ -3,8 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SandBox", "example\SandBox\SandBox.vcxproj", "{C6EB7239-BCF0-4514-A77C-AB2F42A3638D}"
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ToyRenderer", "ToyRenderer\ToyRenderer.vcxproj", "{FDA92ECA-F20E-4633-8FB2-AB69DF7A8955}"
 EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -15,6 +18,10 @@ Global
 		{FDA92ECA-F20E-4633-8FB2-AB69DF7A8955}.Debug|x64.Build.0 = Debug|x64
 		{FDA92ECA-F20E-4633-8FB2-AB69DF7A8955}.Release|x64.ActiveCfg = Release|x64
 		{FDA92ECA-F20E-4633-8FB2-AB69DF7A8955}.Release|x64.Build.0 = Release|x64
+		{C6EB7239-BCF0-4514-A77C-AB2F42A3638D}.Debug|x64.ActiveCfg = Debug|x64
+		{C6EB7239-BCF0-4514-A77C-AB2F42A3638D}.Debug|x64.Build.0 = Debug|x64
+		{C6EB7239-BCF0-4514-A77C-AB2F42A3638D}.Release|x64.ActiveCfg = Release|x64
+		{C6EB7239-BCF0-4514-A77C-AB2F42A3638D}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
