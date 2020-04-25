@@ -57,7 +57,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)ToyRenderer\src;$(SolutionDir)ToyRenderer\src\vendor;$(SolutionDir)ToyRenderer\dependencies\GLFW\include; $(SolutionDir)ToyRenderer\dependencies\GLEW\include;</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
+      <PreprocessorDefinitions>TOYRENDERER_PLATFORM_WINDOWS;TOYRENDERER_BUILD_DLL;_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)ToyRenderer\dependencies\GLFW\lib-vc2017; $(SolutionDir)ToyRenderer\dependencies\GLEW\lib\Release\x64;</AdditionalLibraryDirectories>
@@ -73,7 +73,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)ToyRenderer\src;$(SolutionDir)ToyRenderer\src\vendor;$(SolutionDir)ToyRenderer\dependencies\GLFW\include; $(SolutionDir)ToyRenderer\dependencies\GLEW\include;</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
+      <PreprocessorDefinitions>TOYRENDERER_PLATFORM_WINDOWS;TOYRENDERER_BUILD_DLL;_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -112,7 +112,6 @@
     <ClCompile Include="src\managers\ResourceManager.cpp" />
     <ClCompile Include="src\rendering\RHI\RHI.cpp" />
     <ClCompile Include="src\rendering\Shader.cpp" />
-    <ClCompile Include="src\testdll.cpp" />
     <ClCompile Include="src\Tests\Test.cpp" />
     <ClCompile Include="src\Tests\TestClearColor.cpp" />
     <ClCompile Include="src\Tests\TestObjLoader.cpp" />
@@ -129,6 +128,7 @@
     <ClCompile Include="src\world\GameObject.cpp" />
     <ClCompile Include="src\world\Scene.cpp" />
     <ClCompile Include="src\world\Time.cpp" />
+    <ClCompile Include="src\ToyRendererApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\groundGrid.shader" />
@@ -273,6 +273,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Components\Scripts\postProcesses\Vignetting.h" />
+    <ClInclude Include="src\Core.h" />
+    <ClInclude Include="src\EntryPoint.h" />
     <ClInclude Include="src\log\Log.h" />
     <ClInclude Include="src\rendering\Bounds.h" />
     <ClInclude Include="src\Components\Camera.h" />
@@ -304,7 +306,6 @@
     <ClInclude Include="src\managers\Settings.h" />
     <ClInclude Include="src\rendering\RHI\RHI.h" />
     <ClInclude Include="src\rendering\Shader.h" />
-    <ClInclude Include="src\testdll.h" />
     <ClInclude Include="src\Tests\Test.h" />
     <ClInclude Include="src\Tests\TestClearColor.h" />
     <ClInclude Include="src\Tests\TestObjLoader.h" />
@@ -568,6 +569,8 @@
     <ClInclude Include="src\world\GameObject.h" />
     <ClInclude Include="src\world\Scene.h" />
     <ClInclude Include="src\world\Time.h" />
+    <ClInclude Include="src\ToyRendererApp.h" />
+    <ClInclude Include="ToyRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\checkerFormat.png" />
