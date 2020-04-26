@@ -19,8 +19,6 @@
 
 int main(void)
 {
-
-
 	// Initalize Loging
 	//-------------------------------------------------------------------
 	ToyRenderer::Log::Initialize();
