@@ -1,4 +1,5 @@
 #include "ToyRendererApp.h"
+#include "log/Log.h"
 #include <iostream>
 namespace ToyRenderer {
 
@@ -6,6 +7,8 @@ namespace ToyRenderer {
 
 	ToyRendererApp::ToyRendererApp()
 	{
+		ToyRenderer::Log::Initialize();
+
 	}
 
 	ToyRendererApp::~ToyRendererApp()
@@ -14,7 +17,7 @@ namespace ToyRenderer {
 
 	void ToyRendererApp::Run()
 	{
-		while (true) { std::cout << "working" << std::endl; };
+		while (true) {  };
 	}
 
 }

@@ -1,6 +1,6 @@
 #include "TestTexture2D.h"
 #include "rendering/Renderer.h"
-#include "imgui/imgui.h"
+#include "vendor/imgui/imgui.h"
 #include "rendering/VertexBuffer.h"
 
 #include "rendering/VertexBufferLayout.h"

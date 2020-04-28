@@ -7,8 +7,8 @@
 #include <spdlog/details/file_helper.h>
 #endif
 
-#include <spdlog/details/os.h>
-#include <spdlog/common.h>
+#include <vendor/spdlog/details/os.h>
+#include <vendor/spdlog/common.h>
 
 #include <cerrno>
 #include <chrono>

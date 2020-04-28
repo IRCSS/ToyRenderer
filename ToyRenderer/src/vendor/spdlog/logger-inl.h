@@ -7,9 +7,9 @@
 #include <spdlog/logger.h>
 #endif
 
-#include <spdlog/sinks/sink.h>
-#include <spdlog/details/backtracer.h>
-#include <spdlog/pattern_formatter.h>
+#include <vendor/spdlog/sinks/sink.h>
+#include <vendor/spdlog/details/backtracer.h>
+#include <vendor/spdlog/pattern_formatter.h>
 
 #include <cstdio>
 

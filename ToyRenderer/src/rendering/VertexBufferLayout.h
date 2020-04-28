@@ -1,5 +1,5 @@
 #pragma once
-#include "GL/glew.h"
+#include "vendor/GL/glew.h"
 #include <vector>
 #include "rendering/Renderer.h"
 struct VertexBufferElement {

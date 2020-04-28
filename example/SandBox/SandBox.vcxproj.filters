@@ -9,11 +9,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\ToyRenderer\ToyRenderer.h">
-      <Filter>ToyRenderer</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="src\SandBoxApp.cpp">
       <Filter>src</Filter>
     </ClCompile>

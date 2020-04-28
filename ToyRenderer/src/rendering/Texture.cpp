@@ -1,5 +1,5 @@
 #include "Texture.h"
-#include "stb_image/stb_image.h"
+#include "vendor/stb_image/stb_image.h"
 
 Texture::Texture(const int width, const int heigth, const Filtering& filteringMode, const Wraping wrapingMode, Format bufferFormat):
 	m_RendererID(0), m_FilePath(""), m_LocalBuffer(nullptr),

@@ -3,8 +3,8 @@
 
 #pragma once
 
-#include <spdlog/details/log_msg_buffer.h>
-#include <spdlog/details/circular_q.h>
+#include <vendor/spdlog/details/log_msg_buffer.h>
+#include <vendor/spdlog/details/circular_q.h>
 
 #include <atomic>
 #include <mutex>

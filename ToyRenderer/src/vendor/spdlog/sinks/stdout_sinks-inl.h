@@ -7,8 +7,8 @@
 #include <spdlog/sinks/stdout_sinks.h>
 #endif
 
-#include <spdlog/details/console_globals.h>
-#include <spdlog/pattern_formatter.h>
+#include <vendor/spdlog/details/console_globals.h>
+#include <vendor/spdlog/pattern_formatter.h>
 #include <memory>
 
 namespace spdlog {

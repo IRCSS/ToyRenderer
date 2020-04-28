@@ -21,16 +21,11 @@ workspace "ToyRenderer"
 		  "%{prj.name}/src/**.h",
 		  "%{prj.name}/src/**.cpp",
 		  "%{prj.name}/src/**.hpp",
-		  "%{prj.name}/src/**.inl",
-		  "%{prj.name}/dependencies/**.h",
-		  "%{prj.name}/ToyRenderer.h"
+		  "%{prj.name}/src/**.inl"
 		}
 
 		includedirs{
-			"%{prj.name}/src",
-			"%{prj.name}/src/vendor",
-			"%{prj.name}/dependencies/GLFW/include",
-			"%{prj.name}/dependencies/GLEW/include"
+			"%{prj.name}/src"
 		}
 
 		libdirs { 
@@ -83,7 +78,7 @@ project "Sandbox"
 		}
 
 		includedirs{
-	     	"ToyRenderer"
+	     	"ToyRenderer/src"
 		}
 
 		links{

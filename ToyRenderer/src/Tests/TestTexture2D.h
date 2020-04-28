@@ -1,7 +1,7 @@
 #pragma once
 #include "Test.h"
-#include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp"
+#include "vendor/glm/glm.hpp"
+#include "vendor/glm/gtc/matrix_transform.hpp"
 #include "rendering/Renderer.h"
 #include "rendering/Shader.h"
 #include "rendering/VertexArray.h"

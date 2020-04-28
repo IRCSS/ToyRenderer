@@ -1,5 +1,5 @@
 #pragma once
-#include <GL/glew.h>
+#include <vendor/GL/glew.h>
 #define Assert(x) if(!(x)) __debugbreak();
 #define GlCall(x) GLClearError();        \
                   x;                   \

@@ -1,13 +1,13 @@
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
+#include "vendor/GL/glew.h"
+#include "vendor/GLFW/glfw3.h"
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <sstream>
 #include <ctime>
 #include "managers/Settings.h"
-#include "imgui/imgui.h"
-#include "imgui/imgui_impl_glfw_gl3.h"
+#include "vendor/imgui/imgui.h"
+#include "vendor/imgui/imgui_impl_glfw_gl3.h"
 
 #include "Tests/TestClearColor.h"
 #include "Tests/TestTexture2D.h"

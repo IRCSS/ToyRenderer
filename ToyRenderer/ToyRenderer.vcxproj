@@ -80,7 +80,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>TOYRENDERER_PLATFORM_WINDOWS;TOYRENDERER_BUILD_DLL;_MBCS;GLEW_STATIC;TOYRENDERER_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;src\vendor;dependencies\GLFW\include;dependencies\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -102,7 +102,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>TOYRENDERER_PLATFORM_WINDOWS;TOYRENDERER_BUILD_DLL;_MBCS;GLEW_STATIC;TOYRENDERER_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;src\vendor;dependencies\GLFW\include;dependencies\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -128,7 +128,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>TOYRENDERER_PLATFORM_WINDOWS;TOYRENDERER_BUILD_DLL;_MBCS;GLEW_STATIC;TOYRENDERER_SHIPPING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;src\vendor;dependencies\GLFW\include;dependencies\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -150,13 +150,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="ToyRenderer.h" />
-    <ClInclude Include="dependencies\GLEW\include\GL\eglew.h" />
-    <ClInclude Include="dependencies\GLEW\include\GL\glew.h" />
-    <ClInclude Include="dependencies\GLEW\include\GL\glxew.h" />
-    <ClInclude Include="dependencies\GLEW\include\GL\wglew.h" />
-    <ClInclude Include="dependencies\GLFW\include\GLFW\glfw3.h" />
-    <ClInclude Include="dependencies\GLFW\include\GLFW\glfw3native.h" />
     <ClInclude Include="src\Components\Camera.h" />
     <ClInclude Include="src\Components\Component.h" />
     <ClInclude Include="src\Components\ProceduralSkyBox.h" />
@@ -170,6 +163,7 @@
     <ClInclude Include="src\Tests\TestClearColor.h" />
     <ClInclude Include="src\Tests\TestObjLoader.h" />
     <ClInclude Include="src\Tests\TestTexture2D.h" />
+    <ClInclude Include="src\ToyRenderer.h" />
     <ClInclude Include="src\ToyRendererApp.h" />
     <ClInclude Include="src\importAPI\MeshLoader.h" />
     <ClInclude Include="src\log\Log.h" />
@@ -200,6 +194,12 @@
     <ClInclude Include="src\rendering\VertexArray.h" />
     <ClInclude Include="src\rendering\VertexBuffer.h" />
     <ClInclude Include="src\rendering\VertexBufferLayout.h" />
+    <ClInclude Include="src\vendor\GL\eglew.h" />
+    <ClInclude Include="src\vendor\GL\glew.h" />
+    <ClInclude Include="src\vendor\GL\glxew.h" />
+    <ClInclude Include="src\vendor\GL\wglew.h" />
+    <ClInclude Include="src\vendor\GLFW\glfw3.h" />
+    <ClInclude Include="src\vendor\GLFW\glfw3native.h" />
     <ClInclude Include="src\vendor\glm\common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\_features.hpp" />
     <ClInclude Include="src\vendor\glm\detail\_fixes.hpp" />

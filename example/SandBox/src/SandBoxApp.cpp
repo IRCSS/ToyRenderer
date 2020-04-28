@@ -3,7 +3,7 @@ class Sandbox : public ToyRenderer::ToyRendererApp {
 
 public: 
 	Sandbox() {
-
+	
 	}
 	~Sandbox() {
 

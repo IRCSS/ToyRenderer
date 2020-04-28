@@ -7,11 +7,11 @@
 #include <spdlog/pattern_formatter.h>
 #endif
 
-#include <spdlog/details/fmt_helper.h>
-#include <spdlog/details/log_msg.h>
-#include <spdlog/details/os.h>
-#include <spdlog/fmt/fmt.h>
-#include <spdlog/formatter.h>
+#include <vendor/spdlog/details/fmt_helper.h>
+#include <vendor/spdlog/details/log_msg.h>
+#include <vendor/spdlog/details/os.h>
+#include <vendor/spdlog/fmt/fmt.h>
+#include <vendor/spdlog/formatter.h>
 
 #include <array>
 #include <chrono>

@@ -1,8 +1,8 @@
 #include "Log.h"
-#include "spdlog/sinks/stdout_color_sinks.h"
-#include "spdlog/sinks/basic_file_sink.h" // support for basic file logging
-#include "spdlog/sinks/rotating_file_sink.h"
-#include "spdlog/sinks/stdout_sinks.h"
+#include "vendor/spdlog/sinks/stdout_color_sinks.h"
+#include "vendor/spdlog/sinks/basic_file_sink.h" // support for basic file logging
+#include "vendor/spdlog/sinks/rotating_file_sink.h"
+#include "vendor/spdlog/sinks/stdout_sinks.h"
 
 
 #include <iostream>

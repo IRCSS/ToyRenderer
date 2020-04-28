@@ -1,5 +1,5 @@
 #pragma once
-#include "GLFW/glfw3.h"
+#include "vendor/GLFW/glfw3.h"
 #include "maths/Vector2.h"
 #include <unordered_map>
 namespace ToyRenderer {

@@ -3,9 +3,9 @@
 #include "maths/Vector3.h"
 #include "maths/Matrix4x4.h"
 #include "Components/Component.h"
-#include "glm/gtc/matrix_transform.hpp"
-#include "glm/gtc/quaternion.hpp"
-#include "glm/gtx/euler_angles.hpp"
+#include "vendor/glm/gtc/matrix_transform.hpp"
+#include "vendor/glm/gtc/quaternion.hpp"
+#include "vendor/glm/gtx/euler_angles.hpp"
 
 
 namespace ToyRenderer {
