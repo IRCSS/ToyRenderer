@@ -1,12 +1,10 @@
 #pragma once
+#include "Core.h"
 
 namespace ToyRenderer {
 	class GameObject;
-	class Component {
-
-	public:
-		GameObject* gameObject;
-
+	class TOYRENDERER_API Component {
+	// PUBLIC ======================================================================================
 	public:
 	               Component();
 	  virtual     ~Component();
@@ -14,8 +12,9 @@ namespace ToyRenderer {
 	  virtual void OnRender();
 	  virtual void OnImGuiRender();
 
-	  
-	
+	public:
+		GameObject* gameObject;
+
 
 	};
 }

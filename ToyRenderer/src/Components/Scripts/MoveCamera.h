@@ -1,27 +1,30 @@
 #pragma once
+#include "Core.h"
 #include "Components/Scripts/Script.h"
 #include "Components/Transform.h"
-namespace Behaviours {
+namespace ToyRenderer
+{ 
+    namespace Behaviours {
+    
+    	class TOYRENDERER_API MoveCamera :public Script {
 
-	class MoveCamera :public Script {
+        // PUBLIC ======================================================================================
 
-	public: 
-		ToyRenderer::Transform* m_cam;
+    	public:
+    		MoveCamera();
+    		MoveCamera( ToyRenderer::Transform* cam);
+    		virtual ~MoveCamera();
+    
+    		virtual void OnUpdate(float deltaTime);
+    	public: 
+    		ToyRenderer::Transform* m_cam;
 
-	private:
-		const float movementSpeed   = 0.01f;
-		const float rotationSpeed   = 0.005f;
-		const float speedMultiplyer = 3.0f;
-
-	public:
-		MoveCamera();
-		MoveCamera( ToyRenderer::Transform* cam);
-		virtual ~MoveCamera();
-
-		virtual void OnUpdate(float deltaTime);
-
-
-
-	};
+    		float movementSpeed   = 0.01f;
+    		float rotationSpeed   = 0.005f;
+    		float speedMultiplyer = 3.0f;
+    
+    	};
+    
+    }
 
 }

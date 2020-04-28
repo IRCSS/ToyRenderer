@@ -1,4 +1,5 @@
 #pragma once
+#include "Core.h"
 #include "maths/Vector4.h"
 #include "maths/Vector3.h"
 #include "maths/Matrix4x4.h"
@@ -10,14 +11,8 @@
 
 namespace ToyRenderer {
 
-	class Transform : public Component {
-
-	public: 
-		Vector3 position, scale;
-		glm::fquat rotation;
-
-	private:
-		
+	class TOYRENDERER_API Transform : public Component {
+    // PUBLIC ======================================================================================
 	public:
 		 Transform();
 		~Transform();
@@ -31,6 +26,13 @@ namespace ToyRenderer {
 		Vector3   Up    ()       const;
 
 		void RotateAroundOrigin(const Vector3& axis, float theta);
+	
+	public: 
+		Vector3 position, scale;
+		glm::fquat rotation;
+    // ______________________________________________________________________________________________
+	// PRIVATE ======================================================================================
+
 	private:
 		Matrix4x4 GetRotationMatFromEuler(float x, float y, float z) const;
 

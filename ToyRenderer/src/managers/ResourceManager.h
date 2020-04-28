@@ -1,30 +1,17 @@
 #pragma once
-
+#include "Core.h"
 #include <vector>
-class Texture;
-class Shader;
 
 namespace ToyRenderer {
+    class Texture;
+    class Shader;
 	class Material;
 	class Mesh;
 
 
 
-	class ResourceManager {
-
-	public:
-
-		
-
-	private:
-		std::vector<Material*> r_materials;
-		std::vector<Mesh*>     r_mesh;
-		std::vector<Texture*>  r_texture;
-		std::vector<Shader*>   r_shaders;
-		
-		int m_lastGivenAssetID;
-		static ResourceManager *  m_pSingelton;
-
+	class TOYRENDERER_API ResourceManager {
+	// PUBLIC ======================================================================================
 	public:
 		 ResourceManager();
 		~ResourceManager(); //Delete all the resources in the destructor. 
@@ -36,10 +23,22 @@ namespace ToyRenderer {
 		static ResourceManager& Instance();
 		// Destroy the resource manager, next time you call instance you will create anew instance
 		static void ClearResourceManager();
+		
+    // ______________________________________________________________________________________________
+	// PRIVATE ======================================================================================
+	private:
+		int GenerateAssetID();
 
 	private:
+		std::vector<Material*> r_materials;
+		std::vector<Mesh*>     r_mesh;
+		std::vector<Texture*>  r_texture;
+		std::vector<Shader*>   r_shaders;
+		
+		int m_lastGivenAssetID;
+		static ResourceManager *  m_pSingelton;
 
-		int GenerateAssetID();
+
 	};
 
 }

@@ -1,2 +1,1 @@
-[2020-04-27 23:29:32.260] [Engine_Log] [info] Inialized Engine Log
-[2020-04-27 23:29:32.261] [Engine_Log] [info] InitializedLog
+[2020-04-28 16:57:45.781] [Engine_Log] [info] Inialized Engine Log

@@ -5,13 +5,16 @@
 #include <memory>
 namespace ToyRenderer {
 
-	class Log {
+	class TOYRENDERER_API Log {
+	// PUBLIC ======================================================================================
 	public: 
 		static void Initialize();
 		
 		inline static std::shared_ptr<spdlog::logger>& GetEngineLogger() { return s_EngineLogger; }
 		inline static std::shared_ptr<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
 
+    // ______________________________________________________________________________________________
+	// PRIVATE ======================================================================================
 	private: 
 		static std::shared_ptr<spdlog::logger> s_EngineLogger;
 		static std::shared_ptr<spdlog::logger> s_ClientLogger;
