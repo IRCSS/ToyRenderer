@@ -1,4 +1,5 @@
 #pragma once
+#include "Core.h"
 #include "maths/Vector2.h"
 #include "maths/Vector3.h"
 #include "maths/Vector4.h"
@@ -10,7 +11,7 @@
 
 namespace ToyRenderer {
 
-	struct t_RawMeshIndices {
+	struct TOYRENDERER_API t_RawMeshIndices {
 		
 	public:
 		int position_index;
@@ -22,7 +23,9 @@ namespace ToyRenderer {
 		t_RawMeshIndices();
 	};
 
-	struct t_RawMeshSubShape {
+	struct TOYRENDERER_API t_RawMeshSubShape {
+
+
 	public:
 		std::vector<t_RawMeshIndices>   m_facesIndices;
 		std::vector<int>                m_FaceMaterialIndex;
@@ -31,7 +34,12 @@ namespace ToyRenderer {
 		t_RawMeshSubShape();
 	};
 
-	class RawMesh {
+	class TOYRENDERER_API RawMesh {
+
+	// PUBLIC ======================================================================================
+	public:
+		RawMesh();
+		const std::vector<Mesh*>& GenerateMeshes();
 
 	public: 
 		
@@ -43,18 +51,9 @@ namespace ToyRenderer {
 		std::vector<Material*>          m_materials;
 		std::vector<Mesh*>              m_meshes;
 		std::vector<int>                m_meshes_materials_ids;
-		int                m_subShapesCount;
+		int                             m_subShapesCount;
 
-	private:
-
-	public:
-		RawMesh();
-
-
-		const std::vector<Mesh*>& GenerateMeshes();
     
-
-	private:
 
 	};
 

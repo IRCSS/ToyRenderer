@@ -1,4 +1,5 @@
 #pragma once
+#include "Core.h"
 #include <unordered_map>
 #include "Texture.h"
 #include "maths/Color.h"
@@ -18,13 +19,46 @@
 #define Material_PASS_SKYBOX      1
 #define Material_PASS_TRANSPARENT 2
 
-class Shader;
 namespace ToyRenderer {
-	class Material {
+    class Shader;
+	
+	class TOYRENDERER_API Material {
+	// PUBLIC ======================================================================================
+	public:
+
+		Material();
+		Material(Shader* shader);
+
+		void SetInt     (const std::string& name,       int       i);
+		void SetFloat   (const std::string& name,       float     f);
+		void SetTexture (const std::string& name, const Texture*  t);
+		void SetColor   (const std::string& name,       Color     c);
+		void SetVector  (const std::string& name,       Vector4   v);
+		void SetMatrix  (const std::string& name,       Matrix4x4 m);
+
+		void BindMaterialParameters();
+
+		void SetTwoSided   (const bool TwoSided);
+		void EnableZTest   (const bool enabled);
+		void EnableZWrite  (const bool enabled);
+		void EnableBlend   (const bool enabled);
+
+		/// use Material_DepthFunction macro
+		void SetDepthFunction(const int  mode);
+
+		/// use Material_Pass macro
+		void SetRenderPass(const int passID);
+		int  GetPass();
 
 	public:
 		int     m_AssetID;
 		Shader* m_Shader;
+	
+	// ______________________________________________________________________________________________
+	// PRIVATE ======================================================================================
+	private:
+
+		void InitializeSettingsValues();
 
 	private:
 		std::unordered_map<std::string,       int>         m_pIntegers;
@@ -41,38 +75,5 @@ namespace ToyRenderer {
 		int  settings_depthFunction;
 		int  settings_renderPass;
 
-	public:
-
-
-
-		Material();
-		Material(Shader* shader);
-
-		void SetInt     (const std::string& name,       int       i);
-		void SetFloat   (const std::string& name,       float     f);
-		void SetTexture (const std::string& name, const Texture*  t);
-		void SetColor   (const std::string& name,       Color     c);
-		void SetVector  (const std::string& name,       Vector4   v);
-		void SetMatrix  (const std::string& name,       Matrix4x4 m);
-
-		void BindMaterialParameters();
-
-		void SetTwoSided     (const bool TwoSided);
-		void EnableZTest     (const bool enabled);
-		void EnableZWrite    (const bool enabled);
-		void EnableBlend     (const bool enabled);
-
-		/// use Material_DepthFunction macro
-		void SetDepthFunction(const int  mode);
-
-		/// use Material_Pass macro
-		void SetRenderPass(const int passID);
-		int  GetPass();
-
-	private:
-
-		void InitializeSettingsValues();
-
 	};
-
 }

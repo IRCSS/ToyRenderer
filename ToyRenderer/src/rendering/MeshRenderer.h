@@ -1,4 +1,5 @@
 #pragma once
+#include "Core.h"
 #include "rendering/Material.h"
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
@@ -8,29 +9,15 @@
 #include "VertexArray.h"
 #include "Components/Component.h"
 
-class Matrix4x4;
-class Renderer;
-
 namespace ToyRenderer {
 
+    class Matrix4x4;
+    class Renderer;
 	class Material;
 	class Transform;
-	class MeshRenderer : public Component{
+	class TOYRENDERER_API MeshRenderer : public Component{
 
-	public:
-    //  -------------------   ------------------
-		Material*             material;
-
-		VertexBuffer*         vertexBuffer;
-		IndexBuffer *         indexBuffer;
-		VertexArray *         vertexArray;
-
-		VertexBufferLayout*   vertexBufferLayout;
-
-	private:
-		Mesh*      mesh;
-		Transform* transform;
-
+	// PUBLIC ======================================================================================
 	public: 
 		MeshRenderer();
 	   ~MeshRenderer();
@@ -41,9 +28,25 @@ namespace ToyRenderer {
 	   void Render( Renderer& renderer, const Matrix4x4& vp);
 	   /// Renderwithout camera MVP matrix. 
 	   void Render( Renderer& renderer); 
-   private:
+	public:
+    //  -------------------   ------------------
+		Material*             material;
+
+		VertexBuffer*         vertexBuffer;
+		IndexBuffer *         indexBuffer;
+		VertexArray *         vertexArray;
+
+		VertexBufferLayout*   vertexBufferLayout;
+	
+	// ______________________________________________________________________________________________
+	// PRIVATE ======================================================================================
+   
+	private:
 	   void ExtractRenderProxyFromMesh();
 
+	private:
+		Mesh*      mesh;
+		Transform* transform;
 
 	};
 
