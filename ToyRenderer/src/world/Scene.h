@@ -1,14 +1,11 @@
 #pragma once
+#include "Core.h"
 #include "world/GameObject.h"
 #include "rendering/Renderer.h"
 
 namespace ToyRenderer {
-	class Scene {
-	
-	public:
-		std::vector<GameObject*> sceneObjects;
-		Renderer* renderer;
-	
+	class TOYRENDERER_API Scene {
+	// PUBLIC ======================================================================================	
 	public:
 		Scene();
 
@@ -27,5 +24,10 @@ namespace ToyRenderer {
 			}
 			return toReturn;
 		}
+
+	public:
+		std::vector<GameObject*> sceneObjects;
+		Renderer* renderer;
+	
 	};
 }

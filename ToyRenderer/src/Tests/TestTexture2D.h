@@ -1,4 +1,5 @@
 #pragma once
+#include "Core.h"
 #include "Test.h"
 #include "vendor/glm/glm.hpp"
 #include "vendor/glm/gtc/matrix_transform.hpp"
@@ -8,29 +9,35 @@
 #include "rendering/IndexBuffer.h" 
 #include "rendering/Texture.h"
 
-namespace test {
-	class TestTexture2D : public Test {
-	public: 
-		TestTexture2D();
-		~TestTexture2D();
+namespace ToyRenderer{
+    namespace test {
+    	class TOYRENDERER_API TestTexture2D : public Test {
 
-		void OnUpdate(float deltaTime) override;
-		void OnRender()                override;
-		void OnImGuiRender()           override;
+		// PUBLIC ======================================================================================
+    	public: 
+    		TestTexture2D();
+    		~TestTexture2D();
+    
+    		void OnUpdate(float deltaTime) override;
+    		void OnRender()                override;
+    		void OnImGuiRender()           override;
 
-	private:
-
-		glm::vec3 translation;
-		Renderer m_render;
-		Shader m_shader;
-
-		VertexArray  m_va;
-		IndexBuffer* m_ib;
-		Texture*     m_Texture;
-
-		glm::mat4 m_model;
-		glm::mat4 m_proj;
-		glm::mat4 m_view;
-		glm::mat4 m_mvp;
-	};
+		// ______________________________________________________________________________________________
+		// PRIVATE ====================================================================================== 
+    	private:
+    
+    		glm::vec3 translation;
+    		Renderer m_render;
+    		Shader m_shader;
+    
+    		VertexArray  m_va;
+    		IndexBuffer* m_ib;
+    		Texture*     m_Texture;
+    
+    		glm::mat4 m_model;
+    		glm::mat4 m_proj;
+    		glm::mat4 m_view;
+    		glm::mat4 m_mvp;
+    	};
+    }
 }

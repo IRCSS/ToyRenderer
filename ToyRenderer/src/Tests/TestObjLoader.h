@@ -1,4 +1,5 @@
 #pragma once
+#include "Core.h"
 #include "Test.h"
 #include "rendering/Shader.h"
 #include "rendering/Renderer.h"
@@ -9,28 +10,28 @@
 #include "Components/Scripts/MoveCamera.h"
 #include "world/Scene.h"
 
-namespace test {
+namespace ToyRenderer{
+    namespace test {
+    
+    	class TOYRENDERER_API TesstObjLoader : public Test {
 
-	class TesstObjLoader : public Test {
-	public:
-		 TesstObjLoader();
-		~TesstObjLoader();
+		// PUBLIC ======================================================================================
+    	public:
+    		 TesstObjLoader();
+    		~TesstObjLoader();
+    
+    		void OnUpdate(float deltaTime) override;
+    		void OnRender()                override;
+    		void OnImGuiRender()           override;
 
-		void OnUpdate(float deltaTime) override;
-		void OnRender()                override;
-		void OnImGuiRender()           override;
-
-	private:
-
-
-
-
-		Behaviours::MoveCamera* CameraMovment;
-		ToyRenderer::Transform* CameraViewTrabsform;
-		ToyRenderer::Scene*     pScene;
-
-
-
-	
-	};
+		// ______________________________________________________________________________________________
+		// PRIVATE ======================================================================================    
+    	private:
+    
+    		Behaviours::MoveCamera* CameraMovment;
+    		ToyRenderer::Transform* CameraViewTrabsform;
+    		ToyRenderer::Scene*     pScene;
+    
+    	};
+    }
 }

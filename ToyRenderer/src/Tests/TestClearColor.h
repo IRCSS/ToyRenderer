@@ -1,17 +1,24 @@
 #pragma once
+#include "Core.h"
 #include "Test.h"
 
-namespace test {
-	class TestClearColor : public Test {
-	public: 
-		 TestClearColor();
-		~TestClearColor();
+namespace ToyRenderer{
+    namespace test {
+    	class TOYRENDERER_API TestClearColor : public Test {
 
-		void OnUpdate(float deltaTime) override;
-		void OnRender()                override;
-		void OnImGuiRender()           override;
+		// PUBLIC ======================================================================================
+		public: 
+    		 TestClearColor();
+    		~TestClearColor();
+    
+    		void OnUpdate(float deltaTime) override;
+    		void OnRender()                override;
+    		void OnImGuiRender()           override;
 
-	private:
-		float m_Color[4];
-	};
+		// ______________________________________________________________________________________________
+		// PRIVATE ======================================================================================    
+    	private:
+    		float m_Color[4];
+    	};
+    }
 }

@@ -1,19 +1,13 @@
 #pragma once
 
-
+#include "Core.h"
 #include <vector>
 #include "Components/Component.h"
 namespace ToyRenderer {
 
-	class GameObject {
-		
-	public:
+	class TOYRENDERER_API GameObject {
 
-		std::string name;
-
-	private:
-		std::vector<Component*> components;
-
+	// PUBLIC ======================================================================================		
 	public: 
 		GameObject();
 		void OnUpdate(float deltaTime);
@@ -42,6 +36,15 @@ namespace ToyRenderer {
 
 		}
 		
+	public:
+
+		std::string name;
+
+    // ______________________________________________________________________________________________
+	// PRIVATE ======================================================================================
+	private:
+		std::vector<Component*> components;
+
 
 	};
 };
