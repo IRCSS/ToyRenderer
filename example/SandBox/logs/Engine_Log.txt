@@ -1,1 +1,2 @@
-[2020-04-28 16:57:45.781] [Engine_Log] [info] Inialized Engine Log
+[2020-04-30 17:00:30.299] [Engine_Log] [info] Inialized Engine Log
+[2020-04-30 17:00:30.688] [Engine_Log] [info] Initialized with GL Version       4.3.0 NVIDIA 436.02

@@ -39,9 +39,11 @@ namespace ToyRenderer {
 
     // ______________________________________________________________________________________________
 	// PRIVATE ======================================================================================
+    #pragma warning( disable : 4251)  
+    // std containers are not dllexported. This could cause issues if their functions are inlined on the client side and cause linking error. Private stuff wont be inlined so I will disable them
 	private:
 		glm::mat4x4 m = glm::mat4x4(0.0f);
 
-
+    #pragma warning(default:4251) // Turning the 4251 back on
 	};
 }

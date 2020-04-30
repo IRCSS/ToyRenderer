@@ -11,6 +11,9 @@
 
 namespace ToyRenderer {
 
+
+
+
 	struct TOYRENDERER_API t_RawMeshIndices {
 		
 	public:
@@ -25,7 +28,8 @@ namespace ToyRenderer {
 
 	struct TOYRENDERER_API t_RawMeshSubShape {
 
-
+    #pragma warning( disable : 4251)  
+    // std containers are not dllexported. This could cause issues if their functions are inlined on the client side and cause linking error. 
 	public:
 		std::vector<t_RawMeshIndices>   m_facesIndices;
 		std::vector<int>                m_FaceMaterialIndex;
@@ -33,7 +37,7 @@ namespace ToyRenderer {
 		t_RawMeshSubShape(int faceCount);
 		t_RawMeshSubShape();
 	};
-
+    #pragma warning(default:4251) // Turning the 4251 back on
 	class TOYRENDERER_API RawMesh {
 
 	// PUBLIC ======================================================================================
@@ -42,7 +46,9 @@ namespace ToyRenderer {
 		const std::vector<Mesh*>& GenerateMeshes();
 
 	public: 
-		
+    #pragma warning( disable : 4251)  
+    // std containers are not dllexported. This could cause issues if their functions are inlined on the client side and cause linking error. 
+
 		std::vector<Color>              m_VertexColors;
 		std::vector<Vector3>            m_VertexPositions;
 		std::vector<Vector3>            m_VertexNormals;
@@ -53,7 +59,7 @@ namespace ToyRenderer {
 		std::vector<int>                m_meshes_materials_ids;
 		int                             m_subShapesCount;
 
-    
+    #pragma warning(default:4251) // Turning the 4251 back on   
 
 	};
 

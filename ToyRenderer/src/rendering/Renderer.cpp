@@ -3,7 +3,9 @@
 #include "Graphics.h"
 #include "rendering/IndexBuffer.h"
 #include "log/Log.h"
-
+#include "VertexArray.h"
+#include "Shader.h"
+#include "maths/Color.h"
 
 
 
@@ -41,14 +43,11 @@ namespace ToyRenderer{
     	return true;
     }
     
-    #include "VertexArray.h"
-    #include "IndexBuffer.h"
-    #include "Shader.h"
-    #include "maths/Color.h"
+
     
     Renderer::Renderer()
     {
-    	Rendering::Graphic m_graphicUtility();
+    	Rendering::Graphic m_graphicUtility = Rendering::Graphic();
     }
     
     void Renderer::Clear(ToyRenderer::Color clearColor, float depthClearValue, bool clearDepth) const

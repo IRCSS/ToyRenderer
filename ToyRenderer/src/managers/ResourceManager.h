@@ -28,7 +28,8 @@ namespace ToyRenderer {
 	// PRIVATE ======================================================================================
 	private:
 		int GenerateAssetID();
-
+    #pragma warning( disable : 4251)  
+    // std containers are not dllexported. This could cause issues if their functions are inlined on the client side and cause linking error. Private stuff wont be inlined so I will disable them
 	private:
 		std::vector<Material*> r_materials;
 		std::vector<Mesh*>     r_mesh;
@@ -37,6 +38,8 @@ namespace ToyRenderer {
 		
 		int m_lastGivenAssetID;
 		static ResourceManager *  m_pSingelton;
+
+    #pragma warning(default:4251) // Turning the 4251 back on
 
 
 	};

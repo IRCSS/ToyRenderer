@@ -100,10 +100,10 @@ namespace ToyRenderer {
 	
 		
 
-		m->m_subShapesCount = shapes.size();
+		m->m_subShapesCount = (int) shapes.size();
 		for (size_t s = 0; s < shapes.size(); s++) {
 			
-			m->m_subShapes.push_back(t_RawMeshSubShape(shapes[s].mesh.num_face_vertices.size()));
+			m->m_subShapes.push_back(t_RawMeshSubShape((int)shapes[s].mesh.num_face_vertices.size()));
 			
 			// Loop over faces(polygon)
 			size_t index_offset = 0;
@@ -123,7 +123,7 @@ namespace ToyRenderer {
 					
 					// To DO: once you start implementing a proper index buffer, you can use an architecture like below
 					//m->m_subShapes[s].m_facesIndices.push_back(t_RawMeshIndices(idx.vertex_index, idx.normal_index, idx.texcoord_index, idx.vertex_index));
-					m->m_subShapes[s].m_facesIndices.push_back(t_RawMeshIndices(m->m_VertexPositions.size(), m->m_VertexNormals.size(), m->m_uv.size(), m->m_VertexPositions.size()));
+					m->m_subShapes[s].m_facesIndices.push_back(t_RawMeshIndices((int)m->m_VertexPositions.size(), (int)m->m_VertexNormals.size(), (int)m->m_uv.size(), (int)m->m_VertexPositions.size())); // Explicit cast to 16 bit int is an issue for meshes with more than 65k vertices. 
 					if (3 * idx.vertex_index  < attrib.vertices.size()) {
 						tinyobj::real_t  vx = attrib.vertices[3 * idx.vertex_index + 0];
 						tinyobj::real_t  vy = attrib.vertices[3 * idx.vertex_index + 1];

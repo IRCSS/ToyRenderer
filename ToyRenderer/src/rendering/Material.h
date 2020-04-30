@@ -60,6 +60,9 @@ namespace ToyRenderer {
 
 		void InitializeSettingsValues();
 
+    #pragma warning( disable : 4251)  
+    // std containers are not dllexported. This could cause issues if their functions are inlined on the client side and cause linking error. Private stuff wont be inlined so I will disable them
+
 	private:
 		std::unordered_map<std::string,       int>         m_pIntegers;
 		std::unordered_map<std::string,       float>       m_pFloats;
@@ -75,5 +78,6 @@ namespace ToyRenderer {
 		int  settings_depthFunction;
 		int  settings_renderPass;
 
+    #pragma warning(default:4251) // Turning the 4251 back on
 	};
 }
