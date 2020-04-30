@@ -7,6 +7,7 @@
 #include "vendor/imgui/imgui_impl_glfw_gl3.h"
 #include "world/Time.h"
 #include "managers/input/InputMaster.h"
+#include "system/Window.h"
 
 // Remove Later
 #include "rendering/Renderer.h"
@@ -34,23 +35,10 @@ namespace ToyRenderer {
 		if (!glfwInit())
 			ENGINE_LOG_FATAL("Failed to initalize the GLFW openGl Context");
 
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4.6);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-		GLFWwindow* window;
 
-		/* Create a windowed mode window and its OpenGL context */
-		window = glfwCreateWindow(Settings::WindowWidth, Settings::WindowHeigth, "GLFW: Window created", NULL, NULL);
+		Window window = Window();
 
-		if (!window)
-		{
-			glfwTerminate();
-			ENGINE_LOG_FATAL("Failed to create a window");
-		}
-
-		/* Make the window's context current */
-		glfwMakeContextCurrent(window);
 
 		glfwSwapInterval(Settings::VSync ? 1 : 0);
 
@@ -66,22 +54,19 @@ namespace ToyRenderer {
 			// Initalize UI
 			//-------------------------------------------------------------------
 			ImGui::CreateContext();
-			ImGui_ImplGlfwGL3_Init(window, true);
+			ImGui_ImplGlfwGL3_Init(window.GetWindowAddress(), true);
 			ImGui::StyleColorsDark();
 			//-------------------------------------------------------------------
-
-			GlCall(glEnable(GL_BLEND));
-			GlCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 
 			ToyRenderer::Time timeHandler = ToyRenderer::Time();
 
 
 			// INPUT MASTER 
-			ToyRenderer::InputMaster inputMaster(window);
+			ToyRenderer::InputMaster inputMaster(window.GetWindowAddress()); // REFACTOR: CHANGE THE GLFW WINDOW TO MY OWN WIDNOW HERE
 
 
 			/* Loop until the user closes the window */
-			while (!glfwWindowShouldClose(window))
+			while (!glfwWindowShouldClose(window.GetWindowAddress()))
 			{
 				timeHandler.Update();
 				// INPUT 
@@ -97,7 +82,7 @@ namespace ToyRenderer {
 				ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
 
 				/* Swap front and back buffers */
-				glfwSwapBuffers(window);
+				glfwSwapBuffers(window.GetWindowAddress());
 				/* Poll for and process events */
 				glfwPollEvents();
 

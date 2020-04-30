@@ -11,12 +11,10 @@ namespace ToyRenderer {
 	Material::Material(Shader * shader) : m_Shader(shader)
 	{
 		InitializeSettingsValues();
-
 	}
 	void Material::SetInt(const std::string & name, int i)
 	{
 		m_pIntegers[name] = i;
-
 	}
 	void Material::SetFloat(const std::string & name, float f)
 	{
@@ -86,6 +84,7 @@ namespace ToyRenderer {
 		Rendering::RHI::EnableDepthBufferWrite(settings_ZWrite);
 		Rendering::RHI::EnableBlend(settings_Blend);
 		Rendering::RHI::SetDepthFucntion((Rendering::RHI::Material_DepthFunction)settings_depthFunction);
+		Rendering::RHI::SetBlendFunction(settings_srcBlendFactor, settings_dstBlendFactor);
 	}
 	void Material::SetTwoSided(const bool TwoSided)
 	{
@@ -102,6 +101,11 @@ namespace ToyRenderer {
 	void Material::EnableBlend(const bool enabled)
 	{
 		settings_Blend  = enabled;
+	}
+	void Material::SetBlendFunc(const Rendering::Blend_Function src, const Rendering::Blend_Function dst)
+	{
+		settings_srcBlendFactor = src;
+		settings_dstBlendFactor = dst;
 	}
 	void Material::SetDepthFunction(const int mode)
 	{
@@ -123,6 +127,9 @@ namespace ToyRenderer {
 	    settings_Blend           = false;
 		settings_depthFunction   = Material_DepthFunction_LESS;
 		settings_renderPass      = Material_PASS_OPAQUE;
+		settings_srcBlendFactor  = Rendering::Blend_Function::ONE;
+		settings_dstBlendFactor  = Rendering::Blend_Function::ZERO;
+
 	}
 
 }

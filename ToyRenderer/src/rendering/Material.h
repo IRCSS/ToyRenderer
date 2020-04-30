@@ -4,7 +4,7 @@
 #include "Texture.h"
 #include "maths/Color.h"
 #include "maths/Matrix4x4.h"
-
+#include "rendering/RHI/RenderingSettingTypes.h"
 
 #define Material_DepthFunction_ALWAYS   0
 #define Material_DepthFunction_NEVER    1
@@ -22,6 +22,7 @@
 namespace ToyRenderer {
     class Shader;
 	
+
 	class TOYRENDERER_API Material {
 	// PUBLIC ======================================================================================
 	public:
@@ -42,6 +43,7 @@ namespace ToyRenderer {
 		void EnableZTest   (const bool enabled);
 		void EnableZWrite  (const bool enabled);
 		void EnableBlend   (const bool enabled);
+		void SetBlendFunc  (const Rendering::Blend_Function src, const Rendering::Blend_Function dst);
 
 		/// use Material_DepthFunction macro
 		void SetDepthFunction(const int  mode);
@@ -77,6 +79,9 @@ namespace ToyRenderer {
 		bool settings_Blend;
 		int  settings_depthFunction;
 		int  settings_renderPass;
+
+		Rendering::Blend_Function settings_srcBlendFactor;
+		Rendering::Blend_Function settings_dstBlendFactor;
 
     #pragma warning(default:4251) // Turning the 4251 back on
 	};

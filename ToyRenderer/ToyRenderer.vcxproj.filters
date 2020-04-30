@@ -1666,6 +1666,8 @@
     <ClInclude Include="src\world\Time.h">
       <Filter>world</Filter>
     </ClInclude>
+    <ClInclude Include="src\system\Window.h" />
+    <ClInclude Include="src\rendering\RHI\RenderingSettingTypes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
@@ -1802,5 +1804,6 @@
     <ClCompile Include="src\world\Time.cpp">
       <Filter>world</Filter>
     </ClCompile>
+    <ClCompile Include="src\system\Window.cpp" />
   </ItemGroup>
 </Project>

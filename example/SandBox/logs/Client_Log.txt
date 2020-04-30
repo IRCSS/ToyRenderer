@@ -1,2 +1,2 @@
-[2020-04-30 17:00:30.300] [Client_Log] [info] Inialized Client Log
-[2020-04-30 17:00:30.300] [Client_Log] [info] sand box has been initialized
+[2020-04-30 17:30:58.962] [Client_Log] [info] Inialized Client Log
+[2020-04-30 17:30:58.962] [Client_Log] [info] sand box has been initialized

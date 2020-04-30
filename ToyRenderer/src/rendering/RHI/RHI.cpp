@@ -53,6 +53,36 @@ namespace ToyRenderer {
 			  }
 		  }
 
+		  GLenum RHIBlendToGLBlend(const Blend_Function toCast) {
+			  switch (toCast) {
+			  case Blend_Function::ZERO:                     return GL_ZERO; 
+			  case Blend_Function::ONE:                      return GL_ONE;
+			  case Blend_Function::SRC_COLOR:                return GL_SRC_COLOR;
+			  case Blend_Function::ONE_MINUS_SRC_COLOR:      return GL_ONE_MINUS_SRC_COLOR;
+			  case Blend_Function::DST_COLOR:                return GL_DST_COLOR;
+			  case Blend_Function::ONE_MINUS_DST_COLOR:      return GL_ONE_MINUS_DST_COLOR;
+			  case Blend_Function::SRC_ALPHA:                return GL_SRC_ALPHA;
+			  case Blend_Function::ONE_MINUS_SRC_ALPHA:      return GL_ONE_MINUS_SRC_ALPHA;
+			  case Blend_Function::DST_ALPHA:                return GL_DST_ALPHA;
+			  case Blend_Function::ONE_MINUS_DST_ALPHA:      return GL_ONE_MINUS_DST_ALPHA;
+			  case Blend_Function::CONSTANT_COLOR:           return GL_CONSTANT_COLOR;
+			  case Blend_Function::ONE_MINUS_CONSTANT_COLOR: return GL_ONE_MINUS_CONSTANT_COLOR;
+			  case Blend_Function::CONSTANT_ALPHA:           return GL_CONSTANT_ALPHA;
+			  case Blend_Function::ONE_MINUS_CONSTANT_ALPHA: return GL_ONE_MINUS_CONSTANT_ALPHA;
+			  case Blend_Function::SRC_ALPHA_SATURATE:       return GL_SRC_ALPHA_SATURATE;
+			  case Blend_Function::SRC1_COLOR:               return GL_SRC1_COLOR;
+			  case Blend_Function::ONE_MINUS_SRC1_COLOR:     return GL_ONE_MINUS_SRC1_COLOR;
+			  case Blend_Function::SRC1_ALPHA:               return GL_SRC1_ALPHA;
+			  case Blend_Function::ONE_MINUS_SRC1_ALPHA:     return GL_ONE_MINUS_SRC1_ALPHA;
+			  default: return GL_ZERO;
+			  }
+		  }
+
+		  void RHI::SetBlendFunction(const Blend_Function src, const Blend_Function dst)
+		  {
+			  GlCall(glBlendFunc(RHIBlendToGLBlend(src), RHIBlendToGLBlend(dst)));
+		  }
+
 
 	}
 }

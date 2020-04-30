@@ -1,4 +1,5 @@
 #pragma once
+#include "Core.h"
 #include "vendor/GLFW/glfw3.h"
 #include "maths/Vector2.h"
 #include <unordered_map>
@@ -11,15 +12,9 @@ namespace ToyRenderer {
 	};
 
 
-	struct PressedKey {
+	struct TOYRENDERER_API PressedKey {
 
-	public: 
-		bool        actedOnThisFrame;
-		GLFWwindow*	window;
-		int         keyCode;
-	private:
-		
-		int numberOfFramesActive;
+	// PUBLIC ======================================================================================
 	public:
 		PressedKey();
 		PressedKey(const PressedKey& copyFrom);
@@ -28,22 +23,22 @@ namespace ToyRenderer {
 		void IsPressed();
 		void SetUpForRelease();
 		bool IsReleased();
+	public: 
+		bool        actedOnThisFrame;
+		GLFWwindow*	window;
+		int         keyCode;
 
-	private: 
+    // ______________________________________________________________________________________________
+	// PRIVATE ======================================================================================
+	private:
 		
+		int numberOfFramesActive;
+
 
 	};
 
-	class Mouse {
-	
-	public: 
-		/// Screen space, from top left corner
-		Vector2 mousePos;
-
-	private:
-		Vector2 mouseDelta;
-		GLFWwindow* window;
-
+	class TOYRENDERER_API Mouse {
+	// PUBLIC ======================================================================================	
 	public: 
 
 		Mouse();
@@ -51,20 +46,19 @@ namespace ToyRenderer {
 		void    Update();
 		void    SetMouseVisible(bool b);
 		Vector2 GetMouseDelta() const;
+	public: 
+		/// Screen space, from top left corner
+		Vector2 mousePos;
+    // ______________________________________________________________________________________________
+	// PRIVATE ======================================================================================
+	private:
+		Vector2 mouseDelta;
+		GLFWwindow* window;
+
 	};
 
-	class InputMaster {
-
-	public: 
-		static std::unordered_map<KeyName, int> keyMaping;
-
-		static std::unordered_map<int, PressedKey> PressedKeys;
-		static std::unordered_map<int, PressedKey> ReleasedKeys;
-
-		static Mouse mouse;
-	private:
-		GLFWwindow* p_window;
-
+	class TOYRENDERER_API InputMaster {
+	// PUBLIC ======================================================================================
 	public:
 		 InputMaster(GLFWwindow* window);
 		~InputMaster();
@@ -74,10 +68,18 @@ namespace ToyRenderer {
 		static bool GetKeyDown(KeyName keycode);
 		static bool GetKeyUp  (KeyName keycode);
 		static bool GetKey    (KeyName keycode);
+    #pragma warning( disable : 4251)  
+	public: 
+		static std::unordered_map<KeyName, int> keyMaping;
 
-		
+		static std::unordered_map<int, PressedKey> PressedKeys;
+		static std::unordered_map<int, PressedKey> ReleasedKeys;
+
+		static Mouse mouse;
+
+    #pragma warning(default:4251) 
 	private:
-
+		GLFWwindow* p_window;
 
 
 	};
