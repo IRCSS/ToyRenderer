@@ -7,11 +7,13 @@ namespace ToyRenderer {
 	class TOYRENDERER_API Scene {
 	// PUBLIC ======================================================================================	
 	public:
-		Scene();
-
+		 Scene();
+		~Scene();
 		void OnUpdate(float deltaTime) const;
 		void OnRender() const;
 		void OnGUI()    const;
+
+		void AddGameObject(GameObject* toAdd);
 
 		template<typename T>
 		std::vector<T*> GetAllGameObjectsWithComponent() {

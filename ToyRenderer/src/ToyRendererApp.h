@@ -1,5 +1,6 @@
 #pragma once
 #include "Core.h"
+#include "world/Scene.h"
 
 namespace ToyRenderer {
 
@@ -12,7 +13,10 @@ namespace ToyRenderer {
 		   void Run();
      };
 
+	 Scene* activeScene;
+
 	 // Define in Client
 	 ToyRendererApp* CreateApplication();
+
 }
 

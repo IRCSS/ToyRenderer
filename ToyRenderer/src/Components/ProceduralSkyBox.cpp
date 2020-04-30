@@ -12,7 +12,7 @@ namespace ToyRenderer {
 
 		PopulateVertexPosition();
 
-		Shader*     s = new Shader("res/shaders/procceduralSkybox.shader");
+		Shader*     s = new Shader("../ToyRenderer/res/shaders/procceduralSkybox.shader");
 
 		ResourceManager::Instance().RegisterShader(s);
 

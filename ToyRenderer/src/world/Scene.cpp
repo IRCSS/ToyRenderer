@@ -5,6 +5,12 @@ namespace ToyRenderer {
 	{
 		renderer = new Renderer();
 	}
+	Scene::~Scene()
+	{
+		for (std::vector<GameObject*>::iterator i = sceneObjects.begin(); i != sceneObjects.end(); ++i)
+			delete *i;
+		sceneObjects.clear();
+	}
 	void Scene::OnUpdate(float deltaTime) const
 	{
 		for (std::vector<GameObject*>::size_type i = 0; i != sceneObjects.size(); i++) {
@@ -26,5 +32,9 @@ namespace ToyRenderer {
 
 			sceneObjects[i]->OnGUI();
 		}
+	}
+	void Scene::AddGameObject(GameObject* toAdd)
+	{
+		sceneObjects.push_back(toAdd);
 	}
 }

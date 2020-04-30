@@ -12,8 +12,9 @@ namespace ToyRenderer {
 
 	// PUBLIC ======================================================================================		
 	public: 
-		GameObject();
-		void OnUpdate(float deltaTime);
+		 GameObject();
+		~GameObject();
+ 		void OnUpdate(float deltaTime);
 		void OnRender();
 		void OnGUI();
 

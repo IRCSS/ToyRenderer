@@ -6,8 +6,37 @@
 
 
 // ETNRY POINT -----------------------------
-#include "EntryPoint.h"
+#include "EntryPoint.h"                         // This is where the main function for the application is
 // ---------------------------------------------
 
-
+// Utility
 #include "log/Log.h"
+
+//Managers
+#include "managers/ResourceManager.h"
+
+// World
+#include "world/Scene.h"
+#include "world/GameObject.h"
+
+
+// Components
+#include "Components/Camera.h"
+#include "Components/Scripts/MoveCamera.h"
+#include "Components/Scripts/postProcesses/Vignetting.h"
+
+// Rendering
+#include "rendering/Mesh/PrimitiveFactory.h"
+#include "rendering/Shader.h"
+#include "rendering/Material.h"
+#include "rendering/RawMesh.h"
+
+// Assets API
+#include "importAPI/MeshLoader.h"
+
+// Maths
+#include "maths/Vector2.h"
+#include "maths/Vector3.h"
+#include "maths/Vector4.h"
+#include "maths/Matrix4x4.h"
+

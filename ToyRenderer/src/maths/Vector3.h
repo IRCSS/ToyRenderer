@@ -38,11 +38,11 @@ namespace ToyRenderer{
     	void           operator-=(const Vector3& vec);
     	void           operator*=(float rhs);
     
-    	friend Vector3 operator-(const Vector3& lhs, const Vector3& rhs);
-    	friend Vector3 operator*(const Vector3& lhs, float rhs);
-    	friend Vector3 operator*(float lhs, const Vector3& rhs);
+    	TOYRENDERER_API friend Vector3 operator-(const Vector3& lhs, const Vector3& rhs);
+    	TOYRENDERER_API friend Vector3 operator*(const Vector3& lhs, float rhs);
+    	TOYRENDERER_API friend Vector3 operator*(float lhs, const Vector3& rhs);
     
-        friend std::ostream& operator<<(std::ostream& os, const Vector3& rhs); 
+		TOYRENDERER_API friend std::ostream& operator<<(std::ostream& os, const Vector3& rhs);
     	                                                                       
     																	       
     

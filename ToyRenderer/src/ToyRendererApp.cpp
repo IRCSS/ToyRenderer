@@ -72,12 +72,17 @@ namespace ToyRenderer {
 				// INPUT 
 				inputMaster.OnUpdate(ToyRenderer::Time::GetDeltaTime());
 
+
+				if (activeScene != nullptr) {
+
+				   activeScene->OnUpdate(ToyRenderer::Time::GetDeltaTime());
+				   activeScene->OnRender();
+				   activeScene->OnGUI();
+				}
+
+
 				// Rendering
-
 				ImGui_ImplGlfwGL3_NewFrame();
-
-
-
 				ImGui::Render();
 				ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
 

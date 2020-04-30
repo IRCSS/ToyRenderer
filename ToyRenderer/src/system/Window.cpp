@@ -23,7 +23,6 @@ namespace ToyRenderer {
 	}
 	Window::~Window()
 	{
-		
 	}
 	void Window::SetContextAsCurrent()
 	{
