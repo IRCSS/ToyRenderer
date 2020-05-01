@@ -1,3 +1,6 @@
+SettingBegin
+#tagName=skybox/procedural
+SettingEnd
 #shader vertex
 #version 330 core  
   

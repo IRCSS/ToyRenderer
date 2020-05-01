@@ -1,3 +1,6 @@
+SettingBegin
+#tagName=unlit/texture
+SettingEnd
 #shader vertex
 #version 330 core  
   

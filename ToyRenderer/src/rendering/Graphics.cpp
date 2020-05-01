@@ -18,7 +18,7 @@ namespace ToyRenderer {
 		Graphic::Graphic( ) 
 		{
 			m_fullScreenQuadMesh       = PrimitivFactory::CreateFullScreenQuad();
-			m_defaultPassThroughShader = new Shader("D:/ShaPlayGround/ToyRenderer/ToyRenderer/ToyRenderer/res/shaders/postProcess_PassThrough.shader");
+			m_defaultPassThroughShader = new Shader("postProcess/blit");
 		    m_defaultMaterial          = new Material(m_defaultPassThroughShader);
 			m_defaultMaterial->SetDepthFunction(Material_DepthFunction_ALWAYS);
 			m_defaultMaterial->EnableZTest(false);

@@ -1,3 +1,6 @@
+SettingBegin
+#tagName=postProcess/vignetting
+SettingEnd
 #shader vertex
 #version 330 core  
   

@@ -1675,6 +1675,9 @@
     <ClInclude Include="src\world\Time.h">
       <Filter>world</Filter>
     </ClInclude>
+    <ClInclude Include="src\managers\ShaderOven.h" />
+    <ClInclude Include="src\rendering\RHI\RenderingPipelineTypes.h" />
+    <ClInclude Include="src\managers\ShaderAssembly.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
@@ -1814,5 +1817,7 @@
     <ClCompile Include="src\world\Time.cpp">
       <Filter>world</Filter>
     </ClCompile>
+    <ClCompile Include="src\managers\ShaderOven.cpp" />
+    <ClCompile Include="src\managers\ShaderAssembly.cpp" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 #pragma once
 #include "Core.h"
 #include <vector>
+#include "managers/ShaderAssembly.h"
 
 namespace ToyRenderer {
     class Texture;
@@ -24,6 +25,11 @@ namespace ToyRenderer {
 		// Destroy the resource manager, next time you call instance you will create anew instance
 		static void ClearResourceManager();
 		
+		ShaderAssembly* shaderAssembly;
+
+
+	public: 
+
     // ______________________________________________________________________________________________
 	// PRIVATE ======================================================================================
 	private:

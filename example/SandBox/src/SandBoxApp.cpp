@@ -39,7 +39,7 @@ public:
 
 		ToyRenderer::Mesh* groundGridMesh = PrimitivFactory::CreatePlane();
 		ToyRenderer::ResourceManager::Instance().RegisterMesh(groundGridMesh);
-		Shader* gridShader = new Shader("../ToyRenderer/res/shaders/groundGrid.shader");
+		Shader* gridShader = new Shader("unlit/groundGrid");
 
 		Material* groundMaterial = new Material(gridShader);
 		ResourceManager::Instance().RegisterMaterial(groundMaterial);
@@ -58,43 +58,43 @@ public:
 
 		activeScene->sceneObjects.push_back(groundGameObject);
 
-		// ------------------------------------------------------------
-		// Cube Mesh Loading
+		//// ------------------------------------------------------------
+		//// Cube Mesh Loading
 
-         RawMesh*  loadedMesh = MeshLoader::LoadTinyObj("../ToyRenderer/res/meshes/unwraped_cube.obj", "res/meshes");
+  //       RawMesh*  loadedMesh = MeshLoader::LoadTinyObj("res/meshes/unwraped_cube.obj", "res/meshes");
 
-		//ToyRenderer::RawMesh*  loadedMesh = ToyRenderer::MeshLoader::LoadTinyObj("D:/Meshes/MiniModel/Tatev/Tatev_1e+02KTris__4k_1Chunks_1xLOD.obj"
-		//	, "D:/Meshes/MiniModel/Tatev");
+		////ToyRenderer::RawMesh*  loadedMesh = ToyRenderer::MeshLoader::LoadTinyObj("D:/Meshes/MiniModel/Tatev/Tatev_1e+02KTris__4k_1Chunks_1xLOD.obj"
+		////	, "D:/Meshes/MiniModel/Tatev");
 
-		if (loadedMesh)
-		{
-			std::vector<Mesh *>       ms = loadedMesh->GenerateMeshes();
-			Shader* unlit_texture_shader = new Shader("../ToyRenderer/res/shaders/unlit_texture.shader");
+		//if (loadedMesh)
+		//{
+		//	std::vector<Mesh *>       ms = loadedMesh->GenerateMeshes();
+		//	Shader* unlit_texture_shader = new Shader("res/shaders/unlit_texture.shader");
 
-			ResourceManager::Instance().RegisterShader(unlit_texture_shader);
+		//	ResourceManager::Instance().RegisterShader(unlit_texture_shader);
 
-			for (int i = 0; i < ms.size(); i++) {
+		//	for (int i = 0; i < ms.size(); i++) {
 
-				// Owner ship by the pScene, it kills the objects later
-				GameObject*    gb = new ToyRenderer::GameObject();
-				int    materialID = loadedMesh->m_meshes_materials_ids[0];
-				Material*   gbMat = loadedMesh->m_materials[materialID]; // already registered in resource manager on creation
-				  gbMat->m_Shader = unlit_texture_shader;
-				//gbMat->SetTwoSided(true);
+		//		// Owner ship by the pScene, it kills the objects later
+		//		GameObject*    gb = new ToyRenderer::GameObject();
+		//		int    materialID = loadedMesh->m_meshes_materials_ids[0];
+		//		Material*   gbMat = loadedMesh->m_materials[materialID]; // already registered in resource manager on creation
+		//		  gbMat->m_Shader = unlit_texture_shader;
+		//		//gbMat->SetTwoSided(true);
 
-				MeshRenderer* gbMeshRender = new MeshRenderer(ms[i], gbMat);
+		//		MeshRenderer* gbMeshRender = new MeshRenderer(ms[i], gbMat);
 
-				Transform* gbTransform = new Transform(Vector3(0.0f, -10.5f, 0.0f), vector3_one, Vector3(-90.0f, 0.0f, 0.0f));
+		//		Transform* gbTransform = new Transform(Vector3(0.0f, -10.5f, 0.0f), vector3_one, Vector3(-90.0f, 0.0f, 0.0f));
 
-				gb->AddComponent<Transform>(gbTransform);
-				gb->AddComponent<MeshRenderer>(gbMeshRender);
+		//		gb->AddComponent<Transform>(gbTransform);
+		//		gb->AddComponent<MeshRenderer>(gbMeshRender);
 
-				activeScene->sceneObjects.push_back(gb);
+		//		activeScene->sceneObjects.push_back(gb);
 
-			}
+		//	}
 
-			//delete loadedMesh;
-		}
+		//	//delete loadedMesh;
+		//}
 
 
 

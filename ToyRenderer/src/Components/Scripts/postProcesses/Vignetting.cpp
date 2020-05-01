@@ -8,7 +8,7 @@ namespace ToyRenderer {
 	namespace PostProcessing {
         Vignetting::Vignetting()
         {
-			vignettingShader   = new Shader("res/shaders/postProcess_Vignetting.shader");
+			vignettingShader   = new Shader("postProcess/vignetting");
 			vignettingMaterial = new Material(vignettingShader);
 			vignettingMaterial->SetDepthFunction(Material_DepthFunction_ALWAYS);
 			vignettingMaterial->EnableZTest(false);

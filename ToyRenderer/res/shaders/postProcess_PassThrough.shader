@@ -1,3 +1,6 @@
+SettingBegin
+#tagName=postProcess/blit
+SettingEnd
 #shader vertex
 #version 330 core  
   

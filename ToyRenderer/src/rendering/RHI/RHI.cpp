@@ -1,5 +1,7 @@
 #include "RHI.h"
 #include "rendering/Renderer.h"
+#include "log/Log.h"
+
 namespace ToyRenderer {
 	namespace Rendering {
           void ToyRenderer::Rendering::RHI::BindBackBuffer()
@@ -83,6 +85,113 @@ namespace ToyRenderer {
 			  GlCall(glBlendFunc(RHIBlendToGLBlend(src), RHIBlendToGLBlend(dst)));
 		  }
 
+
+		  unsigned int RHI::CreateProgram()
+		  {
+			 GlCall(unsigned int programID = glCreateProgram());
+			  return programID;
+		  }
+
+		  void RHI::DeleteProgram(unsigned int programID)
+		  {
+			  GlCall(glDeleteProgram(programID));
+		  }
+
+		  void RHI::SetProgramActive(unsigned int programID)
+		  {
+			  GlCall(glUseProgram(programID));
+		  }
+
+		  GLenum RHIShaderTypeToGLShaderType(ShaderTypes shaderType) {
+
+				  switch(shaderType){
+				  case ShaderTypes::COMPUTE_SHADER:         return GL_COMPUTE_SHADER;
+				  case ShaderTypes::VERTEX_SHADER:          return GL_VERTEX_SHADER;
+				  case ShaderTypes::TESS_CONTROL_SHADER:    return GL_TESS_CONTROL_SHADER;
+				  case ShaderTypes::TESS_EVALUATION_SHADER: return GL_TESS_EVALUATION_SHADER;
+				  case ShaderTypes::GEOMETRY_SHADER:        return GL_GEOMETRY_SHADER;
+				  case ShaderTypes::FRAGMENT_SHADER:        return GL_FRAGMENT_SHADER;
+		  };
+		  }
+
+		  unsigned int RHI::CreateShader(ShaderTypes shaderType)
+		  {
+			  GlCall(unsigned int id = glCreateShader(RHIShaderTypeToGLShaderType(shaderType)));
+			  return id;
+		  }
+
+		  void RHI::SetShaderSource(unsigned int shaderID, const char * shaderSource, int * length)
+		  {
+			  GlCall(glShaderSource(shaderID, 1, &shaderSource, length));
+		  }
+
+		  void RHI::CompileShader(unsigned int shaderID)
+		  {
+			  GlCall(glCompileShader(shaderID));
+		  }
+
+		  void RHI::CheckCompilationShaderStatus(unsigned int shaderID, ShaderTypes type)
+		  {
+			  int result;
+			  GlCall(glGetShaderiv(shaderID, GL_COMPILE_STATUS, &result));
+			  if (result == GL_FALSE) {
+				  int length;
+				  GlCall(glGetShaderiv(shaderID, GL_INFO_LOG_LENGTH, &length));
+				  char* message = (char*)alloca(length * sizeof(char));
+				  GlCall(glGetShaderInfoLog(shaderID, length, &length, message));
+
+				  ENGINE_LOG_ERROR("RHI ERROR: Failed to compile {} shader! message: {}", (RHIShaderTypeToGLShaderType(type)== GL_VERTEX_SHADER ? "vertex " : "fragment "), message);
+
+				  GlCall(glDeleteShader(shaderID));
+			  }
+
+		  }
+
+		  void RHI::AttachShader(unsigned int ProgramID, unsigned int ShaderID)
+		  {
+			  GlCall(glAttachShader(ProgramID, ShaderID));
+		  }
+
+		  void RHI::LinkProgram(unsigned int ProgramID)
+		  {
+			  GlCall(glLinkProgram(ProgramID));
+		  }
+
+		  void RHI::ValidateProgram(unsigned int ProgramID)
+		  {
+			  GlCall(glValidateProgram(ProgramID));
+		  }
+
+		  void RHI::DeleteShader(unsigned int ShaderID)
+		  {
+			  GlCall(glDeleteShader(ShaderID));
+		  }
+
+		  void RHI::SetUniformFloat4(int location, float v0, float v1, float v2, float v3)
+		  {
+			  GlCall(glUniform4f(location, v0, v1, v2, v3));
+		  }
+
+		  void RHI::SetUniformFloat(int location, float v0)
+		  {
+			  GlCall(glUniform1f(location, v0));
+		  }
+
+		  void RHI::SetUniformInteger(int location, int v0)
+		  {
+			  GlCall(glUniform1i(location, v0));
+		  }
+
+		  void RHI::SetUniformMatrix4F(int location, const float * matrixAddress)
+		  {
+			  GlCall(glUniformMatrix4fv(location, 1, GL_FALSE, matrixAddress));
+		  }
+
+		  int RHI::GetUniformLocation(unsigned int programID, const char * uniformName)
+		  {
+			  GlCall(int location = glGetUniformLocation(programID, uniformName));
+			  return location;
+		  }
 
 	}
 }

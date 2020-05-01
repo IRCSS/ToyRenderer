@@ -8,6 +8,7 @@ namespace ToyRenderer {
 
 	ResourceManager::ResourceManager() 
 	{
+		shaderAssembly = new ShaderAssembly();
 		m_pSingelton = nullptr;
 	}
 	ResourceManager::~ResourceManager()
@@ -27,6 +28,8 @@ namespace ToyRenderer {
 		for (std::vector<Shader*>::iterator i = r_shaders.begin(); i != r_shaders.end(); ++i)
 			delete *i;
 		r_shaders.clear();
+
+		delete shaderAssembly;
 
 	}
 	void ResourceManager::RegisterMaterial(Material * mat)

@@ -1,8 +1,0 @@
-[2020-05-01 16:11:19.054] [Engine_Log] [info] Inialized Engine Log
-[2020-05-01 16:11:19.448] [Engine_Log] [info] Initialized with GL Version       4.6.0 NVIDIA 436.02
-[2020-05-01 16:11:19.452] [Engine_Log] [error] Assets Error: Attempted and failed to open, parse: ../ToyRenderer/res/shaders/procceduralSkybox.shader
-[2020-05-01 16:11:19.467] [Engine_Log] [error] Assets Error: Attempted and failed to open, parse: res/shaders/postProcess_Vignetting.shader
-[2020-05-01 16:11:19.469] [Engine_Log] [error] Assets Error: Attempted and failed to open, parse: ../ToyRenderer/res/shaders/groundGrid.shader
-[2020-05-01 16:11:19.470] [Engine_Log] [error]  During loading of ../ToyRenderer/res/meshes/unwraped_cube.obj, ERROR: Cannot open file [../ToyRenderer/res/meshes/unwraped_cube.obj]
-
-[2020-05-01 16:11:19.478] [Engine_Log] [error] [OpenGl Error]: 1282, The specified operation is not allowed in the current state. The offending command is ignored and has no other side effect than to set the error flag., In Function, glUseProgram(m_RendererID), in file, d:\shaplayground\toyrenderer\toyrenderer\toyrenderer\src\rendering\shader.cpp: Line 25
