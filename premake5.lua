@@ -49,7 +49,8 @@ workspace "ToyRenderer"
 		}
 
 		postbuildcommands{
-			("{COPY} %{cfg.buildtarget.relpath} ../ToyRenderer-binaries/" ..outputdir.. "/SandBox")
+			("{COPY} %{cfg.buildtarget.relpath} ../ToyRenderer-binaries/" ..outputdir.. "/SandBox"),
+			("{COPY} %{prj.location}res ../ToyRenderer-binaries/" ..outputdir.. "/SandBox/res")
 		}
 
 		filter "configurations:Debug"

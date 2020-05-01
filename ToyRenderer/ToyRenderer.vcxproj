@@ -94,7 +94,8 @@
       <ImportLibrary>..\ToyRenderer-binaries\Debug-windows-x86_64\ToyRenderer\ToyRenderer.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\ToyRenderer-binaries\Debug-windows-x86_64\ToyRenderer\ToyRenderer.dll\ (xcopy /Q /E /Y /I ..\ToyRenderer-binaries\Debug-windows-x86_64\ToyRenderer\ToyRenderer.dll ..\ToyRenderer-binaries\Debug-windows-x86_64\SandBox &gt; nul) ELSE (xcopy /Q /Y /I ..\ToyRenderer-binaries\Debug-windows-x86_64\ToyRenderer\ToyRenderer.dll ..\ToyRenderer-binaries\Debug-windows-x86_64\SandBox &gt; nul)</Command>
+      <Command>IF EXIST ..\ToyRenderer-binaries\Debug-windows-x86_64\ToyRenderer\ToyRenderer.dll\ (xcopy /Q /E /Y /I ..\ToyRenderer-binaries\Debug-windows-x86_64\ToyRenderer\ToyRenderer.dll ..\ToyRenderer-binaries\Debug-windows-x86_64\SandBox &gt; nul) ELSE (xcopy /Q /Y /I ..\ToyRenderer-binaries\Debug-windows-x86_64\ToyRenderer\ToyRenderer.dll ..\ToyRenderer-binaries\Debug-windows-x86_64\SandBox &gt; nul)
+IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Debug-windows-x86_64\SandBox\res &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Debug-windows-x86_64\SandBox\res &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -120,7 +121,8 @@
       <ImportLibrary>..\ToyRenderer-binaries\Release-windows-x86_64\ToyRenderer\ToyRenderer.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\ToyRenderer-binaries\Release-windows-x86_64\ToyRenderer\ToyRenderer.dll\ (xcopy /Q /E /Y /I ..\ToyRenderer-binaries\Release-windows-x86_64\ToyRenderer\ToyRenderer.dll ..\ToyRenderer-binaries\Release-windows-x86_64\SandBox &gt; nul) ELSE (xcopy /Q /Y /I ..\ToyRenderer-binaries\Release-windows-x86_64\ToyRenderer\ToyRenderer.dll ..\ToyRenderer-binaries\Release-windows-x86_64\SandBox &gt; nul)</Command>
+      <Command>IF EXIST ..\ToyRenderer-binaries\Release-windows-x86_64\ToyRenderer\ToyRenderer.dll\ (xcopy /Q /E /Y /I ..\ToyRenderer-binaries\Release-windows-x86_64\ToyRenderer\ToyRenderer.dll ..\ToyRenderer-binaries\Release-windows-x86_64\SandBox &gt; nul) ELSE (xcopy /Q /Y /I ..\ToyRenderer-binaries\Release-windows-x86_64\ToyRenderer\ToyRenderer.dll ..\ToyRenderer-binaries\Release-windows-x86_64\SandBox &gt; nul)
+IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Release-windows-x86_64\SandBox\res &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Release-windows-x86_64\SandBox\res &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|x64'">
@@ -146,7 +148,8 @@
       <ImportLibrary>..\ToyRenderer-binaries\Shipping-windows-x86_64\ToyRenderer\ToyRenderer.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\ToyRenderer-binaries\Shipping-windows-x86_64\ToyRenderer\ToyRenderer.dll\ (xcopy /Q /E /Y /I ..\ToyRenderer-binaries\Shipping-windows-x86_64\ToyRenderer\ToyRenderer.dll ..\ToyRenderer-binaries\Shipping-windows-x86_64\SandBox &gt; nul) ELSE (xcopy /Q /Y /I ..\ToyRenderer-binaries\Shipping-windows-x86_64\ToyRenderer\ToyRenderer.dll ..\ToyRenderer-binaries\Shipping-windows-x86_64\SandBox &gt; nul)</Command>
+      <Command>IF EXIST ..\ToyRenderer-binaries\Shipping-windows-x86_64\ToyRenderer\ToyRenderer.dll\ (xcopy /Q /E /Y /I ..\ToyRenderer-binaries\Shipping-windows-x86_64\ToyRenderer\ToyRenderer.dll ..\ToyRenderer-binaries\Shipping-windows-x86_64\SandBox &gt; nul) ELSE (xcopy /Q /Y /I ..\ToyRenderer-binaries\Shipping-windows-x86_64\ToyRenderer\ToyRenderer.dll ..\ToyRenderer-binaries\Shipping-windows-x86_64\SandBox &gt; nul)
+IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Shipping-windows-x86_64\SandBox\res &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Shipping-windows-x86_64\SandBox\res &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -159,8 +162,6 @@
     <ClInclude Include="src\Components\Transform.h" />
     <ClInclude Include="src\Core.h" />
     <ClInclude Include="src\EntryPoint.h" />
-    <ClInclude Include="src\rendering\RHI\RenderingSettingTypes.h" />
-    <ClInclude Include="src\system\Window.h" />
     <ClInclude Include="src\Tests\Test.h" />
     <ClInclude Include="src\Tests\TestClearColor.h" />
     <ClInclude Include="src\Tests\TestObjLoader.h" />
@@ -188,6 +189,7 @@
     <ClInclude Include="src\rendering\MeshRenderer.h" />
     <ClInclude Include="src\rendering\PostProcess.h" />
     <ClInclude Include="src\rendering\RHI\RHI.h" />
+    <ClInclude Include="src\rendering\RHI\RenderingSettingTypes.h" />
     <ClInclude Include="src\rendering\RawMesh.h" />
     <ClInclude Include="src\rendering\RenderBuffer.h" />
     <ClInclude Include="src\rendering\Renderer.h" />
@@ -196,6 +198,7 @@
     <ClInclude Include="src\rendering\VertexArray.h" />
     <ClInclude Include="src\rendering\VertexBuffer.h" />
     <ClInclude Include="src\rendering\VertexBufferLayout.h" />
+    <ClInclude Include="src\system\Window.h" />
     <ClInclude Include="src\vendor\GL\eglew.h" />
     <ClInclude Include="src\vendor\GL\glew.h" />
     <ClInclude Include="src\vendor\GL\glxew.h" />
@@ -687,7 +690,6 @@
     <ClCompile Include="src\Components\Scripts\MoveCamera.cpp" />
     <ClCompile Include="src\Components\Scripts\postProcesses\Vignetting.cpp" />
     <ClCompile Include="src\Components\Transform.cpp" />
-    <ClCompile Include="src\system\Window.cpp" />
     <ClCompile Include="src\Tests\Test.cpp" />
     <ClCompile Include="src\Tests\TestClearColor.cpp" />
     <ClCompile Include="src\Tests\TestObjLoader.cpp" />
@@ -718,6 +720,7 @@
     <ClCompile Include="src\rendering\Texture.cpp" />
     <ClCompile Include="src\rendering\VertexArray.cpp" />
     <ClCompile Include="src\rendering\VertexBuffer.cpp" />
+    <ClCompile Include="src\system\Window.cpp" />
     <ClCompile Include="src\vendor\glm\detail\glm.cpp" />
     <ClCompile Include="src\vendor\imgui\imgui.cpp" />
     <ClCompile Include="src\vendor\imgui\imgui_demo.cpp" />

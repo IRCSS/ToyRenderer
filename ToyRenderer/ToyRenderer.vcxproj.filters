@@ -37,6 +37,9 @@
     <Filter Include="rendering\RHI">
       <UniqueIdentifier>{B5C44EBC-2185-CAF2-EABF-1370563F0FCF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="system">
+      <UniqueIdentifier>{8AE4EE1C-7686-19F3-5F41-2D474B82A043}</UniqueIdentifier>
+    </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
     </Filter>
@@ -196,6 +199,9 @@
     <ClInclude Include="src\rendering\RHI\RHI.h">
       <Filter>rendering\RHI</Filter>
     </ClInclude>
+    <ClInclude Include="src\rendering\RHI\RenderingSettingTypes.h">
+      <Filter>rendering\RHI</Filter>
+    </ClInclude>
     <ClInclude Include="src\rendering\RawMesh.h">
       <Filter>rendering</Filter>
     </ClInclude>
@@ -219,6 +225,9 @@
     </ClInclude>
     <ClInclude Include="src\rendering\VertexBufferLayout.h">
       <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="src\system\Window.h">
+      <Filter>system</Filter>
     </ClInclude>
     <ClInclude Include="src\vendor\GL\eglew.h">
       <Filter>vendor\GL</Filter>
@@ -1666,8 +1675,6 @@
     <ClInclude Include="src\world\Time.h">
       <Filter>world</Filter>
     </ClInclude>
-    <ClInclude Include="src\system\Window.h" />
-    <ClInclude Include="src\rendering\RHI\RenderingSettingTypes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
@@ -1777,6 +1784,9 @@
     <ClCompile Include="src\rendering\VertexBuffer.cpp">
       <Filter>rendering</Filter>
     </ClCompile>
+    <ClCompile Include="src\system\Window.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
     <ClCompile Include="src\vendor\glm\detail\glm.cpp">
       <Filter>vendor\glm\detail</Filter>
     </ClCompile>
@@ -1804,6 +1814,5 @@
     <ClCompile Include="src\world\Time.cpp">
       <Filter>world</Filter>
     </ClCompile>
-    <ClCompile Include="src\system\Window.cpp" />
   </ItemGroup>
 </Project>
