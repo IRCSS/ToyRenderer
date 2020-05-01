@@ -5,7 +5,7 @@
 namespace ToyRenderer {
 	
 
-	ProceduralSkyBox::ProceduralSkyBox()
+	ProceduralSkyBox::ProceduralSkyBox() : meshRenderer(nullptr), mesh(nullptr)
 	{
 		mesh = new Mesh();
 		ResourceManager::Instance().RegisterMesh(mesh);

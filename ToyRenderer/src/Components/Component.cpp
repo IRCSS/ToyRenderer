@@ -1,6 +1,6 @@
 #include "Component.h"
 namespace ToyRenderer {
-	Component::Component()
+	Component::Component() : gameObject(nullptr)
 	{
 	}
 	Component::~Component()

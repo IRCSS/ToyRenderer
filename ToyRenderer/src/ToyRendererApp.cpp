@@ -7,7 +7,7 @@
 #include "vendor/imgui/imgui_impl_glfw_gl3.h"
 #include "world/Time.h"
 #include "managers/input/InputMaster.h"
-#include "system/Window.h"
+
 
 // Remove Later
 #include "rendering/Renderer.h"
@@ -16,28 +16,20 @@ namespace ToyRenderer {
 
 	
 
-	ToyRendererApp::ToyRendererApp()
+	ToyRendererApp::ToyRendererApp() : window(nullptr), timeHandler(nullptr), inputMaster(nullptr), activeScene(nullptr)
 	{
 	    // Initalize Loging
         //-------------------------------------------------------------------
 		ToyRenderer::Log::Initialize();
 		//-------------------------------------------------------------------
-	}
 
-	ToyRendererApp::~ToyRendererApp()
-	{
-	}
-
-	void ToyRendererApp::Run()
-	{
-		
 		/* Initialize the library */
 		if (!glfwInit())
 			ENGINE_LOG_FATAL("Failed to initalize the GLFW openGl Context");
 
 
 
-		Window window = Window();
+		window = new Window();
 
 
 		glfwSwapInterval(Settings::VSync ? 1 : 0);
@@ -48,29 +40,45 @@ namespace ToyRenderer {
 		ENGINE_LOG_INFO("Initialized with GL Version       {}", glGetString(GL_VERSION));
 
 
+		// Initalize UI
+	    //-------------------------------------------------------------------
+		ImGui::CreateContext();
+		ImGui_ImplGlfwGL3_Init(window->GetWindowAddress(), true);
+		ImGui::StyleColorsDark();
+		//-------------------------------------------------------------------
+
+		timeHandler = new Time();
+
+
+		// INPUT MASTER 
+		inputMaster = new InputMaster(window->GetWindowAddress()); // REFACTOR: CHANGE THE GLFW WINDOW TO MY OWN WIDNOW HERE
+
+
+	}
+
+	ToyRendererApp::~ToyRendererApp()
+	{
+		delete inputMaster;
+		delete timeHandler;
+		delete activeScene;
+	}
+
+	void ToyRendererApp::Run()
+	{
+		
+
+
+
 		// --------------------------------------------------
 		{
 
-			// Initalize UI
-			//-------------------------------------------------------------------
-			ImGui::CreateContext();
-			ImGui_ImplGlfwGL3_Init(window.GetWindowAddress(), true);
-			ImGui::StyleColorsDark();
-			//-------------------------------------------------------------------
-
-			ToyRenderer::Time timeHandler = ToyRenderer::Time();
-
-
-			// INPUT MASTER 
-			ToyRenderer::InputMaster inputMaster(window.GetWindowAddress()); // REFACTOR: CHANGE THE GLFW WINDOW TO MY OWN WIDNOW HERE
-
 
 			/* Loop until the user closes the window */
-			while (!glfwWindowShouldClose(window.GetWindowAddress()))
+			while (!glfwWindowShouldClose(window->GetWindowAddress()))
 			{
-				timeHandler.Update();
+				timeHandler->Update();
 				// INPUT 
-				inputMaster.OnUpdate(ToyRenderer::Time::GetDeltaTime());
+				inputMaster->OnUpdate(ToyRenderer::Time::GetDeltaTime());
 
 
 				if (activeScene != nullptr) {
@@ -87,7 +95,7 @@ namespace ToyRenderer {
 				ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
 
 				/* Swap front and back buffers */
-				glfwSwapBuffers(window.GetWindowAddress());
+				glfwSwapBuffers(window->GetWindowAddress());
 				/* Poll for and process events */
 				glfwPollEvents();
 

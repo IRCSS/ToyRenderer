@@ -6,7 +6,7 @@
 #include "Material.h"
 namespace ToyRenderer {
 
-	MeshRenderer::MeshRenderer()
+	MeshRenderer::MeshRenderer() : mesh(nullptr), transform(nullptr)
 	{
 	}
 	MeshRenderer::~MeshRenderer()
@@ -16,7 +16,7 @@ namespace ToyRenderer {
 		delete vertexBufferLayout;
 		delete vertexArray;
 	}
-	MeshRenderer::MeshRenderer(Mesh * m) : mesh(m)
+	MeshRenderer::MeshRenderer(Mesh * m) : mesh(m), transform(nullptr)
 	{
 		ExtractRenderProxyFromMesh();
 	}

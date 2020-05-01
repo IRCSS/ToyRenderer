@@ -6,6 +6,7 @@
 #include "rendering/Shader.h"
 #include "rendering/FrameBuffer.h"
 #include "rendering/RHI/RHI.h"
+#include "log/Log.h"
 namespace ToyRenderer {
 	namespace Rendering {
 
@@ -18,7 +19,7 @@ namespace ToyRenderer {
 		{
 			m_fullScreenQuadMesh       = PrimitivFactory::CreateFullScreenQuad();
 			m_defaultPassThroughShader = new Shader("D:/ShaPlayGround/ToyRenderer/ToyRenderer/ToyRenderer/res/shaders/postProcess_PassThrough.shader");
-			m_defaultMaterial          = new Material(m_defaultPassThroughShader);
+		    m_defaultMaterial          = new Material(m_defaultPassThroughShader);
 			m_defaultMaterial->SetDepthFunction(Material_DepthFunction_ALWAYS);
 			m_defaultMaterial->EnableZTest(false);
 			m_defaultMaterial->EnableZWrite(false);

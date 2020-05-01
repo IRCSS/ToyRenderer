@@ -10,9 +10,9 @@ namespace ToyRenderer{
     Shader::Shader(const std::string & fileName) : m_FilePath(fileName), m_RendererID(0)
     {
     	ParsedShader vfs = ParseShader(fileName);
+
     	m_RendererID = CreateShader(vfs.VertexSource, vfs.FragmentSource);
-    
-    
+        
     }
     
     Shader::~Shader()
@@ -119,11 +119,11 @@ namespace ToyRenderer{
     
     
     unsigned int Shader::CreateShader(const std::string& vertexShader, const std::string& fragmentShader) {
-    	GlCall(unsigned int programID = glCreateProgram());
+    	
+		GlCall(unsigned int programID = glCreateProgram());
     	unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
     	unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
-    
-    
+
     
     	GlCall(glAttachShader(programID, vs));
     	GlCall(glAttachShader(programID, fs));
