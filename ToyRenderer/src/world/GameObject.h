@@ -3,7 +3,7 @@
 #include "Core.h"
 #include <vector>
 #include "Components/Component.h"
-
+#include "log/Log.h"
 
 
 namespace ToyRenderer {

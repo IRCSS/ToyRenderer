@@ -1,7 +1,7 @@
 #include "Transform.h"
 
 namespace ToyRenderer {
-	Transform::Transform()
+	Transform::Transform() : position(vector3_zero), scale(vector3_one)
 	{
 	}
 

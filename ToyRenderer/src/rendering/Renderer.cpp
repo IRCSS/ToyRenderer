@@ -45,10 +45,15 @@ namespace ToyRenderer{
     
 
     
-    Renderer::Renderer()
+    Renderer::Renderer() : m_graphicUtility(nullptr)
     {
-    	Rendering::Graphic m_graphicUtility = Rendering::Graphic();
+    	m_graphicUtility = new Rendering::Graphic();
     }
+
+	Renderer::~Renderer()
+	{
+		delete m_graphicUtility;
+	}
     
     void Renderer::Clear(ToyRenderer::Color clearColor, float depthClearValue, bool clearDepth) const
     {

@@ -26,14 +26,14 @@ namespace ToyRenderer {
 	// PUBLIC ======================================================================================
     public:
     	Renderer();
-    	
+		~Renderer();
     	void Clear(ToyRenderer::Color clearColor, float depthClearValue, bool clearDepth) const;
     	void Draw(const VertexArray& va, const IndexBuffer& ib, const Shader& shader);
 	
 	// ______________________________________________________________________________________________
 	// PRIVATE ======================================================================================
     private: 
-    	Rendering::Graphic m_graphicUtility;
+    	Rendering::Graphic* m_graphicUtility;
     
     };
 }

@@ -3,8 +3,8 @@
 #include "ShaderOven.h"
 #include <iostream>
 #include <filesystem>
-#include "log/Log.h"
 #include "managers/ShaderOven.h"
+#include "log/Log.h"
 namespace ToyRenderer {
 	ShaderAssembly::ShaderAssembly()
 	{
@@ -18,7 +18,6 @@ namespace ToyRenderer {
 	}
 	ShaderAssembly::~ShaderAssembly()
 	{
-
 	   // Iterate over an unordered_map using range based for loop
 	   for (std::pair<std::string, int> element : m_CookedShaders)
 	   {

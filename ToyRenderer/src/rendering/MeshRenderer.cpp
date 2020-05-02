@@ -4,6 +4,8 @@
 #include "world/GameObject.h"
 #include "Components/Transform.h"
 #include "Material.h"
+#include "log/Log.h"
+
 namespace ToyRenderer {
 
 	MeshRenderer::MeshRenderer() : mesh(nullptr), transform(nullptr)
@@ -22,7 +24,7 @@ namespace ToyRenderer {
 	}
 	
 
-	MeshRenderer::MeshRenderer(Mesh * m, Material* mat) : mesh(m), material(mat)
+	MeshRenderer::MeshRenderer(Mesh * m, Material* mat) : mesh(m), material(mat), transform(nullptr)
 	{
 		ExtractRenderProxyFromMesh();
 	}
@@ -33,7 +35,8 @@ namespace ToyRenderer {
 		Matrix4x4 mvp = vp;
 
 		if (gameObject) {
-			if (!transform) transform = gameObject->GetComponent<Transform>();
+			if (!transform)
+				transform = gameObject->GetComponent<Transform>();
 			if (transform) mvp = mvp * transform->localToWorld();
 		}
 		material->m_Shader->Bind();
