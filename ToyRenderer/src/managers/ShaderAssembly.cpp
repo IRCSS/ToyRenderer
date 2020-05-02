@@ -5,11 +5,15 @@
 #include <filesystem>
 #include "managers/ShaderOven.h"
 #include "log/Log.h"
+#include "system/File.h"
 namespace ToyRenderer {
+
 	ShaderAssembly::ShaderAssembly()
 	{
-		std::string pathToResourcesFolder = "D:/ShaPlayGround/ToyRenderer/ToyRenderer/ToyRenderer/res/shaders";
-		for (const auto & entry : std::filesystem::directory_iterator(pathToResourcesFolder)) {
+		std::string filepath =  File::GetExecutableFullPath() + "/res/shaders";
+		File::StyleAsPath(filepath);
+
+		for (const auto & entry : std::filesystem::directory_iterator(filepath)) {
 			CookedShader entryCooked = ShaderOven::CookShader(entry.path().string());
 			m_CookedShaders[entryCooked.shaderTagName] = entryCooked.ProgramID;
 		

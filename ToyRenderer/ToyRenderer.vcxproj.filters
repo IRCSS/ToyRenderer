@@ -1678,6 +1678,7 @@
     <ClInclude Include="src\managers\ShaderOven.h" />
     <ClInclude Include="src\rendering\RHI\RenderingPipelineTypes.h" />
     <ClInclude Include="src\managers\ShaderAssembly.h" />
+    <ClInclude Include="src\system\File.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
@@ -1819,5 +1820,6 @@
     </ClCompile>
     <ClCompile Include="src\managers\ShaderOven.cpp" />
     <ClCompile Include="src\managers\ShaderAssembly.cpp" />
+    <ClCompile Include="src\system\File.cpp" />
   </ItemGroup>
 </Project>

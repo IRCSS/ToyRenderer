@@ -165,6 +165,7 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     <ClInclude Include="src\managers\ShaderAssembly.h" />
     <ClInclude Include="src\managers\ShaderOven.h" />
     <ClInclude Include="src\rendering\RHI\RenderingPipelineTypes.h" />
+    <ClInclude Include="src\system\File.h" />
     <ClInclude Include="src\Tests\Test.h" />
     <ClInclude Include="src\Tests\TestClearColor.h" />
     <ClInclude Include="src\Tests\TestObjLoader.h" />
@@ -695,6 +696,7 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     <ClCompile Include="src\Components\Transform.cpp" />
     <ClCompile Include="src\managers\ShaderAssembly.cpp" />
     <ClCompile Include="src\managers\ShaderOven.cpp" />
+    <ClCompile Include="src\system\File.cpp" />
     <ClCompile Include="src\Tests\Test.cpp" />
     <ClCompile Include="src\Tests\TestClearColor.cpp" />
     <ClCompile Include="src\Tests\TestObjLoader.cpp" />
