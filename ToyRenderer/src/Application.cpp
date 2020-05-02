@@ -18,7 +18,7 @@
 #include "world/Time.h"
 
 namespace ToyRenderer {
-
+	 
 	int main(void)
 	{
 		// Initalize Loging

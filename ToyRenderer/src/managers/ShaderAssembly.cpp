@@ -10,14 +10,20 @@ namespace ToyRenderer {
 
 	ShaderAssembly::ShaderAssembly()
 	{
-		std::string filepath =  File::GetExecutableFullPath() + "/res/shaders";
-		File::StyleAsPath(filepath);
+		// ------------------------------------------------------------------------------
+		// Load All the Engine Resources
+
+		std::string executablePath = std::string();
+		TOYRENDERER_EXEPATH(executablePath);
+		
+		std::string filepath = executablePath + "/res/shaders";
+		TOYRENDERER_STYLE_PATH(filepath);
 
 		for (const auto & entry : std::filesystem::directory_iterator(filepath)) {
 			CookedShader entryCooked = ShaderOven::CookShader(entry.path().string());
 			m_CookedShaders[entryCooked.shaderTagName] = entryCooked.ProgramID;
-		
 		}
+		// -------------------------------------------------------------------------------
 		  
 	}
 	ShaderAssembly::~ShaderAssembly()

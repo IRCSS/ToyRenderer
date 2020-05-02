@@ -94,7 +94,7 @@
       <ImportLibrary>..\ToyRenderer-binaries\Debug-windows-x86_64\ToyRenderer\ToyRenderer.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\ToyRenderer-binaries\Debug-windows-x86_64\ToyRenderer\ToyRenderer.dll\ (xcopy /Q /E /Y /I ..\ToyRenderer-binaries\Debug-windows-x86_64\ToyRenderer\ToyRenderer.dll ..\ToyRenderer-binaries\Debug-windows-x86_64\SandBox &gt; nul) ELSE (xcopy /Q /Y /I ..\ToyRenderer-binaries\Debug-windows-x86_64\ToyRenderer\ToyRenderer.dll ..\ToyRenderer-binaries\Debug-windows-x86_64\SandBox &gt; nul)
+      <Command>copy ..\ToyRenderer-binaries\Debug-windows-x86_64\$(ProjectName)\ToyRenderer.dll ..\ToyRenderer-binaries\Debug-windows-x86_64\Sandbox\
 IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Debug-windows-x86_64\SandBox\res &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Debug-windows-x86_64\SandBox\res &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -121,7 +121,7 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
       <ImportLibrary>..\ToyRenderer-binaries\Release-windows-x86_64\ToyRenderer\ToyRenderer.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\ToyRenderer-binaries\Release-windows-x86_64\ToyRenderer\ToyRenderer.dll\ (xcopy /Q /E /Y /I ..\ToyRenderer-binaries\Release-windows-x86_64\ToyRenderer\ToyRenderer.dll ..\ToyRenderer-binaries\Release-windows-x86_64\SandBox &gt; nul) ELSE (xcopy /Q /Y /I ..\ToyRenderer-binaries\Release-windows-x86_64\ToyRenderer\ToyRenderer.dll ..\ToyRenderer-binaries\Release-windows-x86_64\SandBox &gt; nul)
+      <Command>copy ..\ToyRenderer-binaries\Release-windows-x86_64\$(ProjectName)\ToyRenderer.dll ..\ToyRenderer-binaries\Release-windows-x86_64\Sandbox\
 IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Release-windows-x86_64\SandBox\res &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Release-windows-x86_64\SandBox\res &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -148,7 +148,7 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
       <ImportLibrary>..\ToyRenderer-binaries\Shipping-windows-x86_64\ToyRenderer\ToyRenderer.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\ToyRenderer-binaries\Shipping-windows-x86_64\ToyRenderer\ToyRenderer.dll\ (xcopy /Q /E /Y /I ..\ToyRenderer-binaries\Shipping-windows-x86_64\ToyRenderer\ToyRenderer.dll ..\ToyRenderer-binaries\Shipping-windows-x86_64\SandBox &gt; nul) ELSE (xcopy /Q /Y /I ..\ToyRenderer-binaries\Shipping-windows-x86_64\ToyRenderer\ToyRenderer.dll ..\ToyRenderer-binaries\Shipping-windows-x86_64\SandBox &gt; nul)
+      <Command>copy ..\ToyRenderer-binaries\Shipping-windows-x86_64\$(ProjectName)\ToyRenderer.dll ..\ToyRenderer-binaries\Shipping-windows-x86_64\Sandbox\
 IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Shipping-windows-x86_64\SandBox\res &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Shipping-windows-x86_64\SandBox\res &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -162,10 +162,6 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     <ClInclude Include="src\Components\Transform.h" />
     <ClInclude Include="src\Core.h" />
     <ClInclude Include="src\EntryPoint.h" />
-    <ClInclude Include="src\managers\ShaderAssembly.h" />
-    <ClInclude Include="src\managers\ShaderOven.h" />
-    <ClInclude Include="src\rendering\RHI\RenderingPipelineTypes.h" />
-    <ClInclude Include="src\system\File.h" />
     <ClInclude Include="src\Tests\Test.h" />
     <ClInclude Include="src\Tests\TestClearColor.h" />
     <ClInclude Include="src\Tests\TestObjLoader.h" />
@@ -176,6 +172,8 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     <ClInclude Include="src\log\Log.h" />
     <ClInclude Include="src\managers\ResourceManager.h" />
     <ClInclude Include="src\managers\Settings.h" />
+    <ClInclude Include="src\managers\ShaderAssembly.h" />
+    <ClInclude Include="src\managers\ShaderOven.h" />
     <ClInclude Include="src\managers\input\InputMapping.h" />
     <ClInclude Include="src\managers\input\InputMaster.h" />
     <ClInclude Include="src\maths\Color.h" />
@@ -193,6 +191,7 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     <ClInclude Include="src\rendering\MeshRenderer.h" />
     <ClInclude Include="src\rendering\PostProcess.h" />
     <ClInclude Include="src\rendering\RHI\RHI.h" />
+    <ClInclude Include="src\rendering\RHI\RenderingPipelineTypes.h" />
     <ClInclude Include="src\rendering\RHI\RenderingSettingTypes.h" />
     <ClInclude Include="src\rendering\RawMesh.h" />
     <ClInclude Include="src\rendering\RenderBuffer.h" />
@@ -202,6 +201,7 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     <ClInclude Include="src\rendering\VertexArray.h" />
     <ClInclude Include="src\rendering\VertexBuffer.h" />
     <ClInclude Include="src\rendering\VertexBufferLayout.h" />
+    <ClInclude Include="src\system\File.h" />
     <ClInclude Include="src\system\Window.h" />
     <ClInclude Include="src\vendor\GL\eglew.h" />
     <ClInclude Include="src\vendor\GL\glew.h" />
@@ -694,9 +694,6 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     <ClCompile Include="src\Components\Scripts\MoveCamera.cpp" />
     <ClCompile Include="src\Components\Scripts\postProcesses\Vignetting.cpp" />
     <ClCompile Include="src\Components\Transform.cpp" />
-    <ClCompile Include="src\managers\ShaderAssembly.cpp" />
-    <ClCompile Include="src\managers\ShaderOven.cpp" />
-    <ClCompile Include="src\system\File.cpp" />
     <ClCompile Include="src\Tests\Test.cpp" />
     <ClCompile Include="src\Tests\TestClearColor.cpp" />
     <ClCompile Include="src\Tests\TestObjLoader.cpp" />
@@ -705,6 +702,8 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     <ClCompile Include="src\importAPI\MeshLoader.cpp" />
     <ClCompile Include="src\log\Log.cpp" />
     <ClCompile Include="src\managers\ResourceManager.cpp" />
+    <ClCompile Include="src\managers\ShaderAssembly.cpp" />
+    <ClCompile Include="src\managers\ShaderOven.cpp" />
     <ClCompile Include="src\managers\input\InputMaster.cpp" />
     <ClCompile Include="src\maths\Color.cpp" />
     <ClCompile Include="src\maths\Matrix4x4.cpp" />
@@ -727,6 +726,7 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     <ClCompile Include="src\rendering\Texture.cpp" />
     <ClCompile Include="src\rendering\VertexArray.cpp" />
     <ClCompile Include="src\rendering\VertexBuffer.cpp" />
+    <ClCompile Include="src\system\File.cpp" />
     <ClCompile Include="src\system\Window.cpp" />
     <ClCompile Include="src\vendor\glm\detail\glm.cpp" />
     <ClCompile Include="src\vendor\imgui\imgui.cpp" />

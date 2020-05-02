@@ -8,7 +8,7 @@ workspace "ToyRenderer"
 	}
 
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
-
+  gameProjectName  = "Sandbox"
 	project "ToyRenderer"
 		location "ToyRenderer"
 		kind "SharedLib"
@@ -49,7 +49,7 @@ workspace "ToyRenderer"
 		}
 
 		postbuildcommands{
-			("{COPY} %{cfg.buildtarget.relpath} ../ToyRenderer-binaries/" ..outputdir.. "/SandBox"),
+		  ("copy ..\\ToyRenderer-binaries\\" ..outputdir.. "\\%{prj.name}\\ToyRenderer.dll ..\\ToyRenderer-binaries\\" ..outputdir.. "\\Sandbox\\"),
 			("{COPY} %{prj.location}res ../ToyRenderer-binaries/" ..outputdir.. "/SandBox/res")
 		}
 

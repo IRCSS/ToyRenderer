@@ -79,15 +79,21 @@ namespace ToyRenderer {
 		std::string warn;
 		std::string err;
 
-		bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, filename, basepath,  triangulate);
+		std::string s_fileName(filename);
+		std::replace(s_fileName.begin(), s_fileName.end(), '\\', '/');
+
+		std::string s_basepath(basepath);
+		std::replace(s_basepath.begin(), s_basepath.end(), '\\', '/');
+
+		bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, s_fileName.c_str(), s_basepath.c_str(),  triangulate);
 		// ------------------------------------------------------------------------------------------------------
 
-		if (!warn.empty()) ENGINE_LOG_WARN(" During loading of {}, WARN: {}" , filename, warn );
+		if (!warn.empty()) ENGINE_LOG_WARN(" During loading of {}, WARN: {}" , s_fileName, warn );
 
-		if (!err.empty())  ENGINE_LOG_ERROR(" During loading of {}, ERROR: {}", filename, err);
+		if (!err.empty())  ENGINE_LOG_ERROR(" During loading of {}, ERROR: {}", s_fileName, err);
 		
 		if (!ret) {
-			ENGINE_LOG_ERROR(" Failed to load/parse.obj. {}: {}", filename);
+			ENGINE_LOG_ERROR(" Failed to load/parse.obj. {}: {}", s_fileName);
 			return false;
 		}
 
@@ -95,7 +101,7 @@ namespace ToyRenderer {
 		// load materials in rawMesh as Material
 		RawMesh* m = new RawMesh();
 		for (int i = 0; i < materials.size(); i++) {
-			m->m_materials.push_back(ParseTinyObjMaterial(materials[i], basepath));
+			m->m_materials.push_back(ParseTinyObjMaterial(materials[i], s_basepath.c_str()));
 		}
 	
 		

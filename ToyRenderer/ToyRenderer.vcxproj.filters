@@ -148,6 +148,12 @@
     <ClInclude Include="src\managers\Settings.h">
       <Filter>managers</Filter>
     </ClInclude>
+    <ClInclude Include="src\managers\ShaderAssembly.h">
+      <Filter>managers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\managers\ShaderOven.h">
+      <Filter>managers</Filter>
+    </ClInclude>
     <ClInclude Include="src\managers\input\InputMapping.h">
       <Filter>managers\input</Filter>
     </ClInclude>
@@ -199,6 +205,9 @@
     <ClInclude Include="src\rendering\RHI\RHI.h">
       <Filter>rendering\RHI</Filter>
     </ClInclude>
+    <ClInclude Include="src\rendering\RHI\RenderingPipelineTypes.h">
+      <Filter>rendering\RHI</Filter>
+    </ClInclude>
     <ClInclude Include="src\rendering\RHI\RenderingSettingTypes.h">
       <Filter>rendering\RHI</Filter>
     </ClInclude>
@@ -225,6 +234,9 @@
     </ClInclude>
     <ClInclude Include="src\rendering\VertexBufferLayout.h">
       <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="src\system\File.h">
+      <Filter>system</Filter>
     </ClInclude>
     <ClInclude Include="src\system\Window.h">
       <Filter>system</Filter>
@@ -1675,10 +1687,6 @@
     <ClInclude Include="src\world\Time.h">
       <Filter>world</Filter>
     </ClInclude>
-    <ClInclude Include="src\managers\ShaderOven.h" />
-    <ClInclude Include="src\rendering\RHI\RenderingPipelineTypes.h" />
-    <ClInclude Include="src\managers\ShaderAssembly.h" />
-    <ClInclude Include="src\system\File.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
@@ -1720,6 +1728,12 @@
       <Filter>log</Filter>
     </ClCompile>
     <ClCompile Include="src\managers\ResourceManager.cpp">
+      <Filter>managers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\managers\ShaderAssembly.cpp">
+      <Filter>managers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\managers\ShaderOven.cpp">
       <Filter>managers</Filter>
     </ClCompile>
     <ClCompile Include="src\managers\input\InputMaster.cpp">
@@ -1788,6 +1802,9 @@
     <ClCompile Include="src\rendering\VertexBuffer.cpp">
       <Filter>rendering</Filter>
     </ClCompile>
+    <ClCompile Include="src\system\File.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
     <ClCompile Include="src\system\Window.cpp">
       <Filter>system</Filter>
     </ClCompile>
@@ -1818,8 +1835,5 @@
     <ClCompile Include="src\world\Time.cpp">
       <Filter>world</Filter>
     </ClCompile>
-    <ClCompile Include="src\managers\ShaderOven.cpp" />
-    <ClCompile Include="src\managers\ShaderAssembly.cpp" />
-    <ClCompile Include="src\system\File.cpp" />
   </ItemGroup>
 </Project>
