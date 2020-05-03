@@ -16,6 +16,9 @@
 #include "managers/input/InputMaster.h"
 #include "log/Log.h"
 #include "world/Time.h"
+#include "vendor/soloud/soloud.h"
+#include "vendor/soloud/soloud_wav.h"
+#include "system/File.h"
 
 namespace ToyRenderer {
 	 
@@ -24,6 +27,23 @@ namespace ToyRenderer {
 		// Initalize Loging
 		//-------------------------------------------------------------------
 		ToyRenderer::Log::Initialize();
+
+
+
+		// Sound 
+		// -------------------------------------------------------
+		SoLoud::Soloud gSoloud; // SoLoud engine
+		SoLoud::Wav gWave;      // One wave file
+
+		gSoloud.init(); // Initialize SoLoud
+
+		std::string pathToexe = std::string();
+		TOYRENDERER_EXEPATH(pathToexe);
+		std::string filepath = pathToexe + "\\res\\shaders\\service-bell_daniel_simion.wav";
+		TOYRENDERER_STYLE_PATH(filepath);
+
+		gWave.load(filepath.c_str()); // Load a wave
+		gSoloud.play(gWave); // Play the wave
 
 
 		//-------------------------------------------------------------------
@@ -144,6 +164,8 @@ namespace ToyRenderer {
 		ImGui_ImplGlfwGL3_Shutdown();
 		ImGui::DestroyContext();
 		glfwTerminate();
+
+		gSoloud.deinit(); // Clean up!
 		return 0;
 	}
 }

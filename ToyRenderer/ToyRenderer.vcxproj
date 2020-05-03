@@ -89,8 +89,8 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>dependencies\GLFW\lib-vc2017;dependencies\GLEW\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>soloud_static.lib;glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>dependencies\soloud\Debug;dependencies\GLFW\lib-vc2017;dependencies\GLEW\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>..\ToyRenderer-binaries\Debug-windows-x86_64\ToyRenderer\ToyRenderer.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -116,8 +116,8 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>dependencies\GLFW\lib-vc2017;dependencies\GLEW\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>soloud_static.lib;glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>dependencies\soloud\Release;dependencies\GLFW\lib-vc2017;dependencies\GLEW\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>..\ToyRenderer-binaries\Release-windows-x86_64\ToyRenderer\ToyRenderer.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -143,8 +143,8 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>dependencies\GLFW\lib-vc2017;dependencies\GLEW\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>soloud_static.lib;glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>dependencies\soloud\Release;dependencies\GLFW\lib-vc2017;dependencies\GLEW\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>..\ToyRenderer-binaries\Shipping-windows-x86_64\ToyRenderer\ToyRenderer.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -594,6 +594,41 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     <ClInclude Include="src\vendor\imgui\stb_textedit.h" />
     <ClInclude Include="src\vendor\imgui\stb_truetype.h" />
     <ClInclude Include="src\vendor\meshReader\tinyobjloader.h" />
+    <ClInclude Include="src\vendor\soloud\soloud.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_audiosource.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_bassboostfilter.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_biquadresonantfilter.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_bus.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_c.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_dcremovalfilter.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_echofilter.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_error.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_fader.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_fft.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_fftfilter.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_file.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_file_hack_off.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_file_hack_on.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_filter.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_flangerfilter.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_freeverbfilter.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_internal.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_lofifilter.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_misc.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_monotone.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_noise.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_openmpt.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_queue.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_robotizefilter.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_sfxr.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_speech.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_tedsid.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_thread.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_vic.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_vizsn.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_wav.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_waveshaperfilter.h" />
+    <ClInclude Include="src\vendor\soloud\soloud_wavstream.h" />
     <ClInclude Include="src\vendor\spdlog\async.h" />
     <ClInclude Include="src\vendor\spdlog\async_logger-inl.h" />
     <ClInclude Include="src\vendor\spdlog\async_logger.h" />
