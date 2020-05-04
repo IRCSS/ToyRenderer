@@ -8,7 +8,6 @@ workspace "ToyRenderer"
 	}
 
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
-  gameProjectName  = "Sandbox"
 	project "ToyRenderer"
 		location "ToyRenderer"
 		kind "SharedLib"
@@ -33,7 +32,7 @@ workspace "ToyRenderer"
 			"%{prj.name}/dependencies/GLEW/lib/Release/x64"
 		 }
 		links{
-			"glfw3.lib", "glew32s.lib", "opengl32.lib"
+			"glfw3.lib", "glew32s.lib", "opengl32.lib", "soloud_static.lib"
 		}
 
 		filter {"system:windows"}
@@ -55,14 +54,17 @@ workspace "ToyRenderer"
 
 		filter "configurations:Debug"
 			defines {"TOYRENDERER_DEBUG"}
+			libdirs {"%{prj.name}/dependencies/soloud/Debug"}
 			symbols "On"
 		
 		filter "configurations:Release"
 			defines {"TOYRENDERER_RELEASE"}
+			libdirs {"%{prj.name}/dependencies/soloud/Release"}
 			optimize "On"
 
 		filter "configurations:Shipping"
 			defines {"TOYRENDERER_SHIPPING"}
+			libdirs {"%{prj.name}/dependencies/soloud/Release"}
 			optimize "On"
 
 project "Sandbox"
