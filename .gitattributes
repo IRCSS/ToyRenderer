@@ -215,4 +215,4 @@ Procfile text
 
 #### Linguist
 # to change language of repo from html to cpp
-    *.js linguist-language=C++
+*.html linguist-vendored
