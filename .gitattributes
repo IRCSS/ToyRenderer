@@ -212,3 +212,7 @@ Procfile text
 *.exe binary
 *.out binary
 *.app binary
+
+#### Linguist
+# to change language of repo from html to cpp
+    *.js linguist-language=C++
