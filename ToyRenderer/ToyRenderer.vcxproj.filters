@@ -1795,6 +1795,10 @@
     <ClInclude Include="src\world\Time.h">
       <Filter>world</Filter>
     </ClInclude>
+    <ClInclude Include="src\managers\AudioAssembly.h" />
+    <ClInclude Include="src\Audio\AudioSource.h" />
+    <ClInclude Include="src\Components\AudioPlayer.h" />
+    <ClInclude Include="src\Audio\AudioEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
@@ -1943,5 +1947,7 @@
     <ClCompile Include="src\world\Time.cpp">
       <Filter>world</Filter>
     </ClCompile>
+    <ClCompile Include="src\Components\AudioPlayer.cpp" />
+    <ClCompile Include="src\Audio\AudioEngine.cpp" />
   </ItemGroup>
 </Project>

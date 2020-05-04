@@ -2,6 +2,7 @@
 #include "Core.h"
 #include <vector>
 #include "managers/ShaderAssembly.h"
+#include "managers/AudioAssembly.h"
 
 namespace ToyRenderer {
     class Texture;
@@ -26,7 +27,7 @@ namespace ToyRenderer {
 		static void ClearResourceManager();
 		
 		ShaderAssembly* shaderAssembly;
-
+		AudioAssembly* audioAssembly;
 
 	public: 
 
