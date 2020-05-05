@@ -1,6 +1,5 @@
 #include "ShaderAssembly.h"
 #include "rendering/RHI/RHI.h"
-#include "ShaderOven.h"
 #include <iostream>
 #include <filesystem>
 #include "managers/ShaderOven.h"
@@ -39,7 +38,7 @@ namespace ToyRenderer {
 	int ShaderAssembly::GetShader(std::string shaderTag)
 	{
 		if (m_CookedShaders.find(shaderTag) != m_CookedShaders.end()) return m_CookedShaders[shaderTag];
-		ENGINE_LOG_INFO("Could not find the a shader named as: {}", shaderTag);
+		ENGINE_LOG_WARN("Could not find the a shader named as: {}", shaderTag);
 
 		return -1;
 	}

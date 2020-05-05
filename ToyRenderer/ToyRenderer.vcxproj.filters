@@ -1949,5 +1949,8 @@
     </ClCompile>
     <ClCompile Include="src\Components\AudioPlayer.cpp" />
     <ClCompile Include="src\Audio\AudioEngine.cpp" />
+    <ClCompile Include="src\managers\AudioAssembly.cpp" />
+    <ClCompile Include="src\Audio\AudioSource.cpp" />
+    <ClCompile Include="src\Audio\SoLoudCommonUtility.h" />
   </ItemGroup>
 </Project>

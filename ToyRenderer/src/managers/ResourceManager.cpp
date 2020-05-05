@@ -9,6 +9,7 @@ namespace ToyRenderer {
 	ResourceManager::ResourceManager() 
 	{
 		shaderAssembly = new ShaderAssembly();
+		audioAssembly  = new AudioAssembly ();
 		m_pSingelton = nullptr;
 	}
 	ResourceManager::~ResourceManager()

@@ -26,7 +26,6 @@ freely, subject to the following restrictions:
 #define SOLOUD_BUS_H
 
 #include "soloud.h"
-
 namespace SoLoud
 {
 	class Bus;
