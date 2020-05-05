@@ -31,7 +31,7 @@ namespace ToyRenderer {
 		r_shaders.clear();
 
 		delete shaderAssembly;
-
+		delete audioAssembly;
 	}
 	void ResourceManager::RegisterMaterial(Material * mat)
 	{

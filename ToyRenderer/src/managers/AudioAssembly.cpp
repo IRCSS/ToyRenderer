@@ -36,14 +36,31 @@ namespace ToyRenderer {
 
 			AudioClip* audioSource = nullptr;
 
-			if (fileFormat.compare(".wav")) audioSource = LoadWavAudioSource(entry.path().string().c_str(), fileName.c_str());
+			if (fileFormat.compare(".wav") == 0) {
+				audioSource = LoadWavAudioSource(entry.path().string().c_str(), fileName.c_str());
+			}
+
+			if (audioSource == nullptr) {
+				ENGINE_LOG_INFO("Unsopported Audio format in the engine audio resources folder. File: {}", entry.path().string().c_str());
+				continue;
+			}
+
+			m_LoadedAudioSource[fileName] = audioSource;
+				
 		}
 
 	}
 	AudioAssembly::~AudioAssembly()
 	{
+		// Iterate over an unordered_map using range based for loop
+		for (std::pair<std::string, AudioClip*> element : m_LoadedAudioSource)
+		{
+			delete element.second;
+		}
+		m_LoadedAudioSource.clear();
 	}
-	AudioClip * AudioAssembly::GetAudioClipWitname(const char * AudioSourceTagName)
+
+	AudioClip* AudioAssembly::GetAudioClipWitname(const char * AudioSourceTagName)
 	{
 
 		if (m_LoadedAudioSource.find(AudioSourceTagName) != m_LoadedAudioSource.end()) return m_LoadedAudioSource[AudioSourceTagName];
