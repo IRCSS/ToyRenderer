@@ -7,11 +7,11 @@ namespace SoLoud {
 
 namespace ToyRenderer {
 
-	class TOYRENDERER_API AudioSource {
+	class TOYRENDERER_API AudioClip {
 	public:
-		 AudioSource();
-		 AudioSource(SoLoud::AudioSource* backendsource);
-		~AudioSource();
+		AudioClip();
+		AudioClip(SoLoud::AudioSource* backendsource);
+		~AudioClip();
 
 		/// Get the backend format for the audio engine to play the sound. 
 		SoLoud::AudioSource* GetBackEndAudioSourceHandel();

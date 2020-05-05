@@ -13,7 +13,7 @@ namespace ToyRenderer {
 	{
 	}
 
-	void AudioEngine::Play(AudioSource * toPlay)
+	void AudioEngine::Play(AudioClip  * toPlay)
 	{
 	}
 

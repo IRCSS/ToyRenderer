@@ -2,16 +2,13 @@
 #include "log/Log.h"
 #include "system/File.h"
 #include <filesystem>
-#include "vendor/soloud/soloud_audiosource.h"
 #include "vendor/soloud/soloud_wav.h"
 #include "Audio/SoLoudCommonUtility.h"
-#include "Audio/AudioSource.h"
+#include "Audio/AudioClip .h"
 namespace ToyRenderer {
 
 
-
-
-	ToyRenderer::AudioSource* LoadWavAudioSource(const char* path, const char* fileName) {
+	AudioClip * LoadWavAudioSource(const char* path, const char* fileName) {
 
 		SoLoud::Wav* audioSourceWavFormat = new SoLoud::Wav();
 		SoLoud::result            results = audioSourceWavFormat->load(path);
@@ -20,7 +17,7 @@ namespace ToyRenderer {
 			return nullptr;
 		}
 
-		return new AudioSource((SoLoud::AudioSource*)audioSourceWavFormat);
+		return new AudioClip((SoLoud::AudioSource*)audioSourceWavFormat);
 	}
 
 
@@ -37,7 +34,7 @@ namespace ToyRenderer {
 			std::string fileFormat = entry.path().extension().string();
 			std::string fileName   = entry.path().filename().string();
 
-			ToyRenderer::AudioSource* audioSource = nullptr;
+			AudioClip* audioSource = nullptr;
 
 			if (fileFormat.compare(".wav")) audioSource = LoadWavAudioSource(entry.path().string().c_str(), fileName.c_str());
 		}
@@ -46,7 +43,7 @@ namespace ToyRenderer {
 	AudioAssembly::~AudioAssembly()
 	{
 	}
-	AudioSource* AudioAssembly::GetAudioSourceWitname(const char * AudioSourceTagName)
+	AudioClip * AudioAssembly::GetAudioClipWitname(const char * AudioSourceTagName)
 	{
 
 		if (m_LoadedAudioSource.find(AudioSourceTagName) != m_LoadedAudioSource.end()) return m_LoadedAudioSource[AudioSourceTagName];

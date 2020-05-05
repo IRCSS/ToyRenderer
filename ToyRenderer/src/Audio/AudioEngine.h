@@ -3,14 +3,14 @@
 
 
 namespace ToyRenderer {
-	class AudioSource;
+	class AudioClip;
 	class TOYRENDERER_API AudioEngine {
 		   // PUBLIC ======================================================================================
 	       public: 
 		   
 			    AudioEngine();
 			   ~AudioEngine();
-		       void Play(AudioSource* toPlay);
+		       void Play(AudioClip * toPlay);
 		       
 		       
 	           static AudioEngine& Instance();

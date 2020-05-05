@@ -1796,9 +1796,9 @@
       <Filter>world</Filter>
     </ClInclude>
     <ClInclude Include="src\managers\AudioAssembly.h" />
-    <ClInclude Include="src\Audio\AudioSource.h" />
     <ClInclude Include="src\Components\AudioPlayer.h" />
     <ClInclude Include="src\Audio\AudioEngine.h" />
+    <ClInclude Include="src\Audio\AudioClip .h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
@@ -1950,7 +1950,8 @@
     <ClCompile Include="src\Components\AudioPlayer.cpp" />
     <ClCompile Include="src\Audio\AudioEngine.cpp" />
     <ClCompile Include="src\managers\AudioAssembly.cpp" />
-    <ClCompile Include="src\Audio\AudioSource.cpp" />
     <ClCompile Include="src\Audio\SoLoudCommonUtility.h" />
+    <ClCompile Include="src\Audio\SoLoudCommonUtility.cpp" />
+    <ClCompile Include="src\Audio\AudioClip .cpp" />
   </ItemGroup>
 </Project>

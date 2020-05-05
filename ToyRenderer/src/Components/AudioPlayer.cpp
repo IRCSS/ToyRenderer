@@ -5,19 +5,19 @@
 #include "log/Log.h"
 
 namespace ToyRenderer {
-	AudioPlayer::AudioPlayer() : m_AudioSource(nullptr), m_looped(false), m_autoPlayer(false)
+	AudioPlayer::AudioPlayer() : m_AudioClip(nullptr), m_looped(false), m_autoPlayer(false)
 	{
 	}
 
-	AudioPlayer::AudioPlayer(const char * AudioSourceTagName) : m_AudioSource(nullptr), m_looped(false), m_autoPlayer(false)
+	AudioPlayer::AudioPlayer(const char * AudioSourceTagName) : m_AudioClip(nullptr), m_looped(false), m_autoPlayer(false)
 	{
-		m_AudioSource = ResourceManager::Instance().audioAssembly->GetAudioSourceWitname(AudioSourceTagName);
+		m_AudioClip = ResourceManager::Instance().audioAssembly->GetAudioClipWitname(AudioSourceTagName);
 		ENGINE_LOG_WARN("attempted to load an AudioSource with name: {}, however the Audio Assembly holds no such audiosource", AudioSourceTagName);
 	}
 
-	AudioPlayer::AudioPlayer(const char * AudioSourceTagName, bool looped, bool autoPlay) : m_AudioSource(nullptr), m_looped(looped), m_autoPlayer(autoPlay)
+	AudioPlayer::AudioPlayer(const char * AudioSourceTagName, bool looped, bool autoPlay) : m_AudioClip(nullptr), m_looped(looped), m_autoPlayer(autoPlay)
 	{
-		m_AudioSource = ResourceManager::Instance().audioAssembly->GetAudioSourceWitname(AudioSourceTagName);
+		m_AudioClip = ResourceManager::Instance().audioAssembly->GetAudioClipWitname(AudioSourceTagName);
 		ENGINE_LOG_WARN("attempted to load an AudioSource with name: {}, however the Audio Assembly holds no such audiosource", AudioSourceTagName);
 	}
 
@@ -31,7 +31,7 @@ namespace ToyRenderer {
 
 	void AudioPlayer::Play()
 	{
-		AudioEngine::Instance().Play(m_AudioSource);
+		AudioEngine::Instance().Play(m_AudioClip);
 	}
 
 

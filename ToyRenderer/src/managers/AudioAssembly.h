@@ -2,7 +2,7 @@
 #include "Core.h"
 #include <unordered_map>
 namespace ToyRenderer {
-	class AudioSource;
+	class AudioClip;
 	class TOYRENDERER_API AudioAssembly {
 	
     // PUBLIC ======================================================================================
@@ -10,14 +10,14 @@ namespace ToyRenderer {
 		 AudioAssembly();
 		~AudioAssembly();
 
-		AudioSource* GetAudioSourceWitname(const char* AudioSourceTagName);
+		AudioClip * GetAudioClipWitname(const char* AudioSourceTagName);
 
 	// ______________________________________________________________________________________________
 	// PRIVATE ======================================================================================
 	private: 
 		#pragma warning( disable : 4251)  
 	
-		std::unordered_map<std::string, AudioSource*>         m_LoadedAudioSource;
+		std::unordered_map<std::string, AudioClip *>         m_LoadedAudioSource;
 
 		#pragma warning( default : 4251) // Turning the 4251 back on
 	};

@@ -1,7 +1,7 @@
 #pragma once
 #include "Core.h"
 #include "Components/Component.h"
-#include "Audio/AudioSource.h"
+#include "Audio/AudioClip .h"
 
 namespace ToyRenderer {
 
@@ -23,9 +23,9 @@ namespace ToyRenderer {
 
 	public:
 		// Owmner ship is with the AudioAssembly. 
-		AudioSource* m_AudioSource;
-		bool         m_looped;
-		bool         m_autoPlayer;
+		AudioClip *     m_AudioClip;
+		bool            m_looped;
+		bool            m_autoPlayer;
 
 		//TODO
 		// bool m_3d
