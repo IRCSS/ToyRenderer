@@ -4,7 +4,7 @@
 #include <filesystem>
 #include "vendor/soloud/soloud_wav.h"
 #include "Audio/SoLoudCommonUtility.h"
-#include "Audio/AudioClip .h"
+#include "Audio/AudioClip.h"
 namespace ToyRenderer {
 
 
@@ -16,8 +16,9 @@ namespace ToyRenderer {
 			ENGINE_LOG_WARN("{}: attempted to load file {} at path: {}", soLoudErrorToString(results), fileName, path);
 			return nullptr;
 		}
-
-		return new AudioClip((SoLoud::AudioSource*)audioSourceWavFormat);
+		AudioClip* toReturn = new AudioClip(audioSourceWavFormat);
+		toReturn->Name(fileName);
+		return toReturn;
 	}
 
 

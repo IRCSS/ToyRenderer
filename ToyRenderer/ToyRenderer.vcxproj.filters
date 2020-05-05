@@ -1798,7 +1798,7 @@
     <ClInclude Include="src\managers\AudioAssembly.h" />
     <ClInclude Include="src\Components\AudioPlayer.h" />
     <ClInclude Include="src\Audio\AudioEngine.h" />
-    <ClInclude Include="src\Audio\AudioClip .h" />
+    <ClInclude Include="src\Audio\AudioClip.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />

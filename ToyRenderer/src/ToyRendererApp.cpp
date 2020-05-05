@@ -7,13 +7,16 @@
 #include "vendor/imgui/imgui_impl_glfw_gl3.h"
 #include "world/Time.h"
 #include "managers/input/InputMaster.h"
-
+#include "managers/ResourceManager.h"
+#include "Audio/AudioEngine.h"
 
 // Remove Later
 #include "rendering/Renderer.h"
 #include "vendor/soloud/soloud.h"
 #include "system/File.h"
 #include "vendor/soloud/soloud_wav.h"
+#include "Components/AudioPlayer.h"
+#include "Audio/AudioClip.h"
 
 namespace ToyRenderer {
 
@@ -55,7 +58,8 @@ namespace ToyRenderer {
 
 		// INPUT MASTER 
 		inputMaster = new InputMaster(window->GetWindowAddress()); // REFACTOR: CHANGE THE GLFW WINDOW TO MY OWN WIDNOW HERE
-
+		AudioEngine::Instance();
+		ResourceManager::Instance();
 
 	}
 
@@ -71,21 +75,22 @@ namespace ToyRenderer {
 		
 		// Sound 
 // -------------------------------------------------------
-		SoLoud::Soloud gSoloud; // SoLoud engine
-		SoLoud::Wav gWave;      // One wave file
+		//SoLoud::Soloud gSoloud; // SoLoud engine
+		//SoLoud::Wav gWave;      // One wave file
 
-		gSoloud.init(); // Initialize SoLoud
+		//gSoloud.init(); // Initialize SoLoud
 
-		std::string pathToexe = std::string();
-		TOYRENDERER_EXEPATH(pathToexe);
-		std::string filepath = pathToexe + "\\res\\audio\\service-bell_daniel_simion.wav";
-		TOYRENDERER_STYLE_PATH(filepath);
+		//std::string pathToexe = std::string();
+		//TOYRENDERER_EXEPATH(pathToexe);
+		//std::string filepath = pathToexe + "\\res\\audio\\service-bell_daniel_simion.wav";
+		//TOYRENDERER_STYLE_PATH(filepath);
 
-		SoLoud::result results = gWave.load(filepath.c_str()); // Load a wave
-		ENGINE_LOG_DEBUG("the loading result is: {}", results);
-		gSoloud.play(gWave); // Play the wave
+		//SoLoud::result results = gWave.load(filepath.c_str()); // Load a wave
+		//ENGINE_LOG_DEBUG("the loading result is: {}", results);
+		//gSoloud.play(gWave); // Play the wave
 
-
+		AudioPlayer audioPlayerComponent("service-bell_daniel_simion.wav");
+		audioPlayerComponent.Play();
 
 		// --------------------------------------------------
 		{
@@ -121,10 +126,14 @@ namespace ToyRenderer {
 			}
 
 		}
-		gSoloud.deinit(); // Clean up!
+
+
+		//gSoloud.deinit(); // Clean up!
 		ImGui_ImplGlfwGL3_Shutdown();
 		ImGui::DestroyContext();
 		glfwTerminate();
+		AudioEngine::Clear();
+		ToyRenderer::ResourceManager::ClearResourceManager();
 	}
 
 }

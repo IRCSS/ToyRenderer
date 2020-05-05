@@ -1,7 +1,7 @@
 #pragma once
 #include "Core.h"
 #include "Components/Component.h"
-#include "Audio/AudioClip .h"
+#include "Audio/AudioClip.h"
 
 namespace ToyRenderer {
 
@@ -10,7 +10,6 @@ namespace ToyRenderer {
 	// PUBLIC ======================================================================================
 	public: 
 		AudioPlayer();
-		AudioPlayer(const char* AudioSourceTagName);
 		AudioPlayer(const char* AudioSourceTagName, bool looped = false, bool autoPlay = false);
 		~AudioPlayer();
 

@@ -154,7 +154,7 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Audio\AudioEngine.h" />
-    <ClInclude Include="src\Audio\AudioClip .h" />
+    <ClInclude Include="src\Audio\AudioClip.h" />
     <ClInclude Include="src\Components\AudioPlayer.h" />
     <ClInclude Include="src\Components\Camera.h" />
     <ClInclude Include="src\Components\Component.h" />

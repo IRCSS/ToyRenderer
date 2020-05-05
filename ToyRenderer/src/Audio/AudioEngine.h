@@ -1,7 +1,9 @@
 #pragma once
 #include "Core.h"
 
-
+namespace SoLoud {
+	class Soloud;
+}
 namespace ToyRenderer {
 	class AudioClip;
 	class TOYRENDERER_API AudioEngine {
@@ -10,7 +12,7 @@ namespace ToyRenderer {
 		   
 			    AudioEngine();
 			   ~AudioEngine();
-		       void Play(AudioClip * toPlay);
+		       void Play(AudioClip*  toPlay);
 		       
 		       
 	           static AudioEngine& Instance();
@@ -21,5 +23,7 @@ namespace ToyRenderer {
 		  // PRIVATE ======================================================================================
 	      private:
 		  static AudioEngine*  m_pSingelton;
+
+		      SoLoud::Soloud*  m_soLoudBackend;
 	};
 }

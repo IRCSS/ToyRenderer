@@ -1,11 +1,11 @@
-#include "AudioClip .h"
+#include "AudioClip.h"
 
 namespace ToyRenderer {
-	AudioClip::AudioClip() : m_soLoudBackEndAudio(nullptr)
+	AudioClip::AudioClip() : m_soLoudBackEndAudio(nullptr), m_AudioFileName(nullptr)
 	{
 	}
 
-	AudioClip::AudioClip(SoLoud::AudioSource * backendsource) : m_soLoudBackEndAudio(backendsource)
+	AudioClip::AudioClip(SoLoud::Wav * backendsource) : m_soLoudBackEndAudio(backendsource), m_AudioFileName("")
 	{
 	}
 
@@ -14,14 +14,19 @@ namespace ToyRenderer {
 		delete m_soLoudBackEndAudio;
 	}
 
-	SoLoud::AudioSource * AudioClip::GetBackEndAudioSourceHandel()
+	 SoLoud::Wav& AudioClip::GetBackEndAudioSourceHandel()
 	{
-		return m_soLoudBackEndAudio;
+		return *m_soLoudBackEndAudio;
 	}
 
-	void AudioClip::SetBackEndAudioHandel(SoLoud::AudioSource* toSet)
+	void AudioClip::SetBackEndAudioHandel(SoLoud::Wav* toSet)
 	{
 		m_soLoudBackEndAudio = toSet;
+	}
+
+	void AudioClip::Name(const char * name)
+	{
+		m_AudioFileName = std::string(name);
 	}
 
 }

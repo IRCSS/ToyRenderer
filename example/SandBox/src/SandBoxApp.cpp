@@ -11,7 +11,6 @@ public:
 
 		activeScene = new Scene();
 
-		ResourceManager::Instance();
 
 		// ------------------------------------------------------------
 		// Camera
@@ -112,7 +111,7 @@ public:
 
 	}
 	~Sandbox() {
-		ToyRenderer::ResourceManager::ClearResourceManager();
+
 	}
 
 };
