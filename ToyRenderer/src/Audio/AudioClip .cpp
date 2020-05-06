@@ -24,9 +24,14 @@ namespace ToyRenderer {
 		m_soLoudBackEndAudio = toSet;
 	}
 
-	void AudioClip::Name(const char * name)
+	void AudioClip::SetName(const char * name)
 	{
 		m_AudioFileName = std::string(name);
+	}
+
+	std::string AudioClip::GetName()
+	{
+		return m_AudioFileName;
 	}
 
 	void AudioClip::SetLooping(bool lopping)

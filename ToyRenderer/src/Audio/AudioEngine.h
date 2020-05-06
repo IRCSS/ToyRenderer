@@ -6,14 +6,18 @@ namespace SoLoud {
 }
 namespace ToyRenderer {
 	class AudioClip;
+	class Transform;
 	class TOYRENDERER_API AudioEngine {
 		   // PUBLIC ======================================================================================
 	       public: 
 		   
 			    AudioEngine();
 			   ~AudioEngine();
+
+			   void OnUpdate(float deltaTime);
+
 		       void Play(AudioClip*  toPlay);
-		       
+			   void Play(AudioClip* toPlay, const Transform* transfrom);
 		       
 	           static AudioEngine& Instance();
 			   static void Clear();

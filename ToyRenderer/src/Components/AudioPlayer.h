@@ -13,7 +13,8 @@ namespace ToyRenderer {
 		AudioPlayer(const char* AudioSourceTagName, bool looped = false, bool autoPlay = false);
 		~AudioPlayer();
 
-		void OnUpdate(float deltaTime) override;
+		void OnStart ()                  override;
+		void OnUpdate(float deltaTime)   override;
 		//void OnRender()                override;
 		//void OnImGuiRender()           override;
 

@@ -28,7 +28,7 @@ namespace ToyRenderer {
 		// it will reduce the access time for GetComponent.
 
 
-		Transform& GetTransfrom();
+		Transform* GetTransfrom();
 
 		template<typename T>
 		T* GetComponent() const {

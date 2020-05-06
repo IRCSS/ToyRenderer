@@ -17,7 +17,7 @@ namespace ToyRenderer {
 			return nullptr;
 		}
 		AudioClip* toReturn = new AudioClip(audioSourceWavFormat);
-		toReturn->Name(fileName);
+		toReturn->SetName(fileName);
 		return toReturn;
 	}
 

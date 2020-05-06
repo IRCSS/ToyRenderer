@@ -2,6 +2,7 @@
 #include "vendor/soloud/soloud.h"
 #include "Audio/AudioClip.h"
 #include "vendor/soloud/soloud_wav.h"
+#include "Components/Transform.h"
 namespace ToyRenderer {
 
 	AudioEngine* AudioEngine::m_pSingelton = nullptr;
@@ -18,9 +19,19 @@ namespace ToyRenderer {
 		delete m_soLoudBackend;
 	}
 
-	void AudioEngine::Play( AudioClip* toPlay)
+	void AudioEngine::OnUpdate(float deltaTime)
+	{
+		m_soLoudBackend->update3dAudio();
+	}
+
+	void AudioEngine::Play(AudioClip* toPlay)
 	{
 		m_soLoudBackend->play(toPlay->GetBackEndAudioSourceHandel());
+	}
+
+	void AudioEngine::Play(AudioClip * toPlay, const Transform * transform)
+	{
+		m_soLoudBackend->play3d(toPlay->GetBackEndAudioSourceHandel(), transform->position.x, transform->position.y, transform->position.z);
 	}
 
 	AudioEngine & AudioEngine::Instance()

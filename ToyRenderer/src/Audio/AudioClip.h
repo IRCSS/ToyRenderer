@@ -16,8 +16,8 @@ namespace ToyRenderer {
 		/// Get the backend format for the audio engine to play the sound. 
 	    SoLoud::Wav& GetBackEndAudioSourceHandel();
 		void         SetBackEndAudioHandel(SoLoud::Wav* toSet);
-		void         Name(const char* name);
-		
+		void         SetName(const char* name);
+		std::string  GetName();
 		void         SetLooping(bool lopping);
 	private: 
 		// Ownder ship is with this class, however it is created by the AudioAssembly

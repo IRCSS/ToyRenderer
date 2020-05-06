@@ -39,14 +39,14 @@ namespace ToyRenderer {
 			components[i]->OnImGuiRender();
 		}
 	}
-	Transform & GameObject::GetTransfrom()
+	Transform* GameObject::GetTransfrom()
 	{
-		if (m_transfrom != nullptr) return *m_transfrom;
+		if (m_transfrom != nullptr) return m_transfrom;
 
 		m_transfrom = this->GetComponent<Transform>();
 
 		if (m_transfrom == nullptr) ENGINE_LOG_ERROR("Attempted to access the Transfrom component of the Gameobject {}, however Gameobject {} has no such component",name,name);
-		return *m_transfrom;
+		return m_transfrom;
 
 	}
 }

@@ -94,8 +94,11 @@ public:
 
 				Transform* gbTransform = new Transform(Vector3(0.0f, -10.5f, 0.0f), vector3_one, Vector3(-90.0f, 0.0f, 0.0f));
 
+				AudioPlayer* audioPlayerComponent = new AudioPlayer("service-bell_daniel_simion.wav", true, true);
+				audioPlayerComponent->m_3dSound = true;
 				gb->AddComponent<Transform>(gbTransform);
 				gb->AddComponent<MeshRenderer>(gbMeshRender);
+				gb->AddComponent<AudioPlayer>(audioPlayerComponent);
 
 				activeScene->sceneObjects.push_back(gb);
 
@@ -108,7 +111,7 @@ public:
 		// Sound 
         // -------------------------------------------------------
 
-		AudioPlayer audioPlayerComponent("service-bell_daniel_simion.wav",false, true);
+		
 		
 
 

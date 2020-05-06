@@ -77,7 +77,7 @@ namespace ToyRenderer {
 				timeHandler->Update();
 				// INPUT 
 				inputMaster->OnUpdate(ToyRenderer::Time::GetDeltaTime());
-
+				AudioEngine::Instance().OnUpdate(ToyRenderer::Time::GetDeltaTime());
 
 				if (activeScene != nullptr) {
 
