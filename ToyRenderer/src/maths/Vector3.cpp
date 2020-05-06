@@ -1,5 +1,5 @@
 #include "Vector3.h"
-
+#include <sstream>
 
 
 namespace ToyRenderer{
@@ -111,6 +111,20 @@ namespace ToyRenderer{
     
     	v = glm::vec3(x, y, z);
     }
+
+	std::string Vector3::toString()
+	{
+		std::ostringstream ss;
+		ss << "(" << x << ", " <<y << ", " << z << ")";
+		return std::string(ss.str());
+	}
+
+	const std::string Vector3::toString() const
+	{
+		std::ostringstream ss;
+		ss << "(" << x << ", " << y << ", " << z << ")";
+		return std::string(ss.str());
+	}
     
     
     

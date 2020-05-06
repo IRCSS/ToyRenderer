@@ -16,6 +16,5 @@ namespace ToyRenderer {
 	public:
 		GameObject* gameObject;
 
-
 	};
 }

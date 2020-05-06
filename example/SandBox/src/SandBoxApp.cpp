@@ -19,7 +19,7 @@ public:
 		Transform*  CameraViewTransform = new Transform(Vector3(0.0f, -0.5f, 4.0f), vector3_one, Vector3(0., 0.0f, 0.0));
 		cameraGB->AddComponent<Transform>(CameraViewTransform);
 
-		ToyRenderer::Camera*  pCameraComp = new Camera(activeScene);
+		Camera*     pCameraComp         = new Camera(activeScene);
 		PostProcessing::Vignetting* vignettingPos = new PostProcessing::Vignetting();
 		pCameraComp->AddPostProcessToStack(vignettingPos);
 		cameraGB->AddComponent<Camera>(pCameraComp);
@@ -27,6 +27,10 @@ public:
 		Behaviours::MoveCamera* CameraMovment = new Behaviours::MoveCamera(CameraViewTransform);
 		cameraGB->AddComponent<Behaviours::MoveCamera>(CameraMovment);
 		cameraGB->name = "mainCamera";
+
+		AudioListner* CameraAudioListner      = new AudioListner();
+		cameraGB->AddComponent<AudioListner>(CameraAudioListner);
+
 		activeScene->sceneObjects.push_back(cameraGB);
 
 		// ------------------------------------------------------------
@@ -106,17 +110,6 @@ public:
 
 			//delete loadedMesh;
 		}
-
-
-		// Sound 
-        // -------------------------------------------------------
-
-		
-		
-
-
-
-	
 
 	}
 	~Sandbox() {

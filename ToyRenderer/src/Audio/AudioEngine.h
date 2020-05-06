@@ -19,6 +19,8 @@ namespace ToyRenderer {
 		       void Play(AudioClip*  toPlay);
 			   void Play(AudioClip* toPlay, const Transform* transfrom);
 		       
+			   void SetAudioListner(const Transform* listnerTransform);
+
 	           static AudioEngine& Instance();
 			   static void Clear();
 	      public: 

@@ -2,7 +2,7 @@
 #include "Core.h"
 #include "vendor/glm/glm.hpp"
 #include <iostream>
-
+#include <string>
 
 namespace ToyRenderer{
     class TOYRENDERER_API Vector3 {
@@ -43,8 +43,9 @@ namespace ToyRenderer{
     	TOYRENDERER_API friend Vector3 operator*(float lhs, const Vector3& rhs);
     
 		TOYRENDERER_API friend std::ostream& operator<<(std::ostream& os, const Vector3& rhs);
-    	                                                                       
-    																	       
+    	                          
+		      std::string toString();
+		const std::string toString() const;
     
     public:
     	float    x;

@@ -156,9 +156,11 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     <ClInclude Include="src\Audio\AudioClip.h" />
     <ClInclude Include="src\Audio\AudioEngine.h" />
     <ClInclude Include="src\Audio\SoLoudCommonUtility.h" />
+    <ClInclude Include="src\Components\AudioListner.h" />
     <ClInclude Include="src\Components\AudioPlayer.h" />
     <ClInclude Include="src\Components\Camera.h" />
     <ClInclude Include="src\Components\Component.h" />
+    <ClInclude Include="src\Components\ComponentsUtility.h" />
     <ClInclude Include="src\Components\ProceduralSkyBox.h" />
     <ClInclude Include="src\Components\Scripts\MoveCamera.h" />
     <ClInclude Include="src\Components\Scripts\Script.h" />
@@ -166,6 +168,7 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     <ClInclude Include="src\Components\Transform.h" />
     <ClInclude Include="src\Core.h" />
     <ClInclude Include="src\EntryPoint.h" />
+    <ClInclude Include="src\system\DebugBreak.h" />
     <ClInclude Include="src\Tests\Test.h" />
     <ClInclude Include="src\Tests\TestClearColor.h" />
     <ClInclude Include="src\Tests\TestObjLoader.h" />
@@ -731,6 +734,7 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     <ClCompile Include="src\Audio\AudioClip .cpp" />
     <ClCompile Include="src\Audio\AudioEngine.cpp" />
     <ClCompile Include="src\Audio\SoLoudCommonUtility.cpp" />
+    <ClCompile Include="src\Components\AudioListner.cpp" />
     <ClCompile Include="src\Components\AudioPlayer.cpp" />
     <ClCompile Include="src\Components\Camera.cpp" />
     <ClCompile Include="src\Components\Component.cpp" />
