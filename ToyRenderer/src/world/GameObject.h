@@ -4,9 +4,10 @@
 #include <vector>
 #include "Components/Component.h"
 #include "log/Log.h"
-
+#include "Components/Transform.h"
 
 namespace ToyRenderer {
+
 
 	class TOYRENDERER_API GameObject {
 
@@ -25,6 +26,9 @@ namespace ToyRenderer {
 
 		// Replace this later with a unordered map iwth typid as string key and vector of components pointer as value.
 		// it will reduce the access time for GetComponent.
+
+
+		Transform& GetTransfrom();
 
 		template<typename T>
 		T* GetComponent() const {
@@ -51,13 +55,17 @@ namespace ToyRenderer {
 		std::string name;
     #pragma warning(default:4251) // Turning the 4251 back on
 
+
+
     // ______________________________________________________________________________________________
 	// PRIVATE ======================================================================================
     #pragma warning( disable : 4251)  
     // std containers are not dllexported. This could cause issues if their functions are inlined on the client side and cause linking error. Private stuff wont be inlined so I will disable them
 	private:
 		std::vector<Component*> components;
-		
+
+		// For ease of access in runtime. 
+		Transform* m_transfrom;
     #pragma warning(default:4251) // Turning the 4251 back on
 	};
 };

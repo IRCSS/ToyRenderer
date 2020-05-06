@@ -1,9 +1,9 @@
 #include "GameObject.h"
-
+#include "log/Log.h"
 namespace ToyRenderer {
-    GameObject::GameObject()
+    GameObject::GameObject() : m_transfrom(nullptr)
 	{
-	}
+	};
 	GameObject::~GameObject()
 	{
 		for (std::vector<Component*>::iterator i = components.begin(); i != components.end(); ++i)
@@ -38,5 +38,15 @@ namespace ToyRenderer {
 
 			components[i]->OnImGuiRender();
 		}
+	}
+	Transform & GameObject::GetTransfrom()
+	{
+		if (m_transfrom != nullptr) return *m_transfrom;
+
+		m_transfrom = this->GetComponent<Transform>();
+
+		if (m_transfrom == nullptr) ENGINE_LOG_ERROR("Attempted to access the Transfrom component of the Gameobject {}, however Gameobject {} has no such component",name,name);
+		return *m_transfrom;
+
 	}
 }
