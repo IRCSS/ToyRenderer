@@ -10,7 +10,7 @@ namespace ToyRenderer {
 	// PUBLIC ======================================================================================
 	public: 
 		AudioPlayer();
-		AudioPlayer(const char* AudioSourceTagName, bool looped = false, bool autoPlay = false);
+		AudioPlayer(const char* AudioSourceTagName, bool looped = false, bool autoPlay = true);
 		~AudioPlayer();
 
 		void OnUpdate(float deltaTime) override;
@@ -28,7 +28,11 @@ namespace ToyRenderer {
 
 		//TODO
 		// bool m_3d
-
+	// ______________________________________________________________________________________________
+	// PRIVATE ======================================================================================
+	private:
+		void Settings_UpdateAll();
+		void Settings_SetLooping();
 
 	};
 

@@ -18,7 +18,7 @@ namespace ToyRenderer {
 		void         SetBackEndAudioHandel(SoLoud::Wav* toSet);
 		void         Name(const char* name);
 		
-
+		void         SetLooping(bool lopping);
 	private: 
 		// Ownder ship is with this class, however it is created by the AudioAssembly
 		SoLoud::Wav* m_soLoudBackEndAudio;

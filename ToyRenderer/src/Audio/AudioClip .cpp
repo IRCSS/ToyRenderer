@@ -1,5 +1,5 @@
 #include "AudioClip.h"
-
+#include "vendor/soloud/soloud_wav.h"
 namespace ToyRenderer {
 	AudioClip::AudioClip() : m_soLoudBackEndAudio(nullptr), m_AudioFileName(nullptr)
 	{
@@ -27,6 +27,11 @@ namespace ToyRenderer {
 	void AudioClip::Name(const char * name)
 	{
 		m_AudioFileName = std::string(name);
+	}
+
+	void AudioClip::SetLooping(bool lopping)
+	{
+		m_soLoudBackEndAudio->setLooping(lopping);
 	}
 
 }
