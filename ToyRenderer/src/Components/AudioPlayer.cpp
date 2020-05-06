@@ -17,6 +17,7 @@ namespace ToyRenderer {
 
 		Settings_SetLooping();
 		
+		if (autoPlay) Play();
 	}
 
 	AudioPlayer::~AudioPlayer()

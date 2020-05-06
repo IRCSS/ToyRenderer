@@ -10,7 +10,7 @@ namespace ToyRenderer {
 	// PUBLIC ======================================================================================
 	public: 
 		AudioPlayer();
-		AudioPlayer(const char* AudioSourceTagName, bool looped = false, bool autoPlay = true);
+		AudioPlayer(const char* AudioSourceTagName, bool looped = false, bool autoPlay = false);
 		~AudioPlayer();
 
 		void OnUpdate(float deltaTime) override;

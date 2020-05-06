@@ -109,8 +109,7 @@ public:
         // -------------------------------------------------------
 
 		AudioPlayer audioPlayerComponent("service-bell_daniel_simion.wav",false, true);
-		audioPlayerComponent.m_looped = true;
-		audioPlayerComponent.Play();
+		
 
 
 
