@@ -113,8 +113,7 @@ public:
 
 
 
-		// Update Camera Scene Content : Need a better solution later, maybe marking scene dirty or something
-		pCameraComp->UpdateRenderLists();
+	
 
 	}
 	~Sandbox() {

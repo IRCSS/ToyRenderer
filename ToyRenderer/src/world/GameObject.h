@@ -14,9 +14,14 @@ namespace ToyRenderer {
 	public: 
 		 GameObject();
 		~GameObject();
+		/// Called after the construction phase of the scene. The order is based on the gameobject entry in scene
+		void OnStart ();
+		/// Called once per frame for CPU calculation
  		void OnUpdate(float deltaTime);
+		/// Called once perframe after the CPU calculation, intended to capsulate render CPU code
 		void OnRender();
-		void OnGUI();
+		/// Called once per frame. Intended for UI code. 
+		void OnGUI   ();
 
 		// Replace this later with a unordered map iwth typid as string key and vector of components pointer as value.
 		// it will reduce the access time for GetComponent.
@@ -52,7 +57,7 @@ namespace ToyRenderer {
     // std containers are not dllexported. This could cause issues if their functions are inlined on the client side and cause linking error. Private stuff wont be inlined so I will disable them
 	private:
 		std::vector<Component*> components;
-
+		
     #pragma warning(default:4251) // Turning the 4251 back on
 	};
 };

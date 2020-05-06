@@ -43,6 +43,14 @@ namespace ToyRenderer {
 		delete m_FrontBufferPong;
 
 	}
+
+	void Camera::OnStart() {
+		// Update Camera Scene Content : Need a better solution later, maybe marking scene dirty or something
+		// As it stands, if new gameobjects are added in runtime to the scene, they wont be rendererd since the 
+		// Camera has no knowledge of the new MehsRendere. Once I implement an Event system. I should change this
+		UpdateRenderLists();
+	}
+
 	void Camera::OnRender()
 	{
 

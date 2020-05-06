@@ -9,6 +9,7 @@ namespace ToyRenderer {
 	public:
 		 Scene();
 		~Scene();
+		void OnStart () const;
 		void OnUpdate(float deltaTime) const;
 		void OnRender() const;
 		void OnGUI()    const;

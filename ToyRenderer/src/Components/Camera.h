@@ -32,6 +32,7 @@ namespace ToyRenderer {
 		 Camera();
 		 Camera(Scene* scene);
 		 ~Camera();
+		 void OnStart()  override;
 		 void OnRender() override;
 		 void UpdateRenderLists();
 

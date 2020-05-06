@@ -10,6 +10,13 @@ namespace ToyRenderer {
 			delete *i;
 		components.clear();
 	}
+	void GameObject::OnStart()
+	{
+		for (std::vector<Component*>::size_type i = 0; i != components.size(); i++) {
+
+			components[i]->OnStart();
+		}
+	}
 	void GameObject::OnUpdate(float deltaTime)
 	{
 		for (std::vector<Component*>::size_type i = 0; i != components.size(); i++) {

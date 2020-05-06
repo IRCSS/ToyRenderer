@@ -6,6 +6,9 @@ namespace ToyRenderer {
 	Component::~Component()
 	{
 	}
+	void Component::OnStart()
+	{
+	}
 	void Component::OnUpdate(float deltaTime)
 	{
 	}

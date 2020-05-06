@@ -25,7 +25,7 @@ namespace ToyRenderer {
 		AudioClip *     m_AudioClip;
 		bool            m_looped;
 		bool            m_autoPlayer;
-
+		bool            m_3dSound;
 		//TODO
 		// bool m_3d
 	// ______________________________________________________________________________________________

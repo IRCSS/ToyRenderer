@@ -11,6 +11,13 @@ namespace ToyRenderer {
 			delete *i;
 		sceneObjects.clear();
 	}
+	void Scene::OnStart() const
+	{
+		for (std::vector<GameObject*>::size_type i = 0; i != sceneObjects.size(); i++) {
+
+			sceneObjects[i]->OnStart();
+		}
+	}
 	void Scene::OnUpdate(float deltaTime) const
 	{
 		for (std::vector<GameObject*>::size_type i = 0; i != sceneObjects.size(); i++) {
