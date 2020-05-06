@@ -28,7 +28,7 @@ namespace ToyRenderer {
 		std::string executablePath = std::string();
 		TOYRENDERER_EXEPATH(executablePath);
 
-		std::string filepath = executablePath + "/res/audio";
+		std::string filepath = executablePath + "/res/engine/audio";
 		TOYRENDERER_STYLE_PATH(filepath);
 
 		for (const auto & entry : std::filesystem::directory_iterator(filepath)) {

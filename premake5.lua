@@ -49,7 +49,7 @@ workspace "ToyRenderer"
 
 		postbuildcommands{
 		  ("copy ..\\ToyRenderer-binaries\\" ..outputdir.. "\\%{prj.name}\\ToyRenderer.dll ..\\ToyRenderer-binaries\\" ..outputdir.. "\\Sandbox\\"),
-			("{COPY} %{prj.location}res ../ToyRenderer-binaries/" ..outputdir.. "/SandBox/res")
+			("{COPY} %{prj.location}res ../ToyRenderer-binaries/" ..outputdir.. "/SandBox/res/engine")
 		}
 
 		filter "configurations:Debug"

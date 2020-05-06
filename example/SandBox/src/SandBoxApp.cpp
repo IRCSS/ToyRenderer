@@ -63,7 +63,7 @@ public:
 		std::string resourceFolder = std::string();
 		TOYRENDERER_EXEPATH(resourceFolder);
 
-		resourceFolder += "/res/meshes";
+		resourceFolder += "/res/engine/meshes";
 		TOYRENDERER_STYLE_PATH(resourceFolder);
 		
 		std::string fileName = (resourceFolder + "/unwraped_cube.obj");
@@ -103,6 +103,26 @@ public:
 
 			//delete loadedMesh;
 		}
+
+
+		// Sound 
+        // -------------------------------------------------------
+		//SoLoud::Soloud gSoloud; // SoLoud engine
+		//SoLoud::Wav gWave;      // One wave file
+
+		//gSoloud.init(); // Initialize SoLoud
+
+		//std::string pathToexe = std::string();
+		//TOYRENDERER_EXEPATH(pathToexe);
+		//std::string filepath = pathToexe + "\\res\\audio\\service-bell_daniel_simion.wav";
+		//TOYRENDERER_STYLE_PATH(filepath);
+
+		//SoLoud::result results = gWave.load(filepath.c_str()); // Load a wave
+		//ENGINE_LOG_DEBUG("the loading result is: {}", results);
+		//gSoloud.play(gWave); // Play the wave
+
+		//AudioPlayer audioPlayerComponent("service-bell_daniel_simion.wav");
+		//audioPlayerComponent.Play();
 
 
 

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Audio">
+      <UniqueIdentifier>{9718D90C-032D-01BE-CCAE-A41D3882FDEE}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Components">
       <UniqueIdentifier>{6B7DD516-5735-1764-C03C-F0BFAC13B254}</UniqueIdentifier>
     </Filter>
@@ -102,6 +105,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Audio\AudioClip.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Audio\AudioEngine.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Audio\SoLoudCommonUtility.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\AudioPlayer.h">
+      <Filter>Components</Filter>
+    </ClInclude>
     <ClInclude Include="src\Components\Camera.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -144,6 +159,9 @@
     </ClInclude>
     <ClInclude Include="src\log\Log.h">
       <Filter>log</Filter>
+    </ClInclude>
+    <ClInclude Include="src\managers\AudioAssembly.h">
+      <Filter>managers</Filter>
     </ClInclude>
     <ClInclude Include="src\managers\ResourceManager.h">
       <Filter>managers</Filter>
@@ -1795,13 +1813,21 @@
     <ClInclude Include="src\world\Time.h">
       <Filter>world</Filter>
     </ClInclude>
-    <ClInclude Include="src\managers\AudioAssembly.h" />
-    <ClInclude Include="src\Components\AudioPlayer.h" />
-    <ClInclude Include="src\Audio\AudioEngine.h" />
-    <ClInclude Include="src\Audio\AudioClip.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\Audio\AudioClip .cpp">
+      <Filter>Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Audio\AudioEngine.cpp">
+      <Filter>Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Audio\SoLoudCommonUtility.cpp">
+      <Filter>Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\AudioPlayer.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
     <ClCompile Include="src\Components\Camera.cpp">
       <Filter>Components</Filter>
     </ClCompile>
@@ -1838,6 +1864,9 @@
     </ClCompile>
     <ClCompile Include="src\log\Log.cpp">
       <Filter>log</Filter>
+    </ClCompile>
+    <ClCompile Include="src\managers\AudioAssembly.cpp">
+      <Filter>managers</Filter>
     </ClCompile>
     <ClCompile Include="src\managers\ResourceManager.cpp">
       <Filter>managers</Filter>
@@ -1947,11 +1976,5 @@
     <ClCompile Include="src\world\Time.cpp">
       <Filter>world</Filter>
     </ClCompile>
-    <ClCompile Include="src\Components\AudioPlayer.cpp" />
-    <ClCompile Include="src\Audio\AudioEngine.cpp" />
-    <ClCompile Include="src\managers\AudioAssembly.cpp" />
-    <ClCompile Include="src\Audio\SoLoudCommonUtility.h" />
-    <ClCompile Include="src\Audio\SoLoudCommonUtility.cpp" />
-    <ClCompile Include="src\Audio\AudioClip .cpp" />
   </ItemGroup>
 </Project>
