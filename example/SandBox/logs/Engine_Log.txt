@@ -1,10 +1,10 @@
-[2020-05-08 19:03:10.185] [Engine_Log] [info] Inialized Engine Log
-[2020-05-08 19:03:10.638] [Engine_Log] [info] Initialized with GL Version       4.6.0 NVIDIA 436.02
-[2020-05-08 19:03:10.741] [Engine_Log] [warning] RHI Warning: attempted to set Uniform roughnessValue. Uniform doesnt exist in shader unlit/texture
-[2020-05-08 19:03:10.741] [Engine_Log] [warning] RHI Warning: attempted to set Uniform metalicValue. Uniform doesnt exist in shader unlit/texture
-[2020-05-08 19:03:10.741] [Engine_Log] [warning] RHI Warning: attempted to set Uniform ambientColor. Uniform doesnt exist in shader unlit/texture
-[2020-05-08 19:03:10.742] [Engine_Log] [warning] RHI Warning: attempted to set Uniform diffuseColor. Uniform doesnt exist in shader unlit/texture
-[2020-05-08 19:03:10.742] [Engine_Log] [warning] RHI Warning: attempted to set Uniform specularColor. Uniform doesnt exist in shader unlit/texture
-[2020-05-08 19:03:10.742] [Engine_Log] [warning] RHI Warning: attempted to set Uniform emissionColor. Uniform doesnt exist in shader unlit/texture
-[2020-05-08 19:03:10.742] [Engine_Log] [warning] RHI Warning: attempted to set Uniform diffuseMap. Uniform doesnt exist in shader unlit/texture
-[2020-05-08 19:03:10.743] [Engine_Log] [warning] RHI Warning: attempted to set Uniform _Time. Uniform doesnt exist in shader postProcess/vignetting
+[2020-05-08 19:10:09.005] [Engine_Log] [info] Inialized Engine Log
+[2020-05-08 19:10:09.488] [Engine_Log] [info] Initialized with GL Version       4.6.0 NVIDIA 436.02
+[2020-05-08 19:10:09.590] [Engine_Log] [warning] RHI Warning: attempted to set Uniform roughnessValue. Uniform doesnt exist in shader unlit/texture
+[2020-05-08 19:10:09.590] [Engine_Log] [warning] RHI Warning: attempted to set Uniform metalicValue. Uniform doesnt exist in shader unlit/texture
+[2020-05-08 19:10:09.590] [Engine_Log] [warning] RHI Warning: attempted to set Uniform ambientColor. Uniform doesnt exist in shader unlit/texture
+[2020-05-08 19:10:09.591] [Engine_Log] [warning] RHI Warning: attempted to set Uniform diffuseColor. Uniform doesnt exist in shader unlit/texture
+[2020-05-08 19:10:09.591] [Engine_Log] [warning] RHI Warning: attempted to set Uniform specularColor. Uniform doesnt exist in shader unlit/texture
+[2020-05-08 19:10:09.591] [Engine_Log] [warning] RHI Warning: attempted to set Uniform emissionColor. Uniform doesnt exist in shader unlit/texture
+[2020-05-08 19:10:09.591] [Engine_Log] [warning] RHI Warning: attempted to set Uniform diffuseMap. Uniform doesnt exist in shader unlit/texture
+[2020-05-08 19:10:09.592] [Engine_Log] [warning] RHI Warning: attempted to set Uniform _Time. Uniform doesnt exist in shader postProcess/vignetting
