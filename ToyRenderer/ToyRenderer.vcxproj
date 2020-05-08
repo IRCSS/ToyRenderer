@@ -95,6 +95,7 @@
     </Link>
     <PostBuildEvent>
       <Command>copy ..\ToyRenderer-binaries\Debug-windows-x86_64\$(ProjectName)\ToyRenderer.dll ..\ToyRenderer-binaries\Debug-windows-x86_64\Sandbox\
+ROBOCOPY src\ ..\ToyRenderer-binaries\Debug-windows-x86_64\$(ProjectName)\include\ *.h *.hpp *.inl /S
 IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Debug-windows-x86_64\SandBox\res\engine &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Debug-windows-x86_64\SandBox\res\engine &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -122,6 +123,7 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     </Link>
     <PostBuildEvent>
       <Command>copy ..\ToyRenderer-binaries\Release-windows-x86_64\$(ProjectName)\ToyRenderer.dll ..\ToyRenderer-binaries\Release-windows-x86_64\Sandbox\
+ROBOCOPY src\ ..\ToyRenderer-binaries\Release-windows-x86_64\$(ProjectName)\include\ *.h *.hpp *.inl /S
 IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Release-windows-x86_64\SandBox\res\engine &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Release-windows-x86_64\SandBox\res\engine &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -149,6 +151,7 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     </Link>
     <PostBuildEvent>
       <Command>copy ..\ToyRenderer-binaries\Shipping-windows-x86_64\$(ProjectName)\ToyRenderer.dll ..\ToyRenderer-binaries\Shipping-windows-x86_64\Sandbox\
+ROBOCOPY src\ ..\ToyRenderer-binaries\Shipping-windows-x86_64\$(ProjectName)\include\ *.h *.hpp *.inl /S
 IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Shipping-windows-x86_64\SandBox\res\engine &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Shipping-windows-x86_64\SandBox\res\engine &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -168,7 +171,6 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     <ClInclude Include="src\Components\Transform.h" />
     <ClInclude Include="src\Core.h" />
     <ClInclude Include="src\EntryPoint.h" />
-    <ClInclude Include="src\system\DebugBreak.h" />
     <ClInclude Include="src\Tests\Test.h" />
     <ClInclude Include="src\Tests\TestClearColor.h" />
     <ClInclude Include="src\Tests\TestObjLoader.h" />
@@ -209,6 +211,7 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     <ClInclude Include="src\rendering\VertexArray.h" />
     <ClInclude Include="src\rendering\VertexBuffer.h" />
     <ClInclude Include="src\rendering\VertexBufferLayout.h" />
+    <ClInclude Include="src\system\DebugBreak.h" />
     <ClInclude Include="src\system\File.h" />
     <ClInclude Include="src\system\Window.h" />
     <ClInclude Include="src\vendor\GL\eglew.h" />

@@ -114,6 +114,9 @@
     <ClInclude Include="src\Audio\SoLoudCommonUtility.h">
       <Filter>Audio</Filter>
     </ClInclude>
+    <ClInclude Include="src\Components\AudioListner.h">
+      <Filter>Components</Filter>
+    </ClInclude>
     <ClInclude Include="src\Components\AudioPlayer.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -121,6 +124,9 @@
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="src\Components\Component.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\ComponentsUtility.h">
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="src\Components\ProceduralSkyBox.h">
@@ -255,6 +261,9 @@
     </ClInclude>
     <ClInclude Include="src\rendering\VertexBufferLayout.h">
       <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="src\system\DebugBreak.h">
+      <Filter>system</Filter>
     </ClInclude>
     <ClInclude Include="src\system\File.h">
       <Filter>system</Filter>
@@ -1813,9 +1822,6 @@
     <ClInclude Include="src\world\Time.h">
       <Filter>world</Filter>
     </ClInclude>
-    <ClInclude Include="src\Components\AudioListner.h" />
-    <ClInclude Include="src\Components\ComponentsUtility.h" />
-    <ClInclude Include="src\system\DebugBreak.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
@@ -1827,6 +1833,9 @@
     </ClCompile>
     <ClCompile Include="src\Audio\SoLoudCommonUtility.cpp">
       <Filter>Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\AudioListner.cpp">
+      <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="src\Components\AudioPlayer.cpp">
       <Filter>Components</Filter>
@@ -1979,6 +1988,5 @@
     <ClCompile Include="src\world\Time.cpp">
       <Filter>world</Filter>
     </ClCompile>
-    <ClCompile Include="src\Components\AudioListner.cpp" />
   </ItemGroup>
 </Project>
