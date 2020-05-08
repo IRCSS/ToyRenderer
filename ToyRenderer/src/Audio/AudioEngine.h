@@ -16,8 +16,8 @@ namespace ToyRenderer {
 
 			   void OnUpdate(float deltaTime);
 
-		       void Play(AudioClip*  toPlay);
-			   void Play(AudioClip* toPlay, const Transform* transfrom);
+		       int Play(AudioClip*  toPlay);
+			   int Play(AudioClip* toPlay, const Transform* transfrom);
 		       
 			   void SetAudioListner(const Transform* listnerTransform);
 

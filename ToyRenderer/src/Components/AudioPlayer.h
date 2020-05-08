@@ -35,6 +35,8 @@ namespace ToyRenderer {
 		void Settings_UpdateAll();
 		void Settings_SetLooping();
 
+	private: 
+	    int m_Handle;
 	};
 
 }

@@ -10,8 +10,12 @@ namespace ToyRenderer {
 
    	AudioEngine::AudioEngine() : m_soLoudBackend(nullptr)
    	{
+
+		SoLoud::Soloud::FLAGS flags = static_cast<SoLoud::Soloud::FLAGS>(static_cast<int>(SoLoud::Soloud::FLAGS::CLIP_ROUNDOFF) | static_cast<int>(SoLoud::Soloud::FLAGS::LEFT_HANDED_3D));
+
 		m_soLoudBackend = new SoLoud::Soloud; // object created
-		m_soLoudBackend->init();              // back-end initialization
+		m_soLoudBackend->init(flags);         // back-end initialization
+		
    	}
 
 	AudioEngine::~AudioEngine()
@@ -25,14 +29,18 @@ namespace ToyRenderer {
 		m_soLoudBackend->update3dAudio();
 	}
 
-	void AudioEngine::Play(AudioClip* toPlay)
+	int AudioEngine::Play(AudioClip* toPlay)
 	{
-		m_soLoudBackend->play(toPlay->GetBackEndAudioSourceHandel());
+		return m_soLoudBackend->play(toPlay->GetBackEndAudioSourceHandel());
 	}
 
-	void AudioEngine::Play(AudioClip * toPlay, const Transform * transform)
+	int AudioEngine::Play(AudioClip * toPlay, const Transform * transform)
 	{
-		m_soLoudBackend->play3d(toPlay->GetBackEndAudioSourceHandel(), transform->position.x, transform->position.y, transform->position.z);
+		int handel = m_soLoudBackend->play3d(toPlay->GetBackEndAudioSourceHandel(), transform->position.x, transform->position.y, transform->position.z);
+
+		m_soLoudBackend->set3dSourceAttenuation(handel, 1, 1);
+
+		return handel;
 	}
 
 	void AudioEngine::SetAudioListner(const Transform * listnerTransform)
