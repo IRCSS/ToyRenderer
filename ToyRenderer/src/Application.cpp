@@ -20,7 +20,7 @@
 #include "vendor/soloud/soloud_wav.h"
 #include "system/File.h"
 
-namespace ToyRenderer {
+namespace ToyRenderer { 
 	 
 	int main(void)
 	{

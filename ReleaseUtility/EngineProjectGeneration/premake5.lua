@@ -54,8 +54,8 @@ configurations {
    }
 
    postbuildcommands{
-    ("copy ..\\ToyRendererDistrubtionFiles\\ToyRenderer.dll ..\\binaries\\" ..outputdir.. "\\%{prj.name}\\"),
-    ("xcopy ..\\ToyRendererDistrubtionFiles\\res ..\\binaries\\" ..outputdir.. "\\%{prj.name}\\res\\ /s /e")
+    ("copy ..\\ToyRendererDistrubtionFiles\\ToyRenderer.dll ..\\binaries\\" ..outputdir.. "\\%{prj.name}\\ /y"),
+    ("xcopy ..\\ToyRendererDistrubtionFiles\\res ..\\binaries\\" ..outputdir.. "\\%{prj.name}\\res\\ /s /e /y")
   }
 
    filter "configurations:Debug"
