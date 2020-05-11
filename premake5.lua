@@ -48,7 +48,7 @@ workspace "ToyRenderer"
 		}
 
 		postbuildcommands{
-		  ("copy ..\\ToyRenderer-binaries\\" ..outputdir.. "\\%{prj.name}\\ToyRenderer.dll ..\\ToyRenderer-binaries\\" ..outputdir.. "\\Sandbox\\"),
+		  ("copy ..\\ToyRenderer-binaries\\" ..outputdir.. "\\%{prj.name}\\ToyRenderer.dll ..\\ToyRenderer-binaries\\" ..outputdir.. "\\Sandbox\\ /y"),
 		  ("ROBOCOPY src\\ ..\\ToyRenderer-binaries\\" ..outputdir.. "\\%{prj.name}\\include\\ *.h *.hpp *.inl /S"),
 		  ("{COPY} %{prj.location}res ../ToyRenderer-binaries/" ..outputdir.. "/SandBox/res/engine")
 		}
