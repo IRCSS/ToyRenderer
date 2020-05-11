@@ -1,5 +1,9 @@
 #include <ToyRenderer.h>
 
+// ETNRY POINT -----------------------------
+#include "EntryPoint.h"                         // This is where the main function for the application is
+// ---------------------------------------------
+
 using namespace ToyRenderer;
 
 

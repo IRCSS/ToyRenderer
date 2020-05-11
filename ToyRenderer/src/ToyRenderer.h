@@ -5,10 +5,6 @@
 #include "ToyRendererApp.h"
 
 
-// ETNRY POINT -----------------------------
-#include "EntryPoint.h"                         // This is where the main function for the application is
-// ---------------------------------------------
-
 // Utility
 #include "log/Log.h"
 
