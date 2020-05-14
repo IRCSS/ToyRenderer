@@ -46,4 +46,12 @@ namespace ToyRenderer{
 
     
     }
+	void Log::ShutDown()
+	{
+		GetEngineLogger()->flush();
+		GetClientLogger()->flush();
+
+		spdlog::drop_all();
+		spdlog::shutdown();
+	}
 }

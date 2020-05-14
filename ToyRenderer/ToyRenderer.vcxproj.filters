@@ -1822,6 +1822,9 @@
     <ClInclude Include="src\world\Time.h">
       <Filter>world</Filter>
     </ClInclude>
+    <ClInclude Include="src\Components\Scripts\ExitApplicationOnInput.h">
+      <Filter>Components\Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
@@ -1988,5 +1991,6 @@
     <ClCompile Include="src\world\Time.cpp">
       <Filter>world</Filter>
     </ClCompile>
+    <ClCompile Include="src\Components\Scripts\ExitApplicationOnInput.cpp" />
   </ItemGroup>
 </Project>

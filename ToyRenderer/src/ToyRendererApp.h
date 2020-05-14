@@ -15,7 +15,7 @@ namespace ToyRenderer {
 	  	   ToyRendererApp();
 	  	   virtual ~ToyRendererApp();
 	     
-		   void Exit();
+		   static void Exit();
 		   void Run();
 
 

@@ -17,6 +17,16 @@ public:
 
 
 		// ------------------------------------------------------------
+		// GameManager
+
+		GameObject* gameManagerGB       = new GameObject();
+		Behaviours::ExitApplicationOnInput* exitOnEscape = new Behaviours::ExitApplicationOnInput();
+		gameManagerGB->AddComponent<Behaviours::ExitApplicationOnInput>(exitOnEscape);
+	
+		activeScene->sceneObjects.push_back(gameManagerGB);
+
+
+		// ------------------------------------------------------------
 		// Camera
 
 		GameObject* cameraGB            = new GameObject();

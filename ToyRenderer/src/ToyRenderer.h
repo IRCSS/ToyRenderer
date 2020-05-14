@@ -8,7 +8,7 @@
 // Utility
 #include "log/Log.h"
 
-//Managers
+// Managers
 #include "managers/ResourceManager.h"
 
 // World
@@ -20,8 +20,11 @@
 
 // Components
 #include "Components/Camera.h"
-#include "Components/Scripts/MoveCamera.h"
 #include "Components/Scripts/postProcesses/Vignetting.h"
+
+// Behaviours
+#include "Components/Scripts/MoveCamera.h"
+#include "Components/Scripts/ExitApplicationOnInput.h"
 
 // Rendering
 #include "rendering/Mesh/PrimitiveFactory.h"

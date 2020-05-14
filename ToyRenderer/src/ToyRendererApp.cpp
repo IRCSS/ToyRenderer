@@ -14,7 +14,7 @@
 
 namespace ToyRenderer {
 
-	
+	bool ToyRendererApp::escapeApplication;
 
 	ToyRendererApp::ToyRendererApp() : window(nullptr), timeHandler(nullptr), inputMaster(nullptr), activeScene(nullptr)
 	{
@@ -114,6 +114,8 @@ namespace ToyRenderer {
 		glfwTerminate();
 		AudioEngine::Clear();
 		ToyRenderer::ResourceManager::ClearResourceManager();
+		Log::ShutDown();
+
 	}
 
 }

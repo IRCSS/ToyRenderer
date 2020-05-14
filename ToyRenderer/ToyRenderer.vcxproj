@@ -156,6 +156,7 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Components\Scripts\ExitApplicationOnInput.h" />
     <ClInclude Include="src\Audio\AudioClip.h" />
     <ClInclude Include="src\Audio\AudioEngine.h" />
     <ClInclude Include="src\Audio\SoLoudCommonUtility.h" />
@@ -733,6 +734,7 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     <ClInclude Include="src\world\Time.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Components\Scripts\ExitApplicationOnInput.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Audio\AudioClip .cpp" />
     <ClCompile Include="src\Audio\AudioEngine.cpp" />

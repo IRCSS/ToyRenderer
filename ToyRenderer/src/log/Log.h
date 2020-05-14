@@ -10,6 +10,7 @@ namespace ToyRenderer {
 	// PUBLIC ======================================================================================
 	public: 
 		static void Initialize();
+		static void ShutDown();
 		
 		inline static std::shared_ptr<spdlog::logger>& GetEngineLogger() { return s_EngineLogger; }
 		inline static std::shared_ptr<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }

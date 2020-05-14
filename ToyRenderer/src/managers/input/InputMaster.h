@@ -26,8 +26,8 @@ namespace ToyRenderer {
 		RightBracket, GraveAccent, Escape, Tab, Backspace, Insert, Delete, PageUp, PageDown, 
 		Home, End, CapsLock, ScrollLock, NumLock, PrintScreen, Pause, 
 		K0, K1, K2, K3, K4, K5, K6, K7, K8, K9,
-		F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F12,
-		KP0, KP1, KP2, KP3, KP4, KP5, KP6, KP7, KP8, KP8, KP9, 
+		F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12,
+		KP0, KP1, KP2, KP3, KP4, KP5, KP6, KP7, KP8, KP9, 
 		KPDecimal, KPDivide, KPMultiply, KPSubtract, KPAdd, KPEnter, KPEqual,
 	};
 
