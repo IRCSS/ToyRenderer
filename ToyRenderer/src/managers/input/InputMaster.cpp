@@ -1,5 +1,5 @@
 #include "InputMaster.h"
-#include "managers/Settings.h"
+#include "system/Window.h"
 #include "InputMapping.h"
 #include <string>
 #include <iostream>
@@ -225,7 +225,7 @@ namespace ToyRenderer {
 		
 		Vector2 newMousePos((float)x, (float)y);
 
-		if ((newMousePos - mousePos).magnitude() > std::fmin(Settings::WindowHeigth, Settings::WindowHeigth) / 2.0) {
+		if ((newMousePos - mousePos).magnitude() > std::fmin(Window::Width, Window::Height) / 2.0) {
 			mousePos = newMousePos;
 			mouseDelta;
 			return;

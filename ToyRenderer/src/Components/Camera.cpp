@@ -5,13 +5,12 @@
 #include "Components/Transform.h"
 #include "vendor/glm/glm.hpp"
 #include "vendor/glm/gtc/matrix_transform.hpp"
-#include "managers/Settings.h"
 #include "rendering/PostProcess.h"
 #include "rendering/FrameBuffer.h"
 #include "log/Log.h"
 #include "rendering/Graphics.h"
-#include "managers/Settings.h"
 #include "rendering/RHI/RHI.h"
+#include "system/Window.h"
 namespace ToyRenderer {
 	Camera::Camera()
 	{
@@ -27,7 +26,9 @@ namespace ToyRenderer {
 		skybox = new ProceduralSkyBox();
 		transform = nullptr;
 
-		InitiateFrontBuffers(Settings::WindowWidth, Settings::WindowHeigth);
+		//ENGINE_LOG_INFO("width {}, height {}.", Settings::WindowWidth, Settings::WindowHeigth);
+
+		InitiateFrontBuffers(Window::Width, Window::Height);
 
 
 	}
@@ -156,7 +157,7 @@ namespace ToyRenderer {
 	}
 	Matrix4x4 Camera::ProjectionMatrix() const
 	{
-		Matrix4x4 projection = Matrix4x4(glm::perspective(glm::radians(fov), (float)Settings::WindowWidth / (float)Settings::WindowHeigth, nearClip, farClip));
+		Matrix4x4 projection = Matrix4x4(glm::perspective(glm::radians(fov), (float)Window::Width / (float)Window::Height, nearClip, farClip));
 		return projection;
 	}
 	Matrix4x4 Camera::VPMatrix() const

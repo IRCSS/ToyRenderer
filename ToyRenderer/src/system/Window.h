@@ -15,6 +15,10 @@ namespace ToyRenderer {
 		void SetContextAsCurrent();
 		GLFWwindow* GetWindowAddress();
 
+	public:
+		static int Width;
+		static int Height;
+
     // ______________________________________________________________________________________________
 	// PRIVATE ======================================================================================
 

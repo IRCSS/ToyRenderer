@@ -66,6 +66,7 @@ public:
 		groundMaterial->EnableZWrite(false);
 		groundMaterial->SetRenderPass(Material_PASS_TRANSPARENT);
 		groundMaterial->SetBlendFunc(Rendering::Blend_Function::SRC_ALPHA, Rendering::Blend_Function::ONE_MINUS_SRC_ALPHA);
+		groundMaterial->SetTwoSided(true);
 
 		MeshRenderer* groundGridRend = new MeshRenderer(groundGridMesh, groundMaterial);
 

@@ -4,10 +4,26 @@
 
 namespace ToyRenderer {
 	
+	int Window::Width;
+	int Window::Height;
+
 	Window::Window()
 	{
+		GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+
+		const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+
+		glfwWindowHint(GLFW_RED_BITS,     mode->redBits);
+		glfwWindowHint(GLFW_GREEN_BITS,   mode->greenBits);
+		glfwWindowHint(GLFW_BLUE_BITS,    mode->blueBits);
+		glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
+
+		Width  = mode->width;
+		Height = mode->height;
+
+
 		/* Create a windowed mode window and its OpenGL context */
-		p_Window = glfwCreateWindow(Settings::WindowWidth, Settings::WindowHeigth, "GLFW: Window created", NULL, NULL);
+		p_Window = glfwCreateWindow(mode->width, mode->height, "GLFW: Window created", monitor, NULL);
 		if (!p_Window)
 		{
 			glfwTerminate();

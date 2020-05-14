@@ -735,7 +735,6 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Components\Scripts\ExitApplicationOnInput.cpp" />
-    <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Audio\AudioClip .cpp" />
     <ClCompile Include="src\Audio\AudioEngine.cpp" />
     <ClCompile Include="src\Audio\SoLoudCommonUtility.cpp" />
