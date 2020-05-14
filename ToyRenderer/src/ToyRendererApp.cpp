@@ -64,15 +64,21 @@ namespace ToyRenderer {
 		delete activeScene;
 	}
 
+	void ToyRendererApp::Exit()
+	{
+		escapeApplication = true;
+	}
+
 	void ToyRendererApp::Run()
 	{
+		escapeApplication = false;
 
 		// --------------------------------------------------
 		{
 			activeScene->OnStart();
 
 			/* Loop until the user closes the window */
-			while (!glfwWindowShouldClose(window->GetWindowAddress()))
+			while (!glfwWindowShouldClose(window->GetWindowAddress()) && !escapeApplication)
 			{
 				timeHandler->Update();
 				// INPUT 

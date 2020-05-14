@@ -15,6 +15,7 @@ namespace ToyRenderer {
 	  	   ToyRendererApp();
 	  	   virtual ~ToyRendererApp();
 	     
+		   void Exit();
 		   void Run();
 
 
@@ -22,6 +23,11 @@ namespace ToyRenderer {
 	      Window      *window;
 		  Time        *timeHandler;
 		  InputMaster *inputMaster;
+
+
+
+	 private:
+		 static bool escapeApplication;
 
 	 };
 	 // Define in Client
