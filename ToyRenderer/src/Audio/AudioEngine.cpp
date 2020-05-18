@@ -45,7 +45,7 @@ namespace ToyRenderer {
 
 	void AudioEngine::SetAudioListner(const Transform * listnerTransform)
 	{
-		m_soLoudBackend->set3dListenerPosition(listnerTransform->position.x  , listnerTransform->position.y  , listnerTransform->position.z  );
+		m_soLoudBackend->set3dListenerPosition(listnerTransform->position.x  , listnerTransform->position.y  , listnerTransform->position.z  ); 
 		m_soLoudBackend->set3dListenerAt      (listnerTransform->Foward().x  , listnerTransform->Foward().y  , listnerTransform->Foward().z  );
 		m_soLoudBackend->set3dListenerUp      (listnerTransform->Up().x      , listnerTransform->Up().y      , listnerTransform->Up().z      );
 	}

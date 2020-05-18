@@ -18,10 +18,9 @@ namespace ToyRenderer {
 		std::string filepath = executablePath + "/res/engine/shaders";
 		TOYRENDERER_STYLE_PATH(filepath);
 
-		for (const auto & entry : std::filesystem::directory_iterator(filepath)) {
-			CookedShader entryCooked = ShaderOven::CookShader(entry.path().string());
-			m_CookedShaders[entryCooked.shaderTagName] = entryCooked.ProgramID;
-		}
+
+		LoadAllShadersInFolder(filepath);
+
 		// ------------------------------------------------------------------------------- 
 		  
 	}
@@ -41,5 +40,32 @@ namespace ToyRenderer {
 		ENGINE_LOG_WARN("Could not find the a shader named as: {}", shaderTag);
 
 		return -1;
+	}
+	bool ShaderAssembly::LoadShaderInPath(const std::string path)
+	{
+		if (!std::filesystem::exists(std::filesystem::path(path))) {
+
+			ENGINE_LOG_WARN("Attempted to load a shader in folder {}, however no such folder exissts", path);
+			return false;
+		}
+
+		CookedShader entryCooked = ShaderOven::CookShader(path);
+		m_CookedShaders[entryCooked.shaderTagName] = entryCooked.ProgramID;
+
+		return true;
+	}
+	bool ShaderAssembly::LoadAllShadersInFolder(const std::string & filepath)
+	{
+		if (!std::filesystem::exists(std::filesystem::path(filepath))) {
+			
+			ENGINE_LOG_WARN("Attempted to load a series of shaders in folder {}, however no such folder exissts", filepath);
+			return false;
+		}
+
+		for (const auto & entry : std::filesystem::directory_iterator(filepath)) {
+			if(!LoadShaderInPath(entry.path().string())) return false;
+		}
+
+		return true;
 	}
 }

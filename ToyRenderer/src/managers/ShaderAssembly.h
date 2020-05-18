@@ -14,6 +14,9 @@ namespace ToyRenderer{
 		int GetShader(std::string shaderTag);
 	 	
 
+		bool LoadShaderInPath(const std::string path);
+		bool LoadAllShadersInFolder(const std::string& path);
+
 	// ______________________________________________________________________________________________
 	// PRIVATE ======================================================================================
     #pragma warning( disable : 4251)  
