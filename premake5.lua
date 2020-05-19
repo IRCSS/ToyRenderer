@@ -100,6 +100,10 @@ project "Sandbox"
 			"GLEW_STATIC"
 		}
 
+		postbuildcommands{
+			("{COPY} %{prj.location}res ../../ToyRenderer-binaries/" ..outputdir.. "/SandBox/res/game")
+		  }
+
 		filter "configurations:Debug"
 			defines "TOYRENDERER_DEBUG"
 			symbols "On"

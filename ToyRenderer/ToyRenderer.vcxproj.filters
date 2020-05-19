@@ -132,6 +132,9 @@
     <ClInclude Include="src\Components\ProceduralSkyBox.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="src\Components\Scripts\ExitApplicationOnInput.h">
+      <Filter>Components\Scripts</Filter>
+    </ClInclude>
     <ClInclude Include="src\Components\Scripts\MoveCamera.h">
       <Filter>Components\Scripts</Filter>
     </ClInclude>
@@ -1822,9 +1825,6 @@
     <ClInclude Include="src\world\Time.h">
       <Filter>world</Filter>
     </ClInclude>
-    <ClInclude Include="src\Components\Scripts\ExitApplicationOnInput.h">
-      <Filter>Components\Scripts</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Audio\AudioClip .cpp">
@@ -1850,6 +1850,9 @@
     </ClCompile>
     <ClCompile Include="src\Components\ProceduralSkyBox.cpp">
       <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\Scripts\ExitApplicationOnInput.cpp">
+      <Filter>Components\Scripts</Filter>
     </ClCompile>
     <ClCompile Include="src\Components\Scripts\MoveCamera.cpp">
       <Filter>Components\Scripts</Filter>
@@ -1990,6 +1993,5 @@
     <ClCompile Include="src\world\Time.cpp">
       <Filter>world</Filter>
     </ClCompile>
-    <ClCompile Include="src\Components\Scripts\ExitApplicationOnInput.cpp" />
   </ItemGroup>
 </Project>

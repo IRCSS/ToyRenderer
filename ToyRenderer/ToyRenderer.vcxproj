@@ -83,7 +83,7 @@
       <AdditionalIncludeDirectories>src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -110,7 +110,7 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -138,7 +138,7 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -156,7 +156,6 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Components\Scripts\ExitApplicationOnInput.h" />
     <ClInclude Include="src\Audio\AudioClip.h" />
     <ClInclude Include="src\Audio\AudioEngine.h" />
     <ClInclude Include="src\Audio\SoLoudCommonUtility.h" />
@@ -166,6 +165,7 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     <ClInclude Include="src\Components\Component.h" />
     <ClInclude Include="src\Components\ComponentsUtility.h" />
     <ClInclude Include="src\Components\ProceduralSkyBox.h" />
+    <ClInclude Include="src\Components\Scripts\ExitApplicationOnInput.h" />
     <ClInclude Include="src\Components\Scripts\MoveCamera.h" />
     <ClInclude Include="src\Components\Scripts\Script.h" />
     <ClInclude Include="src\Components\Scripts\postProcesses\Vignetting.h" />
@@ -734,7 +734,6 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     <ClInclude Include="src\world\Time.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Components\Scripts\ExitApplicationOnInput.cpp" />
     <ClCompile Include="src\Audio\AudioClip .cpp" />
     <ClCompile Include="src\Audio\AudioEngine.cpp" />
     <ClCompile Include="src\Audio\SoLoudCommonUtility.cpp" />
@@ -743,6 +742,7 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     <ClCompile Include="src\Components\Camera.cpp" />
     <ClCompile Include="src\Components\Component.cpp" />
     <ClCompile Include="src\Components\ProceduralSkyBox.cpp" />
+    <ClCompile Include="src\Components\Scripts\ExitApplicationOnInput.cpp" />
     <ClCompile Include="src\Components\Scripts\MoveCamera.cpp" />
     <ClCompile Include="src\Components\Scripts\postProcesses\Vignetting.cpp" />
     <ClCompile Include="src\Components\Transform.cpp" />

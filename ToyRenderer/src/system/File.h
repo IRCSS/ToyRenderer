@@ -4,10 +4,10 @@
 
 #ifdef TOYRENDERER_PLATFORM_WINDOWS
 #define TOYRENDERER_EXEPATH(x)	\
-                    char Filename[MAX_PATH]; \
+                    {char Filename[MAX_PATH]; \
                     GetModuleFileNameA(NULL, Filename, sizeof(Filename));\
                     std::string current_working_dir(Filename);\
-                    x = current_working_dir.substr(0, current_working_dir.find_last_of("\\/"))
+                    x = current_working_dir.substr(0, current_working_dir.find_last_of("\\/"));}
 #else
 #define EXEPATH(x) EXEPATHENGINE_LOG_INFO("No implmentation for get executable full path on this platform.")
 #endif // TOYRENDERER_PLATFORM_WINDOWS

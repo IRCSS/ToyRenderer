@@ -10,6 +10,7 @@
 
 // Managers
 #include "managers/ResourceManager.h"
+#include "managers/ShaderAssembly.h"
 
 // World
 #include "world/Scene.h"

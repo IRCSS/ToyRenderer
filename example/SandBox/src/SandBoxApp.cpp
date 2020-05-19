@@ -13,6 +13,21 @@ public:
 	
 		CLIENT_LOG_INFO("sand box has been initialized");
 
+		// ------------------------------------------------------------
+		// Register Game Assets
+
+		std::string resourceFolder = std::string();
+		TOYRENDERER_EXEPATH(resourceFolder);
+
+		resourceFolder += "/res/game/shaders/unlit_UV.shader";
+		TOYRENDERER_STYLE_PATH(resourceFolder);
+
+		ResourceManager::Instance().shaderAssembly->LoadShaderInPath(resourceFolder);
+
+
+		// ------------------------------------------------------------
+
+
 		activeScene = new Scene();
 
 
@@ -79,16 +94,16 @@ public:
 		// ------------------------------------------------------------
 		// Cube Mesh Loading
 
-		std::string resourceFolder = std::string();
-		TOYRENDERER_EXEPATH(resourceFolder);
+		std::string cubeMeshPath = std::string();
+		TOYRENDERER_EXEPATH(cubeMeshPath);
 
-		resourceFolder += "/res/engine/meshes";
-		TOYRENDERER_STYLE_PATH(resourceFolder);
+		cubeMeshPath += "/res/engine/meshes";
+		TOYRENDERER_STYLE_PATH(cubeMeshPath);
 		
-		std::string fileName = (resourceFolder + "/unwraped_cube.obj");
+		std::string fileName = (cubeMeshPath + "/unwraped_cube.obj");
 		TOYRENDERER_STYLE_PATH(fileName);
 
-         RawMesh*  loadedMesh = MeshLoader::LoadTinyObj(fileName.c_str(), resourceFolder.c_str());
+         RawMesh*  loadedMesh = MeshLoader::LoadTinyObj(fileName.c_str(), cubeMeshPath.c_str());
 
 		//ToyRenderer::RawMesh*  loadedMesh = ToyRenderer::MeshLoader::LoadTinyObj("D:/Meshes/MiniModel/Tatev/Tatev_1e+02KTris__4k_1Chunks_1xLOD.obj"
 		//	, "D:/Meshes/MiniModel/Tatev");
@@ -96,7 +111,8 @@ public:
 		if (loadedMesh)
 		{
 			std::vector<Mesh *>       ms = loadedMesh->GenerateMeshes();
-			Shader* unlit_texture_shader = new Shader("unlit/texture");
+			//Shader* unlit_texture_shader = new Shader("unlit/texture");
+			Shader* unlit_texture_shader = new Shader("unlit/UV");
 
 			ResourceManager::Instance().RegisterShader(unlit_texture_shader);
 
