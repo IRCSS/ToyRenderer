@@ -14,7 +14,7 @@ namespace ToyRenderer{
 		int GetShader(std::string shaderTag);
 	 	
 
-		bool LoadShaderInPath(const std::string path);
+		bool LoadShaderInPath(const std::string& path);
 		bool LoadAllShadersInFolder(const std::string& path);
 
 	// ______________________________________________________________________________________________

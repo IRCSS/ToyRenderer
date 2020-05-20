@@ -41,7 +41,7 @@ namespace ToyRenderer {
 
 		return -1;
 	}
-	bool ShaderAssembly::LoadShaderInPath(const std::string path)
+	bool ShaderAssembly::LoadShaderInPath(const std::string& path)
 	{
 		
 	    if (!std::filesystem::exists(std::filesystem::path(path))) {

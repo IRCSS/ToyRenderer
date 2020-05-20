@@ -53,6 +53,8 @@ workspace "ToyRenderer"
 		  ("{COPY} %{prj.location}res ../ToyRenderer-binaries/" ..outputdir.. "/SandBox/res/engine")
 		}
 
+		staticruntime "off"
+
 		filter "configurations:Debug"
 			defines {"TOYRENDERER_DEBUG"}
 			libdirs {"%{prj.name}/dependencies/soloud/Debug"}
@@ -103,6 +105,8 @@ project "Sandbox"
 		postbuildcommands{
 			("{COPY} %{prj.location}res ../../ToyRenderer-binaries/" ..outputdir.. "/SandBox/res/game")
 		  }
+
+		staticruntime "off"
 
 		filter "configurations:Debug"
 			defines "TOYRENDERER_DEBUG"
