@@ -8,6 +8,7 @@
 namespace ToyRenderer {
 
 
+
 	AudioClip * LoadWavAudioSource(const char* path, const char* fileName) {
 
 		SoLoud::Wav* audioSourceWavFormat = new SoLoud::Wav();
@@ -31,24 +32,7 @@ namespace ToyRenderer {
 		std::string filepath = executablePath + "/res/engine/audio";
 		TOYRENDERER_STYLE_PATH(filepath);
 
-		for (const auto & entry : std::filesystem::directory_iterator(filepath)) {
-			std::string fileFormat = entry.path().extension().string();
-			std::string fileName   = entry.path().filename().string();
-
-			AudioClip* audioSource = nullptr;
-
-			if (fileFormat.compare(".wav") == 0) {
-				audioSource = LoadWavAudioSource(entry.path().string().c_str(), fileName.c_str());
-			}
-
-			if (audioSource == nullptr) {
-				ENGINE_LOG_INFO("Unsopported Audio format in the engine audio resources folder. File: {}", entry.path().string().c_str());
-				continue;
-			}
-
-			m_LoadedAudioSource[fileName] = audioSource;
-				
-		}
+		LoadAllAudiosInFolder(filepath);
 
 	}
 	AudioAssembly::~AudioAssembly()
@@ -68,5 +52,46 @@ namespace ToyRenderer {
 
 		ENGINE_LOG_WARN("AudioAssembly: Attempted to access the file {}, however the AudioAssembly hasnt loaded such a file. ", AudioSourceTagName);
 		return nullptr;
+	}
+	bool AudioAssembly::LoadAudioInPath(const std::string & path)
+	{
+		std::filesystem::path filePath = std::filesystem::path(path);
+
+		if (!std::filesystem::exists(filePath)) {
+			ENGINE_LOG_WARN("Attempted to load the file {}, however the file was not found.", filePath.string());
+			return false;
+		}
+
+
+		std::string fileFormat = filePath.extension().string();
+		std::string fileName   = filePath.filename().string();
+
+		AudioClip* audioSource = nullptr;
+
+		if (fileFormat.compare(".wav") == 0) {
+			audioSource = LoadWavAudioSource(filePath.string().c_str(), fileName.c_str());
+		}
+
+		if (audioSource == nullptr) {
+			ENGINE_LOG_INFO("Unsopported Audio format in the engine audio resources folder. File: {}", filePath.string().c_str());
+			return false;
+		}
+
+		m_LoadedAudioSource[fileName] = audioSource;
+
+		return true;
+	}
+	bool AudioAssembly::LoadAllAudiosInFolder(const std::string & path)
+	{
+		bool allSuccesfullyLoaded = true;
+
+		for (const auto & entry : std::filesystem::directory_iterator(path)) {
+			
+			bool loaded = LoadAudioInPath(entry.path().string());
+		
+			allSuccesfullyLoaded = (allSuccesfullyLoaded && loaded);
+		}
+
+		return allSuccesfullyLoaded;
 	}
 }

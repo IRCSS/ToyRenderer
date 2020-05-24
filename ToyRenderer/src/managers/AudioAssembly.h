@@ -12,6 +12,9 @@ namespace ToyRenderer {
 
 		AudioClip * GetAudioClipWitname(const char* AudioSourceTagName);
 
+		bool LoadAudioInPath(const std::string& path);
+		bool LoadAllAudiosInFolder(const std::string& path);
+
 	// ______________________________________________________________________________________________
 	// PRIVATE ======================================================================================
 	private: 
