@@ -95,7 +95,6 @@
     </Link>
     <PostBuildEvent>
       <Command>copy ..\ToyRenderer-binaries\Debug-windows-x86_64\$(ProjectName)\ToyRenderer.dll ..\ToyRenderer-binaries\Debug-windows-x86_64\Sandbox\ /y
-ROBOCOPY src\ ..\ToyRenderer-binaries\Debug-windows-x86_64\$(ProjectName)\include\ *.h *.hpp *.inl /S
 IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Debug-windows-x86_64\SandBox\res\engine &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Debug-windows-x86_64\SandBox\res\engine &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -123,7 +122,6 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     </Link>
     <PostBuildEvent>
       <Command>copy ..\ToyRenderer-binaries\Release-windows-x86_64\$(ProjectName)\ToyRenderer.dll ..\ToyRenderer-binaries\Release-windows-x86_64\Sandbox\ /y
-ROBOCOPY src\ ..\ToyRenderer-binaries\Release-windows-x86_64\$(ProjectName)\include\ *.h *.hpp *.inl /S
 IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Release-windows-x86_64\SandBox\res\engine &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Release-windows-x86_64\SandBox\res\engine &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -151,7 +149,6 @@ IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-bi
     </Link>
     <PostBuildEvent>
       <Command>copy ..\ToyRenderer-binaries\Shipping-windows-x86_64\$(ProjectName)\ToyRenderer.dll ..\ToyRenderer-binaries\Shipping-windows-x86_64\Sandbox\ /y
-ROBOCOPY src\ ..\ToyRenderer-binaries\Shipping-windows-x86_64\$(ProjectName)\include\ *.h *.hpp *.inl /S
 IF EXIST $(ProjectDir)res\ (xcopy /Q /E /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Shipping-windows-x86_64\SandBox\res\engine &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)res ..\ToyRenderer-binaries\Shipping-windows-x86_64\SandBox\res\engine &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

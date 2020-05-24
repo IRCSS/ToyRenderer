@@ -30,12 +30,9 @@ configurations {
      "%{prj.name}/src/**.cpp",
   }
 
-  libdirs { 
-    "ToyRendererDistrubtionFiles",
- }
 
   includedirs{
-    "ToyRendererDistrubtionFiles/include"
+    "ToyRenderer-include"
   }
 
   links{
@@ -54,18 +51,42 @@ configurations {
    }
 
    postbuildcommands{
-    ("copy ..\\ToyRendererDistrubtionFiles\\ToyRenderer.dll ..\\binaries\\" ..outputdir.. "\\%{prj.name}\\ /y"),
-    ("xcopy ..\\ToyRendererDistrubtionFiles\\res ..\\binaries\\" ..outputdir.. "\\%{prj.name}\\res\\ /s /e /y")
+    ("xcopy ..\\ToyRendererDistrubtionFiles\\res ..\\binaries\\" ..outputdir.. "\\%{prj.name}\\res\\ /s /e /y"),
+	("{COPY} %{prj.location}res ../binaries/" ..outputdir.. "/%{prj.name}/res")
+
   }
 
    filter "configurations:Debug"
    defines "TOYRENDERER_DEBUG"
    symbols "On"
 
+     libdirs { 
+    "ToyRendererDistrubtionFiles\\ToyRenderer-Debug",
+ }
+     postbuildcommands{
+    ("copy ..\\ToyRendererDistrubtionFiles\\ToyRenderer-Debug\\ToyRenderer.dll ..\\binaries\\" ..outputdir.. "\\%{prj.name}\\ /y"),
+  }
+
+
 filter "configurations:Release"
    defines "TOYRENDERER_RELEASE"
    optimize "On"
 
+        libdirs { 
+    "ToyRendererDistrubtionFiles\\ToyRenderer-Release",
+ }
+    postbuildcommands{
+    ("copy ..\\ToyRendererDistrubtionFiles\\ToyRenderer-Release\\ToyRenderer.dll ..\\binaries\\" ..outputdir.. "\\%{prj.name}\\ /y"),
+  }
+
 filter "configurations:Shipping"
    defines "TOYRENDERER_SHIPPING"
    optimize "On"
+
+        libdirs { 
+    "ToyRendererDistrubtionFiles\\ToyRenderer-Shipping",
+ }
+
+     postbuildcommands{
+    ("copy ..\\ToyRendererDistrubtionFiles\\ToyRenderer-Shipping\\ToyRenderer.dll ..\\binaries\\" ..outputdir.. "\\%{prj.name}\\ /y"),
+  }

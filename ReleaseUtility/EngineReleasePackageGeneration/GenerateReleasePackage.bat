@@ -33,7 +33,7 @@ xcopy /Q /E /Y /I  "%solutionPath%vendor\\bin\\premake" ToyRendererReleasePackag
 mkdir ToyRendererReleasePackage\\ToyRendererDistrubtionFiles
 
 rem Coppying the header files
-ROBOCOPY "%solutionPath%ToyRenderer\\src\\" ToyRendererReleasePackage\\include\\ *.h *.hpp *.inl /S
+ROBOCOPY "%solutionPath%ToyRenderer\\src\\" ToyRendererReleasePackage\\ToyRenderer-include\\ *.h *.hpp *.inl /S
 
 rem copying the dll for debug, release 
 

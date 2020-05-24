@@ -7,7 +7,7 @@
 
 namespace ToyRenderer {
 
-	
+	 
 
      class TOYRENDERER_API ToyRendererApp
      {
@@ -24,7 +24,7 @@ namespace ToyRenderer {
 		  Time        *timeHandler;
 		  InputMaster *inputMaster;
 
-
+		   
 
 	 private:
 		 static bool escapeApplication;
